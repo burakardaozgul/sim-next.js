@@ -14,7 +14,7 @@
     "callNow": "Call Now"
   },
   "hero": {
-    "tag": "In the Printing Industry Since 2006",
+    "tag": "In the Printing Industry Since 1983",
     "title": "The Expert Power\nBehind Color",
     "subtitle": "Turkey's leading supplier of offset inks, metallic inks, and custom color production.",
     "cta_primary": "Explore Products",
@@ -64,7 +64,7 @@
   "stats": {
     "capacity": "15,000 kg",
     "capacityLabel": "Monthly Production Capacity",
-    "since": "2006",
+    "since": "1983",
     "sinceLabel": "Years of Industry Service",
     "brands": "7",
     "brandsLabel": "International Brand Representations",
@@ -74,7 +74,7 @@
   "about": {
     "tag": "About Us",
     "title": "Your Trusted Partner\nin Printing",
-    "body": "With a monthly capacity of 15,000 kg in custom color production, we have been serving the printing industry since 2006. We aim to elevate technical, logistical and commercial service to the highest level with eco-friendly products, quality and ethical values.",
+    "body": "With a monthly capacity of 15,000 kg in custom color production, we have been serving the printing industry since 1983. We aim to elevate technical, logistical and commercial service to the highest level with eco-friendly products, quality and ethical values.",
     "cta": "Learn More"
   },
   "brands": {
@@ -87,6 +87,41 @@
     "readMore": "Read More",
     "viewAll": "All Articles"
   },
+  "services": {
+    "tag": "Our Expertise",
+    "title": "Solutions We Offer\nto the Printing Industry",
+    "discover": "Discover",
+    "items": [
+      {
+        "title": "DAIHAN (DEERS) UV & LED-UV Ink Technologies",
+        "desc": "Developed with South Korean technology, DAIHAN (DEERS) UV and LED-UV inks deliver next-generation performance in commercial and packaging printing with instant curing, superior surface resistance, and high energy efficiency. As the Turkish representative, we combine this advanced technology with rapid application capability and uninterrupted supply power."
+      },
+      {
+        "title": "SAKATA INX Offset Ink Technologies",
+        "desc": "Developed with Japanese engineering, SAKATA's offset inks deliver high efficiency, balanced print performance, and reliable quality. As the Turkish representative, we combine this performance with local technical support and application expertise."
+      },
+      {
+        "title": "Our Global Ink Technologies",
+        "desc": "With ink technologies representing the advanced engineering of Japan and South Korea, we deliver high performance, reliable quality, and sustainable efficiency across different printing processes."
+      },
+      {
+        "title": "Technical Assurance for Uninterrupted Printing",
+        "desc": "Our experienced technical team ensures production continuity by responding quickly and accurately to technical situations in printing houses, contributing to efficient and high-quality print processes."
+      },
+      {
+        "title": "EVAcolor Metallic Offset Inks",
+        "desc": "EVAcolor metallic offset inks are engineered for high brilliance, strong metallic effects, and balanced print performance. With carefully selected pigment structure and optimized binder system, they achieve homogeneous distribution, clear reflections, and consistent color results across different paper and cardboard surfaces.\n\nFast drying and high friction resistance support production efficiency while providing eye-catching and lasting visual impact in prints."
+      },
+      {
+        "title": "EVAcolor Fluorescent Ink Technology",
+        "desc": "EVAcolor fluorescent offset inks are engineered for high vibrancy, strong visibility, and eye-catching color effects. Their special pigment structure provides bright, sharp, and homogeneous color distribution on different print surfaces, highlighting the visual impact of designs.\n\nFast drying, stable print performance, and compatibility with post-print applications support efficiency in the production process while contributing to striking, lasting, and distinctive results in commercial and packaging printing."
+      },
+      {
+        "title": "High-Performance Offset Blanket Solutions",
+        "desc": "ST PRO DOT and SX DOT COMBI offset blankets are professional solutions developed to combine high print quality with production reliability in commercial and packaging printing. The ST PRO DOT series provides consistent and sharp print results with precise dot transfer and balanced ink transfer, while SX DOT COMBI offers broad chemical resistance and flexible usage advantages in conventional and UV printing applications with its hybrid structure.\n\nWith their long-lasting construction, stable surface performance, and technical characteristics that adapt to different printing conditions, both blanket solutions contribute to uninterrupted, predictable, and high-quality print processes while maintaining machine efficiency."
+      }
+    ]
+  },
   "cta": {
     "title": "Get a Custom Quote for Your Project",
     "subtitle": "Contact us for information about our wide product range and custom color production.",
@@ -94,7 +129,7 @@
     "quote": "Request a Quote"
   },
   "footer": {
-    "desc": "Trusted supplier of the printing industry since 2006.",
+    "desc": "Trusted supplier of the printing industry since 1983.",
     "products": "Products",
     "company": "Company",
     "contact": "Contact",

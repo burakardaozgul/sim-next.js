@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Phone, Mail, Menu, X } from 'lucide-react';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
 
 const navItems = [
@@ -28,7 +28,6 @@ export default function VerticalNav() {
   const tFooter = useTranslations('footer');
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -114,13 +113,12 @@ export default function VerticalNav() {
             </p>
             <div className="grid grid-cols-2 gap-1.5">
               {locales.map((loc) => (
-                <button
+                <Link
                   key={loc}
-                  onClick={() => {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    router.replace(pathname as any, { locale: loc });
-                    setMobileOpen(false);
-                  }}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  href={pathname as any}
+                  locale={loc}
+                  onClick={() => setMobileOpen(false)}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                     loc === locale
                       ? 'bg-gold/10 text-gold ring-1 ring-gold/20'
@@ -129,7 +127,7 @@ export default function VerticalNav() {
                 >
                   <span className="text-base leading-none">{localeData[loc].flag}</span>
                   <span className="text-xs font-semibold tracking-wide">{localeData[loc].label}</span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>

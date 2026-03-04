@@ -7,6 +7,7 @@ import ProcessSection from '@/components/home/ProcessSection';
 import AboutSection from '@/components/home/AboutSection';
 import BlogSection from '@/components/home/BlogSection';
 import BrandsSection from '@/components/home/BrandsSection';
+import ServicesSection from '@/components/home/ServicesSection';
 import CTABanner from '@/components/home/CTABanner';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/layout/ScrollToTop';
@@ -83,6 +84,9 @@ export default function HomePage() {
         </FadeInSection>
         <FadeInSection>
           <AboutSection />
+        </FadeInSection>
+        <FadeInSection>
+          <ServicesSection />
         </FadeInSection>
         <FadeInSection>
           <BlogSection />

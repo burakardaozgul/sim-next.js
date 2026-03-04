@@ -14,7 +14,7 @@
     "callNow": "Hemen Ara"
   },
   "hero": {
-    "tag": "2006'dan Beri Matbaa Sektöründe",
+    "tag": "1983'ten Beri Matbaa Sektöründe",
     "title": "Rengin Arkasındaki\nUzman Güç",
     "subtitle": "Offset mürekkep, metalik/yaldız mürekkep ve özel renk üretiminde Türkiye'nin lider tedarikçisi.",
     "cta_primary": "Ürünleri İncele",
@@ -80,7 +80,7 @@
   "stats": {
     "capacity": "15.000 kg",
     "capacityLabel": "Aylık Üretim Kapasitesi",
-    "since": "2006",
+    "since": "1983",
     "sinceLabel": "Yılından Beri Hizmetinizdeyiz",
     "brands": "7",
     "brandsLabel": "Uluslararası Marka Temsilciliği",
@@ -90,7 +90,7 @@
   "about": {
     "tag": "Hakkımızda",
     "title": "Matbaacılığın Güvenilir\nÇözüm Ortağı",
-    "body": "Aylık 15.000 kg kapasiteli özel renk ünitesi ile 2006 yılından beri matbaacılık sektörüne hizmet sunmaktayız. Çevre dostu ürünler, kalite anlayışı ve etik değerlerle teknik, lojistik ve ticari hizmeti en üst noktaya taşıyoruz.",
+    "body": "Aylık 15.000 kg kapasiteli özel renk ünitesi ile 1983 yılından beri matbaacılık sektörüne hizmet sunmaktayız. Çevre dostu ürünler, kalite anlayışı ve etik değerlerle teknik, lojistik ve ticari hizmeti en üst noktaya taşıyoruz.",
     "cta": "Daha Fazla Bilgi"
   },
   "brands": {
@@ -103,6 +103,41 @@
     "readMore": "Devamını Oku",
     "viewAll": "Tüm Yazılar"
   },
+  "services": {
+    "tag": "Uzmanlık Alanlarımız",
+    "title": "Baskı Sektörüne\nSunduğumuz Çözümler",
+    "discover": "İncele",
+    "items": [
+      {
+        "title": "DAIHAN (DEERS) UV & LED-UV Mürekkep Teknolojileri",
+        "desc": "Güney Kore teknolojisiyle geliştirilen DAIHAN (DEERS) UV ve LED-UV mürekkepleri; anında kürlenme, üstün yüzey dayanımı ve yüksek enerji verimliliğiyle ticari ve ambalaj baskılarında yeni nesil performans sunar. Türkiye temsilcisi olarak bu ileri teknolojiyi hızlı uygulama kabiliyeti ve kesintisiz tedarik gücüyle buluşturuyoruz."
+      },
+      {
+        "title": "SAKATA INX Ofset Mürekkep Teknolojileri",
+        "desc": "SAKATA\u2019nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz."
+      },
+      {
+        "title": "Global Mürekkep Teknolojilerimiz",
+        "desc": "Japonya ve Güney Kore\u2019nin ileri mühendisliğini temsil eden mürekkep teknolojilerimizle; farklı baskı süreçlerine yüksek performans, güvenilir kalite ve sürdürülebilir verimlilik sunuyoruz."
+      },
+      {
+        "title": "Kesintisiz Baskı İçin Teknik Güvence",
+        "desc": "Deneyimli teknik ekibimiz; matbaalarda karşılaşılan teknik durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini güvence altına alır, baskı süreçlerinin verimli ve yüksek kalite standartlarında sürdürülebilirliğine katkı sağlar."
+      },
+      {
+        "title": "EVAcolor Metalik Ofset Mürekkepleri",
+        "desc": "EVAcolor metalik ofset mürekkepleri; yüksek parlaklık, güçlü yaldız efekti ve dengeli baskı performansı sunmak üzere geliştirilmiştir. Özenle seçilen pigment yapısı ve optimize edilmiş bağlayıcı sistemi sayesinde farklı kâğıt ve karton yüzeylerde homojen dağılım, net yansıma ve tutarlı renk sonuçları elde edilir.\n\nHızlı kuruma ve yüksek sürtünme direnci; üretim verimliliğini desteklerken baskılarda dikkat çekici ve kalıcı bir görsel etki sağlar."
+      },
+      {
+        "title": "EVAcolor Florasan Mürekkep Teknolojisi",
+        "desc": "EVAcolor florasan ofset mürekkepleri; yüksek canlılık, güçlü görünürlük ve dikkat çekici renk etkisi sunmak üzere geliştirilmiştir. Özel pigment yapısı sayesinde farklı baskı yüzeylerinde parlak, net ve homojen renk dağılımı sağlayarak tasarımların görsel etkisini öne çıkarır.\n\nHızlı kuruma, stabil baskı performansı ve baskı sonrası uygulamalarla uyumlu yapısı; üretim sürecinde verimliliği desteklerken ticari ve ambalaj baskılarında çarpıcı, kalıcı ve fark yaratan sonuçlar elde edilmesine katkı sağlar."
+      },
+      {
+        "title": "Yüksek Performanslı Ofset Blanket Çözümleri",
+        "desc": "ST PRO DOT ve SX DOT COMBI ofset blanketleri; ticari ve ambalaj baskılarında yüksek baskı kalitesi ile üretim güvenilirliğini bir arada sunmak üzere geliştirilmiş profesyonel blanket çözümleridir. ST PRO DOT serisi, hassas nokta aktarımı ve dengeli mürekkep transferiyle tutarlı ve net baskı sonuçları sağlarken; SX DOT COMBI hibrit yapısıyla konvansiyonel ve UV baskı uygulamalarında geniş kimyasal dayanım ve esnek kullanım avantajı sunar.\n\nUzun ömürlü yapıları, stabil yüzey performansları ve farklı baskı koşullarına uyum sağlayan teknik karakterleri sayesinde her iki blanket çözümü de makine verimliliğini koruyarak kesintisiz, öngörülebilir ve yüksek kaliteli baskı süreçlerine katkı sağlar."
+      }
+    ]
+  },
   "cta": {
     "title": "Projeniz İçin Özel Fiyat Alın",
     "subtitle": "Geniş ürün yelpazemiz ve özel renk üretimimiz hakkında bilgi almak için hemen arayın.",
@@ -110,7 +145,7 @@
     "quote": "Teklif Talep Et"
   },
   "footer": {
-    "desc": "2006'dan beri matbaa sektörünün güvenilir tedarikçisi.",
+    "desc": "1983'ten beri matbaa sektörünün güvenilir tedarikçisi.",
     "products": "Ürünler",
     "company": "Kurumsal",
     "contact": "İletişim",
