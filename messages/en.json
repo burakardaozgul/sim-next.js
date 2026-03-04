@@ -1,0 +1,253 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "customColor": "Custom Color Production",
+    "brands": "Our Brands",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "privacy": "Privacy & Cookie Policy",
+    "terms": "Terms of Use",
+    "language": "Language"
+  },
+  "hero": {
+    "tag": "In the Printing Industry Since 2006",
+    "title": "The Expert Power\nBehind Color",
+    "subtitle": "Turkey's leading supplier of offset inks, metallic inks, and custom color production.",
+    "cta_primary": "Explore Products",
+    "cta_secondary": "Get a Quote",
+    "slides": [
+      {
+        "title": "METALLIC (GOLD)\nINK PRODUCTION",
+        "subtitle": "High quality metallic ink series suitable for offset technology, providing solutions for the industry.",
+        "cta": "Explore Products"
+      },
+      {
+        "title": "CUSTOM COLOR\nPRODUCTION",
+        "subtitle": "With a monthly capacity of 15,000 kg, we deliver the color you need, when you need it.",
+        "cta": "Learn More"
+      },
+      {
+        "title": "INTERNATIONAL\nBRAND REPRESENTATION",
+        "subtitle": "Authorized distributor of the world's leading manufacturers in Turkey.",
+        "cta": "Our Brands"
+      }
+    ]
+  },
+  "products": {
+    "title": "Our Product Range",
+    "subtitle": "A comprehensive portfolio for every printing industry need",
+    "viewAll": "View All",
+    "categories": {
+      "offset": "Offset Inks",
+      "metallic": "Metallic / Gold",
+      "uv": "UV Offset",
+      "pantone": "PANTONE Colors",
+      "custom": "Custom Colors",
+      "blanket": "Offset Blankets",
+      "chemicals": "Chemicals"
+    }
+  },
+  "process": {
+    "title": "Custom Color Production Process",
+    "subtitle": "Perfect color in 4 steps",
+    "steps": [
+      { "number": "01", "title": "Color Formula", "desc": "Digital formulation according to international L-A-B values" },
+      { "number": "02", "title": "Sample Production", "desc": "Target color testing under different print values and substrates" },
+      { "number": "03", "title": "Approval", "desc": "Sample presentation on various paper weights and approval" },
+      { "number": "04", "title": "Production", "desc": "Production of the approved formula in requested quantities" }
+    ]
+  },
+  "stats": {
+    "capacity": "15,000 kg",
+    "capacityLabel": "Monthly Production Capacity",
+    "since": "2006",
+    "sinceLabel": "Years of Industry Service",
+    "brands": "7",
+    "brandsLabel": "International Brand Representations",
+    "service": "24/7",
+    "serviceLabel": "Uninterrupted Service"
+  },
+  "about": {
+    "tag": "About Us",
+    "title": "Your Trusted Partner\nin Printing",
+    "body": "With a monthly capacity of 15,000 kg in custom color production, we have been serving the printing industry since 2006. We aim to elevate technical, logistical and commercial service to the highest level with eco-friendly products, quality and ethical values.",
+    "cta": "Learn More"
+  },
+  "brands": {
+    "title": "Brands We Represent",
+    "subtitle": "Authorized distributor of the world's leading manufacturers in Turkey"
+  },
+  "blog": {
+    "title": "Industry Guide",
+    "subtitle": "Expert content from the world of printing and publishing",
+    "readMore": "Read More",
+    "viewAll": "All Articles"
+  },
+  "cta": {
+    "title": "Get a Custom Quote for Your Project",
+    "subtitle": "Contact us for information about our wide product range and custom color production.",
+    "call": "Call Now",
+    "quote": "Request a Quote"
+  },
+  "footer": {
+    "desc": "Trusted supplier of the printing industry since 2006.",
+    "products": "Products",
+    "company": "Company",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "phone": "+90 (212) 637 62 49",
+    "email": "info@simlimited.net",
+    "privacyPolicy": "Privacy & Cookie Policy",
+    "termsOfUse": "Terms of Use"
+  },
+  "brandsPage": {
+    "title": "Our Representations",
+    "subtitle": "Authorized distributor of the world's leading manufacturers in Turkey",
+    "intro": "Through our long-term partnerships with leading manufacturers from Japan, South Korea, Italy, and Europe, we offer world-class products to the printing industry.",
+    "since": "Representation Since",
+    "country": "Country",
+    "website": "Website",
+    "items": [
+      {
+        "name": "Sakata INX",
+        "country": "Japan",
+        "since": "2002",
+        "desc": "One of the world's leading offset printing ink manufacturers, Sakata INX leads the printing industry with high-performance ink solutions."
+      },
+      {
+        "name": "Hi-Tech Coatings",
+        "country": "United Kingdom",
+        "since": "2002",
+        "desc": "Specializing in water-based and UV varnish production, Hi-Tech Coatings is a pioneer in post-press coating solutions."
+      },
+      {
+        "name": "Fujikura",
+        "country": "Japan",
+        "since": "2002",
+        "desc": "Manufactured with Japanese engineering precision, Fujikura offset blankets offer high print quality and long service life."
+      },
+      {
+        "name": "Zeller+Gmelin",
+        "country": "Germany",
+        "since": "2006",
+        "desc": "Operating since 1866, Zeller+Gmelin is one of Europe's most established manufacturers of offset inks and industrial chemicals."
+      },
+      {
+        "name": "Gardiner",
+        "country": "France",
+        "since": "2006",
+        "desc": "Specializing in printing chemicals and auxiliary materials, Gardiner offers innovative solutions to the European printing industry."
+      },
+      {
+        "name": "DEERS (DAIHAN)",
+        "country": "South Korea",
+        "since": "2008",
+        "desc": "South Korea's leading ink manufacturer, DEERS (DAIHAN) serves the global market with cost-effective, high-quality offset inks."
+      },
+      {
+        "name": "Baltink",
+        "country": "Lithuania",
+        "since": "2020",
+        "desc": "The Baltic region's leading ink manufacturer, Baltink stands out with its eco-friendly formulations and wide product range."
+      }
+    ]
+  },
+  "aboutPage": {
+    "title": "About Us",
+    "subtitle": "A trusted partner of the printing industry since 1983",
+    "history": {
+      "title": "Our History",
+      "intro": "With eco-friendly products, a commitment to quality, and ethical values, we aim to elevate our technical, logistical, and commercial services to the highest level...",
+      "p1": "Founded in 1983 to supply paper, cardboard, and printing materials to the printing industry, Sim Baskı Malzemeleri Ltd. Şti. shifted its focus from 1998 onwards to offset printing inks, coatings, offset blankets, and offset chemicals.",
+      "p2": "Having taken on the Turkish representation of EFI offset printing plates from the Italian Samor Group in 2001, Sim Baskı Malzemeleri has been representing SAKATA offset inks, Hi-Tech Coatings water-based and UV varnishes, Fujikura offset blankets since 2002, and DEERS (DAIHAN) inks from South Korea since 2008. From 2024, the company has taken on the Turkish representation of selected product lines from the Italian Acoma brand, continuously expanding its product portfolio and service quality.",
+      "p3": "Today, Sim Baskı Malzemeleri offers advanced custom color solutions with a monthly production capacity of 15 tons and its registered EVAcolor brand, technically designing colors requested from digital or printed references or nature in chemical compositions suitable for pre-press and post-press applications, bringing them to life through precision manufacturing processes. Under the EVAcolor brand, fluorescent and metallic ink production is carried out while providing uninterrupted service to customers with an experienced team.",
+      "p4": "Sim Baskı Malzemeleri carries a versatile identity as a manufacturer, supplier, and solution partner, with a strong import network through global collaborations, as well as production capabilities and export activities targeting international markets."
+    },
+    "strengths": {
+      "title": "Our Strengths",
+      "items": [
+        { "title": "Global Brands, Strong Partnerships", "desc": "Thanks to long-term representations with leading manufacturers based in Japan, South Korea, and Europe, we offer products that meet world standards." },
+        { "title": "Integrated Production, Import & Export", "desc": "By combining our own production capacity with international supply and export capabilities, we provide flexible and sustainable solutions to our customers." },
+        { "title": "Technical Expertise & Field Experience", "desc": "Our experienced technical team supports production continuity by responding quickly and accurately to situations encountered in printing processes." },
+        { "title": "Fast & Uninterrupted Service", "desc": "With our strong stock structure, effective logistics processes, and solution-oriented service approach, we respond to our customers' needs in the shortest time." },
+        { "title": "Quality & Continuity Focused Service", "desc": "We adopt high quality standards, consistency, and a long-term business partnership approach in all our products and services." }
+      ]
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To enhance our customers' print quality by providing reliable supply, advanced technology products, and sustainable solutions supported by technical expertise."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "To be a trusted solution partner recognized as a reference in the region and at an international scale."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "items": [
+        { "title": "Reliability", "desc": "With over 40 years of industry experience, we consistently deliver dependable service to our customers." },
+        { "title": "Technical Expertise", "desc": "Our expert team provides technical support from color formulation to print optimization." },
+        { "title": "Quality Focus", "desc": "We maintain the highest print quality through international-standard production and supply." },
+        { "title": "Sustainability", "desc": "We invest in the future with eco-friendly products and sustainable production processes." },
+        { "title": "Customer Commitment", "desc": "With 24/7 service, we provide fast and effective solutions to our customers' needs." }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Contact us for information about our products and services.",
+    "formTitle": "Send a Message",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "subject": "Subject",
+    "message": "Your Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Your message has been received. We will get back to you shortly.",
+    "error": "An error occurred. Please try again.",
+    "infoTitle": "Contact Information",
+    "address": "Yakuplu, 194. Sk. No:1 D:176, 34000 Beylikdüzü/İstanbul",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "workingHours": "Working Hours",
+    "workingHoursValue": "Monday - Saturday: 08:30 - 18:00"
+  },
+  "cookie": {
+    "message": "This website uses cookies to improve your experience. By continuing to use our site, you accept our cookie policy.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learnMore": "Learn More"
+  },
+  "privacyPage": {
+    "title": "Privacy & Cookie Policy",
+    "lastUpdated": "Last updated: March 1, 2026",
+    "sections": [
+      { "title": "1. General Information", "content": "At SIM Baskı Malzemeleri San. Tic. Ltd. Şti., we value the protection of your personal data. This policy explains how data collected on our website is processed." },
+      { "title": "2. Data Collected", "content": "Through contact forms, we may collect your name, email, phone number, and company information. When you visit our website, technical data such as IP address, browser information, and visited pages are automatically recorded." },
+      { "title": "3. Purpose of Data Use", "content": "Collected data is used to respond to your inquiries, improve our service quality, fulfill legal obligations, and communicate with you." },
+      { "title": "4. Cookie Policy", "content": "Our website uses essential cookies (for site functionality), analytics cookies (for visitor statistics), and preference cookies (for language and region preferences). You can disable cookies through your browser settings, but some features may not function properly." },
+      { "title": "5. Data Security", "content": "Your personal data is protected with technical and administrative measures against unauthorized access, loss, and misuse." },
+      { "title": "6. Third-Party Sharing", "content": "Your personal data is not shared with third parties except where legally required. Analytics tools such as Google Analytics may be used." },
+      { "title": "7. Your Rights", "content": "Under Turkish data protection law (KVKK No. 6698), you have the right to access, correct, delete, and object to the processing of your personal data. Contact us at info@simlimited.net to exercise these rights." },
+      { "title": "8. Contact", "content": "For questions about our privacy policy, contact us at info@simlimited.net or +90 (212) 637 62 49." }
+    ]
+  },
+  "termsPage": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: March 1, 2026",
+    "sections": [
+      { "title": "1. Acceptance", "content": "By using this website, you agree to the following terms of use. If you do not accept these terms, please do not use the site." },
+      { "title": "2. Service Description", "content": "The SIM Baskı Malzemeleri website is designed to provide information about our products and services. Information on the site is for general informational purposes." },
+      { "title": "3. Intellectual Property Rights", "content": "All content, images, logos, designs, and texts on this website belong to SIM Baskı Malzemeleri and are protected by copyright. Unauthorized use, copying, or distribution is prohibited." },
+      { "title": "4. Limitation of Liability", "content": "While every effort is made to ensure accuracy, the completeness and correctness of information is not guaranteed. SIM Baskı Malzemeleri cannot be held liable for direct or indirect damages arising from use of the site." },
+      { "title": "5. External Links", "content": "Our website may contain links to third-party websites. We are not responsible for their content or privacy practices." },
+      { "title": "6. Modifications", "content": "SIM Baskı Malzemeleri reserves the right to modify these terms without prior notice. Current terms are always published on this page." },
+      { "title": "7. Governing Law", "content": "These terms are governed by the laws of the Republic of Turkey. Istanbul Courts and Enforcement Offices have jurisdiction over disputes." },
+      { "title": "8. Contact", "content": "For questions about our terms of use, contact us at info@simlimited.net or +90 (212) 637 62 49." }
+    ]
+  }
+}

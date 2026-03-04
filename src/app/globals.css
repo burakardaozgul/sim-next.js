@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-ink: #080C14;
+  --color-ink-900: #080C14;
+  --color-ink-800: #0D1425;
+  --color-ink-700: #151E30;
+  --color-ink-600: #1E2A40;
+
+  --color-gold: #C4922A;
+  --color-gold-light: #E5B84A;
+  --color-gold-pale: #F0D080;
+
+  --color-cream: #F5EDD8;
+  --color-cream-warm: #FAF7F2;
+
+  --color-silver: #9BA8B4;
+
+  --font-display: var(--font-cormorant-garamond), Georgia, serif;
+  --font-heading: var(--font-syne), sans-serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+  --font-arabic: var(--font-noto-sans-arabic), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    background-color: var(--color-ink-900);
+    color: var(--color-cream);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
+
+  :lang(ar) {
+    font-family: var(--font-arabic);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
