@@ -5,6 +5,7 @@ import { Cormorant_Garamond, Syne, DM_Sans, Noto_Sans_Arabic } from 'next/font/g
 import { locales, defaultLocale, rtlLocales, type Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
 import CookieConsent from '@/components/layout/CookieConsent';
+import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import '../globals.css';
 
 const cormorant = Cormorant_Garamond({
@@ -243,6 +244,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <MobileBottomNav />
           <CookieConsent />
         </NextIntlClientProvider>
       </body>

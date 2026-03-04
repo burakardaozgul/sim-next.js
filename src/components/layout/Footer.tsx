@@ -31,6 +31,7 @@ export default function Footer() {
   const tProducts = useTranslations('products');
 
   return (
+    <>
     <footer className="border-t border-white/[0.06] bg-ink-900">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
@@ -160,5 +161,9 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
+    {/* Spacer for mobile bottom nav */}
+    <div className="h-20 bg-ink-900 lg:hidden" />
+    </>
   );
 }
