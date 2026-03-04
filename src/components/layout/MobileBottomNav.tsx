@@ -1,9 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link, usePathname } from '@/i18n/navigation';
 import { Home, Package, Navigation, PhoneCall } from 'lucide-react';
 
 const PHONE_NUMBER = '+902126376249';
@@ -12,10 +10,7 @@ const GOOGLE_MAPS_URL =
 
 export default function MobileBottomNav() {
   const t = useTranslations('nav');
-  const locale = useLocale();
   const pathname = usePathname();
-
-  const rawPath = pathname.replace(new RegExp(`^/${locale}`), '') || '/';
 
   const items = [
     {
@@ -23,7 +18,7 @@ export default function MobileBottomNav() {
       label: t('home'),
       href: '/',
       icon: Home,
-      isActive: rawPath === '/',
+      isActive: pathname === '/',
       type: 'link' as const,
     },
     {
@@ -31,7 +26,7 @@ export default function MobileBottomNav() {
       label: t('products'),
       href: '/urunler',
       icon: Package,
-      isActive: rawPath.startsWith('/urunler'),
+      isActive: pathname.startsWith('/urunler'),
       type: 'link' as const,
     },
     {

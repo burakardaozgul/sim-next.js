@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { products } from '@/data/products';
 

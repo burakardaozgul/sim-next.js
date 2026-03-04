@@ -1,12 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Phone, Mail, Menu, X } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
 
 const navItems = [
@@ -30,17 +28,8 @@ export default function VerticalNav() {
   const tFooter = useTranslations('footer');
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const getLocalePath = (targetLocale: string) => {
-    const segments = pathname.split('/');
-    if (locales.includes(segments[1] as any)) {
-      segments[1] = targetLocale;
-    } else {
-      segments.splice(1, 0, targetLocale);
-    }
-    return segments.join('/') || '/';
-  };
 
   return (
     <>
@@ -91,11 +80,9 @@ export default function VerticalNav() {
         <div className="flex-1 overflow-y-auto px-4 py-6">
           <ul className="space-y-1">
             {navItems.map((item) => {
-              // Strip locale prefix to get the raw path
-              const rawPath = pathname.replace(new RegExp(`^/${locale}`), '') || '/';
               const isActive = item.href === '/'
-                ? rawPath === '/'
-                : rawPath.startsWith(item.href);
+                ? pathname === '/'
+                : pathname.startsWith(item.href);
 
               return (
                 <li key={item.key}>
@@ -127,10 +114,12 @@ export default function VerticalNav() {
             </p>
             <div className="grid grid-cols-2 gap-1.5">
               {locales.map((loc) => (
-                <Link
+                <button
                   key={loc}
-                  href={getLocalePath(loc)}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    router.replace(pathname, { locale: loc });
+                    setMobileOpen(false);
+                  }}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                     loc === locale
                       ? 'bg-gold/10 text-gold ring-1 ring-gold/20'
@@ -139,7 +128,7 @@ export default function VerticalNav() {
                 >
                   <span className="text-base leading-none">{localeData[loc].flag}</span>
                   <span className="text-xs font-semibold tracking-wide">{localeData[loc].label}</span>
-                </Link>
+                </button>
               ))}
             </div>
           </div>

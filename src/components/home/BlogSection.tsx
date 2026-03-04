@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Clock } from 'lucide-react';
 
 const BLOG_POSTS = [
