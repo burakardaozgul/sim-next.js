@@ -11,10 +11,10 @@ export interface Product {
 export const products: Product[] = [
   {
     slug: 'eva-color-fluorescent-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09900.jpg',
+    image: '/images/HIP09900.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09900.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09901.jpg',
+      '/images/HIP09900.webp',
+      '/images/HIP09901.webp',
     ],
     category: 'offset',
     name: {
@@ -32,14 +32,14 @@ export const products: Product[] = [
   },
   {
     slug: 'eva-color-gold-metalik-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Gold-Aile.jpg',
+    image: '/images/NEW-Gold-Aile.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Gold-Aile.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09898.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09899.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Pantone876-Gold.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Pantone875-Gold.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Pantone874-Gold.jpg',
+      '/images/NEW-Gold-Aile.webp',
+      '/images/HIP09898.webp',
+      '/images/HIP09899.webp',
+      '/images/NEW-Pantone876-Gold.webp',
+      '/images/NEW-Pantone875-Gold.webp',
+      '/images/NEW-Pantone874-Gold.webp',
     ],
     category: 'metallic',
     name: {
@@ -57,9 +57,9 @@ export const products: Product[] = [
   },
   {
     slug: 'sakata-inx-cmyk-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.jpg',
+    image: '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.jpg',
+      '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
     ],
     category: 'offset',
     name: {
@@ -83,9 +83,9 @@ export const products: Product[] = [
   },
   {
     slug: 'ozel-renkler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
+    image: '/images/DSC08151.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
+      '/images/DSC08151.webp',
     ],
     category: 'custom',
     name: {
@@ -108,37 +108,37 @@ export const products: Product[] = [
     },
   },
   {
-    slug: 'st-dot-offset-blanketleri',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/09/blanket2.jpg',
+    slug: 'vector-baski-blanketleri',
+    image: '/images/blanket2.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/09/blanket2.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2022/09/Blanket.jpg',
+      '/images/blanket2.webp',
+      '/images/Blanket.webp',
     ],
     category: 'blanket',
     name: {
-      tr: 'ST-DOT Offset Blanketleri',
-      en: 'ST-DOT Offset Blankets',
-      ru: 'ST-DOT Офсетные полотна',
-      ar: 'بطانيات ST-DOT للأوفست',
+      tr: 'VECTOR Baskı Blanketleri',
+      en: 'VECTOR Printing Blankets',
+      ru: 'VECTOR Печатные полотна',
+      ar: 'بطانيات الطباعة VECTOR',
     },
     description: {
-      tr: 'Alman teknolojisi ile üretilen ST-DOT Offset Blanketleri, yüksek hassasiyet ve dayanıklılık sunar. Karmaşık tasarımların ve canlı renklerin kusursuz baskısı için pürüzsüz ve doğru baskı transferi sağlar.',
-      en: 'Manufactured with German technology, ST-DOT Offset Blankets offer high precision and durability. They provide smooth and accurate print transfer for flawless printing of complex designs and vibrant colors.',
-      ru: 'Офсетные полотна ST-DOT, произведённые по немецкой технологии, обеспечивают высокую точность и долговечность. Гладкий и точный перенос печати для безупречных сложных дизайнов.',
-      ar: 'تُصنع بطانيات ST-DOT بالتقنية الألمانية وتوفر دقة عالية ومتانة. تضمن نقل طباعة سلسًا ودقيقًا للتصاميم المعقدة والألوان النابضة.',
+      tr: 'VECTOR, modern baskı endüstrisinin yüksek performans gereksinimlerini karşılamak üzere tasarlanmış ofset baskı blanketleri sunar. Gelişmiş kauçuk bileşenleri ve hassas üretim teknolojileri ile üretilen VECTOR blanketleri; mükemmel mürekkep transferi, yüksek nokta keskinliği ve uzun süreli boyutsal stabilite sağlar. Yüksek hızlı baskı koşullarında dahi güvenilir ve tutarlı performans sunacak şekilde tasarlanmıştır. Dayanıklılık, baskı kalitesi ve üretim verimliliği odağında geliştirilen VECTOR ürünleri, matbaaların üretim süreçlerinde maksimum verimlilik ve istikrarlı baskı sonuçları elde etmesine katkı sağlar.',
+      en: 'VECTOR offers offset printing blankets designed to meet the high-performance demands of the modern printing industry. Manufactured with advanced rubber compounds and precision production technologies, VECTOR blankets deliver excellent ink transfer, high dot sharpness, and long-term dimensional stability. Designed for reliable and consistent performance even under high-speed printing conditions. Developed with a focus on durability, print quality, and production efficiency, VECTOR products help printing houses achieve maximum efficiency and consistent print results.',
+      ru: 'VECTOR предлагает офсетные печатные полотна, разработанные для удовлетворения высоких требований современной полиграфической индустрии. Произведённые с использованием передовых резиновых компонентов и прецизионных технологий, полотна VECTOR обеспечивают превосходный перенос краски, высокую резкость растровой точки и долгосрочную размерную стабильность. Разработаны для надёжной и стабильной работы даже в условиях высокоскоростной печати.',
+      ar: 'تقدم VECTOR بطانيات طباعة أوفست مصممة لتلبية متطلبات الأداء العالي في صناعة الطباعة الحديثة. تتميز بطانيات VECTOR المصنعة بمركبات مطاطية متقدمة وتقنيات إنتاج دقيقة بنقل حبر ممتاز ووضوح نقطي عالٍ واستقرار أبعاد طويل الأمد. مصممة لأداء موثوق ومتسق حتى في ظروف الطباعة عالية السرعة.',
     },
     features: {
-      tr: ['Alman teknolojisi ile üretim', 'Yüksek hassasiyet', 'Üstün dayanıklılık', 'Doğru baskı transferi', 'Canlı renk aktarımı'],
-      en: ['German technology manufacturing', 'High precision', 'Enhanced durability', 'Accurate print transfer', 'Vibrant color reproduction'],
-      ru: ['Немецкая технология', 'Высокая точность', 'Повышенная долговечность', 'Точный перенос печати', 'Яркое воспроизведение цветов'],
-      ar: ['تصنيع بتقنية ألمانية', 'دقة عالية', 'متانة محسنة', 'نقل طباعة دقيق', 'إعادة إنتاج ألوان نابضة'],
+      tr: ['Mükemmel mürekkep transferi', 'Yüksek nokta keskinliği', 'Uzun süreli boyutsal stabilite', 'Yüksek hızlı baskıda güvenilir performans', 'Maksimum üretim verimliliği'],
+      en: ['Excellent ink transfer', 'High dot sharpness', 'Long-term dimensional stability', 'Reliable high-speed performance', 'Maximum production efficiency'],
+      ru: ['Превосходный перенос краски', 'Высокая резкость точки', 'Долгосрочная размерная стабильность', 'Надёжная высокоскоростная печать', 'Максимальная производственная эффективность'],
+      ar: ['نقل حبر ممتاز', 'وضوح نقطي عالٍ', 'استقرار أبعاد طويل الأمد', 'أداء موثوق عالي السرعة', 'كفاءة إنتاج قصوى'],
     },
   },
   {
     slug: 'eva-color-silver-metalik-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/09/HIP08190.jpg',
+    image: '/images/HIP08190.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2022/09/HIP08190.jpg',
+      '/images/HIP08190.webp',
     ],
     category: 'metallic',
     name: {
@@ -156,10 +156,10 @@ export const products: Product[] = [
   },
   {
     slug: 'zeller-gmelin-uv-offset-murekkepleri',
-    image: 'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09894.jpg',
+    image: '/images/HIP09894.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09894.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09892.jpg',
+      '/images/HIP09894.webp',
+      '/images/HIP09892.webp',
     ],
     category: 'uv',
     name: {
@@ -177,9 +177,9 @@ export const products: Product[] = [
   },
   {
     slug: 'sakata-inx-pantone-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2023/10/sakata2.jpg',
+    image: '/images/sakata2.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2023/10/sakata2.jpg',
+      '/images/sakata2.webp',
     ],
     category: 'pantone',
     name: {
@@ -203,10 +203,10 @@ export const products: Product[] = [
   },
   {
     slug: 'hi-tech-coatings-dispersiyon-lak',
-    image: 'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09924.jpg',
+    image: '/images/HIP09924.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09924.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP099222.jpg',
+      '/images/HIP09924.webp',
+      '/images/HIP099222.webp',
     ],
     category: 'chemicals',
     name: {
@@ -230,10 +230,10 @@ export const products: Product[] = [
   },
   {
     slug: 'schlenk-metalik-murekkepler',
-    image: 'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09896.jpg',
+    image: '/images/HIP09896.webp',
     gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09896.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09897.jpg',
+      '/images/HIP09896.webp',
+      '/images/HIP09897.webp',
     ],
     category: 'metallic',
     name: {
@@ -247,33 +247,6 @@ export const products: Product[] = [
       en: 'The SCHLENK metallic ink series is produced with the precision of German engineering. It is the preferred brand for metallic printing applications with high brilliance, superior coverage, and consistent color quality.',
       ru: 'Серия металлических красок SCHLENK производится с точностью немецкой инженерии. Высокий блеск, превосходная укрывистость и стабильное качество цвета.',
       ar: 'تُنتج سلسلة أحبار SCHLENK المعدنية بدقة الهندسة الألمانية. لمعان عالٍ وتغطية فائقة وجودة لون ثابتة.',
-    },
-  },
-  {
-    slug: 'master-anti-set-off-powder',
-    image: 'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09914.jpg',
-    gallery: [
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09914.jpg',
-      'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09915.jpg',
-    ],
-    category: 'chemicals',
-    name: {
-      tr: 'MASTER Anti Set-Off Powder',
-      en: 'MASTER Anti Set-Off Powder',
-      ru: 'MASTER Противоотмарочный порошок',
-      ar: 'مسحوق MASTER المضاد للتلطيخ',
-    },
-    description: {
-      tr: 'Master Anti Set-Off Powder, mürekkep transferini (set-off) önlemek için tasarlanmış premium sprey tozudur. Kolay uygulama ile temiz ve keskin baskı sonuçları sağlar. İnce kağıttan kalın kartona kadar tüm malzemelerle uyumludur.',
-      en: 'Master Anti Set-Off Powder is a premium spray powder designed to prevent ink set-off. It delivers clean, sharp print results with easy application. Compatible with all materials from thin paper to heavy cardstock.',
-      ru: 'Master Anti Set-Off Powder — премиальный распылительный порошок для предотвращения отмарывания краски. Обеспечивает чистые и чёткие результаты печати.',
-      ar: 'مسحوق Master Anti Set-Off مصمم لمنع انتقال الحبر. يوفر نتائج طباعة نظيفة وحادة مع سهولة التطبيق.',
-    },
-    features: {
-      tr: ['Mürekkep transferini önler', 'Temiz ve keskin baskı', 'Kolay uygulama', 'İnce kağıtlarla uyumlu', 'Kalın kartonlarla uyumlu'],
-      en: ['Prevents ink set-off', 'Clean and sharp prints', 'Easy application', 'Compatible with thin paper', 'Compatible with heavy cardstock'],
-      ru: ['Предотвращает отмарывание', 'Чистая и чёткая печать', 'Лёгкое нанесение', 'Совместимость с тонкой бумагой', 'Совместимость с плотным картоном'],
-      ar: ['يمنع انتقال الحبر', 'طباعة نظيفة وحادة', 'تطبيق سهل', 'متوافق مع الورق الرقيق', 'متوافق مع الورق المقوى'],
     },
   },
 ];

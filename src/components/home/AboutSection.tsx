@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight } from 'lucide-react';
+import { getBlurDataURL } from '@/lib/blur';
 
 export default function AboutSection() {
   const t = useTranslations('about');
@@ -24,11 +25,13 @@ export default function AboutSection() {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
               <Image
-                src="https://www.simlimited.net/wp-content/uploads/2022/05/DSC07958.jpg"
+                src="/images/DSC07958.webp"
                 alt="SIM Baskı Malzemeleri"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                placeholder="blur"
+                blurDataURL={getBlurDataURL('/images/DSC07958.webp')}
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-ink-900/40 via-transparent to-transparent" />
             </div>

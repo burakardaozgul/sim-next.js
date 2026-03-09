@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
+import { useParams } from 'next/navigation';
 
 const navItems = [
   { key: 'home', href: '/' },
@@ -28,7 +29,18 @@ export default function VerticalNav() {
   const tFooter = useTranslations('footer');
   const locale = useLocale();
   const pathname = usePathname();
+  const params = useParams();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Build the href for locale switcher links
+  // usePathname() from next-intl returns the template pattern (e.g. '/urunler/[slug]')
+  // so we just need to pass the params alongside it for dynamic routes
+  const slug = params?.slug as string | undefined;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const localeHref = slug
+    ? { pathname: pathname as any, params: { slug } }
+    : { pathname: pathname as any };
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   return (
     <>
@@ -67,7 +79,7 @@ export default function VerticalNav() {
         {/* Logo */}
         <div className="flex items-center gap-3 border-b border-white/[0.06] px-6 py-6">
           <Image
-            src="https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-malzemeleri.png"
+            src="/images/sim-baski-malzemeleri.webp"
             alt="SIM Baskı Malzemeleri"
             width={160}
             height={50}
@@ -116,7 +128,7 @@ export default function VerticalNav() {
                 <Link
                   key={loc}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  href={pathname as any}
+                  href={localeHref as any}
                   locale={loc}
                   onClick={() => setMobileOpen(false)}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all ${

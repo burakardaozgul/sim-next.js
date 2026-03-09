@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { createPageMetadata } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import HeroSlider from '@/components/home/HeroSlider';
 import ProductsSection from '@/components/home/ProductsSection';
-import ProcessSection from '@/components/home/ProcessSection';
-import AboutSection from '@/components/home/AboutSection';
-import BlogSection from '@/components/home/BlogSection';
-import BrandsSection from '@/components/home/BrandsSection';
-import ServicesSection from '@/components/home/ServicesSection';
-import CTABanner from '@/components/home/CTABanner';
-import Footer from '@/components/layout/Footer';
-import ScrollToTop from '@/components/layout/ScrollToTop';
 import FadeInSection from '@/components/ui/FadeInSection';
+
+const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
+const AboutSection = dynamic(() => import('@/components/home/AboutSection'));
+const ServicesSection = dynamic(() => import('@/components/home/ServicesSection'));
+const BlogSection = dynamic(() => import('@/components/home/BlogSection'));
+const BrandsSection = dynamic(() => import('@/components/home/BrandsSection'));
+const CTABanner = dynamic(() => import('@/components/home/CTABanner'));
+const Footer = dynamic(() => import('@/components/layout/Footer'));
+const ScrollToTop = dynamic(() => import('@/components/layout/ScrollToTop'));
 
 const seoData: Record<string, { title: string; description: string }> = {
   tr: {

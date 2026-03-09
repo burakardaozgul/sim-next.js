@@ -5,12 +5,13 @@ import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Clock } from 'lucide-react';
+import { getBlurDataURL } from '@/lib/blur';
 
 const BLOG_POSTS = [
   {
     slug: 'ofset-murekkep-secimi',
     category: { tr: 'Rehber', en: 'Guide', ru: 'Руководство', ar: 'دليل' },
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/05/DSC07958.jpg',
+    image: '/images/DSC07958.webp',
     date: '2025-02-15',
     title: {
       tr: 'Ofset Mürekkep Seçimi: Dikkat Edilmesi Gerekenler',
@@ -28,7 +29,7 @@ const BLOG_POSTS = [
   {
     slug: 'metalik-murekkep-uretimi',
     category: { tr: 'Teknik', en: 'Technical', ru: 'Техническая', ar: 'تقني' },
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Gold-Aile.jpg',
+    image: '/images/NEW-Gold-Aile.webp',
     date: '2025-01-20',
     title: {
       tr: 'Metalik Mürekkep Üretim Süreci ve Kalite Kontrol',
@@ -46,7 +47,7 @@ const BLOG_POSTS = [
   {
     slug: 'ozel-renk-eslestirme',
     category: { tr: 'Üretim', en: 'Production', ru: 'Производство', ar: 'إنتاج' },
-    image: 'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
+    image: '/images/DSC08151.webp',
     date: '2024-12-10',
     title: {
       tr: 'Özel Renk Eşleştirme: LAB Değerleri ile Mükemmel Sonuç',
@@ -134,6 +135,8 @@ export default function BlogSection() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 300px, 400px"
+                      placeholder="blur"
+                      blurDataURL={getBlurDataURL(post.image)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 to-transparent" />
                     <span className="absolute top-3 left-3 rounded-full bg-gold/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">

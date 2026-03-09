@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
+import { getBlurDataURL } from '@/lib/blur';
 import { ArrowRight } from 'lucide-react';
 
 export default function ProductsPageClient() {
@@ -45,6 +46,8 @@ export default function ProductsPageClient() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL={getBlurDataURL(product.image)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent" />
                   </div>

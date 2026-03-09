@@ -1,6 +1,16 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 
+const BLOG_SLUGS = [
+  'ofset-murekkep-secimi',
+  'metalik-murekkep-uretimi',
+  'ozel-renk-eslestirme',
+];
+
+export function generateStaticParams() {
+  return BLOG_SLUGS.map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({
   params,
 }: {

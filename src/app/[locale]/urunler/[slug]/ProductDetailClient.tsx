@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { Product, products } from '@/data/products';
+import { getBlurDataURL } from '@/lib/blur';
 import { ChevronLeft, Check, ArrowRight } from 'lucide-react';
 
 export default function ProductDetailClient({ product }: { product: Product }) {
@@ -56,6 +57,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL(product.gallery[activeImage])}
                   />
                 </div>
                 {product.gallery.length > 1 && (
@@ -76,6 +79,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                           fill
                           className="object-cover"
                           sizes="80px"
+                          placeholder="blur"
+                          blurDataURL={getBlurDataURL(img)}
                         />
                       </button>
                     ))}
@@ -149,6 +154,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        placeholder="blur"
+                        blurDataURL={getBlurDataURL(rp.image)}
                       />
                     </div>
                     <div className="p-4">

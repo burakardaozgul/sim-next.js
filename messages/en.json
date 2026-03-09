@@ -21,19 +21,24 @@
     "cta_secondary": "Get a Quote",
     "slides": [
       {
-        "title": "METALLIC (GOLD)\nINK PRODUCTION",
-        "subtitle": "High quality metallic ink series suitable for offset technology, providing solutions for the industry.",
-        "cta": "Explore Products"
-      },
-      {
         "title": "CUSTOM COLOR\nPRODUCTION",
         "subtitle": "With a monthly capacity of 15,000 kg, we deliver the color you need, when you need it.",
         "cta": "Learn More"
       },
       {
-        "title": "INTERNATIONAL\nBRAND REPRESENTATION",
-        "subtitle": "Authorized distributor of the world's leading manufacturers in Turkey.",
-        "cta": "Our Brands"
+        "title": "METALLIC (GOLD)\nINK PRODUCTION",
+        "subtitle": "High quality metallic ink series suitable for offset technology, providing solutions for the industry.",
+        "cta": "Explore Products"
+      },
+      {
+        "title": "DAIHAN UV & LED-UV\nINK TECHNOLOGIES",
+        "subtitle": "Developed with South Korean technology, DAIHAN (DEERS) UV and LED-UV inks deliver next-generation performance in commercial and packaging printing with instant curing, superior surface resistance, and high energy efficiency.",
+        "cta": "Learn More"
+      },
+      {
+        "title": "SAKATA INX\nOFFSET INK TECHNOLOGIES",
+        "subtitle": "SAKATA's offset inks, developed with Japanese engineering, offer high efficiency, balanced print performance, and reliable quality. As Turkey's representative, we combine this performance with local technical support and application expertise.",
+        "cta": "Learn More"
       }
     ]
   },
@@ -76,6 +81,10 @@
     "title": "Your Trusted Partner\nin Printing",
     "body": "With a monthly capacity of 15,000 kg in custom color production, we have been serving the printing industry since 1983. We aim to elevate technical, logistical and commercial service to the highest level with eco-friendly products, quality and ethical values.",
     "cta": "Learn More"
+  },
+  "ownBrands": {
+    "title": "Our Brands",
+    "subtitle": "Our own production and proprietary brands"
   },
   "brands": {
     "title": "Brands We Represent",
@@ -140,13 +149,15 @@
     "termsOfUse": "Terms of Use"
   },
   "brandsPage": {
-    "title": "Our Representations",
+    "title": "Our Representatives & Dealerships",
     "subtitle": "Authorized distributor of the world's leading manufacturers in Turkey",
-    "intro": "Through our long-term partnerships with leading manufacturers from Japan, South Korea, Italy, and Europe, we offer world-class products to the printing industry.",
-    "since": "Representation Since",
+    "intro": "Through our long-term partnerships with leading manufacturers from Japan, South Korea, and Europe, we offer world-class products to the printing industry.",
+    "since": "Since",
     "country": "Country",
     "website": "Website",
-    "items": [
+    "tabRepresentatives": "Our Representatives",
+    "tabDealers": "Our Dealerships",
+    "representatives": [
       {
         "name": "Sakata INX",
         "country": "Japan",
@@ -155,27 +166,9 @@
       },
       {
         "name": "Hi-Tech Coatings",
-        "country": "United Kingdom",
+        "country": "Netherlands",
         "since": "2002",
         "desc": "Specializing in water-based and UV varnish production, Hi-Tech Coatings is a pioneer in post-press coating solutions."
-      },
-      {
-        "name": "Fujikura",
-        "country": "Japan",
-        "since": "2002",
-        "desc": "Manufactured with Japanese engineering precision, Fujikura offset blankets offer high print quality and long service life."
-      },
-      {
-        "name": "Zeller+Gmelin",
-        "country": "Germany",
-        "since": "2006",
-        "desc": "Operating since 1866, Zeller+Gmelin is one of Europe's most established manufacturers of offset inks and industrial chemicals."
-      },
-      {
-        "name": "Gardiner",
-        "country": "France",
-        "since": "2006",
-        "desc": "Specializing in printing chemicals and auxiliary materials, Gardiner offers innovative solutions to the European printing industry."
       },
       {
         "name": "DEERS (DAIHAN)",
@@ -188,6 +181,26 @@
         "country": "Lithuania",
         "since": "2020",
         "desc": "The Baltic region's leading ink manufacturer, Baltink stands out with its eco-friendly formulations and wide product range."
+      },
+      {
+        "name": "Stahl",
+        "country": "Netherlands",
+        "since": "2025",
+        "desc": "Based in the Netherlands, Stahl is a global leader in specialty coatings and surface treatment solutions, offering innovative coating technologies for the printing and packaging industry."
+      }
+    ],
+    "dealers": [
+      {
+        "name": "Fujifilm",
+        "country": "Japan",
+        "since": "2002",
+        "desc": "Manufactured with Japanese engineering precision, Fujifilm offset blankets offer high print quality and long service life."
+      },
+      {
+        "name": "Zeller+Gmelin",
+        "country": "Germany",
+        "since": "2006",
+        "desc": "Operating since 1866, Zeller+Gmelin is one of Europe's most established manufacturers of offset inks and industrial chemicals."
       }
     ]
   },

@@ -39,7 +39,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Image
-              src="https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-malzemeleri.png"
+              src="/images/sim-baski-malzemeleri.webp"
               alt="SIM Baskı Malzemeleri"
               width={140}
               height={45}

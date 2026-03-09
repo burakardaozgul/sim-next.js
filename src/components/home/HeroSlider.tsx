@@ -6,20 +6,23 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getBlurDataURL } from '@/lib/blur';
 
 const SLIDE_IMAGES = [
-  'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/05/DSC07958.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
+  '/images/DSC08151.webp',
+  '/images/DSC07958.webp',
+  '/slider/baski-malzemeleri.webp',
+  '/slider/baski-gorsel.webp',
 ];
 
 const SLIDE_ALTS = [
   'SIM Baskı Malzemeleri - Matbaa malzemeleri ve ofset mürekkep üretim tesisi',
   'SIM Baskı Malzemeleri - Özel renk üretimi laboratuvarı ve renk eşleştirme',
-  'SIM Baskı Malzemeleri - Dünya markalarının Türkiye distribütörü',
+  'SIM Baskı Malzemeleri - DAIHAN DEERS UV ve LED-UV mürekkep teknolojileri',
+  'SIM Baskı Malzemeleri - SAKATA INX ofset mürekkep teknolojileri',
 ];
 
-const SLIDE_LINKS = ['/urunler', '/ozel-renk-uretimi', '/temsilcilikler'] as const;
+const SLIDE_LINKS = ['/urunler', '/ozel-renk-uretimi', '/urunler', '/urunler'] as const;
 
 const AUTO_PLAY_INTERVAL = 6000;
 
@@ -102,6 +105,8 @@ export default function HeroSlider() {
             className="object-cover"
             priority={current === 0}
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL={getBlurDataURL(SLIDE_IMAGES[current])}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-ink-900/30" />

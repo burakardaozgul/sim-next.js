@@ -1,37 +1,37 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
+const STORAGE_KEY = 'cookie-consent';
+
+function subscribeToStorage(callback: () => void) {
+  window.addEventListener('storage', callback);
+  return () => window.removeEventListener('storage', callback);
+}
+
+function getConsentSnapshot(): string | null {
+  if (typeof window === 'undefined') return 'pending';
+  return localStorage.getItem(STORAGE_KEY);
+}
+
+function getServerSnapshot(): string | null {
+  return 'pending';
+}
+
 export default function CookieConsent() {
   const t = useTranslations('cookie');
-  const [visible, setVisible] = useState(false);
-  const [show, setShow] = useState(false);
+  const consent = useSyncExternalStore(subscribeToStorage, getConsentSnapshot, getServerSnapshot);
+  const [show, setShow] = useState(true);
 
-  useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      setVisible(true);
-      // Trigger CSS transition after mount
-      const timer = setTimeout(() => setShow(true), 100);
-      return () => clearTimeout(timer);
-    }
+  const dismiss = useCallback((decision: string) => {
+    localStorage.setItem(STORAGE_KEY, decision);
+    setShow(false);
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    setShow(false);
-    setTimeout(() => setVisible(false), 400);
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    setShow(false);
-    setTimeout(() => setVisible(false), 400);
-  };
-
-  if (!visible) return null;
+  // Already consented or transitioning out
+  if (consent !== null) return null;
 
   return (
     <div
@@ -53,13 +53,13 @@ export default function CookieConsent() {
         </div>
         <div className="flex shrink-0 items-center gap-3">
           <button
-            onClick={handleDecline}
+            onClick={() => dismiss('declined')}
             className="rounded-full border border-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-silver transition-all hover:border-white/20 hover:text-cream"
           >
             {t('decline')}
           </button>
           <button
-            onClick={handleAccept}
+            onClick={() => dismiss('accepted')}
             className="rounded-full bg-gold px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
           >
             {t('accept')}

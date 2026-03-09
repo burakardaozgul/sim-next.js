@@ -21,19 +21,24 @@
     "cta_secondary": "Teklif Al",
     "slides": [
       {
-        "title": "METALLIC (YALDIZ)\nMÜREKKEP ÜRETİMİ",
-        "subtitle": "Ofset teknolojisine uygun yüksek kaliteli metalik mürekkep serimiz ile sektörün ihtiyaçlarına çözüm sunuyoruz.",
-        "cta": "Ürünleri İncele"
-      },
-      {
         "title": "ÖZEL RENK\nÜRETİMİ",
         "subtitle": "Aylık 15.000 kg kapasiteli üretim ünitesi ile istediğiniz renk, istediğiniz zamanda.",
         "cta": "Detaylı Bilgi"
       },
       {
-        "title": "ULUSLARARASI\nMARKA TEMSİLCİLİĞİ",
-        "subtitle": "Dünyanın önde gelen üreticilerinin Türkiye yetkili distribütörü olarak hizmetinizdeyiz.",
-        "cta": "Markalarımız"
+        "title": "METALLIC (YALDIZ)\nMÜREKKEP ÜRETİMİ",
+        "subtitle": "Ofset teknolojisine uygun yüksek kaliteli metalik mürekkep serimiz ile sektörün ihtiyaçlarına çözüm sunuyoruz.",
+        "cta": "Ürünleri İncele"
+      },
+      {
+        "title": "DAIHAN UV & LED-UV\nMÜREKKEP TEKNOLOJİLERİ",
+        "subtitle": "Güney Kore teknolojisiyle geliştirilen DAIHAN (DEERS) UV ve LED-UV mürekkepleri; anında kürlenme, üstün yüzey dayanımı ve yüksek enerji verimliliğiyle ticari ve ambalaj baskılarında yeni nesil performans sunar.",
+        "cta": "Detaylı Bilgi"
+      },
+      {
+        "title": "SAKATA INX\nOFSET MÜREKKEP TEKNOLOJİLERİ",
+        "subtitle": "SAKATA'nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz.",
+        "cta": "Detaylı Bilgi"
       }
     ]
   },
@@ -92,6 +97,10 @@
     "title": "Matbaacılığın Güvenilir\nÇözüm Ortağı",
     "body": "Aylık 15.000 kg kapasiteli özel renk ünitesi ile 1983 yılından beri matbaacılık sektörüne hizmet sunmaktayız. Çevre dostu ürünler, kalite anlayışı ve etik değerlerle teknik, lojistik ve ticari hizmeti en üst noktaya taşıyoruz.",
     "cta": "Daha Fazla Bilgi"
+  },
+  "ownBrands": {
+    "title": "Markalarımız",
+    "subtitle": "Kendi üretimimiz ve bize ait olan markalarımız"
   },
   "brands": {
     "title": "Temsil Ettiğimiz Markalar",
@@ -156,13 +165,15 @@
     "termsOfUse": "Kullanım Koşulları"
   },
   "brandsPage": {
-    "title": "Temsilciliklerimiz",
+    "title": "Temsilciliklerimiz & Bayiliklerimiz",
     "subtitle": "Dünyanın önde gelen üreticilerinin Türkiye yetkili distribütörü",
-    "intro": "Japonya, Güney Kore, İtalya ve Avrupa'nın önde gelen üreticileriyle kurduğumuz uzun vadeli iş birlikleri sayesinde, matbaa sektörüne dünya standartlarında ürünler sunuyoruz.",
-    "since": "Temsilcilik Başlangıcı",
+    "intro": "Japonya, Güney Kore ve Avrupa'nın önde gelen üreticileriyle kurduğumuz uzun vadeli iş birlikleri sayesinde, matbaa sektörüne dünya standartlarında ürünler sunuyoruz.",
+    "since": "Başlangıç",
     "country": "Ülke",
     "website": "Web Sitesi",
-    "items": [
+    "tabRepresentatives": "Temsilciliklerimiz",
+    "tabDealers": "Bayiliklerimiz",
+    "representatives": [
       {
         "name": "Sakata INX",
         "country": "Japonya",
@@ -171,27 +182,9 @@
       },
       {
         "name": "Hi-Tech Coatings",
-        "country": "İngiltere",
+        "country": "Hollanda",
         "since": "2002",
         "desc": "Su bazlı ve UV lak-vernik üretiminde uzmanlaşmış Hi-Tech Coatings, baskı sonrası kaplama çözümleriyle sektörde öncü konumdadır."
-      },
-      {
-        "name": "Fujikura",
-        "country": "Japonya",
-        "since": "2002",
-        "desc": "Japon mühendislik hassasiyetiyle üretilen Fujikura ofset blanketleri, yüksek baskı kalitesi ve uzun ömür sunar."
-      },
-      {
-        "name": "Zeller+Gmelin",
-        "country": "Almanya",
-        "since": "2006",
-        "desc": "1866'dan bu yana faaliyet gösteren Zeller+Gmelin, ofset mürekkepleri ve endüstriyel kimyasallar alanında Avrupa'nın köklü üreticilerinden biridir."
-      },
-      {
-        "name": "Gardiner",
-        "country": "Fransa",
-        "since": "2006",
-        "desc": "Baskı kimyasalları ve yardımcı malzemeler konusunda uzmanlaşmış Gardiner, Avrupa matbaa sektörüne yenilikçi çözümler sunmaktadır."
       },
       {
         "name": "DEERS (DAIHAN)",
@@ -204,6 +197,26 @@
         "country": "Litvanya",
         "since": "2020",
         "desc": "Baltık bölgesinin önde gelen mürekkep üreticisi Baltink, çevre dostu formülasyonları ve geniş ürün yelpazesiyle dikkat çekmektedir."
+      },
+      {
+        "name": "Stahl",
+        "country": "Hollanda",
+        "since": "2025",
+        "desc": "Hollanda merkezli Stahl, özel kaplamalar ve yüzey işleme çözümlerinde dünya lideridir. Baskı ve ambalaj sektörüne yönelik yenilikçi kaplama teknolojileri sunmaktadır."
+      }
+    ],
+    "dealers": [
+      {
+        "name": "Fujifilm",
+        "country": "Japonya",
+        "since": "2002",
+        "desc": "Japon mühendislik hassasiyetiyle üretilen Fujifilm ofset blanketleri, yüksek baskı kalitesi ve uzun ömür sunar."
+      },
+      {
+        "name": "Zeller+Gmelin",
+        "country": "Almanya",
+        "since": "2006",
+        "desc": "1866'dan bu yana faaliyet gösteren Zeller+Gmelin, ofset mürekkepleri ve endüstriyel kimyasallar alanında Avrupa'nın köklü üreticilerinden biridir."
       }
     ]
   },

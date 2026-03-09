@@ -2,8 +2,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Cormorant_Garamond, Syne, DM_Sans, Noto_Sans_Arabic } from 'next/font/google';
-import { locales, defaultLocale, rtlLocales, type Locale } from '@/i18n/config';
-import type { Metadata } from 'next';
+import { locales, rtlLocales, type Locale } from '@/i18n/config';
+import type { Metadata, Viewport } from 'next';
 import CookieConsent from '@/components/layout/CookieConsent';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import '../globals.css';
@@ -46,6 +46,13 @@ const BASE_URL = 'https://www.simlimited.net';
 /* ------------------------------------------------------------------ */
 /*  Default metadata shared by every page                              */
 /* ------------------------------------------------------------------ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#080C14',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -138,7 +145,7 @@ function OrganizationJsonLd() {
     name: 'SIM Baskı Malzemeleri',
     alternateName: 'SIM Limited',
     url: BASE_URL,
-    logo: `${BASE_URL}/wp-content/uploads/2022/05/sim-baski-malzemeleri.png`,
+    logo: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
     description:
       'Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
     foundingDate: '1983',
@@ -174,7 +181,7 @@ function LocalBusinessJsonLd() {
     '@type': 'LocalBusiness',
     '@id': `${BASE_URL}/#localbusiness`,
     name: 'SIM Baskı Malzemeleri',
-    image: `${BASE_URL}/wp-content/uploads/2022/05/sim-baski-malzemeleri.png`,
+    image: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
     url: BASE_URL,
     telephone: '+90-212-637-62-49',
     email: 'info@simlimited.net',

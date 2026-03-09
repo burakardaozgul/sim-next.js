@@ -5,11 +5,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  compress: true,
+  poweredByHeader: false,
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'cdn.sanity.io' },
-      { protocol: 'https', hostname: 'www.simlimited.net' },
-    ],
+    formats: ['image/webp'],
+    minimumCacheTTL: 31536000,
   },
 };
 

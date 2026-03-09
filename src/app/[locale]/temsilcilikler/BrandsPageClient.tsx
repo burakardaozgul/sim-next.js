@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
@@ -7,28 +8,44 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, Globe, Calendar, ExternalLink } from 'lucide-react';
 
-const BRANDS_DATA = [
-  { logo: '/logos/sakata-logo.png', website: 'https://www.inx.co.jp/en/' },
-  { logo: '/logos/hi-tech-logo.png', website: 'https://www.hitechcoatings.com/' },
-  { logo: '/logos/fuji-logo.png', website: 'https://www.fujikuracomposites.jp/' },
-  { logo: '/logos/zeller-logo.png', website: 'https://www.zfreiland.de/' },
-  { logo: '/logos/gardiner-logo.png' },
-  { logo: '/logos/I_B2.png', website: 'https://www.daihan-ink.com/' },
-  { logo: '/logos/baltink.png', website: 'https://www.baltink.lt/' },
+const REPRESENTATIVES_DATA = [
+  { logo: '/logos/sakata-logo.webp', website: 'https://www.inx.co.jp/en/' },
+  { logo: '/logos/hi-tech-logo.webp', website: 'https://www.hitechcoatings.com/' },
+  { logo: '/logos/I_B2.webp', website: 'https://www.daihan-ink.com/' },
+  { logo: '/logos/baltink.webp', website: 'https://www.baltink.lt/' },
+  { logo: '/logos/Stahl_Logo_RGB.webp', website: 'https://www.stahl.com/' },
 ];
+
+const DEALERS_DATA = [
+  { logo: '/logos/fuji-logo.webp', website: 'https://www.fujifilm.com/' },
+  { logo: '/logos/zeller-logo.webp', website: 'https://www.zfreiland.de/' },
+];
+
+type Tab = 'representatives' | 'dealers';
 
 export default function BrandsPageClient() {
   const t = useTranslations('brandsPage');
   const tCta = useTranslations('cta');
   const tFooter = useTranslations('footer');
+  const [activeTab, setActiveTab] = useState<Tab>('representatives');
 
-  const brands = BRANDS_DATA.map((data, i) => ({
+  const representatives = REPRESENTATIVES_DATA.map((data, i) => ({
     ...data,
-    name: t(`items.${i}.name`),
-    country: t(`items.${i}.country`),
-    since: t(`items.${i}.since`),
-    desc: t(`items.${i}.desc`),
+    name: t(`representatives.${i}.name`),
+    country: t(`representatives.${i}.country`),
+    since: t(`representatives.${i}.since`),
+    desc: t(`representatives.${i}.desc`),
   }));
+
+  const dealers = DEALERS_DATA.map((data, i) => ({
+    ...data,
+    name: t(`dealers.${i}.name`),
+    country: t(`dealers.${i}.country`),
+    since: t(`dealers.${i}.since`),
+    desc: t(`dealers.${i}.desc`),
+  }));
+
+  const activeBrands = activeTab === 'representatives' ? representatives : dealers;
 
   return (
     <main className="flex min-h-screen">
@@ -42,7 +59,7 @@ export default function BrandsPageClient() {
                 {t('title')}
               </p>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
-                {BRANDS_DATA.length}+
+                {REPRESENTATIVES_DATA.length + DEALERS_DATA.length}+
               </span>
             </div>
             <h1 className="font-heading text-4xl font-bold tracking-tight text-cream md:text-5xl">
@@ -54,10 +71,38 @@ export default function BrandsPageClient() {
           </div>
         </section>
 
+        {/* Tabs */}
+        <section className="border-t border-white/[0.06] bg-ink-900 px-6 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex gap-2 pt-8">
+              <button
+                onClick={() => setActiveTab('representatives')}
+                className={`rounded-full px-6 py-2.5 font-heading text-sm font-semibold uppercase tracking-wider transition-all ${
+                  activeTab === 'representatives'
+                    ? 'bg-gold text-white'
+                    : 'border border-white/[0.06] bg-ink-800 text-silver hover:border-gold/20 hover:text-cream'
+                }`}
+              >
+                {t('tabRepresentatives')}
+              </button>
+              <button
+                onClick={() => setActiveTab('dealers')}
+                className={`rounded-full px-6 py-2.5 font-heading text-sm font-semibold uppercase tracking-wider transition-all ${
+                  activeTab === 'dealers'
+                    ? 'bg-gold text-white'
+                    : 'border border-white/[0.06] bg-ink-800 text-silver hover:border-gold/20 hover:text-cream'
+                }`}
+              >
+                {t('tabDealers')}
+              </button>
+            </div>
+          </div>
+        </section>
+
         {/* Brand Cards */}
-        <section className="border-t border-white/[0.06] bg-ink-800 px-6 py-16 lg:px-10 lg:py-24">
+        <section className="bg-ink-800 px-6 py-16 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl space-y-8">
-            {brands.map((brand) => (
+            {activeBrands.map((brand) => (
               <div
                 key={brand.name}
                 className="group overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20 hover:shadow-lg hover:shadow-gold/5"

@@ -6,15 +6,16 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
+import { getBlurDataURL } from '@/lib/blur';
 
 const SERVICE_IMAGES = [
-  'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09894.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/05/DSC08151.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2023/10/HIP09924.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/09/NEW-Gold-Aile.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/05/HIP09900.jpg',
-  'https://www.simlimited.net/wp-content/uploads/2022/09/blanket2.jpg',
+  '/images/DSC07958.webp',
+  '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
+  '/images/DSC08151.webp',
+  '/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi2.webp',
+  '/images/NEW-Gold-Aile.webp',
+  '/images/HIP09900.webp',
+  '/images/blanket2.webp',
 ];
 
 const SERVICE_SLUGS = [
@@ -134,6 +135,8 @@ export default function ServicesSection() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
+                      placeholder="blur"
+                      blurDataURL={getBlurDataURL(SERVICE_IMAGES[activeIndex])}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-ink-900/10 to-transparent" />
                   </motion.div>

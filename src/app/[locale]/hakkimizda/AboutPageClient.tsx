@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
+import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import {
@@ -89,12 +90,14 @@ export default function AboutPageClient() {
               <div className="relative">
                 <div className="relative aspect-[5/6] overflow-hidden rounded-xl">
                   <Image
-                    src="https://www.simlimited.net/wp-content/uploads/2022/05/DSC08042-500x600.jpg"
+                    src="/images/DSC08042-500x600.webp"
                     alt="SIM Baskı Malzemeleri - Üretim"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL('/images/DSC08042-500x600.webp')}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-ink-900/40 via-transparent to-transparent" />
                 </div>
@@ -128,11 +131,13 @@ export default function AboutPageClient() {
               <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900">
                 <div className="relative aspect-[16/7] overflow-hidden">
                   <Image
-                    src="https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi2.jpg"
+                    src="/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi2.webp"
                     alt="SIM Baskı Malzemeleri - Misyon"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL('/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi2.webp')}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
                 </div>
@@ -153,11 +158,13 @@ export default function AboutPageClient() {
               <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900">
                 <div className="relative aspect-[16/7] overflow-hidden">
                   <Image
-                    src="https://www.simlimited.net/wp-content/uploads/2022/05/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi.jpg"
+                    src="/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi.webp"
                     alt="SIM Baskı Malzemeleri - Vizyon"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL('/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi.webp')}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
                 </div>
