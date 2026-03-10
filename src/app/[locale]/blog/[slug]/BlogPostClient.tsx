@@ -346,10 +346,10 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
       <VerticalNav />
       <ReadingProgress />
 
-      <div className="w-full lg:ml-[260px]">
+      <div className="w-full overflow-x-hidden lg:ml-[260px]">
         {/* ─── Hero ─── */}
         <section className="relative bg-ink-900">
-          <div className="relative aspect-[21/9] max-h-[520px] w-full overflow-hidden md:aspect-[2.5/1]">
+          <div className="relative aspect-21/9 max-h-[520px] w-full overflow-hidden md:aspect-2.5/1">
             <Image
               src={post.image}
               alt={title}
@@ -436,7 +436,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         </div>
 
         {/* ─── Content Area ─── */}
-        <div id="blog-article" className="bg-ink-900 px-6 py-12 lg:px-10 lg:py-16">
+        <div id="blog-article" className="bg-ink-900 px-4 py-10 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-6xl">
             <div className="flex gap-12">
               {/* Article Content */}
@@ -504,7 +504,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
               </article>
 
               {/* Sidebar — Table of Contents */}
-              <aside className="w-52 flex-shrink-0">
+              <aside className="hidden w-52 flex-shrink-0 xl:block">
                 <TableOfContents headings={headings} tocLabel={tocLabel} />
               </aside>
             </div>
@@ -513,7 +513,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
 
         {/* ─── Related Posts ─── */}
         {related.length > 0 && (
-          <section className="border-t border-white/[0.04] bg-ink-800/50 px-6 py-16 lg:px-10 lg:py-20">
+          <section className="border-t border-white/[0.04] bg-ink-800/50 px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
             <div className="mx-auto max-w-4xl">
               <div className="mb-10 flex items-end justify-between">
                 <div>
@@ -536,7 +536,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                 </Link>
               </div>
 
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 {related.map((rp) => (
                   <Link
                     key={rp.slug}

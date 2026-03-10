@@ -56,11 +56,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'SIM Baskı Malzemeleri | Matbaa Malzemeleri & Ofset Mürekkep',
+    default: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
     template: '%s | SIM Baskı Malzemeleri',
   },
   description:
-    'SIM Baskı Malzemeleri - Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi, blanket ve baskı kimyasalları. 1983\'ten beri matbaa sektöründe.',
+    'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları. 1983\'ten beri sektörde.',
   keywords: [
     'matbaa malzemeleri',
     'baskı malzemeleri',
@@ -93,23 +93,23 @@ export const metadata: Metadata = {
     siteName: 'SIM Baskı Malzemeleri',
     locale: 'tr_TR',
     url: BASE_URL,
-    title: 'SIM Baskı Malzemeleri | Matbaa Malzemeleri & Ofset Mürekkep',
+    title: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
     description:
-      'Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
+      'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SIM Baskı Malzemeleri - Matbaa Malzemeleri & Ofset Mürekkep',
+        alt: 'SIM Baskı Malzemeleri - Ofset Mürekkep & Matbaa',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SIM Baskı Malzemeleri | Matbaa Malzemeleri & Ofset Mürekkep',
+    title: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
     description:
-      'Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız, UV mürekkep ve baskı kimyasalları.',
+      'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -159,12 +159,12 @@ function OrganizationJsonLd() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+90-212-637-62-49',
+      telephone: '+902126376249',
       contactType: 'customer service',
       email: 'info@simlimited.net',
       availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
     },
-    sameAs: [BASE_URL],
+    sameAs: [],
   };
 
   return (
@@ -183,7 +183,7 @@ function LocalBusinessJsonLd() {
     name: 'SIM Baskı Malzemeleri',
     image: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
     url: BASE_URL,
-    telephone: '+90-212-637-62-49',
+    telephone: '+902126376249',
     email: 'info@simlimited.net',
     description:
       'Matbaa malzemeleri, ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi, offset blanket ve baskı kimyasalları tedarikçisi.',

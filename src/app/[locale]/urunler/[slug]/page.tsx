@@ -111,18 +111,6 @@ export default async function ProductDetailPage({
       name: 'SIM Baskı Malzemeleri',
       url: BASE_URL,
     },
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'TRY',
-      price: '0',
-      priceValidUntil: '2027-12-31',
-      url: productUrl,
-      seller: {
-        '@type': 'Organization',
-        name: 'SIM Baskı Malzemeleri',
-      },
-    },
   };
 
   return (

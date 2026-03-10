@@ -2,6 +2,56 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 const NOTIFY_EMAIL = 'info@simlimited.net';
+const MAX_BODY_SIZE = 10 * 1024; // 10KB
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_MAX = 5; // max requests per window
+
+/* ------------------------------------------------------------------ */
+/*  In-memory rate limiter (sliding window)                            */
+/* ------------------------------------------------------------------ */
+const rateLimitMap = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) || [];
+
+  // Remove expired entries
+  const valid = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW);
+
+  if (valid.length >= RATE_LIMIT_MAX) {
+    rateLimitMap.set(ip, valid);
+    return true;
+  }
+
+  valid.push(now);
+  rateLimitMap.set(ip, valid);
+  return false;
+}
+
+// Periodic cleanup to prevent memory leaks
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, timestamps] of rateLimitMap) {
+    const valid = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW);
+    if (valid.length === 0) {
+      rateLimitMap.delete(ip);
+    } else {
+      rateLimitMap.set(ip, valid);
+    }
+  }
+}, RATE_LIMIT_WINDOW);
+
+function getClientIp(request: Request): string {
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helpers                                                            */
+/* ------------------------------------------------------------------ */
 
 /** Escape HTML special characters to prevent XSS in email body */
 function escapeHtml(str: string): string {
@@ -13,9 +63,17 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-/** Simple email format check */
+/** Strip newline characters to prevent email header injection */
+function sanitizeHeader(value: string): string {
+  return value.replace(/[\r\n]/g, '');
+}
+
+/** Validate email format with stricter rules */
 function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (email.length > 254) return false;
+  if (email.includes('..')) return false;
+  if (/[\r\n]/.test(email)) return false;
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
 function buildEmailHtml({
@@ -94,18 +152,43 @@ function createTransporter() {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: true,
     },
   });
 }
 
+/* ------------------------------------------------------------------ */
+/*  POST handler                                                       */
+/* ------------------------------------------------------------------ */
 export async function POST(request: Request) {
   try {
+    // Body size check
+    const contentLength = request.headers.get('content-length');
+    if (contentLength && parseInt(contentLength) > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { error: 'Payload too large.' },
+        { status: 413 },
+      );
+    }
+
+    // Rate limiting
+    const clientIp = getClientIp(request);
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 },
+      );
+    }
+
     const body = await request.json();
     const { name, email, phone, company, subject, message, _honey } = body;
 
     // Honeypot check — bots fill hidden fields
     if (_honey) {
+      console.warn('[contact] Honeypot triggered', {
+        ip: clientIp,
+        userAgent: request.headers.get('user-agent'),
+      });
       return NextResponse.json({ success: true });
     }
 
@@ -121,7 +204,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid name.' }, { status: 400 });
     }
 
-    if (!isValidEmail(email)) {
+    if (typeof email !== 'string' || !isValidEmail(email)) {
       return NextResponse.json({ error: 'Invalid email.' }, { status: 400 });
     }
 
@@ -129,9 +212,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Message too long.' }, { status: 400 });
     }
 
+    if (phone && (typeof phone !== 'string' || phone.length > 30)) {
+      return NextResponse.json({ error: 'Invalid phone.' }, { status: 400 });
+    }
+
+    if (company && (typeof company !== 'string' || company.length > 200)) {
+      return NextResponse.json({ error: 'Invalid company.' }, { status: 400 });
+    }
+
+    if (subject && (typeof subject !== 'string' || subject.length > 300)) {
+      return NextResponse.json({ error: 'Invalid subject.' }, { status: 400 });
+    }
+
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
       console.warn('[contact] SMTP credentials not configured. Email not sent.');
-      return NextResponse.json({ success: true, debug: 'smtp_not_configured' });
+      return NextResponse.json({ success: true });
     }
 
     const safeName = escapeHtml(name);
@@ -141,7 +236,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `"SIM Baskı Malzemeleri" <${process.env.SMTP_USER}>`,
       to: NOTIFY_EMAIL,
-      replyTo: email,
+      replyTo: sanitizeHeader(email),
       subject: safeSubject
         ? `[İletişim Formu] ${safeSubject}`
         : `[İletişim Formu] ${safeName} - Yeni Mesaj`,
@@ -157,7 +252,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('[contact] Error:', err);
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    console.error('[contact] Error:', errorMessage);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 },

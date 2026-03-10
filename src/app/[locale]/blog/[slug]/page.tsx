@@ -52,6 +52,12 @@ export default async function BlogPostPage({
     locale === 'tr' ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
+  // Calculate word count from content blocks
+  const content = post.content[locale] || post.content.tr;
+  const wordCount = content
+    .filter((block) => block.text)
+    .reduce((count, block) => count + (block.text?.split(/\s+/).length || 0), 0);
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -60,6 +66,7 @@ export default async function BlogPostPage({
     image: `${BASE_URL}${post.image}`,
     datePublished: post.date,
     dateModified: post.date,
+    wordCount,
     author: {
       '@type': 'Organization',
       name: 'SIM Baskı Malzemeleri',

@@ -80,7 +80,7 @@ export default function HeroSlider() {
     visible: (delay: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
+      transition: { duration: 0.4, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
     }),
   };
 
@@ -95,7 +95,7 @@ export default function HeroSlider() {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <Image
