@@ -1,4 +1,5 @@
 import { products } from '@/data/products';
+import { blogPosts } from '@/data/blog';
 
 const BASE_URL = 'https://www.simlimited.net';
 const locales = ['tr', 'en', 'ru', 'ar'] as const;
@@ -54,6 +55,7 @@ export async function GET() {
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
 
@@ -96,6 +98,30 @@ export async function GET() {
       }
       xml += `
     <xhtml:link rel="alternate" hreflang="x-default" href="${getProductUrl(defaultLocale, product.slug)}" />`;
+
+      xml += `
+  </url>`;
+    }
+  }
+
+  // Blog post pages
+  for (const post of blogPosts) {
+    for (const locale of locales) {
+      const blogBase = locale === defaultLocale ? '/blog' : `/${locale}/blog`;
+      xml += `
+  <url>
+    <loc>${BASE_URL}${blogBase}/${post.slug}</loc>
+    <lastmod>${post.date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>`;
+
+      for (const altLocale of locales) {
+        const altBase = altLocale === defaultLocale ? '/blog' : `/${altLocale}/blog`;
+        xml += `
+    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altBase}/${post.slug}" />`;
+      }
+      xml += `
+    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/${post.slug}" />`;
 
       xml += `
   </url>`;
