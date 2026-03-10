@@ -67,8 +67,7 @@ export default function BlogSection() {
             return (
               <article
                 key={post.slug}
-                className="group flex-shrink-0 snap-start"
-                style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
+                className="group w-[85vw] flex-shrink-0 snap-start sm:w-[340px] lg:w-[calc(33.333%-16px)]"
               >
                 <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} className="block overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20">
                   {/* Image */}
@@ -101,7 +100,7 @@ export default function BlogSection() {
                     <p className="text-sm leading-relaxed text-silver/70">
                       {excerpt}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold transition-all duration-300 lg:opacity-0 lg:group-hover:opacity-100">
                       {t('readMore')}
                       <ArrowRight size={12} />
                     </span>
