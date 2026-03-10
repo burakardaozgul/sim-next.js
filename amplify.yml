@@ -13,6 +13,8 @@ frontend:
         - echo "SMTP_USER=$SMTP_USER" >> .env.production
         - echo "SMTP_PASS=$SMTP_PASS" >> .env.production
         - npm run build
+        - cp .env.production .next/standalone/.env.production 2>/dev/null || true
+        - cp .env.production .next/standalone/.env 2>/dev/null || true
   artifacts:
     baseDirectory: .next
     files:
