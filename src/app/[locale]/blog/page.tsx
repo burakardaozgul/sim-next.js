@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
 import { createPageMetadata } from '@/lib/seo';
+import BlogPageClient from './BlogPageClient';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -47,12 +47,5 @@ export async function generateMetadata({
 }
 
 export default function BlogPage() {
-  const t = useTranslations('blog');
-
-  return (
-    <main className="container mx-auto px-4 py-24">
-      <h1 className="font-display text-4xl font-bold">{t('title')}</h1>
-      <p className="text-silver mt-4">{t('subtitle')}</p>
-    </main>
-  );
+  return <BlogPageClient />;
 }

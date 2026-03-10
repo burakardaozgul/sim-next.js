@@ -58,14 +58,50 @@ export default async function ProductDetailPage({
 
   const name = product.name[locale] || product.name.tr;
   const description = product.description[locale] || product.description.tr;
+  const categoryLabel = product.category;
 
-  const jsonLd = {
+  const BASE_URL = 'https://www.simlimited.net';
+  const productUrl =
+    locale === 'tr'
+      ? `${BASE_URL}/urunler/${slug}`
+      : `${BASE_URL}/${locale}/urunler/${slug}`;
+  const productsUrl =
+    locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/urunler`;
+  const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: locale === 'tr' ? 'Ana Sayfa' : 'Home',
+        item: homeUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: locale === 'tr' ? 'Ürünler' : 'Products',
+        item: productsUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name,
+        item: productUrl,
+      },
+    ],
+  };
+
+  const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name,
     description,
-    image: product.gallery.length > 0 ? product.gallery : [product.image],
-    category: product.category,
+    image: product.gallery.length > 0 ? product.gallery.map((img) => `${BASE_URL}${img}`) : [`${BASE_URL}${product.image}`],
+    url: productUrl,
+    category: categoryLabel,
     brand: {
       '@type': 'Brand',
       name: 'SIM Baskı Malzemeleri',
@@ -73,7 +109,19 @@ export default async function ProductDetailPage({
     manufacturer: {
       '@type': 'Organization',
       name: 'SIM Baskı Malzemeleri',
-      url: 'https://www.simlimited.net',
+      url: BASE_URL,
+    },
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'TRY',
+      price: '0',
+      priceValidUntil: '2027-12-31',
+      url: productUrl,
+      seller: {
+        '@type': 'Organization',
+        name: 'SIM Baskı Malzemeleri',
+      },
     },
   };
 
@@ -81,7 +129,11 @@ export default async function ProductDetailPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <ProductDetailClient product={product} />
     </>

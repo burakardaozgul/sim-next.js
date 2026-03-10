@@ -21,8 +21,7 @@ const companyLinks = [
   { labelKey: 'customColor', href: '/ozel-renk-uretimi' },
   { labelKey: 'contact', href: '/iletisim' },
   { labelKey: 'blog', href: '/blog' },
-  { labelKey: 'privacy', href: '/gizlilik-politikasi' },
-  { labelKey: 'terms', href: '/kullanim-kosullari' },
+  { labelKey: 'faq', href: '/sss' },
 ] as const;
 
 export default function Footer() {

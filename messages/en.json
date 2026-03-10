@@ -7,6 +7,7 @@
     "about": "About Us",
     "contact": "Contact",
     "blog": "Blog",
+    "faq": "FAQ",
     "privacy": "Privacy & Cookie Policy",
     "terms": "Terms of Use",
     "language": "Language",
@@ -244,6 +245,31 @@
       ]
     }
   },
+  "customColorPage": {
+    "title": "Custom Color Production",
+    "subtitle": "Color Matching Laboratory",
+    "heroText": "We formulate every color from digital or printed references, nature, or your imagination according to international L-A-B standards, and bring them to life in our production unit with a monthly capacity of 15,000 kg.",
+    "whyTitle": "Why SIM Custom Color?",
+    "whySubtitle": "Our distinctive advantages",
+    "why": [
+      { "title": "24/7 Color Laboratory", "desc": "Our color matching laboratory operates around the clock, providing instant response to your urgent orders." },
+      { "title": "L-A-B Digital Formulation", "desc": "Precise digital formulation according to international color values achieves the target color with the highest accuracy." },
+      { "title": "UV & Conventional Compatible", "desc": "We produce custom color formulas suitable for both UV and conventional printing processes." },
+      { "title": "15,000 kg Monthly Capacity", "desc": "Our extensive production capacity provides fast response from small batches to high-volume orders." },
+      { "title": "Multi-Substrate Testing", "desc": "Sample production on different paper weights and surface types guarantees consistent results in printing." },
+      { "title": "EVAcolor Registered Brand", "desc": "Under our registered EVAcolor brand, we produce metallic, fluorescent, and custom color inks." }
+    ],
+    "typesTitle": "Our Production Scope",
+    "typesSubtitle": "Solutions we offer in custom color production",
+    "types": [
+      { "title": "Pantone & Spot Colors", "desc": "Custom spot color production for all references in the Pantone color catalog." },
+      { "title": "Metallic & Gold Colors", "desc": "Gold, silver, and custom metallic effect ink production under the EVAcolor brand." },
+      { "title": "Fluorescent Colors", "desc": "Fluorescent ink solutions for designs requiring high vibrancy and visibility." },
+      { "title": "Corporate Identity Colors", "desc": "Consistent and repeatable color production matching brand corporate color standards." }
+    ],
+    "ctaTitle": "Need a Custom Color?",
+    "ctaText": "Send us your color reference and our expert team will prepare a sample for you as soon as possible."
+  },
   "contact": {
     "title": "Get in Touch",
     "subtitle": "Contact us for information about our products and services.",
@@ -298,6 +324,36 @@
       { "title": "6. Modifications", "content": "SIM Baskı Malzemeleri reserves the right to modify these terms without prior notice. Current terms are always published on this page." },
       { "title": "7. Governing Law", "content": "These terms are governed by the laws of the Republic of Turkey. Istanbul Courts and Enforcement Offices have jurisdiction over disputes." },
       { "title": "8. Contact", "content": "For questions about our terms of use, contact us at info@simlimited.net or +90 (212) 637 62 49." }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know",
+    "items": [
+      {
+        "q": "What types of inks do you supply?",
+        "a": "We supply and produce offset inks (CMYK), metallic/gold inks, UV inks, PANTONE inks, fluorescent inks, and custom color inks. We offer a wide range of products with our SAKATA INX, DEERS (DAIHAN), and EVAcolor brands."
+      },
+      {
+        "q": "How does custom color production work?",
+        "a": "Our custom color production consists of 4 stages: First, we receive your color reference (Pantone code, printed sample, or nature sample). Then we create an ink recipe using L-A-B digital formulation. We print samples on different papers and grammages, and after your approval, we proceed to mass production."
+      },
+      {
+        "q": "What is the minimum order quantity?",
+        "a": "The minimum order quantity for custom color production varies by product type. Please contact our sales team for detailed information."
+      },
+      {
+        "q": "What is your delivery time?",
+        "a": "We can deliver stock products on the same day or next day. For custom color productions, we typically deliver within 1-3 business days after sample approval."
+      },
+      {
+        "q": "Do you provide technical support?",
+        "a": "Yes, our experienced technical team can provide on-site intervention for technical issues at your printing facility. We offer free consultation on ink settings, color calibration, and print optimization."
+      },
+      {
+        "q": "Which brands do you work with?",
+        "a": "We are the Turkish distributor for SAKATA INX (Japan), DEERS/DAIHAN (South Korea), Hi-Tech Coatings (Netherlands), Zeller+Gmelin (Germany), Baltink (Lithuania), and Stahl (Netherlands). EVAcolor and VECTOR are our own brands."
+      }
     ]
   }
 }

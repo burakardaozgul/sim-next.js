@@ -46,6 +46,12 @@ export const routing = defineRouting({
     },
     '/blog': '/blog',
     '/blog/[slug]': '/blog/[slug]',
+    '/sss': {
+      tr: '/sss',
+      en: '/faq',
+      ru: '/voprosy',
+      ar: '/faq',
+    },
     '/gizlilik-politikasi': {
       tr: '/gizlilik-politikasi',
       en: '/privacy-policy',

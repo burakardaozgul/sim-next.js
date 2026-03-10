@@ -30,6 +30,7 @@ export default function ContactPageClient() {
     company: '',
     subject: '',
     message: '',
+    _honey: '',
   });
 
   // Reset status message after 5 seconds
@@ -57,7 +58,7 @@ export default function ContactPageClient() {
 
       if (!res.ok) throw new Error('Failed');
       setFormState('success');
-      setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '', _honey: '' });
     } catch {
       setFormState('error');
     }
@@ -175,6 +176,17 @@ export default function ContactPageClient() {
                   </h2>
 
                   <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                    {/* Honeypot field — hidden from humans, traps bots */}
+                    <input
+                      type="text"
+                      name="_honey"
+                      value={formData._honey}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+                    />
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
                         <label htmlFor="name" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-silver">

@@ -245,6 +245,8 @@ export default async function LocaleLayout({
       className={`${cormorant.variable} ${syne.variable} ${dmSans.variable} ${notoSansArabic.variable}`}
     >
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />
       </head>

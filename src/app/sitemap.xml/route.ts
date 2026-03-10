@@ -12,6 +12,7 @@ const pathnames: Record<string, Record<string, string>> = {
   '/hakkimizda': { tr: '/hakkimizda', en: '/about', ru: '/o-nas', ar: '/about' },
   '/iletisim': { tr: '/iletisim', en: '/contact', ru: '/kontakty', ar: '/contact' },
   '/blog': { tr: '/blog', en: '/blog', ru: '/blog', ar: '/blog' },
+  '/sss': { tr: '/sss', en: '/faq', ru: '/voprosy', ar: '/faq' },
   '/gizlilik-politikasi': { tr: '/gizlilik-politikasi', en: '/privacy-policy', ru: '/politika-konfidentsialnosti', ar: '/privacy-policy' },
   '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
 };
@@ -47,6 +48,7 @@ export async function GET() {
     { path: '/hakkimizda', priority: '0.7', changefreq: 'monthly' },
     { path: '/iletisim', priority: '0.8', changefreq: 'monthly' },
     { path: '/blog', priority: '0.6', changefreq: 'weekly' },
+    { path: '/sss', priority: '0.7', changefreq: 'monthly' },
     { path: '/gizlilik-politikasi', priority: '0.3', changefreq: 'yearly' },
     { path: '/kullanim-kosullari', priority: '0.3', changefreq: 'yearly' },
   ];

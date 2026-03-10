@@ -51,6 +51,39 @@ export async function generateMetadata({
   });
 }
 
+function ProductsBreadcrumbJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Ana Sayfa',
+        item: 'https://www.simlimited.net',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Ürünler',
+        item: 'https://www.simlimited.net/urunler',
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function ProductsPage() {
-  return <ProductsPageClient />;
+  return (
+    <>
+      <ProductsBreadcrumbJsonLd />
+      <ProductsPageClient />
+    </>
+  );
 }

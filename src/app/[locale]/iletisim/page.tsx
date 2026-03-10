@@ -47,6 +47,58 @@ export async function generateMetadata({
   });
 }
 
+function ContactPageJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'SIM Baskı Malzemeleri İletişim',
+    url: 'https://www.simlimited.net/iletisim',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'SIM Baskı Malzemeleri',
+      url: 'https://www.simlimited.net',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+90-212-637-62-49',
+          contactType: 'customer service',
+          email: 'info@simlimited.net',
+          availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
+          areaServed: 'TR',
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+90-212-637-62-49',
+          contactType: 'sales',
+          email: 'info@simlimited.net',
+          availableLanguage: ['Turkish', 'English'],
+          areaServed: 'TR',
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
+        addressLocality: 'Beylikdüzü',
+        addressRegion: 'İstanbul',
+        postalCode: '34000',
+        addressCountry: 'TR',
+      },
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function ContactPage() {
-  return <ContactPageClient />;
+  return (
+    <>
+      <ContactPageJsonLd />
+      <ContactPageClient />
+    </>
+  );
 }

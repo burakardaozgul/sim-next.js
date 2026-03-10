@@ -7,6 +7,7 @@
     "about": "Hakkımızda",
     "contact": "İletişim",
     "blog": "Blog",
+    "faq": "S.S.S.",
     "privacy": "Gizlilik & Çerez Politikası",
     "terms": "Kullanım Koşulları",
     "language": "Dil",
@@ -260,6 +261,31 @@
       ]
     }
   },
+  "customColorPage": {
+    "title": "Özel Renk Üretimi",
+    "subtitle": "Renk Eşleştirme Laboratuvarı",
+    "heroText": "Dijital veya basılı referanslardan, doğadan ya da hayal gücünüzden aldığımız her rengi; uluslararası L-A-B standartlarına göre formülize ediyor, aylık 15.000 kg kapasiteli üretim ünitemizde hayata geçiriyoruz.",
+    "whyTitle": "Neden SIM Özel Renk?",
+    "whySubtitle": "Fark yaratan avantajlarımız",
+    "why": [
+      { "title": "7/24 Renk Laboratuvarı", "desc": "Kesintisiz hizmet veren renk eşleştirme laboratuvarımız ile acil siparişlerinize anında yanıt veririz." },
+      { "title": "L-A-B Dijital Formülizasyon", "desc": "Uluslararası renk değerlerine göre hassas dijital formülasyon ile hedefteki renge en yüksek doğrulukla ulaşılır." },
+      { "title": "UV & Konvansiyonel Uyum", "desc": "Hem UV hem de konvansiyonel baskı süreçlerine uygun özel renk formülleri üretiyoruz." },
+      { "title": "15.000 kg Aylık Kapasite", "desc": "Geniş üretim kapasitemiz ile küçük partilerden büyük hacimli siparişlere kadar her talebe hızlı yanıt." },
+      { "title": "Farklı Altlıklarda Test", "desc": "Farklı kağıt gramajları ve yüzey tiplerinde numune üretimi ile baskıda tutarlı sonuç garantisi." },
+      { "title": "EVAcolor Tescilli Marka", "desc": "Kendi tescilli markamız EVAcolor altında metalik, florasan ve özel renk mürekkep üretimi gerçekleştiriyoruz." }
+    ],
+    "typesTitle": "Üretim Kapsamımız",
+    "typesSubtitle": "Özel renk üretimimizde sunduğumuz çözümler",
+    "types": [
+      { "title": "Pantone & Spot Renkler", "desc": "Pantone renk kataloğundaki tüm referanslar ile özel spot renk üretimi." },
+      { "title": "Metalik & Yaldız Renkler", "desc": "EVAcolor markası ile altın, gümüş ve özel metalik efektli mürekkep üretimi." },
+      { "title": "Florasan Renkler", "desc": "Yüksek canlılık ve görünürlük gerektiren tasarımlar için florasan mürekkep çözümleri." },
+      { "title": "Kurumsal Kimlik Renkleri", "desc": "Markaların kurumsal renk standartlarına uygun, tutarlı ve tekrarlanabilir renk üretimi." }
+    ],
+    "ctaTitle": "Özel Renk İhtiyacınız mı Var?",
+    "ctaText": "Renk referansınızı bize iletin, uzman ekibimiz en kısa sürede numune hazırlasın."
+  },
   "contact": {
     "title": "İletişime Geçin",
     "subtitle": "Ürünlerimiz ve hizmetlerimiz hakkında bilgi almak için bize ulaşın.",
@@ -361,6 +387,36 @@
       {
         "title": "8. İletişim",
         "content": "Kullanım koşullarımız hakkında sorularınız için info@simlimited.net adresinden veya +90 (212) 637 62 49 numarasından bize ulaşabilirsiniz."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Merak ettikleriniz",
+    "items": [
+      {
+        "q": "Hangi tür mürekkepler tedarik ediyorsunuz?",
+        "a": "Ofset mürekkep (CMYK), metalik/yaldız mürekkep, UV mürekkep, PANTONE mürekkep, florasan mürekkep ve özel renk mürekkepler tedarik ve üretim yapıyoruz. SAKATA INX, DEERS (DAIHAN) ve EVAcolor markalarımız ile geniş bir ürün yelpazesi sunuyoruz."
+      },
+      {
+        "q": "Özel renk üretimi nasıl yapılıyor?",
+        "a": "Özel renk üretimimiz 4 aşamadan oluşur: Önce referans renginizi alıyoruz (Pantone kodu, baskılı numune veya doğa örneği). Sonra L-A-B dijital formülasyon ile mürekkep reçetesi oluşturuyoruz. Farklı kağıt ve gramajlarda numune baskı yapıyoruz ve onayınızın ardından seri üretime geçiyoruz."
+      },
+      {
+        "q": "Minimum sipariş miktarı nedir?",
+        "a": "Özel renk üretiminde minimum sipariş miktarımız ürün tipine göre değişmektedir. Detaylı bilgi için satış ekibimizle iletişime geçebilirsiniz."
+      },
+      {
+        "q": "Teslimat süreniz ne kadardır?",
+        "a": "Stok ürünlerde aynı gün veya ertesi gün teslimat yapabiliyoruz. Özel renk üretimlerinde numune onayından sonra genellikle 1-3 iş günü içinde teslimat sağlıyoruz."
+      },
+      {
+        "q": "Teknik destek sağlıyor musunuz?",
+        "a": "Evet, deneyimli teknik ekibimiz matbaanızda karşılaşılan teknik sorunlara yerinde müdahale edebilmektedir. Mürekkep ayarları, renk kalibrasyonu ve baskı optimizasyonu konularında ücretsiz danışmanlık hizmeti sunuyoruz."
+      },
+      {
+        "q": "Hangi markalarla çalışıyorsunuz?",
+        "a": "SAKATA INX (Japonya), DEERS/DAIHAN (Güney Kore), Hi-Tech Coatings (Hollanda), Zeller+Gmelin (Almanya), Baltink (Litvanya) ve Stahl (Hollanda) markalarının Türkiye distribütörüyüz. Ayrıca EVAcolor ve VECTOR kendi markalarımızdır."
       }
     ]
   }
