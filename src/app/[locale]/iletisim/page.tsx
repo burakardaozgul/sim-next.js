@@ -4,24 +4,24 @@ import ContactPageClient from './ContactPageClient';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
-    title: 'İletişim - Matbaa Malzemeleri için Bize Ulaşın',
+    title: 'İletişim - Bize Ulaşın',
     description:
-      'SIM Baskı Malzemeleri ile iletişime geçin. Matbaa malzemeleri, ofset mürekkep, baskı malzemeleri siparişi ve fiyat teklifi için bize ulaşın. Beylikdüzü, İstanbul.',
+      'SIM Baskı Malzemeleri iletişim. Matbaa malzemeleri, ofset mürekkep siparişi ve fiyat teklifi için bize ulaşın. Beylikdüzü, İstanbul.',
   },
   en: {
-    title: 'Contact Us - Get in Touch for Printing Supplies',
+    title: 'Contact Us',
     description:
-      'Contact SIM Printing Supplies. Reach us for printing materials, offset ink orders, and price quotes. Beylikduzu, Istanbul, Turkey.',
+      'Contact SIM Printing Supplies. Reach us for printing materials, offset ink orders and price quotes. Istanbul, Turkey.',
   },
   ru: {
-    title: 'Контакты - Свяжитесь с нами',
+    title: 'Контакты',
     description:
       'Свяжитесь с SIM. Заказы на полиграфические материалы и офсетные краски. Бейликдюзю, Стамбул.',
   },
   ar: {
-    title: 'اتصل بنا - تواصل معنا لمستلزمات الطباعة',
+    title: 'اتصل بنا',
     description:
-      'تواصل مع SIM. للطلبات والأسعار لمواد الطباعة وأحبار الأوفست.',
+      'تواصل مع SIM. للطلبات والأسعار لمواد الطباعة وأحبار الأوفست. اسطنبول، تركيا.',
   },
 };
 
@@ -60,7 +60,7 @@ function ContactPageJsonLd() {
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+90-212-637-62-49',
+          telephone: '+902126376249',
           contactType: 'customer service',
           email: 'info@simlimited.net',
           availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
@@ -68,7 +68,7 @@ function ContactPageJsonLd() {
         },
         {
           '@type': 'ContactPoint',
-          telephone: '+90-212-637-62-49',
+          telephone: '+902126376249',
           contactType: 'sales',
           email: 'info@simlimited.net',
           availableLanguage: ['Turkish', 'English'],

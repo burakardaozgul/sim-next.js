@@ -87,6 +87,7 @@ export function createPageMetadata({
   keywords = [],
   ogImage,
   noIndex = false,
+  absoluteTitle = false,
 }: {
   locale: string;
   path: string;
@@ -95,13 +96,14 @@ export function createPageMetadata({
   keywords?: string[];
   ogImage?: string;
   noIndex?: boolean;
+  absoluteTitle?: boolean;
 }): Metadata {
   const canonical = getCanonicalUrl(locale, path);
   const alternates = getAlternateLanguages(path);
   const image = ogImage || '/og-image.jpg';
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: [
       'matbaa malzemeleri',

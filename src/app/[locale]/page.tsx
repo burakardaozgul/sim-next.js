@@ -17,24 +17,24 @@ const ScrollToTop = dynamic(() => import('@/components/layout/ScrollToTop'));
 
 const seoData: Record<string, { title: string; description: string }> = {
   tr: {
-    title: 'SIM Baskı Malzemeleri | Matbaa Malzemeleri, Ofset Mürekkep & Baskı Kimyasalları',
+    title: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa Malzemeleri',
     description:
-      'SIM Baskı Malzemeleri - Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, PANTONE mürekkep, özel renk üretimi, offset blanket ve dispersiyon lak. 1983\'ten beri baskı sektöründe.',
+      'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV, PANTONE mürekkep, özel renk üretimi, offset blanket ve dispersiyon lak. 1983\'ten beri sektörde.',
   },
   en: {
-    title: 'SIM Printing Supplies | Offset Ink, Printing Materials & Chemicals',
+    title: 'SIM Printing Supplies | Offset Ink & Printing Materials',
     description:
-      'SIM Printing Supplies - Turkey\'s leading printing materials supplier. Offset ink, metallic ink, UV ink, PANTONE ink, custom color production, offset blankets, and dispersion varnish. In the printing industry since 1983.',
+      'Turkey\'s leading printing materials supplier. Offset, metallic, UV, PANTONE ink, custom color production, blankets and varnish. Since 1983.',
   },
   ru: {
-    title: 'SIM Печатные Материалы | Офсетные Краски и Полиграфические Материалы',
+    title: 'SIM Печатные Материалы | Офсетные Краски и Полиграфия',
     description:
-      'SIM Печатные Материалы - ведущий поставщик полиграфических материалов в Турции. Офсетные краски, металлические краски, УФ-краски, производство специальных цветов и полиграфическая химия.',
+      'Ведущий поставщик полиграфических материалов в Турции. Офсетные, металлические, УФ-краски, производство спеццветов. С 1983 года.',
   },
   ar: {
     title: 'SIM مستلزمات الطباعة | أحبار الأوفست ومواد الطباعة',
     description:
-      'SIM مستلزمات الطباعة - المورد الرائد لمواد الطباعة في تركيا. أحبار الأوفست، أحبار معدنية، أحبار UV، إنتاج ألوان مخصصة وكيماويات الطباعة.',
+      'المورد الرائد لمواد الطباعة في تركيا. أحبار أوفست، معدنية، UV، إنتاج ألوان مخصصة وكيماويات الطباعة. منذ 1983.',
   },
 };
 
@@ -51,6 +51,7 @@ export async function generateMetadata({
     path: '/',
     title: data.title,
     description: data.description,
+    absoluteTitle: true,
     keywords: [
       'ofset mürekkep',
       'metalik yaldız mürekkep',

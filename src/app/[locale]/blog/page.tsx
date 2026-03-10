@@ -4,22 +4,22 @@ import BlogPageClient from './BlogPageClient';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
-    title: 'Blog - Matbaa Sektöründen Haberler ve Bilgiler',
+    title: 'Blog - Matbaa Sektörü Haberleri',
     description:
-      'SIM Baskı Malzemeleri blog. Matbaa malzemeleri, baskı teknolojileri, ofset mürekkep kullanımı ve sektör haberleri hakkında güncel bilgiler.',
+      'SIM Baskı Malzemeleri blog. Matbaa malzemeleri, baskı teknolojileri ve ofset mürekkep hakkında güncel bilgiler.',
   },
   en: {
-    title: 'Blog - News and Insights from the Printing Industry',
+    title: 'Blog - Printing Industry News',
     description:
-      'SIM Printing Supplies blog. Latest news about printing materials, offset ink technology, and industry insights.',
+      'SIM Printing Supplies blog. Latest news about printing materials, offset ink technology and industry insights.',
   },
   ru: {
-    title: 'Блог - Новости полиграфической отрасли',
+    title: 'Блог - Новости полиграфии',
     description:
       'Блог SIM. Новости о полиграфических материалах, офсетных красках и технологиях печати.',
   },
   ar: {
-    title: 'المدونة - أخبار ومعلومات من صناعة الطباعة',
+    title: 'المدونة - أخبار الطباعة',
     description:
       'مدونة SIM. أحدث الأخبار حول مواد الطباعة وتقنيات أحبار الأوفست.',
   },

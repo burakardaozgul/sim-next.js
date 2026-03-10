@@ -69,6 +69,9 @@ export default async function ProductDetailPage({
     locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/urunler`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
+  const homeLabels: Record<string, string> = { tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية' };
+  const productsLabels: Record<string, string> = { tr: 'Ürünler', en: 'Products', ru: 'Продукция', ar: 'المنتجات' };
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -76,13 +79,13 @@ export default async function ProductDetailPage({
       {
         '@type': 'ListItem',
         position: 1,
-        name: locale === 'tr' ? 'Ana Sayfa' : 'Home',
+        name: homeLabels[locale] || homeLabels.tr,
         item: homeUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: locale === 'tr' ? 'Ürünler' : 'Products',
+        name: productsLabels[locale] || productsLabels.tr,
         item: productsUrl,
       },
       {

@@ -51,7 +51,20 @@ export async function generateMetadata({
   });
 }
 
-function ProductsBreadcrumbJsonLd() {
+const BREADCRUMB_LABELS: Record<string, { home: string; products: string }> = {
+  tr: { home: 'Ana Sayfa', products: 'Ürünler' },
+  en: { home: 'Home', products: 'Products' },
+  ru: { home: 'Главная', products: 'Продукция' },
+  ar: { home: 'الرئيسية', products: 'المنتجات' },
+};
+
+function ProductsBreadcrumbJsonLd({ locale }: { locale: string }) {
+  const labels = BREADCRUMB_LABELS[locale] || BREADCRUMB_LABELS.tr;
+  const BASE_URL = 'https://www.simlimited.net';
+  const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
+  const productsUrl =
+    locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/${locale === 'en' ? 'products' : locale === 'ru' ? 'produkty' : 'products'}`;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -59,14 +72,14 @@ function ProductsBreadcrumbJsonLd() {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Ana Sayfa',
-        item: 'https://www.simlimited.net',
+        name: labels.home,
+        item: homeUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Ürünler',
-        item: 'https://www.simlimited.net/urunler',
+        name: labels.products,
+        item: productsUrl,
       },
     ],
   };
@@ -79,10 +92,16 @@ function ProductsBreadcrumbJsonLd() {
   );
 }
 
-export default function ProductsPage() {
+export default async function ProductsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
   return (
     <>
-      <ProductsBreadcrumbJsonLd />
+      <ProductsBreadcrumbJsonLd locale={locale} />
       <ProductsPageClient />
     </>
   );

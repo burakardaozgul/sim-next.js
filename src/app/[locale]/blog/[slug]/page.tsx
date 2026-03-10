@@ -58,6 +58,8 @@ export default async function BlogPostPage({
     .filter((block) => block.text)
     .reduce((count, block) => count + (block.text?.split(/\s+/).length || 0), 0);
 
+  const LOCALE_LANG: Record<string, string> = { tr: 'Turkish', en: 'English', ru: 'Russian', ar: 'Arabic' };
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -67,6 +69,8 @@ export default async function BlogPostPage({
     datePublished: post.date,
     dateModified: post.date,
     wordCount,
+    inLanguage: locale,
+    keywords: post.keywords.join(', '),
     author: {
       '@type': 'Organization',
       name: 'SIM Baskı Malzemeleri',
@@ -84,6 +88,8 @@ export default async function BlogPostPage({
       '@type': 'WebPage',
       '@id': postUrl,
     },
+    isAccessibleForFree: true,
+    availableLanguage: Object.values(LOCALE_LANG),
   };
 
   const breadcrumbJsonLd = {
@@ -93,7 +99,7 @@ export default async function BlogPostPage({
       {
         '@type': 'ListItem',
         position: 1,
-        name: locale === 'tr' ? 'Ana Sayfa' : 'Home',
+        name: { tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية' }[locale] || 'Ana Sayfa',
         item: homeUrl,
       },
       {

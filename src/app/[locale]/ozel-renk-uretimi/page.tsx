@@ -4,24 +4,24 @@ import CustomColorPageClient from './CustomColorPageClient';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
-    title: 'Özel Renk Üretimi - 7/24 Renk Eşleştirme Laboratuvarı',
+    title: 'Özel Renk Üretimi',
     description:
-      'SIM Baskı Malzemeleri özel renk üretimi. 7/24 hizmet veren renk eşleştirme laboratuvarımız ile UV ve konvansiyonel mürekkepler için istediğiniz rengi üretiyoruz. Aylık 15.000 kg üretim kapasitesi.',
+      '7/24 renk eşleştirme laboratuvarı. UV ve konvansiyonel mürekkepler için özel renk üretimi. Aylık 15.000 kg kapasite.',
   },
   en: {
-    title: 'Custom Color Production - 24/7 Color Matching Lab',
+    title: 'Custom Color Production',
     description:
-      'SIM custom color production. 24/7 color matching laboratory for UV and conventional inks. 15,000 kg monthly production capacity.',
+      '24/7 color matching laboratory for UV and conventional inks. Custom color production with 15,000 kg monthly capacity.',
   },
   ru: {
-    title: 'Производство специальных цветов - Лаборатория 24/7',
+    title: 'Производство спеццветов',
     description:
-      'Производство специальных цветов SIM. Лаборатория подбора цветов 24/7 для УФ и обычных красок.',
+      'Лаборатория подбора цветов 24/7. Производство специальных цветов для УФ и обычных красок. 15 000 кг/мес.',
   },
   ar: {
-    title: 'إنتاج الألوان المخصصة - مختبر مطابقة الألوان 24/7',
+    title: 'إنتاج الألوان المخصصة',
     description:
-      'إنتاج الألوان المخصصة من SIM. مختبر مطابقة الألوان يعمل على مدار الساعة.',
+      'مختبر مطابقة الألوان يعمل على مدار الساعة. إنتاج ألوان مخصصة لأحبار UV والتقليدية.',
   },
 };
 

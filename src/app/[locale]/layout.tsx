@@ -164,7 +164,6 @@ function OrganizationJsonLd() {
       email: 'info@simlimited.net',
       availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
     },
-    sameAs: [],
   };
 
   return (
