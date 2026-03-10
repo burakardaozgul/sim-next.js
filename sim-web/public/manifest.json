@@ -1,0 +1,21 @@
+{
+  "name": "SIM Baski Malzemeleri",
+  "short_name": "SIM",
+  "description": "Matbaa Malzemeleri, Ofset Murekkep & Baski Kimyasallari",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080C14",
+  "theme_color": "#080C14",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/sim-baski-malzemeleri.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "lang": "tr",
+  "dir": "ltr"
+}

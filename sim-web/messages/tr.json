@@ -1,0 +1,423 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "customColor": "Özel Renk Üretimi",
+    "brands": "Temsilciliklerimiz",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "blog": "Blog",
+    "faq": "S.S.S.",
+    "privacy": "Gizlilik & Çerez Politikası",
+    "terms": "Kullanım Koşulları",
+    "language": "Dil",
+    "directions": "Yol Tarifi",
+    "callNow": "Hemen Ara"
+  },
+  "hero": {
+    "tag": "1983'ten Beri Matbaa Sektöründe",
+    "title": "Rengin Arkasındaki\nUzman Güç",
+    "subtitle": "Offset mürekkep, metalik/yaldız mürekkep ve özel renk üretiminde Türkiye'nin lider tedarikçisi.",
+    "cta_primary": "Ürünleri İncele",
+    "cta_secondary": "Teklif Al",
+    "slides": [
+      {
+        "title": "ÖZEL RENK\nÜRETİMİ",
+        "subtitle": "Aylık 15.000 kg kapasiteli üretim ünitesi ile istediğiniz renk, istediğiniz zamanda.",
+        "cta": "Detaylı Bilgi"
+      },
+      {
+        "title": "METALLIC (YALDIZ)\nMÜREKKEP ÜRETİMİ",
+        "subtitle": "Ofset teknolojisine uygun yüksek kaliteli metalik mürekkep serimiz ile sektörün ihtiyaçlarına çözüm sunuyoruz.",
+        "cta": "Ürünleri İncele"
+      },
+      {
+        "title": "DAIHAN UV & LED-UV\nMÜREKKEP TEKNOLOJİLERİ",
+        "subtitle": "Güney Kore teknolojisiyle geliştirilen DAIHAN (DEERS) UV ve LED-UV mürekkepleri; anında kürlenme, üstün yüzey dayanımı ve yüksek enerji verimliliğiyle ticari ve ambalaj baskılarında yeni nesil performans sunar.",
+        "cta": "Detaylı Bilgi"
+      },
+      {
+        "title": "SAKATA INX\nOFSET MÜREKKEP TEKNOLOJİLERİ",
+        "subtitle": "SAKATA'nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz.",
+        "cta": "Detaylı Bilgi"
+      }
+    ]
+  },
+  "products": {
+    "title": "Ürün Gamımız",
+    "subtitle": "Baskı sektörünün tüm ihtiyaçları için geniş ürün yelpazesi",
+    "viewAll": "Tümünü Gör",
+    "categories": {
+      "offset": "Offset Mürekkepleri",
+      "metallic": "Metalik / Yaldız",
+      "uv": "UV Offset",
+      "pantone": "PANTONE Renkler",
+      "custom": "Özel Renkler",
+      "blanket": "Offset Blanketleri",
+      "chemicals": "Kimyasallar"
+    }
+  },
+  "process": {
+    "title": "Özel Renk Üretim Süreci",
+    "subtitle": "4 adımda mükemmel renk",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Renk Formülü",
+        "desc": "Uluslararası L-A-B değerlerine göre dijital formülizasyon"
+      },
+      {
+        "number": "02",
+        "title": "Numune Üretimi",
+        "desc": "Farklı baskı değerleri ve altlarında hedef renk testi"
+      },
+      {
+        "number": "03",
+        "title": "Onay Süreci",
+        "desc": "Farklı gramaj ve kağıtlardan örnek sunumu ve onay"
+      },
+      {
+        "number": "04",
+        "title": "Üretim",
+        "desc": "Onaylı formül ile talep edilen miktarda üretim"
+      }
+    ]
+  },
+  "stats": {
+    "capacity": "15.000 kg",
+    "capacityLabel": "Aylık Üretim Kapasitesi",
+    "since": "1983",
+    "sinceLabel": "Yılından Beri Hizmetinizdeyiz",
+    "brands": "7",
+    "brandsLabel": "Uluslararası Marka Temsilciliği",
+    "service": "7/24",
+    "serviceLabel": "Kesintisiz Hizmet"
+  },
+  "about": {
+    "tag": "Hakkımızda",
+    "title": "Matbaacılığın Güvenilir\nÇözüm Ortağı",
+    "body": "Aylık 15.000 kg kapasiteli özel renk ünitesi ile 1983 yılından beri matbaacılık sektörüne hizmet sunmaktayız. Çevre dostu ürünler, kalite anlayışı ve etik değerlerle teknik, lojistik ve ticari hizmeti en üst noktaya taşıyoruz.",
+    "cta": "Daha Fazla Bilgi"
+  },
+  "ownBrands": {
+    "title": "Markalarımız",
+    "subtitle": "Kendi üretimimiz ve bize ait olan markalarımız"
+  },
+  "brands": {
+    "title": "Temsil Ettiğimiz Markalar",
+    "subtitle": "Dünyanın önde gelen üreticilerinin Türkiye yetkili distribütörüyüz"
+  },
+  "blog": {
+    "title": "Sektör Rehberi",
+    "subtitle": "Baskı ve matbaa dünyasından uzman içerikler",
+    "readMore": "Devamını Oku",
+    "viewAll": "Tüm Yazılar"
+  },
+  "services": {
+    "tag": "Uzmanlık Alanlarımız",
+    "title": "Baskı Sektörüne\nSunduğumuz Çözümler",
+    "discover": "İncele",
+    "items": [
+      {
+        "title": "DAIHAN (DEERS) UV & LED-UV Mürekkep Teknolojileri",
+        "desc": "Güney Kore teknolojisiyle geliştirilen DAIHAN (DEERS) UV ve LED-UV mürekkepleri; anında kürlenme, üstün yüzey dayanımı ve yüksek enerji verimliliğiyle ticari ve ambalaj baskılarında yeni nesil performans sunar. Türkiye temsilcisi olarak bu ileri teknolojiyi hızlı uygulama kabiliyeti ve kesintisiz tedarik gücüyle buluşturuyoruz."
+      },
+      {
+        "title": "SAKATA INX Ofset Mürekkep Teknolojileri",
+        "desc": "SAKATA\u2019nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz."
+      },
+      {
+        "title": "Global Mürekkep Teknolojilerimiz",
+        "desc": "Japonya ve Güney Kore\u2019nin ileri mühendisliğini temsil eden mürekkep teknolojilerimizle; farklı baskı süreçlerine yüksek performans, güvenilir kalite ve sürdürülebilir verimlilik sunuyoruz."
+      },
+      {
+        "title": "Kesintisiz Baskı İçin Teknik Güvence",
+        "desc": "Deneyimli teknik ekibimiz; matbaalarda karşılaşılan teknik durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini güvence altına alır, baskı süreçlerinin verimli ve yüksek kalite standartlarında sürdürülebilirliğine katkı sağlar."
+      },
+      {
+        "title": "EVAcolor Metalik Ofset Mürekkepleri",
+        "desc": "EVAcolor metalik ofset mürekkepleri; yüksek parlaklık, güçlü yaldız efekti ve dengeli baskı performansı sunmak üzere geliştirilmiştir. Özenle seçilen pigment yapısı ve optimize edilmiş bağlayıcı sistemi sayesinde farklı kâğıt ve karton yüzeylerde homojen dağılım, net yansıma ve tutarlı renk sonuçları elde edilir.\n\nHızlı kuruma ve yüksek sürtünme direnci; üretim verimliliğini desteklerken baskılarda dikkat çekici ve kalıcı bir görsel etki sağlar."
+      },
+      {
+        "title": "EVAcolor Florasan Mürekkep Teknolojisi",
+        "desc": "EVAcolor florasan ofset mürekkepleri; yüksek canlılık, güçlü görünürlük ve dikkat çekici renk etkisi sunmak üzere geliştirilmiştir. Özel pigment yapısı sayesinde farklı baskı yüzeylerinde parlak, net ve homojen renk dağılımı sağlayarak tasarımların görsel etkisini öne çıkarır.\n\nHızlı kuruma, stabil baskı performansı ve baskı sonrası uygulamalarla uyumlu yapısı; üretim sürecinde verimliliği desteklerken ticari ve ambalaj baskılarında çarpıcı, kalıcı ve fark yaratan sonuçlar elde edilmesine katkı sağlar."
+      },
+      {
+        "title": "Yüksek Performanslı Ofset Blanket Çözümleri",
+        "desc": "ST PRO DOT ve SX DOT COMBI ofset blanketleri; ticari ve ambalaj baskılarında yüksek baskı kalitesi ile üretim güvenilirliğini bir arada sunmak üzere geliştirilmiş profesyonel blanket çözümleridir. ST PRO DOT serisi, hassas nokta aktarımı ve dengeli mürekkep transferiyle tutarlı ve net baskı sonuçları sağlarken; SX DOT COMBI hibrit yapısıyla konvansiyonel ve UV baskı uygulamalarında geniş kimyasal dayanım ve esnek kullanım avantajı sunar.\n\nUzun ömürlü yapıları, stabil yüzey performansları ve farklı baskı koşullarına uyum sağlayan teknik karakterleri sayesinde her iki blanket çözümü de makine verimliliğini koruyarak kesintisiz, öngörülebilir ve yüksek kaliteli baskı süreçlerine katkı sağlar."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Projeniz İçin Özel Fiyat Alın",
+    "subtitle": "Geniş ürün yelpazemiz ve özel renk üretimimiz hakkında bilgi almak için hemen arayın.",
+    "call": "Hemen Ara",
+    "quote": "Teklif Talep Et"
+  },
+  "footer": {
+    "desc": "1983'ten beri matbaa sektörünün güvenilir tedarikçisi.",
+    "products": "Ürünler",
+    "company": "Kurumsal",
+    "contact": "İletişim",
+    "rights": "Tüm hakları saklıdır.",
+    "phone": "+90 (212) 637 62 49",
+    "email": "info@simlimited.net",
+    "privacyPolicy": "Gizlilik & Çerez Politikası",
+    "termsOfUse": "Kullanım Koşulları"
+  },
+  "brandsPage": {
+    "title": "Temsilciliklerimiz & Bayiliklerimiz",
+    "subtitle": "Dünyanın önde gelen üreticilerinin Türkiye yetkili distribütörü",
+    "intro": "Japonya, Güney Kore ve Avrupa'nın önde gelen üreticileriyle kurduğumuz uzun vadeli iş birlikleri sayesinde, matbaa sektörüne dünya standartlarında ürünler sunuyoruz.",
+    "since": "Başlangıç",
+    "country": "Ülke",
+    "website": "Web Sitesi",
+    "tabRepresentatives": "Temsilciliklerimiz",
+    "tabDealers": "Bayiliklerimiz",
+    "representatives": [
+      {
+        "name": "Sakata INX",
+        "country": "Japonya",
+        "since": "2002",
+        "desc": "Dünya genelinde önde gelen ofset baskı mürekkebi üreticilerinden biri olan Sakata INX, yüksek performanslı mürekkep çözümleriyle matbaa sektörüne liderlik etmektedir."
+      },
+      {
+        "name": "Hi-Tech Coatings",
+        "country": "Hollanda",
+        "since": "2002",
+        "desc": "Su bazlı ve UV lak-vernik üretiminde uzmanlaşmış Hi-Tech Coatings, baskı sonrası kaplama çözümleriyle sektörde öncü konumdadır."
+      },
+      {
+        "name": "DEERS (DAIHAN)",
+        "country": "Güney Kore",
+        "since": "2008",
+        "desc": "Güney Kore'nin lider mürekkep üreticisi DEERS (DAIHAN), uygun maliyetli ve yüksek kaliteli ofset mürekkepleriyle global pazarda yer almaktadır."
+      },
+      {
+        "name": "Baltink",
+        "country": "Litvanya",
+        "since": "2020",
+        "desc": "Baltık bölgesinin önde gelen mürekkep üreticisi Baltink, çevre dostu formülasyonları ve geniş ürün yelpazesiyle dikkat çekmektedir."
+      },
+      {
+        "name": "Stahl",
+        "country": "Hollanda",
+        "since": "2025",
+        "desc": "Hollanda merkezli Stahl, özel kaplamalar ve yüzey işleme çözümlerinde dünya lideridir. Baskı ve ambalaj sektörüne yönelik yenilikçi kaplama teknolojileri sunmaktadır."
+      }
+    ],
+    "dealers": [
+      {
+        "name": "Fujifilm",
+        "country": "Japonya",
+        "since": "2002",
+        "desc": "Japon mühendislik hassasiyetiyle üretilen Fujifilm ofset blanketleri, yüksek baskı kalitesi ve uzun ömür sunar."
+      },
+      {
+        "name": "Zeller+Gmelin",
+        "country": "Almanya",
+        "since": "2006",
+        "desc": "1866'dan bu yana faaliyet gösteren Zeller+Gmelin, ofset mürekkepleri ve endüstriyel kimyasallar alanında Avrupa'nın köklü üreticilerinden biridir."
+      }
+    ]
+  },
+  "aboutPage": {
+    "title": "Hakkımızda",
+    "subtitle": "1983'ten bu yana matbaa sektörünün güvenilir çözüm ortağı",
+    "history": {
+      "title": "Tarihçemiz",
+      "intro": "Sunduğu çevre dostu ürünler, kalite anlayışı ve benimsediği etik değerler ile teknik, lojistik ve ticari anlamda sunduğu hizmeti en üst noktaya taşımayı hedefliyoruz...",
+      "p1": "1983 yılında matbaacılık sektörüne kâğıt, karton ve baskı materyalleri tedariki amacıyla kurulan Sim Baskı Malzemeleri Ltd. Şti., 1998 yılından itibaren faaliyet odağını ofset baskı mürekkepleri, baskı üstü laklar, ofset blanketleri ve ofset kimyasalları alanlarına yöneltmiştir.",
+      "p2": "2001 yılında İtalyan Samor Grubu'na bağlı EFI ofset baskı kalıplarının Türkiye temsilciliğini üstlenen Sim Baskı Malzemeleri; 2002 yılından bu yana SAKATA ofset baskı mürekkepleri, Hi-Tech Coatings su bazlı ve UV lak-vernikleri, Fujikura ofset blanketleri ve 2008 itibarıyla Güney Kore DEERS (DAIHAN) mürekkeplerinin Türkiye temsilciliklerini yürütmektedir. 2024 yılından itibaren ise İtalyan Acoma markasının seçili ürün gruplarının Türkiye temsilciliğini üstlenerek ürün portföyünü ve hizmet kalitesini sürekli geliştirmektedir.",
+      "p3": "Bugün Sim Baskı Malzemeleri; aylık 15 ton kapasiteli özel renk üretim ünitesi ve tescilli EVAcolor markasıyla ileri seviye özel renk çözümleri sunmakta, dijital veya basılı referanslardan ya da doğadan talep edilen renkleri baskı altı ve baskı sonrası uygulamalara uygun kimyasal yapıda teknik olarak tasarlayıp, hassas üretim süreçleriyle hayata geçirmektedir. EVAcolor markası altında florasan ve metalik mürekkep üretimleri gerçekleştirilirken; deneyimli ekibiyle müşterilerine kesintisiz hizmet sağlamaktadır.",
+      "p4": "Sim Baskı Malzemeleri; global iş birlikleriyle güçlü bir ithalat ağına sahip olmasının yanı sıra, üretim kabiliyeti ve uluslararası pazarlara yönelik ihracat faaliyetleriyle çok yönlü bir üretici, tedarikçi ve çözüm ortağı kimliği taşımaktadır."
+    },
+    "strengths": {
+      "title": "Güçlü Yönlerimiz",
+      "items": [
+        { "title": "Global Markalar, Güçlü İş Birlikleri", "desc": "Japonya, Güney Kore ve Avrupa merkezli lider üreticilerle kurduğumuz uzun vadeli temsilcilikler sayesinde dünya standartlarında ürünler sunarız." },
+        { "title": "Üretim, İthalat ve İhracatı Birleştiren Yapı", "desc": "Kendi üretim gücümüzü uluslararası tedarik ve ihracat kabiliyetimizle birleştirerek müşterilerimize esnek ve sürdürülebilir çözümler sağlarız." },
+        { "title": "Teknik Uzmanlık ve Saha Deneyimi", "desc": "Deneyimli teknik ekibimiz, baskı süreçlerinde karşılaşılan durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini destekler." },
+        { "title": "Hızlı ve Kesintisiz Hizmet", "desc": "Güçlü stok yapımız, etkin lojistik süreçlerimiz ve çözüm odaklı hizmet anlayışımız sayesinde müşterilerimizin ihtiyaçlarına en kısa sürede yanıt veririz." },
+        { "title": "Kalite ve Süreklilik Odaklı Hizmet", "desc": "Tüm ürün ve hizmetlerimizde yüksek kalite standardı, tutarlılık ve uzun vadeli iş ortaklığı yaklaşımını esas alırız." }
+      ]
+    },
+    "mission": {
+      "title": "Misyonumuz",
+      "text": "Matbaa sektörüne güvenilir tedarik, ileri teknoloji ürünler ve teknik uzmanlıkla desteklenen sürdürülebilir çözümler sunarak müşterilerimizin baskı kalitesini geliştirmek."
+    },
+    "vision": {
+      "title": "Vizyonumuz",
+      "text": "Bölgesinde referans gösterilen, uluslararası ölçekte güvenilir bir çözüm ortağı olmak."
+    },
+    "values": {
+      "title": "Temel Değerlerimiz",
+      "items": [
+        { "title": "Güvenilirlik", "desc": "40 yılı aşkın sektör deneyimi ile müşterilerimize her zaman tutarlı ve güvenilir hizmet sunuyoruz." },
+        { "title": "Teknik Uzmanlık", "desc": "Uzman kadromuz ile renk formülasyonundan baskı optimizasyonuna kadar teknik destek sağlıyoruz." },
+        { "title": "Kalite Odaklılık", "desc": "Uluslararası standartlarda üretim ve tedarik ile baskı kalitesini en üst seviyede tutuyoruz." },
+        { "title": "Sürdürülebilirlik", "desc": "Çevre dostu ürünler ve sürdürülebilir üretim süreçleri ile geleceğe yatırım yapıyoruz." },
+        { "title": "Müşteri Yaklaşımı", "desc": "7/24 hizmet anlayışı ile müşterilerimizin ihtiyaçlarına hızlı ve etkin çözümler üretiyoruz." }
+      ]
+    }
+  },
+  "customColorPage": {
+    "title": "Özel Renk Üretimi",
+    "subtitle": "Renk Eşleştirme Laboratuvarı",
+    "heroText": "Dijital veya basılı referanslardan, doğadan ya da hayal gücünüzden aldığımız her rengi; uluslararası L-A-B standartlarına göre formülize ediyor, aylık 15.000 kg kapasiteli üretim ünitemizde hayata geçiriyoruz.",
+    "whyTitle": "Neden SIM Özel Renk?",
+    "whySubtitle": "Fark yaratan avantajlarımız",
+    "why": [
+      { "title": "7/24 Renk Laboratuvarı", "desc": "Kesintisiz hizmet veren renk eşleştirme laboratuvarımız ile acil siparişlerinize anında yanıt veririz." },
+      { "title": "L-A-B Dijital Formülizasyon", "desc": "Uluslararası renk değerlerine göre hassas dijital formülasyon ile hedefteki renge en yüksek doğrulukla ulaşılır." },
+      { "title": "UV & Konvansiyonel Uyum", "desc": "Hem UV hem de konvansiyonel baskı süreçlerine uygun özel renk formülleri üretiyoruz." },
+      { "title": "15.000 kg Aylık Kapasite", "desc": "Geniş üretim kapasitemiz ile küçük partilerden büyük hacimli siparişlere kadar her talebe hızlı yanıt." },
+      { "title": "Farklı Altlıklarda Test", "desc": "Farklı kağıt gramajları ve yüzey tiplerinde numune üretimi ile baskıda tutarlı sonuç garantisi." },
+      { "title": "EVAcolor Tescilli Marka", "desc": "Kendi tescilli markamız EVAcolor altında metalik, florasan ve özel renk mürekkep üretimi gerçekleştiriyoruz." }
+    ],
+    "typesTitle": "Üretim Kapsamımız",
+    "typesSubtitle": "Özel renk üretimimizde sunduğumuz çözümler",
+    "types": [
+      { "title": "Pantone & Spot Renkler", "desc": "Pantone renk kataloğundaki tüm referanslar ile özel spot renk üretimi." },
+      { "title": "Metalik & Yaldız Renkler", "desc": "EVAcolor markası ile altın, gümüş ve özel metalik efektli mürekkep üretimi." },
+      { "title": "Florasan Renkler", "desc": "Yüksek canlılık ve görünürlük gerektiren tasarımlar için florasan mürekkep çözümleri." },
+      { "title": "Kurumsal Kimlik Renkleri", "desc": "Markaların kurumsal renk standartlarına uygun, tutarlı ve tekrarlanabilir renk üretimi." }
+    ],
+    "ctaTitle": "Özel Renk İhtiyacınız mı Var?",
+    "ctaText": "Renk referansınızı bize iletin, uzman ekibimiz en kısa sürede numune hazırlasın."
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Ürünlerimiz ve hizmetlerimiz hakkında bilgi almak için bize ulaşın.",
+    "formTitle": "Mesaj Gönderin",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "company": "Firma",
+    "subject": "Konu",
+    "message": "Mesajınız",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Mesajınız iletildi, en kısa sürede dönüş yapacağız.",
+    "error": "Bir hata oluştu, lütfen tekrar deneyin.",
+    "infoTitle": "İletişim Bilgileri",
+    "address": "Yakuplu, 194. Sk. No:1 D:176, 34000 Beylikdüzü/İstanbul",
+    "addressLabel": "Adres",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-posta",
+    "workingHours": "Çalışma Saatleri",
+    "workingHoursValue": "Pazartesi - Cumartesi: 08:30 - 18:00"
+  },
+  "cookie": {
+    "message": "Bu web sitesi, deneyiminizi iyileştirmek için çerezler kullanmaktadır. Sitemizi kullanmaya devam ederek çerez politikamızı kabul etmiş olursunuz.",
+    "accept": "Kabul Et",
+    "decline": "Reddet",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "privacyPage": {
+    "title": "Gizlilik & Çerez Politikası",
+    "lastUpdated": "Son güncelleme: 1 Mart 2026",
+    "sections": [
+      {
+        "title": "1. Genel Bilgiler",
+        "content": "SIM Baskı Malzemeleri San. Tic. Ltd. Şti. olarak kişisel verilerinizin korunmasına önem veriyoruz. Bu politika, web sitemizde toplanan verilerin nasıl işlendiğini açıklar."
+      },
+      {
+        "title": "2. Toplanan Veriler",
+        "content": "İletişim formları aracılığıyla ad, soyad, e-posta, telefon numarası ve firma bilgileri toplanabilir. Web sitemizi ziyaret ettiğinizde IP adresi, tarayıcı bilgileri ve ziyaret edilen sayfalar gibi teknik veriler otomatik olarak kaydedilir."
+      },
+      {
+        "title": "3. Verilerin Kullanım Amacı",
+        "content": "Toplanan veriler; taleplerinize yanıt vermek, hizmet kalitemizi artırmak, yasal yükümlülükleri yerine getirmek ve sizinle iletişim kurmak amacıyla kullanılır."
+      },
+      {
+        "title": "4. Çerez Politikası",
+        "content": "Web sitemizde zorunlu çerezler (site işlevselliği için), analiz çerezleri (ziyaretçi istatistikleri için) ve tercih çerezleri (dil ve bölge tercihleri için) kullanılmaktadır. Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz, ancak bu durumda bazı özellikler düzgün çalışmayabilir."
+      },
+      {
+        "title": "5. Veri Güvenliği",
+        "content": "Kişisel verileriniz, yetkisiz erişim, kayıp ve kötüye kullanıma karşı teknik ve idari tedbirlerle korunmaktadır."
+      },
+      {
+        "title": "6. Üçüncü Taraf Paylaşımı",
+        "content": "Kişisel verileriniz, yasal zorunluluklar dışında üçüncü taraflarla paylaşılmaz. Analiz hizmetleri için Google Analytics gibi araçlar kullanılabilir."
+      },
+      {
+        "title": "7. Haklarınız",
+        "content": "6698 sayılı KVKK kapsamında kişisel verilerinizle ilgili bilgi alma, düzeltme, silme ve işlemeye itiraz etme haklarına sahipsiniz. Bu haklarınızı kullanmak için info@simlimited.net adresinden bize ulaşabilirsiniz."
+      },
+      {
+        "title": "8. İletişim",
+        "content": "Gizlilik politikamız hakkında sorularınız için info@simlimited.net adresinden veya +90 (212) 637 62 49 numarasından bize ulaşabilirsiniz."
+      }
+    ]
+  },
+  "termsPage": {
+    "title": "Kullanım Koşulları",
+    "lastUpdated": "Son güncelleme: 1 Mart 2026",
+    "sections": [
+      {
+        "title": "1. Kabul",
+        "content": "Bu web sitesini kullanarak aşağıdaki kullanım koşullarını kabul etmiş sayılırsınız. Koşulları kabul etmiyorsanız, lütfen siteyi kullanmayınız."
+      },
+      {
+        "title": "2. Hizmet Tanımı",
+        "content": "SIM Baskı Malzemeleri web sitesi, şirketimizin ürün ve hizmetleri hakkında bilgi sunmak amacıyla hazırlanmıştır. Site üzerindeki bilgiler genel bilgilendirme amaçlıdır."
+      },
+      {
+        "title": "3. Fikri Mülkiyet Hakları",
+        "content": "Bu web sitesindeki tüm içerik, görseller, logolar, tasarımlar ve metinler SIM Baskı Malzemeleri'ne aittir ve telif hakları ile korunmaktadır. İzinsiz kullanım, kopyalama veya dağıtım yasaktır."
+      },
+      {
+        "title": "4. Sorumluluk Sınırlaması",
+        "content": "Web sitemizdeki bilgilerin doğruluğunu sağlamak için azami özen gösterilmekle birlikte, bilgilerin eksiksiz ve hatasız olduğu garanti edilmez. SIM Baskı Malzemeleri, sitenin kullanımından doğabilecek doğrudan veya dolaylı zararlardan sorumlu tutulamaz."
+      },
+      {
+        "title": "5. Harici Bağlantılar",
+        "content": "Web sitemiz, üçüncü taraf web sitelerine bağlantılar içerebilir. Bu sitelerin içeriğinden veya gizlilik uygulamalarından sorumlu değiliz."
+      },
+      {
+        "title": "6. Değişiklikler",
+        "content": "SIM Baskı Malzemeleri, bu kullanım koşullarını önceden bildirimde bulunmaksızın değiştirme hakkını saklı tutar. Güncel koşullar her zaman bu sayfada yayımlanır."
+      },
+      {
+        "title": "7. Uygulanacak Hukuk",
+        "content": "Bu kullanım koşulları Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlıklarda İstanbul Mahkemeleri ve İcra Daireleri yetkilidir."
+      },
+      {
+        "title": "8. İletişim",
+        "content": "Kullanım koşullarımız hakkında sorularınız için info@simlimited.net adresinden veya +90 (212) 637 62 49 numarasından bize ulaşabilirsiniz."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Merak ettikleriniz",
+    "items": [
+      {
+        "q": "Hangi tür mürekkepler tedarik ediyorsunuz?",
+        "a": "Ofset mürekkep (CMYK), metalik/yaldız mürekkep, UV mürekkep, PANTONE mürekkep, florasan mürekkep ve özel renk mürekkepler tedarik ve üretim yapıyoruz. SAKATA INX, DEERS (DAIHAN) ve EVAcolor markalarımız ile geniş bir ürün yelpazesi sunuyoruz."
+      },
+      {
+        "q": "Özel renk üretimi nasıl yapılıyor?",
+        "a": "Özel renk üretimimiz 4 aşamadan oluşur: Önce referans renginizi alıyoruz (Pantone kodu, baskılı numune veya doğa örneği). Sonra L-A-B dijital formülasyon ile mürekkep reçetesi oluşturuyoruz. Farklı kağıt ve gramajlarda numune baskı yapıyoruz ve onayınızın ardından seri üretime geçiyoruz."
+      },
+      {
+        "q": "Minimum sipariş miktarı nedir?",
+        "a": "Özel renk üretiminde minimum sipariş miktarımız ürün tipine göre değişmektedir. Detaylı bilgi için satış ekibimizle iletişime geçebilirsiniz."
+      },
+      {
+        "q": "Teslimat süreniz ne kadardır?",
+        "a": "Stok ürünlerde aynı gün veya ertesi gün teslimat yapabiliyoruz. Özel renk üretimlerinde numune onayından sonra genellikle 1-3 iş günü içinde teslimat sağlıyoruz."
+      },
+      {
+        "q": "Teknik destek sağlıyor musunuz?",
+        "a": "Evet, deneyimli teknik ekibimiz matbaanızda karşılaşılan teknik sorunlara yerinde müdahale edebilmektedir. Mürekkep ayarları, renk kalibrasyonu ve baskı optimizasyonu konularında ücretsiz danışmanlık hizmeti sunuyoruz."
+      },
+      {
+        "q": "Hangi markalarla çalışıyorsunuz?",
+        "a": "SAKATA INX (Japonya), DEERS/DAIHAN (Güney Kore), Hi-Tech Coatings (Hollanda), Zeller+Gmelin (Almanya), Baltink (Litvanya) ve Stahl (Hollanda) markalarının Türkiye distribütörüyüz. Ayrıca EVAcolor ve VECTOR kendi markalarımızdır."
+      }
+    ]
+  }
+}
