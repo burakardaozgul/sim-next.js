@@ -49,3 +49,6 @@ next-env.d.ts
 
 # source logo files
 /logolar/
+
+# legacy working directory
+/sim-web/
