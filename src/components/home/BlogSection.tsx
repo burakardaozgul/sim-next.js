@@ -6,63 +6,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Clock } from 'lucide-react';
 import { getBlurDataURL } from '@/lib/blur';
-
-const BLOG_POSTS = [
-  {
-    slug: 'ofset-murekkep-secimi',
-    category: { tr: 'Rehber', en: 'Guide', ru: 'Руководство', ar: 'دليل' },
-    image: '/images/DSC07958.webp',
-    date: '2025-02-15',
-    title: {
-      tr: 'Ofset Mürekkep Seçimi: Dikkat Edilmesi Gerekenler',
-      en: 'Choosing Offset Inks: Key Considerations',
-      ru: 'Выбор офсетных красок: ключевые аспекты',
-      ar: 'اختيار أحبار الأوفست: اعتبارات رئيسية',
-    },
-    excerpt: {
-      tr: 'Baskı kalitesini doğrudan etkileyen mürekkep seçiminde dikkat edilmesi gereken kritik faktörler ve uzman önerileri.',
-      en: 'Critical factors and expert recommendations for ink selection that directly affects print quality.',
-      ru: 'Критические факторы и рекомендации экспертов по выбору красок, влияющих на качество печати.',
-      ar: 'عوامل حاسمة وتوصيات الخبراء لاختيار الحبر الذي يؤثر مباشرة على جودة الطباعة.',
-    },
-  },
-  {
-    slug: 'metalik-murekkep-uretimi',
-    category: { tr: 'Teknik', en: 'Technical', ru: 'Техническая', ar: 'تقني' },
-    image: '/images/NEW-Gold-Aile.webp',
-    date: '2025-01-20',
-    title: {
-      tr: 'Metalik Mürekkep Üretim Süreci ve Kalite Kontrol',
-      en: 'Metallic Ink Production Process and Quality Control',
-      ru: 'Процесс производства металлических красок и контроль качества',
-      ar: 'عملية إنتاج الأحبار المعدنية ومراقبة الجودة',
-    },
-    excerpt: {
-      tr: 'Yaldız mürekkep üretiminde kullanılan teknolojiler, kalite kontrol süreçleri ve sektördeki son gelişmeler.',
-      en: 'Technologies used in metallic ink production, quality control processes, and latest industry developments.',
-      ru: 'Технологии производства металлических красок, процессы контроля качества и последние отраслевые разработки.',
-      ar: 'التقنيات المستخدمة في إنتاج الأحبار المعدنية وعمليات مراقبة الجودة وآخر التطورات في الصناعة.',
-    },
-  },
-  {
-    slug: 'ozel-renk-eslestirme',
-    category: { tr: 'Üretim', en: 'Production', ru: 'Производство', ar: 'إنتاج' },
-    image: '/images/DSC08151.webp',
-    date: '2024-12-10',
-    title: {
-      tr: 'Özel Renk Eşleştirme: LAB Değerleri ile Mükemmel Sonuç',
-      en: 'Custom Color Matching: Perfect Results with LAB Values',
-      ru: 'Подбор специальных цветов: идеальные результаты с LAB-значениями',
-      ar: 'مطابقة الألوان المخصصة: نتائج مثالية بقيم LAB',
-    },
-    excerpt: {
-      tr: 'Dijital LAB değerleri kullanarak özel renk üretiminde nasıl mükemmel sonuçlar elde edilir? Uzman rehberi.',
-      en: 'How to achieve perfect results in custom color production using digital LAB values? Expert guide.',
-      ru: 'Как добиться идеальных результатов в производстве специальных цветов с использованием цифровых значений LAB?',
-      ar: 'كيف تحقق نتائج مثالية في إنتاج الألوان المخصصة باستخدام قيم LAB الرقمية؟',
-    },
-  },
-];
+import { blogPosts } from '@/data/blog';
 
 export default function BlogSection() {
   const t = useTranslations('blog');
@@ -115,10 +59,10 @@ export default function BlogSection() {
           ref={scrollRef}
           className="scrollbar-hide -mx-6 flex gap-6 overflow-x-auto px-6 snap-x snap-mandatory lg:-mx-0 lg:px-0"
         >
-          {BLOG_POSTS.map((post) => {
-            const title = post.title[locale as keyof typeof post.title] || post.title.tr;
-            const excerpt = post.excerpt[locale as keyof typeof post.excerpt] || post.excerpt.tr;
-            const category = post.category[locale as keyof typeof post.category] || post.category.tr;
+          {blogPosts.slice(0, 3).map((post) => {
+            const title = post.title[locale] || post.title.tr;
+            const excerpt = post.excerpt[locale] || post.excerpt.tr;
+            const readTime = post.readTime[locale] || post.readTime.tr;
 
             return (
               <article
@@ -126,7 +70,7 @@ export default function BlogSection() {
                 className="group flex-shrink-0 snap-start"
                 style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
               >
-                <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20">
+                <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} className="block overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20">
                   {/* Image */}
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -139,8 +83,9 @@ export default function BlogSection() {
                       blurDataURL={getBlurDataURL(post.image)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 to-transparent" />
-                    <span className="absolute top-3 left-3 rounded-full bg-gold/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
-                      {category}
+                    <span className="absolute top-3 left-3 flex items-center gap-1 rounded-full bg-gold/90 px-3 py-1 text-[10px] font-semibold tracking-wider text-white backdrop-blur-sm">
+                      <Clock size={10} />
+                      {readTime}
                     </span>
                   </div>
 
@@ -161,7 +106,7 @@ export default function BlogSection() {
                       <ArrowRight size={12} />
                     </span>
                   </div>
-                </div>
+                </Link>
               </article>
             );
           })}
