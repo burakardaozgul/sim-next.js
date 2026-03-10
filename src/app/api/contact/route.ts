@@ -225,8 +225,15 @@ export async function POST(request: Request) {
     }
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.warn('[contact] SMTP credentials not configured. Email not sent.');
-      return NextResponse.json({ success: true });
+      console.error('[contact] SMTP credentials not configured. Missing:', {
+        SMTP_HOST: !process.env.SMTP_HOST,
+        SMTP_USER: !process.env.SMTP_USER,
+        SMTP_PASS: !process.env.SMTP_PASS,
+      });
+      return NextResponse.json(
+        { error: 'Mail server configuration error.' },
+        { status: 500 },
+      );
     }
 
     const safeName = escapeHtml(name);
