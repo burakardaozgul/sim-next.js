@@ -130,7 +130,7 @@ export async function POST(request: Request) {
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
       console.warn('[contact] SMTP credentials not configured. Email not sent.');
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ success: true, debug: 'smtp_not_configured' });
     }
 
     const safeName = escapeHtml(name);
