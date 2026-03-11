@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { constants as cryptoConstants } from 'crypto';
 
 const NOTIFY_EMAIL = 'info@simlimited.net';
 const MAX_BODY_SIZE = 10 * 1024; // 10KB
@@ -152,7 +153,8 @@ function createTransporter() {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: true,
+      rejectUnauthorized: false,
+      secureOptions: cryptoConstants.SSL_OP_LEGACY_SERVER_CONNECT,
     },
   });
 }
