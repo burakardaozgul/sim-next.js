@@ -152,7 +152,7 @@ function createTransporter() {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: true,
+      rejectUnauthorized: false,
     },
   });
 }
@@ -225,14 +225,9 @@ export async function POST(request: Request) {
     }
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      const missing = {
-        SMTP_HOST: !process.env.SMTP_HOST,
-        SMTP_USER: !process.env.SMTP_USER,
-        SMTP_PASS: !process.env.SMTP_PASS,
-      };
-      console.error('[contact] SMTP credentials not configured. Missing:', missing);
+      console.error('[contact] SMTP credentials not configured.');
       return NextResponse.json(
-        { error: 'Mail server configuration error.', debug: missing },
+        { error: 'Mail server configuration error.' },
         { status: 500 },
       );
     }
@@ -263,7 +258,7 @@ export async function POST(request: Request) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
     console.error('[contact] Error:', errorMessage);
     return NextResponse.json(
-      { error: 'Internal server error', debug: errorMessage },
+      { error: 'Internal server error' },
       { status: 500 },
     );
   }
