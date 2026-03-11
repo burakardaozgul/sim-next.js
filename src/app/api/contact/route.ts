@@ -243,8 +243,8 @@ export async function POST(request: Request) {
       to: NOTIFY_EMAIL,
       replyTo: sanitizeHeader(email),
       subject: safeSubject
-        ? `[İletişim Formu] ${safeSubject}`
-        : `[İletişim Formu] ${safeName} - Yeni Mesaj`,
+        ? `İletişim Talebi | SİM Baskı Malzemeleri - ${safeSubject}`
+        : `İletişim Talebi | SİM Baskı Malzemeleri - ${safeName}`,
       html: buildEmailHtml({
         name,
         email,
