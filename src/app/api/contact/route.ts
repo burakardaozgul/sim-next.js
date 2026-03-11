@@ -225,13 +225,14 @@ export async function POST(request: Request) {
     }
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.error('[contact] SMTP credentials not configured. Missing:', {
+      const missing = {
         SMTP_HOST: !process.env.SMTP_HOST,
         SMTP_USER: !process.env.SMTP_USER,
         SMTP_PASS: !process.env.SMTP_PASS,
-      });
+      };
+      console.error('[contact] SMTP credentials not configured. Missing:', missing);
       return NextResponse.json(
-        { error: 'Mail server configuration error.' },
+        { error: 'Mail server configuration error.', debug: missing },
         { status: 500 },
       );
     }
