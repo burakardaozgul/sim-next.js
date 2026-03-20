@@ -97,6 +97,9 @@ export default async function ProductDetailPage({
     ],
   };
 
+  const contactUrl =
+    locale === 'tr' ? `${BASE_URL}/iletisim` : `${BASE_URL}/${locale}/iletisim`;
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -113,6 +116,15 @@ export default async function ProductDetailPage({
       '@type': 'Organization',
       name: 'SIM Baskı Malzemeleri',
       url: BASE_URL,
+    },
+    offers: {
+      '@type': 'Offer',
+      url: contactUrl,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'TRY',
+      },
     },
   };
 
