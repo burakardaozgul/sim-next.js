@@ -9,7 +9,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/_next/'],
       },
-      // AI search/retrieval bots — explicitly allow
+      // AI bots — allow all (search, retrieval, and training)
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+      },
       {
         userAgent: 'OAI-SearchBot',
         allow: '/',
@@ -19,11 +23,19 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
         userAgent: 'Claude-SearchBot',
         allow: '/',
       },
       {
         userAgent: 'Claude-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'Google-Extended',
         allow: '/',
       },
       {
@@ -38,34 +50,17 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'DuckAssistBot',
         allow: '/',
       },
-      // AI training-only bots — block
-      {
-        userAgent: 'GPTBot',
-        disallow: '/',
-      },
-      {
-        userAgent: 'ClaudeBot',
-        disallow: '/',
-      },
-      {
-        userAgent: 'Google-Extended',
-        disallow: '/',
-      },
       {
         userAgent: 'CCBot',
-        disallow: '/',
+        allow: '/',
       },
       {
         userAgent: 'Meta-ExternalAgent',
-        disallow: '/',
-      },
-      {
-        userAgent: 'Bytespider',
-        disallow: '/',
+        allow: '/',
       },
       {
         userAgent: 'cohere-ai',
-        disallow: '/',
+        allow: '/',
       },
     ],
     sitemap: 'https://www.simlimited.net/sitemap.xml',
