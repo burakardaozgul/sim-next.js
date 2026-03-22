@@ -1,0 +1,238 @@
+# SIM Baskı Malzemeleri — Complete Site Content
+
+> Turkey's leading printing materials supplier since 1983. Manufacturer of EVA COLOR and VECTOR brands, and exclusive Turkish distributor of SAKATA INX (Japan), Zeller+Gmelin (Germany), Hi-Tech Coatings (Netherlands), SCHLENK (Germany), and more.
+
+Website: https://www.simlimited.net
+Languages: Turkish, English, Russian, Arabic
+Location: Güneşli, Bağcılar, Istanbul, Turkey
+Phone: +90 212 515 79 81
+Email: info@simlimited.net
+
+---
+
+## About Us
+
+SIM Baskı Malzemeleri (SIM Limited) has been serving the Turkish printing industry since 1983. With over 40 years of experience, the company is both a manufacturer and a distributor of world-leading printing supply brands.
+
+**Own Brands:**
+- EVA COLOR — Offset printing inks (metallic, fluorescent, special colors)
+- VECTOR — Offset printing blankets
+
+**Distributorships (Turkey):**
+- SAKATA INX (Japan) — CMYK and PANTONE offset inks (distributor since 2002)
+- Zeller+Gmelin (Germany) — UV offset inks
+- Hi-Tech Coatings (Netherlands) — Water-based dispersion varnishes
+- SCHLENK (Germany) — Metallic pigments and inks
+- Fujikura (Japan) — Printing blankets
+- Baltink (Lithuania) — Printing inks
+- Stahl (Netherlands) — Specialty coatings
+
+**Capabilities:**
+- 24/7 custom color production laboratory
+- 15,000 kg monthly production capacity
+- L-A-B digital color matching (spectrophotometer-based)
+- Free technical consultation and on-site support
+- Same-day or next-day delivery for stock products
+
+---
+
+## Products
+
+### EVA COLOR Fluorescent Inks
+**URL:** https://www.simlimited.net/urunler/eva-color-fluorescent-murekkepler
+**Category:** Offset Inks
+
+Our EVA COLOR fluorescent ink series delivers vibrant, eye-catching colors in offset printing. With high print quality and ink performance, it meets the demands of the printing industry.
+
+### EVA COLOR Gold Metallic Inks
+**URL:** https://www.simlimited.net/urunler/eva-color-gold-metalik-murekkepler
+**Category:** Metallic Inks
+
+The EVA COLOR Gold metallic/gilding ink series offers superior brilliance and color depth in offset printing. Produced in PANTONE 873-876 reference shades, our series makes a difference in packaging and label printing.
+
+### EVA COLOR Silver Metallic Inks
+**URL:** https://www.simlimited.net/urunler/eva-color-silver-metalik-murekkepler
+**Category:** Metallic Inks
+
+The EVA COLOR Silver metallic ink series offers superior brilliance and coverage in silver tones. It delivers high performance in packaging, label, and luxury print applications.
+
+### SAKATA INX CMYK Inks
+**URL:** https://www.simlimited.net/urunler/sakata-inx-cmyk-murekkepler
+**Category:** Offset Inks
+
+We have been the Turkish distributor of Sakata Inx since 2002. Japan-based Sakata Inx is a sector leader in high-quality offset ink production. The CMYK series delivers vibrant colors, sharp details, and consistent repeatability for brochures, packaging, labels, and promotional prints.
+
+**Key Features:**
+- Turkish distributor since 2002
+- Vibrant colors and sharp details
+- Consistent repeatability
+- Brochures, packaging, labels, and promotional prints
+
+### SAKATA INX PANTONE Inks
+**URL:** https://www.simlimited.net/urunler/sakata-inx-pantone-murekkepler
+**Category:** PANTONE Inks
+
+The Sakata Inx PANTONE color series is produced with formulations meeting international color standards. It delivers vibrant colors and sharp details for brochures, packaging, labels, and promotional prints.
+
+**Key Features:**
+- Compliant with international PANTONE standards
+- Vibrant colors and sharp details
+- Consistent repeatability
+- Custom color production available
+
+### ZELLER+GMELIN UV Offset Inks
+**URL:** https://www.simlimited.net/urunler/zeller-gmelin-uv-offset-murekkepleri
+**Category:** UV Inks
+
+German manufacturer Zeller+Gmelin is a world leader in high-quality UV offset ink production. Their comprehensive product range provides advanced technology solutions for diverse industry needs.
+
+### SCHLENK Metallic Inks
+**URL:** https://www.simlimited.net/urunler/schlenk-metalik-murekkepler
+**Category:** Metallic Inks
+
+The SCHLENK metallic ink series is produced with the precision of German engineering. It is the preferred brand for metallic printing applications with high brilliance, superior coverage, and consistent color quality.
+
+### Custom Colors
+**URL:** https://www.simlimited.net/urunler/ozel-renkler
+**Category:** Custom Color Production
+
+With our 24/7 custom color production laboratory, we produce the color you need for UV and conventional inks. Color matching is available from nature samples, catalogs, or digital LAB values.
+
+**Key Features:**
+- 24/7 custom color production lab
+- UV ink production
+- Conventional ink production
+- Color matching from nature samples
+- Color matching from catalogs
+- Digital LAB value formulation
+
+### VECTOR Printing Blankets
+**URL:** https://www.simlimited.net/urunler/vector-baski-blanketleri
+**Category:** Printing Blankets
+
+VECTOR offers offset printing blankets designed to meet the high-performance demands of the modern printing industry. Manufactured with advanced rubber compounds and precision production technologies, VECTOR blankets deliver excellent ink transfer, high dot sharpness, and long-term dimensional stability.
+
+**Key Features:**
+- Excellent ink transfer
+- High dot sharpness
+- Long-term dimensional stability
+- Reliable high-speed performance
+- Maximum production efficiency
+
+### HI-TECH COATINGS Water-Based Varnish
+**URL:** https://www.simlimited.net/urunler/hi-tech-coatings-dispersiyon-lak
+**Category:** Printing Chemicals
+
+As the Turkish representative of Hi-Tech Coatings, we offer high-quality water-based dispersion varnishes. Our products enhance print appearance and prevent deformation with superior friction resistance.
+
+**Key Features:**
+- Enhances print appearance
+- Superior friction resistance
+- Soft Touch coating
+- Primer coating
+- Barrier coating
+
+---
+
+## Custom Color Production
+
+**URL:** https://www.simlimited.net/ozel-renk-uretimi
+
+SIM operates a 24/7 custom color production laboratory with 15,000 kg monthly capacity. The production process follows 4 stages:
+
+1. **Reference Collection** — Receive color reference from client (Pantone code, printed sample, nature sample, or digital file)
+2. **Digital Formulation** — Measure with spectrophotometer, determine L-A-B values, create ink recipe using digital formulation software
+3. **Sample Printing** — Print samples on different papers and grammages
+4. **Production** — Client approval followed by mass production
+
+Target Delta E (ΔE) value below 1 for precise color matching. Available for both UV and conventional offset inks.
+
+---
+
+## Frequently Asked Questions
+
+**URL:** https://www.simlimited.net/sss
+
+**Q: What types of inks do you supply?**
+A: We supply and produce offset inks (CMYK), metallic/gold inks, UV inks, PANTONE inks, fluorescent inks, and custom color inks. We offer a wide range of products with our SAKATA INX, DEERS (DAIHAN), and EVAcolor brands.
+
+**Q: How does custom color production work?**
+A: Our custom color production consists of 4 stages: First, we receive your color reference. Then we create an ink recipe using L-A-B digital formulation. We print samples on different papers and grammages, and after your approval, we proceed to mass production.
+
+**Q: What is the minimum order quantity?**
+A: The minimum order quantity for custom color production varies by product type. Please contact our sales team for detailed information.
+
+**Q: What is your delivery time?**
+A: We can deliver stock products on the same day or next day. For custom color productions, we typically deliver within 1-3 business days after sample approval.
+
+**Q: Do you provide technical support?**
+A: Yes, our experienced technical team can provide on-site intervention for technical issues at your printing facility. We offer free consultation on ink settings, color calibration, and print optimization.
+
+**Q: Which brands do you work with?**
+A: We are the Turkish distributor for SAKATA INX (Japan), DEERS/DAIHAN (South Korea), Hi-Tech Coatings (Netherlands), Zeller+Gmelin (Germany), Baltink (Lithuania), and Stahl (Netherlands). EVAcolor and VECTOR are our own brands.
+
+---
+
+## Blog
+
+### 7 Key Criteria for Choosing the Right Offset Ink
+**URL:** https://www.simlimited.net/blog/ofset-murekkep-secimi
+**Date:** 2025-12-15
+
+In offset printing, ink selection is one of the most critical factors determining final print quality. The wrong ink choice can cause faded colors, low resolution, drying problems, and increased waste.
+
+1. **Color Vibrancy and Pigment Quality** — Inks with high pigment concentration produce vivid, deep colors even with less ink. Premium inks like the SAKATA INX CMYK series offer a color gamut compliant with ISO 12647-2.
+2. **Drying Speed and Mechanism** — Ink drying speed directly affects production efficiency. Different mechanisms like oxidative drying, absorption, and UV curing should be selected based on print type.
+3. **Paper and Substrate Compatibility** — Each paper type has different absorption properties. Coated papers require different formulations than natural papers.
+4. **Friction and Scratch Resistance** — Surface durability is critical, especially in packaging. Combined use with dispersion varnish enhances durability.
+5. **Environmental Compliance** — Vegetable oil-based or low VOC formulations should be preferred over mineral oil-based inks for environmental and health reasons.
+6. **Machine Compatibility** — Ink viscosity and flow properties must match the technical requirements of the printing press.
+7. **Cost-Performance Balance** — The cheapest ink is not always the most economical. High-coverage inks deliver better results with less consumption.
+
+Choosing the right ink can reduce printing costs by 15-20%.
+
+### Metallic Ink Production: Brilliant Results with EVAcolor
+**URL:** https://www.simlimited.net/blog/metalik-murekkep-uretimi
+**Date:** 2025-11-20
+
+Metallic inks are the most effective way to achieve a luxury, premium look in printing. Gold, silver, and special metallic effects create a distinctive aesthetic in packaging, labels, invitations, and corporate printing.
+
+EVAcolor is the registered brand of SIM Printing Supplies. Our metallic inks, formulated with high-quality aluminum and bronze pigments, are designed for seamless operation in offset printing presses. Each batch in our EVAcolor production line is digitally controlled using L-A-B values.
+
+The EVAcolor Gold series is produced in PANTONE 873, 874, 875, and 876 reference shades, each offering different warmth and brilliance levels.
+
+**Applications:** Packaging (food, cosmetics, pharmaceuticals), labels and stickers, invitations and specialty prints, corporate identity materials, book and magazine covers.
+
+**Printing Tips:** When working with metallic inks, film thickness directly affects brilliance. Coated papers provide the best metallic effect. Dispersion varnish application is important for surface protection and enhanced gloss.
+
+### Custom Color Matching: The Science of Achieving the Perfect Color
+**URL:** https://www.simlimited.net/blog/ozel-renk-eslestirme
+**Date:** 2025-10-10
+
+Color consistency in brand identity is critically important for customer trust and perception. Ensuring the same color tone on every print run is a cornerstone of professional brand image.
+
+**The L-A-B Color System:** CIE L*a*b* color space is an international standard that mathematically expresses all colors perceivable by the human eye. L (lightness), a (red-green axis), and b (yellow-blue axis) values uniquely define each color.
+
+**SIM Color Matching Process:**
+1. Reference collection from client (Pantone code, printed sample, nature sample, or digital file)
+2. Color measurement with spectrophotometer and L-A-B value determination
+3. Ink recipe creation using digital formulation software
+4. Sample printing on different papers and grammages
+5. Client approval and mass production
+
+Delta E (ΔE) values below 1 are targeted. Digital L-A-B formulation provides objective, repeatable, and precise results.
+
+SIM color lab can formulate custom colors for both UV and conventional offset inks. UV post-cure color shift is compensated to achieve target colors. With 15,000 kg monthly production capacity and over 40 years of industry experience, SIM delivers professional solutions for every color request.
+
+---
+
+## Contact Information
+
+**URL:** https://www.simlimited.net/iletisim
+
+**SIM Baskı Malzemeleri Sanayi ve Ticaret Ltd. Şti.**
+Address: Güneşli Mah. Koçman Cad. No:32/A, 34212 Bağcılar, Istanbul, Turkey
+Phone: +90 212 515 79 81
+Email: info@simlimited.net
+Website: https://www.simlimited.net
+Working Hours: Monday–Friday, 08:30–18:00
