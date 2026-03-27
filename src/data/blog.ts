@@ -18,7 +18,7 @@ export interface ContentBlock {
   alt?: string;
 }
 
-export const blogPosts: BlogPost[] = [
+export const blogPosts = ([
   {
     slug: 'ofset-baskida-murekkep-kuruma-sorunlari',
     image: '/images/DSC07958.webp',
@@ -492,7 +492,7 @@ export const blogPosts: BlogPost[] = [
       ],
     },
     keywords: ['gıda ambalajı', 'mürekkep seçimi', 'gıda güvenliği', 'EU standart', 'baskı mürekkepleri', 'ambalaj'],
-  },,
+  },
   {
     slug: 'ofset-murekkep-secimi',
     image: '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
@@ -771,7 +771,7 @@ export const blogPosts: BlogPost[] = [
     },
     keywords: ['renk eşleştirme', 'özel renk', 'L-A-B formülasyon', 'Pantone renk', 'spot renk'],
   },
-];
+] as BlogPost[]);
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
