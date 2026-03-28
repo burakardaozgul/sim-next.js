@@ -246,6 +246,7 @@ export default async function LocaleLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />
       </head>
