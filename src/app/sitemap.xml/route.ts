@@ -1,5 +1,5 @@
-import { products } from '@/data/products';
-import { blogPosts } from '@/data/blog';
+import { products, getProductSlug } from '@/data/products';
+import { blogPosts, getBlogSlug } from '@/data/blog';
 
 const BASE_URL = 'https://www.simlimited.net';
 const locales = ['tr', 'en', 'ru', 'ar'] as const;
@@ -85,16 +85,17 @@ export async function GET() {
   // Product detail pages
   for (const product of products) {
     for (const locale of locales) {
+      const locSlug = getProductSlug(product, locale);
       xml += `
   <url>
-    <loc>${getProductUrl(locale, product.slug)}</loc>
+    <loc>${getProductUrl(locale, locSlug)}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>`;
 
       for (const altLocale of locales) {
         xml += `
-    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${getProductUrl(altLocale, product.slug)}" />`;
+    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${getProductUrl(altLocale, getProductSlug(product, altLocale))}" />`;
       }
       xml += `
     <xhtml:link rel="alternate" hreflang="x-default" href="${getProductUrl(defaultLocale, product.slug)}" />`;
@@ -107,10 +108,11 @@ export async function GET() {
   // Blog post pages
   for (const post of blogPosts) {
     for (const locale of locales) {
+      const locSlug = getBlogSlug(post, locale);
       const blogBase = locale === defaultLocale ? '/blog' : `/${locale}/blog`;
       xml += `
   <url>
-    <loc>${BASE_URL}${blogBase}/${post.slug}</loc>
+    <loc>${BASE_URL}${blogBase}/${locSlug}</loc>
     <lastmod>${post.date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>`;
@@ -118,7 +120,7 @@ export async function GET() {
       for (const altLocale of locales) {
         const altBase = altLocale === defaultLocale ? '/blog' : `/${altLocale}/blog`;
         xml += `
-    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altBase}/${post.slug}" />`;
+    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altBase}/${getBlogSlug(post, altLocale)}" />`;
       }
       xml += `
     <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/${post.slug}" />`;

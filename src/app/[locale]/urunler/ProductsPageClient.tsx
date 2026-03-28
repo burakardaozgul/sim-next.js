@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
-import { products } from '@/data/products';
+import { products, getProductSlug } from '@/data/products';
 import { getBlurDataURL } from '@/lib/blur';
 import { ArrowRight } from 'lucide-react';
 
@@ -36,7 +36,7 @@ export default function ProductsPageClient() {
               {products.map((product) => (
                 <Link
                   key={product.slug}
-                  href={{ pathname: '/urunler/[slug]', params: { slug: product.slug } }}
+                  href={{ pathname: '/urunler/[slug]', params: { slug: getProductSlug(product, locale) } }}
                   className="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-ink-800 transition-all duration-300 hover:border-gold/20 hover:shadow-[0_0_40px_rgba(196,146,42,0.06)]"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">

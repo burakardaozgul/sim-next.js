@@ -1,19 +1,20 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { getProductBySlug, getProductSlug } from '@/data/products';
 
-const productLinks = [
-  { key: 'offset', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'sakata-inx-cmyk-murekkepler' } } },
-  { key: 'metallic', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'eva-color-gold-metalik-murekkepler' } } },
-  { key: 'uv', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'zeller-gmelin-uv-offset-murekkepleri' } } },
-  { key: 'pantone', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'sakata-inx-pantone-murekkepler' } } },
-  { key: 'custom', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'ozel-renkler' } } },
-  { key: 'blanket', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'vector-baski-blanketleri' } } },
-  { key: 'chemicals', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'hi-tech-coatings-dispersiyon-lak' } } },
-];
+const productLinkDefs = [
+  { key: 'offset', slug: 'sakata-inx-cmyk-murekkepler' },
+  { key: 'metallic', slug: 'eva-color-gold-metalik-murekkepler' },
+  { key: 'uv', slug: 'zeller-gmelin-uv-offset-murekkepleri' },
+  { key: 'pantone', slug: 'sakata-inx-pantone-murekkepler' },
+  { key: 'custom', slug: 'ozel-renkler' },
+  { key: 'blanket', slug: 'vector-baski-blanketleri' },
+  { key: 'chemicals', slug: 'hi-tech-coatings-dispersiyon-lak' },
+] as const;
 
 const companyLinks = [
   { labelKey: 'about', href: '/hakkimizda' },
@@ -28,6 +29,7 @@ export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tProducts = useTranslations('products');
+  const locale = useLocale();
 
   return (
     <>
@@ -75,16 +77,20 @@ export default function Footer() {
               {t('products')}
             </h3>
             <ul className="space-y-2.5">
-              {productLinks.map((item) => (
-                <li key={item.key}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-silver transition-colors hover:text-gold"
-                  >
-                    {tProducts(`categories.${item.key}`)}
-                  </Link>
-                </li>
-              ))}
+              {productLinkDefs.map((item) => {
+                const product = getProductBySlug(item.slug);
+                const locSlug = product ? getProductSlug(product, locale) : item.slug;
+                return (
+                  <li key={item.key}>
+                    <Link
+                      href={{ pathname: '/urunler/[slug]' as const, params: { slug: locSlug } }}
+                      className="text-sm text-silver transition-colors hover:text-gold"
+                    >
+                      {tProducts(`categories.${item.key}`)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

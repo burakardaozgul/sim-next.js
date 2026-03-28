@@ -1,5 +1,6 @@
 export interface BlogPost {
   slug: string;
+  slugs: Record<string, string>;
   image: string;
   gallery: string[];
   date: string;
@@ -21,6 +22,7 @@ export interface ContentBlock {
 export const blogPosts = ([
   {
     slug: 'ofset-baskida-murekkep-kuruma-sorunlari',
+    slugs: { tr: 'ofset-baskida-murekkep-kuruma-sorunlari', en: 'ink-drying-problems-offset-printing', ru: 'problemy-vysyhaniya-kraski-ofsetnaya-pechat', ar: 'ink-drying-problems-offset-printing' },
     image: '/images/DSC07958.webp',
     gallery: [
       '/images/HIP09896.webp',
@@ -119,6 +121,7 @@ export const blogPosts = ([
   },
   {
     slug: 'uv-murekkep-teknolojisi',
+    slugs: { tr: 'uv-murekkep-teknolojisi', en: 'uv-ink-technology', ru: 'tekhnologiya-uf-kraski', ar: 'uv-ink-technology' },
     image: '/images/HIP09896.webp',
     gallery: [
       '/images/HIP09897.webp',
@@ -245,6 +248,7 @@ export const blogPosts = ([
   },
   {
     slug: 'baski-blanket-secimi-ve-bakimi',
+    slugs: { tr: 'baski-blanket-secimi-ve-bakimi', en: 'printing-blanket-selection-and-care', ru: 'vybor-i-ukhod-za-pechatnymi-polotnami', ar: 'printing-blanket-selection-and-care' },
     image: '/images/Blanket.webp',
     gallery: [
       '/images/blanket2.webp',
@@ -369,6 +373,7 @@ export const blogPosts = ([
   },
   {
     slug: 'gida-ambalajinda-guvenli-baski-murekkeleri',
+    slugs: { tr: 'gida-ambalajinda-guvenli-baski-murekkeleri', en: 'safe-printing-inks-food-packaging', ru: 'bezopasnye-kraski-dlya-pishchevoj-upakovki', ar: 'safe-printing-inks-food-packaging' },
     image: '/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi.webp',
     gallery: [
       '/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi2.webp',
@@ -495,6 +500,7 @@ export const blogPosts = ([
   },
   {
     slug: 'ofset-murekkep-secimi',
+    slugs: { tr: 'ofset-murekkep-secimi', en: 'offset-ink-selection-guide', ru: 'rukovodstvo-po-vyboru-ofsetnoj-kraski', ar: 'offset-ink-selection-guide' },
     image: '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
     gallery: [
       '/images/sakata2.webp',
@@ -602,6 +608,7 @@ export const blogPosts = ([
   },
   {
     slug: 'metalik-murekkep-uretimi',
+    slugs: { tr: 'metalik-murekkep-uretimi', en: 'metallic-ink-production', ru: 'proizvodstvo-metallicheskih-krasok', ar: 'metallic-ink-production' },
     image: '/images/NEW-Gold-Aile.webp',
     gallery: [
       '/images/HIP09898.webp',
@@ -689,6 +696,7 @@ export const blogPosts = ([
   },
   {
     slug: 'ozel-renk-eslestirme',
+    slugs: { tr: 'ozel-renk-eslestirme', en: 'custom-color-matching', ru: 'podbor-spetsialnykh-tsvetov', ar: 'custom-color-matching' },
     image: '/images/sim-baski-malzemeleri-ve-matbaa-malzemeleri-Ozel-renk-uretimi.webp',
     gallery: [
       '/images/DSC08151.webp',
@@ -774,5 +782,20 @@ export const blogPosts = ([
 ] as BlogPost[]);
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  return blogPosts.find(
+    (p) => p.slug === slug || Object.values(p.slugs).includes(slug),
+  );
+}
+
+export function getBlogSlug(post: BlogPost, locale: string): string {
+  return post.slugs[locale] || post.slug;
+}
+
+export function getAllBlogSlugs(): string[] {
+  const slugs = new Set<string>();
+  for (const p of blogPosts) {
+    slugs.add(p.slug);
+    for (const s of Object.values(p.slugs)) slugs.add(s);
+  }
+  return [...slugs];
 }

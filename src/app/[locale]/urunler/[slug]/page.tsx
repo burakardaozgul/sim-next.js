@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
-import { products, getProductBySlug } from '@/data/products';
+import { products, getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
 
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return getAllProductSlugs().map((slug) => ({ slug }));
 }
 
 const CATEGORY_KEYWORDS: Record<string, string[]> = {
@@ -34,13 +34,15 @@ export async function generateMetadata({
   const description = product.description[locale] || product.description.tr;
   const categoryKeywords = CATEGORY_KEYWORDS[product.category] || [];
 
+  const localizedSlug = getProductSlug(product, locale);
   return createPageMetadata({
     locale,
-    path: `/urunler/${slug}`,
+    path: `/urunler/${localizedSlug}`,
     title: name,
     description,
     keywords: [...categoryKeywords, name],
     ogImage: product.image,
+    slugsByLocale: product.slugs,
   });
 }
 
@@ -61,10 +63,11 @@ export default async function ProductDetailPage({
   const categoryLabel = product.category;
 
   const BASE_URL = 'https://www.simlimited.net';
+  const localizedSlug = getProductSlug(product, locale);
   const productUrl =
     locale === 'tr'
-      ? `${BASE_URL}/urunler/${slug}`
-      : `${BASE_URL}/${locale}/urunler/${slug}`;
+      ? `${BASE_URL}/urunler/${localizedSlug}`
+      : `${BASE_URL}/${locale}/urunler/${localizedSlug}`;
   const productsUrl =
     locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/urunler`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;

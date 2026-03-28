@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
-import { blogPosts, getBlogPostBySlug } from '@/data/blog';
+import { blogPosts, getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
 import BlogPostClient from './BlogPostClient';
 
 export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+  return getAllBlogSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -21,13 +21,15 @@ export async function generateMetadata({
   const title = post.title[locale] || post.title.tr;
   const description = post.excerpt[locale] || post.excerpt.tr;
 
+  const localizedSlug = getBlogSlug(post, locale);
   return createPageMetadata({
     locale,
-    path: `/blog/${slug}`,
+    path: `/blog/${localizedSlug}`,
     title,
     description,
     keywords: post.keywords,
     ogImage: post.image,
+    slugsByLocale: post.slugs,
   });
 }
 
@@ -44,10 +46,11 @@ export default async function BlogPostPage({
   const BASE_URL = 'https://www.simlimited.net';
   const title = post.title[locale] || post.title.tr;
   const description = post.excerpt[locale] || post.excerpt.tr;
+  const localizedSlug = getBlogSlug(post, locale);
   const postUrl =
     locale === 'tr'
-      ? `${BASE_URL}/blog/${slug}`
-      : `${BASE_URL}/${locale}/blog/${slug}`;
+      ? `${BASE_URL}/blog/${localizedSlug}`
+      : `${BASE_URL}/${locale}/blog/${localizedSlug}`;
   const blogUrl =
     locale === 'tr' ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;

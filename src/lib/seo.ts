@@ -148,6 +148,33 @@ export const OG_LOCALES: Record<string, string> = {
 };
 
 /**
+ * Build hreflang alternates using per-locale slugs.
+ * Used for product/blog pages where each locale has a different slug.
+ * The pathPrefix should be the Turkish path prefix (e.g. '/urunler' or '/blog').
+ */
+function buildSlugAlternates(
+  currentPath: string,
+  slugsByLocale: Record<string, string>,
+): Record<string, string> {
+  // Extract path prefix (e.g. '/urunler' from '/urunler/some-slug')
+  const lastSlash = currentPath.lastIndexOf('/');
+  const trPrefix = lastSlash > 0 ? currentPath.substring(0, lastSlash) : '';
+
+  const result: Record<string, string> = {};
+  for (const loc of ['tr', 'en', 'ru', 'ar'] as const) {
+    const slug = slugsByLocale[loc] || slugsByLocale.tr;
+    const translatedPrefix = translatePath(trPrefix, loc);
+    if (loc === DEFAULT_LOCALE) {
+      result[loc] = `${BASE_URL}${translatedPrefix}/${slug}`;
+    } else {
+      result[loc] = `${BASE_URL}/${loc}${translatedPrefix}/${slug}`;
+    }
+  }
+  result['x-default'] = result.tr;
+  return result;
+}
+
+/**
  * Generate page-specific metadata with all SEO fields.
  */
 export function createPageMetadata({
@@ -159,6 +186,7 @@ export function createPageMetadata({
   ogImage,
   noIndex = false,
   absoluteTitle = false,
+  slugsByLocale,
 }: {
   locale: string;
   path: string;
@@ -168,9 +196,12 @@ export function createPageMetadata({
   ogImage?: string;
   noIndex?: boolean;
   absoluteTitle?: boolean;
+  slugsByLocale?: Record<string, string>;
 }): Metadata {
   const canonical = getCanonicalUrl(locale, path);
-  const alternates = getAlternateLanguages(path);
+  const alternates = slugsByLocale
+    ? buildSlugAlternates(path, slugsByLocale)
+    : getAlternateLanguages(path);
   const image = ogImage || '/og-image.jpg';
 
   return {

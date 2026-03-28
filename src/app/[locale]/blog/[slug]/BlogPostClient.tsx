@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
-import { blogPosts, type BlogPost, type ContentBlock } from '@/data/blog';
+import { blogPosts, type BlogPost, type ContentBlock, getBlogSlug } from '@/data/blog';
 import {
   ChevronLeft,
   Calendar,
@@ -542,7 +542,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                     key={rp.slug}
                     href={{
                       pathname: '/blog/[slug]',
-                      params: { slug: rp.slug },
+                      params: { slug: getBlogSlug(rp, locale) },
                     }}
                     className="group overflow-hidden rounded-2xl border border-white/[0.04] bg-ink-900/80 transition-all duration-300 hover:border-gold/15 hover:shadow-xl hover:shadow-black/20"
                   >

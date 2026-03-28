@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-import { products } from '@/data/products';
+import { products, getProductSlug } from '@/data/products';
 
 const CATEGORY_KEYS = ['all', 'offset', 'metallic', 'uv', 'pantone', 'custom', 'blanket', 'chemicals'] as const;
 
@@ -93,7 +93,7 @@ export default function ProductsSection() {
             return (
               <Link
                 key={product.slug}
-                href={{ pathname: '/urunler/[slug]', params: { slug: product.slug } }}
+                href={{ pathname: '/urunler/[slug]', params: { slug: getProductSlug(product, locale) } }}
                 className="group relative flex-shrink-0 snap-start"
               >
                 <div className="relative h-[320px] w-[260px] overflow-hidden rounded-xl md:h-[360px] md:w-[280px]">

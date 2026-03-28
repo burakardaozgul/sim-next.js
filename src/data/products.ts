@@ -1,5 +1,6 @@
 export interface Product {
   slug: string;
+  slugs: Record<string, string>;
   image: string;
   gallery: string[];
   category: string;
@@ -11,6 +12,7 @@ export interface Product {
 export const products: Product[] = [
   {
     slug: 'eva-color-fluorescent-murekkepler',
+    slugs: { tr: 'eva-color-fluorescent-murekkepler', en: 'eva-color-fluorescent-inks', ru: 'eva-color-fluorescentnye-kraski', ar: 'eva-color-fluorescent-inks' },
     image: '/images/HIP09900.webp',
     gallery: [
       '/images/HIP09900.webp',
@@ -32,6 +34,7 @@ export const products: Product[] = [
   },
   {
     slug: 'eva-color-gold-metalik-murekkepler',
+    slugs: { tr: 'eva-color-gold-metalik-murekkepler', en: 'eva-color-gold-metallic-inks', ru: 'eva-color-zolotye-metallicheskie-kraski', ar: 'eva-color-gold-metallic-inks' },
     image: '/images/NEW-Gold-Aile.webp',
     gallery: [
       '/images/NEW-Gold-Aile.webp',
@@ -57,6 +60,7 @@ export const products: Product[] = [
   },
   {
     slug: 'sakata-inx-cmyk-murekkepler',
+    slugs: { tr: 'sakata-inx-cmyk-murekkepler', en: 'sakata-inx-cmyk-inks', ru: 'sakata-inx-cmyk-kraski', ar: 'sakata-inx-cmyk-inks' },
     image: '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
     gallery: [
       '/images/sim-baski-ve-matbaa-malzemeleri-rgb-renk-ve-rgb-murekkep.webp',
@@ -83,6 +87,7 @@ export const products: Product[] = [
   },
   {
     slug: 'ozel-renkler',
+    slugs: { tr: 'ozel-renkler', en: 'custom-colors', ru: 'spetsialnye-tsveta', ar: 'custom-colors' },
     image: '/images/DSC08151.webp',
     gallery: [
       '/images/DSC08151.webp',
@@ -109,6 +114,7 @@ export const products: Product[] = [
   },
   {
     slug: 'vector-baski-blanketleri',
+    slugs: { tr: 'vector-baski-blanketleri', en: 'vector-printing-blankets', ru: 'vector-pechatnye-polotna', ar: 'vector-printing-blankets' },
     image: '/images/blanket2.webp',
     gallery: [
       '/images/blanket2.webp',
@@ -136,6 +142,7 @@ export const products: Product[] = [
   },
   {
     slug: 'eva-color-silver-metalik-murekkepler',
+    slugs: { tr: 'eva-color-silver-metalik-murekkepler', en: 'eva-color-silver-metallic-inks', ru: 'eva-color-serebryanye-metallicheskie-kraski', ar: 'eva-color-silver-metallic-inks' },
     image: '/images/HIP08190.webp',
     gallery: [
       '/images/HIP08190.webp',
@@ -156,6 +163,7 @@ export const products: Product[] = [
   },
   {
     slug: 'zeller-gmelin-uv-offset-murekkepleri',
+    slugs: { tr: 'zeller-gmelin-uv-offset-murekkepleri', en: 'zeller-gmelin-uv-offset-inks', ru: 'zeller-gmelin-uf-ofsetnye-kraski', ar: 'zeller-gmelin-uv-offset-inks' },
     image: '/images/HIP09894.webp',
     gallery: [
       '/images/HIP09894.webp',
@@ -177,6 +185,7 @@ export const products: Product[] = [
   },
   {
     slug: 'sakata-inx-pantone-murekkepler',
+    slugs: { tr: 'sakata-inx-pantone-murekkepler', en: 'sakata-inx-pantone-inks', ru: 'sakata-inx-pantone-kraski', ar: 'sakata-inx-pantone-inks' },
     image: '/images/sakata2.webp',
     gallery: [
       '/images/sakata2.webp',
@@ -203,6 +212,7 @@ export const products: Product[] = [
   },
   {
     slug: 'hi-tech-coatings-dispersiyon-lak',
+    slugs: { tr: 'hi-tech-coatings-dispersiyon-lak', en: 'hi-tech-coatings-water-based-varnish', ru: 'hi-tech-coatings-dispersionnyj-lak', ar: 'hi-tech-coatings-water-based-varnish' },
     image: '/images/HIP09924.webp',
     gallery: [
       '/images/HIP09924.webp',
@@ -230,6 +240,7 @@ export const products: Product[] = [
   },
   {
     slug: 'schlenk-metalik-murekkepler',
+    slugs: { tr: 'schlenk-metalik-murekkepler', en: 'schlenk-metallic-inks', ru: 'schlenk-metallicheskie-kraski', ar: 'schlenk-metallic-inks' },
     image: '/images/HIP09896.webp',
     gallery: [
       '/images/HIP09896.webp',
@@ -252,5 +263,20 @@ export const products: Product[] = [
 ];
 
 export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+  return products.find(
+    (p) => p.slug === slug || Object.values(p.slugs).includes(slug),
+  );
+}
+
+export function getProductSlug(product: Product, locale: string): string {
+  return product.slugs[locale] || product.slug;
+}
+
+export function getAllProductSlugs(): string[] {
+  const slugs = new Set<string>();
+  for (const p of products) {
+    slugs.add(p.slug);
+    for (const s of Object.values(p.slugs)) slugs.add(s);
+  }
+  return [...slugs];
 }

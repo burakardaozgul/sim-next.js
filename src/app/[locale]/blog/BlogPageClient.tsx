@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
-import { blogPosts } from '@/data/blog';
+import { blogPosts, getBlogSlug } from '@/data/blog';
 import { Calendar, ArrowRight } from 'lucide-react';
 
 export default function BlogPageClient() {
@@ -39,7 +39,7 @@ export default function BlogPageClient() {
               {blogPosts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }}
+                  href={{ pathname: '/blog/[slug]', params: { slug: getBlogSlug(post, locale) } }}
                   className="group overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all hover:border-gold/20"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden">

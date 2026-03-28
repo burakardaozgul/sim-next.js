@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Clock } from 'lucide-react';
 import { getBlurDataURL } from '@/lib/blur';
-import { blogPosts } from '@/data/blog';
+import { blogPosts, getBlogSlug } from '@/data/blog';
 
 export default function BlogSection() {
   const t = useTranslations('blog');
@@ -69,7 +69,7 @@ export default function BlogSection() {
                 key={post.slug}
                 className="group w-[85vw] flex-shrink-0 snap-start sm:w-[340px] lg:w-[calc(33.333%-16px)]"
               >
-                <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} className="block overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20">
+                <Link href={{ pathname: '/blog/[slug]', params: { slug: getBlogSlug(post, locale) } }} className="block overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900 transition-all duration-300 hover:border-gold/20">
                   {/* Image */}
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
