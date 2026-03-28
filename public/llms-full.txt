@@ -4,8 +4,8 @@
 
 Website: https://www.simlimited.net
 Languages: Turkish, English, Russian, Arabic
-Location: Güneşli, Bağcılar, Istanbul, Turkey
-Phone: +90 212 515 79 81
+Location: Yakuplu, Beylikdüzü, Istanbul, Turkey
+Phone: +90 212 637 62 49
 Email: info@simlimited.net
 
 ---
@@ -175,6 +175,30 @@ A: We are the Turkish distributor for SAKATA INX (Japan), DEERS/DAIHAN (South Ko
 
 ## Blog
 
+### Ink Drying Problems in Offset Printing: 10 Practical Solutions
+**URL:** https://www.simlimited.net/blog/ofset-baskida-murekkep-kuruma-sorunlari
+**Date:** 2026-03-27
+
+Ink drying problems in offset printing directly affect production efficiency. This article covers set-off, insufficient drying, and chalking problems with their technical causes and 10 practical solutions based on 40+ years of experience in the printing industry.
+
+### UV Ink Technology: Fast Drying and High Quality
+**URL:** https://www.simlimited.net/blog/uv-murekkep-teknolojisi
+**Date:** 2026-03-23
+
+UV ink technology is a revolutionary innovation in the printing industry. Comprehensive information about instant drying via photopolymerization, high print quality, LED UV vs mercury vapor systems, substrate compatibility, and wide application areas.
+
+### Printing Blankets: Selection and Maintenance Guide
+**URL:** https://www.simlimited.net/blog/baski-blanket-secimi-ve-bakimi
+**Date:** 2026-03-23
+
+Professional printing blankets selection and maintenance guide. Covers blanket types (compression, standard, ultrasmooth), thickness and tolerance (ISO 9598), installation, tension adjustment, cleaning procedures, and rejuvenation.
+
+### Safe Printing Inks for Food Packaging: Legal Standards and Technical Guide
+**URL:** https://www.simlimited.net/blog/gida-ambalajinda-guvenli-baski-murekkeleri
+**Date:** 2026-03-23
+
+Comprehensive guide on safe printing inks for food packaging. Covers EU Framework Regulation 1935/2004, FDA 21 CFR, Swiss Ordinance, low-migration ink technology, and compliance testing procedures.
+
 ### 7 Key Criteria for Choosing the Right Offset Ink
 **URL:** https://www.simlimited.net/blog/ofset-murekkep-secimi
 **Date:** 2025-12-15
@@ -231,8 +255,8 @@ SIM color lab can formulate custom colors for both UV and conventional offset in
 **URL:** https://www.simlimited.net/iletisim
 
 **SIM Baskı Malzemeleri Sanayi ve Ticaret Ltd. Şti.**
-Address: Güneşli Mah. Koçman Cad. No:32/A, 34212 Bağcılar, Istanbul, Turkey
-Phone: +90 212 515 79 81
+Address: Yakuplu, 194. Sk. No:1 D:176, 34000 Beylikdüzü, Istanbul, Turkey
+Phone: +90 212 637 62 49
 Email: info@simlimited.net
 Website: https://www.simlimited.net
 Working Hours: Monday–Friday, 08:30–18:00

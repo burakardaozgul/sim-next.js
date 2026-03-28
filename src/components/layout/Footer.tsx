@@ -6,14 +6,14 @@ import { Link } from '@/i18n/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const productLinks = [
-  { key: 'offset', href: '/urunler' },
-  { key: 'metallic', href: '/urunler' },
-  { key: 'uv', href: '/urunler' },
-  { key: 'pantone', href: '/urunler' },
-  { key: 'custom', href: '/urunler' },
-  { key: 'blanket', href: '/urunler' },
-  { key: 'chemicals', href: '/urunler' },
-] as const;
+  { key: 'offset', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'sakata-inx-cmyk-murekkepler' } } },
+  { key: 'metallic', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'eva-color-gold-metalik-murekkepler' } } },
+  { key: 'uv', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'zeller-gmelin-uv-offset-murekkepleri' } } },
+  { key: 'pantone', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'sakata-inx-pantone-murekkepler' } } },
+  { key: 'custom', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'ozel-renkler' } } },
+  { key: 'blanket', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'vector-baski-blanketleri' } } },
+  { key: 'chemicals', href: { pathname: '/urunler/[slug]' as const, params: { slug: 'hi-tech-coatings-dispersiyon-lak' } } },
+];
 
 const companyLinks = [
   { labelKey: 'about', href: '/hakkimizda' },

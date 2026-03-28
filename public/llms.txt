@@ -6,8 +6,8 @@ SIM Baskı Malzemeleri (SIM Limited) has been serving the Turkish printing indus
 
 Website: https://www.simlimited.net
 Languages: Turkish, English, Russian, Arabic
-Location: Güneşli, Bağcılar, Istanbul, Turkey
-Phone: +90 212 515 79 81
+Location: Yakuplu, Beylikdüzü, Istanbul, Turkey
+Phone: +90 212 637 62 49
 Email: info@simlimited.net
 
 ## Products
@@ -35,10 +35,17 @@ Email: info@simlimited.net
 - [FAQ](https://www.simlimited.net/sss): Frequently asked questions about ink types, custom color production, delivery, technical support, and brand partnerships
 - [Blog](https://www.simlimited.net/blog): Industry articles on offset ink selection, metallic ink production, and color matching techniques
 
+## Blog Articles
+
+- [Ink Drying Problems in Offset Printing: 10 Practical Solutions](https://www.simlimited.net/blog/ofset-baskida-murekkep-kuruma-sorunlari): Set-off, insufficient drying, and chalking — causes and 10 practical solutions (2026-03-27)
+- [UV Ink Technology: Fast Drying and High Quality](https://www.simlimited.net/blog/uv-murekkep-teknolojisi): UV ink working principles, advantages, and applications for modern printing (2026-03-23)
+- [Printing Blankets: Selection and Maintenance Guide](https://www.simlimited.net/blog/baski-blanket-secimi-ve-bakimi): Blanket types, thickness, installation, and maintenance procedures (2026-03-23)
+- [Safe Printing Inks for Food Packaging](https://www.simlimited.net/blog/gida-ambalajinda-guvenli-baski-murekkeleri): EU/FDA regulations, low-migration inks, and compliance standards (2026-03-23)
+- [7 Key Criteria for Choosing the Right Offset Ink](https://www.simlimited.net/blog/ofset-murekkep-secimi): Expert guide on color vibrancy, drying speed, paper compatibility (2025-12-15)
+- [Metallic Ink Production: Brilliant Results with EVAcolor](https://www.simlimited.net/blog/metalik-murekkep-uretimi): Technical article on metallic ink production processes (2025-11-20)
+- [Custom Color Matching: The Science of Perfect Color](https://www.simlimited.net/blog/ozel-renk-eslestirme): L-A-B digital formulation and color matching workflow (2025-10-10)
+
 ## Optional
 
-- [7 Key Criteria for Choosing the Right Offset Ink](https://www.simlimited.net/blog/ofset-murekkep-secimi): Expert guide on color vibrancy, drying speed, paper compatibility, and more
-- [Metallic Ink Production and Application Techniques](https://www.simlimited.net/blog/metalik-murekkep-uretimi): Technical article on metallic ink production processes
-- [Custom Color Matching: From Lab to Press](https://www.simlimited.net/blog/ozel-renk-eslestirme): Detailed guide on L-A-B digital formulation and color matching workflow
 - [Privacy Policy](https://www.simlimited.net/gizlilik-politikasi): Data protection and privacy policies
 - [Terms of Use](https://www.simlimited.net/kullanim-kosullari): Website terms of use
