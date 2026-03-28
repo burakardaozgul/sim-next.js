@@ -52,3 +52,9 @@ next-env.d.ts
 
 # legacy working directory
 /sim-web/
+
+# draft/working files
+new-blog-posts.ts
+SEO-PLAN.md
+SEO-STRATEJI-VE-ANAHTAR-KELIMELER.md
+src/app/sitemap.ts

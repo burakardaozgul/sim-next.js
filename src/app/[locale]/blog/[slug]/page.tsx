@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog';
 import BlogPostClient from './BlogPostClient';
 
@@ -73,12 +73,12 @@ export default async function BlogPostPage({
     keywords: post.keywords.join(', '),
     author: {
       '@type': 'Organization',
-      name: 'SIM Baskı Malzemeleri',
+      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
       url: BASE_URL,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'SIM Baskı Malzemeleri',
+      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
       logo: {
         '@type': 'ImageObject',
         url: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,

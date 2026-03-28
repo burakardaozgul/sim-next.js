@@ -4,6 +4,17 @@ import { notFound } from 'next/navigation';
 import { Cormorant_Garamond, Syne, DM_Sans, Noto_Sans_Arabic } from 'next/font/google';
 import { locales, rtlLocales, type Locale } from '@/i18n/config';
 import type { Metadata, Viewport } from 'next';
+import {
+  BRAND_NAMES,
+  BASE_KEYWORDS,
+  OG_LOCALES,
+  ORG_DESCRIPTIONS,
+  LOCAL_BIZ_DESCRIPTIONS,
+  LAYOUT_DESCRIPTIONS,
+  LAYOUT_TITLES,
+  getCanonicalUrl,
+  getAlternateLanguages,
+} from '@/lib/seo';
 import CookieConsent from '@/components/layout/CookieConsent';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import '../globals.css';
@@ -53,101 +64,89 @@ export const viewport: Viewport = {
   themeColor: '#080C14',
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
-    template: '%s | SIM Baskı Malzemeleri',
-  },
-  description:
-    'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları. 1983\'ten beri sektörde.',
-  keywords: [
-    'matbaa malzemeleri',
-    'baskı malzemeleri',
-    'ofset mürekkep',
-    'matbaa mürekkebi',
-    'yaldız mürekkep',
-    'metalik mürekkep',
-    'UV mürekkep',
-    'PANTONE mürekkep',
-    'özel renk üretimi',
-    'baskı kimyasalları',
-    'offset blanket',
-    'dispersiyon lak',
-    'matbaa malzemeleri istanbul',
-    'baskı malzemeleri tedarikçisi',
-    'SAKATA INX Türkiye',
-    'EVA COLOR mürekkep',
-    'SIM Baskı Malzemeleri',
-  ],
-  authors: [{ name: 'SIM Baskı Malzemeleri' }],
-  creator: 'SIM Baskı Malzemeleri',
-  publisher: 'SIM Baskı Malzemeleri',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    siteName: 'SIM Baskı Malzemeleri',
-    locale: 'tr_TR',
-    url: BASE_URL,
-    title: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
-    description:
-      'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'SIM Baskı Malzemeleri - Ofset Mürekkep & Matbaa',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
-    description:
-      'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
+  const description = LAYOUT_DESCRIPTIONS[locale] || LAYOUT_DESCRIPTIONS.tr;
+  const defaultTitle = LAYOUT_TITLES[locale] || LAYOUT_TITLES.tr;
+  const canonical = getCanonicalUrl(locale, '/');
+  const alternates = getAlternateLanguages('/');
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title: {
+      default: defaultTitle,
+      template: `%s | ${brandName}`,
+    },
+    description,
+    keywords: BASE_KEYWORDS[locale] || BASE_KEYWORDS.tr,
+    authors: [{ name: brandName }],
+    creator: brandName,
+    publisher: brandName,
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      type: 'website',
+      siteName: brandName,
+      locale: OG_LOCALES[locale] || 'tr_TR',
+      url: canonical,
+      title: defaultTitle,
+      description,
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${brandName} - Offset Ink & Printing`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: defaultTitle,
+      description,
+      images: ['/og-image.jpg'],
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-  alternates: {
-    canonical: BASE_URL,
-    languages: {
-      'tr': BASE_URL,
-      'en': `${BASE_URL}/en`,
-      'ru': `${BASE_URL}/ru`,
-      'ar': `${BASE_URL}/ar`,
-      'x-default': BASE_URL,
+    alternates: {
+      canonical,
+      languages: alternates,
     },
-  },
-};
+  };
+}
 
 /* ------------------------------------------------------------------ */
 /*  JSON-LD Structured Data                                            */
 /* ------------------------------------------------------------------ */
-function OrganizationJsonLd() {
+function OrganizationJsonLd({ locale }: { locale: string }) {
+  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
+  const orgDescription = ORG_DESCRIPTIONS[locale] || ORG_DESCRIPTIONS.tr;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'SIM Baskı Malzemeleri',
+    name: brandName,
     alternateName: 'SIM Limited',
     url: BASE_URL,
     logo: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-    description:
-      'Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi ve baskı kimyasalları.',
+    description: orgDescription,
+    inLanguage: locale,
     foundingDate: '1983',
     address: {
       '@type': 'PostalAddress',
@@ -169,23 +168,26 @@ function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
+      // JSON.stringify of static data — safe, no user input
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   );
 }
 
-function LocalBusinessJsonLd() {
+function LocalBusinessJsonLd({ locale }: { locale: string }) {
+  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
+  const bizDescription = LOCAL_BIZ_DESCRIPTIONS[locale] || LOCAL_BIZ_DESCRIPTIONS.tr;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${BASE_URL}/#localbusiness`,
-    name: 'SIM Baskı Malzemeleri',
+    name: brandName,
     image: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
     url: BASE_URL,
     telephone: '+902126376249',
     email: 'info@simlimited.net',
-    description:
-      'Matbaa malzemeleri, ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi, offset blanket ve baskı kimyasalları tedarikçisi.',
+    description: bizDescription,
+    inLanguage: locale,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
@@ -215,6 +217,7 @@ function LocalBusinessJsonLd() {
   return (
     <script
       type="application/ld+json"
+      // JSON.stringify of static data — safe, no user input
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   );
@@ -247,8 +250,8 @@ export default async function LocaleLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <OrganizationJsonLd />
-        <LocalBusinessJsonLd />
+        <OrganizationJsonLd locale={locale} />
+        <LocalBusinessJsonLd locale={locale} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

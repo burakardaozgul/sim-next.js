@@ -3,6 +3,77 @@ import type { Metadata } from 'next';
 const BASE_URL = 'https://www.simlimited.net';
 const DEFAULT_LOCALE = 'tr';
 
+/* ------------------------------------------------------------------ */
+/*  Locale-aware brand, keyword & description constants                */
+/* ------------------------------------------------------------------ */
+
+export const BRAND_NAMES: Record<string, string> = {
+  tr: 'SIM Baskı Malzemeleri',
+  en: 'SIM Printing Supplies',
+  ru: 'SIM Печатные Материалы',
+  ar: 'SIM مستلزمات الطباعة',
+};
+
+export const BASE_KEYWORDS: Record<string, string[]> = {
+  tr: [
+    'matbaa malzemeleri', 'baskı malzemeleri', 'ofset mürekkep',
+    'matbaa mürekkebi', 'yaldız mürekkep', 'metalik mürekkep',
+    'UV mürekkep', 'PANTONE mürekkep', 'özel renk üretimi',
+    'baskı kimyasalları', 'offset blanket', 'dispersiyon lak',
+    'matbaa malzemeleri istanbul', 'baskı malzemeleri tedarikçisi',
+    'SAKATA INX Türkiye', 'EVA COLOR mürekkep', 'SIM Baskı Malzemeleri',
+  ],
+  en: [
+    'printing supplies', 'printing materials', 'offset ink',
+    'metallic ink', 'UV ink', 'PANTONE ink', 'custom color production',
+    'printing chemicals', 'offset blanket', 'dispersion varnish',
+    'printing ink supplier Turkey', 'SAKATA INX Turkey', 'EVA COLOR ink',
+    'SIM Printing Supplies',
+  ],
+  ru: [
+    'полиграфические материалы', 'офсетные краски', 'металлические краски',
+    'УФ-краски', 'краски PANTONE', 'производство спеццветов',
+    'полиграфическая химия', 'офсетные полотна', 'дисперсионный лак',
+    'поставщик печатных красок Турция', 'SAKATA INX Турция', 'EVA COLOR',
+    'SIM Печатные Материалы',
+  ],
+  ar: [
+    'مستلزمات الطباعة', 'مواد الطباعة', 'أحبار الأوفست',
+    'أحبار معدنية', 'أحبار UV', 'أحبار بانتون', 'إنتاج ألوان مخصصة',
+    'كيماويات الطباعة', 'بطانيات الأوفست', 'ورنيش التشتت',
+    'مورد أحبار الطباعة تركيا', 'SAKATA INX تركيا', 'EVA COLOR',
+    'SIM مستلزمات الطباعة',
+  ],
+};
+
+export const ORG_DESCRIPTIONS: Record<string, string> = {
+  tr: 'Türkiye\'nin lider matbaa malzemeleri tedarikçisi. Ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi ve baskı kimyasalları. 1983\'ten beri sektörde.',
+  en: 'Turkey\'s leading printing materials supplier. Offset ink, metallic ink, UV ink, custom color production, and printing chemicals. In the industry since 1983.',
+  ru: 'Ведущий поставщик полиграфических материалов в Турции. Офсетные краски, металлические краски, УФ-краски, производство спеццветов и полиграфическая химия. В отрасли с 1983 года.',
+  ar: 'المورد الرائد لمواد الطباعة في تركيا. أحبار أوفست، أحبار معدنية، أحبار UV، إنتاج ألوان مخصصة وكيماويات الطباعة. في الصناعة منذ عام 1983.',
+};
+
+export const LOCAL_BIZ_DESCRIPTIONS: Record<string, string> = {
+  tr: 'Matbaa malzemeleri, ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, özel renk üretimi, offset blanket ve baskı kimyasalları tedarikçisi.',
+  en: 'Supplier of printing materials, offset ink, metallic ink, UV ink, custom color production, offset blankets, and printing chemicals.',
+  ru: 'Поставщик полиграфических материалов: офсетные краски, металлические краски, УФ-краски, производство спеццветов, офсетные полотна и полиграфическая химия.',
+  ar: 'مورد مواد الطباعة وأحبار الأوفست والأحبار المعدنية وأحبار UV وإنتاج الألوان المخصصة وبطانيات الأوفست وكيماويات الطباعة.',
+};
+
+export const LAYOUT_DESCRIPTIONS: Record<string, string> = {
+  tr: 'Türkiye\'nin lider matbaa tedarikçisi. Ofset, metalik, UV mürekkep, özel renk üretimi ve baskı kimyasalları. 1983\'ten beri sektörde.',
+  en: 'Turkey\'s leading printing supplier. Offset, metallic, UV ink, custom color production, and printing chemicals. Since 1983.',
+  ru: 'Ведущий поставщик полиграфических материалов в Турции. Офсетные, металлические, УФ-краски, производство спеццветов. С 1983 года.',
+  ar: 'المورد الرائد لمواد الطباعة في تركيا. أحبار أوفست، معدنية، UV، إنتاج ألوان مخصصة وكيماويات الطباعة. منذ 1983.',
+};
+
+export const LAYOUT_TITLES: Record<string, string> = {
+  tr: 'SIM Baskı Malzemeleri | Ofset Mürekkep & Matbaa',
+  en: 'SIM Printing Supplies | Offset Ink & Printing Materials',
+  ru: 'SIM Печатные Материалы | Офсетные Краски и Полиграфия',
+  ar: 'SIM مستلزمات الطباعة | أحبار الأوفست ومواد الطباعة',
+};
+
 /**
  * Path translations matching i18n/routing.ts pathname config.
  * Maps Turkish (default) paths to their locale equivalents.
@@ -69,7 +140,7 @@ export function getAlternateLanguages(path: string = ''): Record<string, string>
 /**
  * Locale to OpenGraph locale mapping.
  */
-const OG_LOCALES: Record<string, string> = {
+export const OG_LOCALES: Record<string, string> = {
   tr: 'tr_TR',
   en: 'en_US',
   ru: 'ru_RU',
@@ -106,8 +177,7 @@ export function createPageMetadata({
     title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: [
-      'matbaa malzemeleri',
-      'baskı malzemeleri',
+      ...(BASE_KEYWORDS[locale] || BASE_KEYWORDS.tr),
       ...keywords,
     ],
     alternates: {
@@ -118,7 +188,7 @@ export function createPageMetadata({
       title,
       description,
       url: canonical,
-      siteName: 'SIM Baskı Malzemeleri',
+      siteName: BRAND_NAMES[locale] || BRAND_NAMES.tr,
       locale: OG_LOCALES[locale] || 'tr_TR',
       type: 'website',
       images: [

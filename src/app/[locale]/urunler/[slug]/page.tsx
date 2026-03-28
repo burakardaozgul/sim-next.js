@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
 import { products, getProductBySlug } from '@/data/products';
 
@@ -100,6 +100,7 @@ export default async function ProductDetailPage({
   const contactUrl =
     locale === 'tr' ? `${BASE_URL}/iletisim` : `${BASE_URL}/${locale}/iletisim`;
 
+  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -108,13 +109,14 @@ export default async function ProductDetailPage({
     image: product.gallery.length > 0 ? product.gallery.map((img) => `${BASE_URL}${img}`) : [`${BASE_URL}${product.image}`],
     url: productUrl,
     category: categoryLabel,
+    inLanguage: locale,
     brand: {
       '@type': 'Brand',
-      name: 'SIM Baskı Malzemeleri',
+      name: brandName,
     },
     manufacturer: {
       '@type': 'Organization',
-      name: 'SIM Baskı Malzemeleri',
+      name: brandName,
       url: BASE_URL,
     },
     offers: {
