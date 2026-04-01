@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
+import { setLocalePreference } from '@/lib/locale-cookie';
 import { useParams } from 'next/navigation';
 
 const navItems = [
@@ -130,7 +131,10 @@ export default function VerticalNav() {
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   href={localeHref as any}
                   locale={loc}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setLocalePreference(loc);
+                    setMobileOpen(false);
+                  }}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                     loc === locale
                       ? 'bg-gold/10 text-gold ring-1 ring-gold/20'

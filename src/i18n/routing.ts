@@ -6,6 +6,9 @@ export const routing = defineRouting({
   defaultLocale,
   localePrefix: 'as-needed',
   localeDetection: false,
+  localeCookie: {
+    maxAge: 60 * 60 * 24 * 365, // 1 yıl
+  },
   pathnames: {
     '/': '/',
     '/urunler': {
