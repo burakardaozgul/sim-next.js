@@ -48,6 +48,7 @@
     "title": "Our Product Range",
     "subtitle": "A comprehensive portfolio for every printing industry need",
     "viewAll": "View All",
+    "relatedArticles": "Related Articles",
     "categories": {
       "offset": "Offset Inks",
       "metallic": "Metallic / Gold",
@@ -96,7 +97,8 @@
     "title": "Printing Industry Insights & Guides",
     "subtitle": "Expert content from the world of printing and publishing",
     "readMore": "Read More",
-    "viewAll": "All Articles"
+    "viewAll": "All Articles",
+    "relatedProducts": "Related Products"
   },
   "services": {
     "tag": "Our Expertise",

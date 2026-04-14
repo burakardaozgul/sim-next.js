@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
 import { products, getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
+import { blogPosts, BlogPost, getBlogSlug } from '@/data/blog';
 
 export function generateStaticParams() {
   return getAllProductSlugs().map((slug) => ({ slug }));
@@ -57,6 +58,10 @@ export default async function ProductDetailPage({
   if (!product) {
     notFound();
   }
+
+  const relatedBlogData = (product.relatedBlogPosts || [])
+    .map((slug) => blogPosts.find((p) => p.slug === slug))
+    .filter((p): p is BlogPost => p !== undefined);
 
   const name = product.name[locale] || product.name.tr;
   const description = product.description[locale] || product.description.tr;
@@ -143,7 +148,7 @@ export default async function ProductDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <ProductDetailClient product={product} />
+      <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
     </>
   );
 }

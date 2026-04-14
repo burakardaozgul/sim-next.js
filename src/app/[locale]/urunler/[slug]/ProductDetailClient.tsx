@@ -7,10 +7,11 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { Product, products, getProductSlug } from '@/data/products';
+import { type BlogPost, getBlogSlug } from '@/data/blog';
 import { getBlurDataURL } from '@/lib/blur';
-import { ChevronLeft, Check, ArrowRight } from 'lucide-react';
+import { ChevronLeft, Check, ArrowRight, Calendar } from 'lucide-react';
 
-export default function ProductDetailClient({ product }: { product: Product }) {
+export default function ProductDetailClient({ product, relatedBlogPosts = [] }: { product: Product; relatedBlogPosts?: BlogPost[] }) {
   const t = useTranslations('products');
   const tCta = useTranslations('cta');
   const tFooter = useTranslations('footer');
@@ -162,6 +163,60 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <h3 className="text-sm font-semibold text-cream line-clamp-2">
                         {rp.name[locale] || rp.name.tr}
                       </h3>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Related Blog Posts */}
+        {relatedBlogPosts.length > 0 && (
+          <section className="border-t border-white/[0.06] bg-ink-900 px-6 py-16 lg:px-10">
+            <div className="mx-auto max-w-7xl">
+              <h2 className="mb-8 font-heading text-2xl font-bold text-cream">
+                {t('relatedArticles')}
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedBlogPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={{
+                      pathname: '/blog/[slug]',
+                      params: { slug: getBlogSlug(post, locale) },
+                    }}
+                    className="group overflow-hidden rounded-xl border border-white/[0.06] bg-ink-800 transition-all hover:border-gold/20"
+                  >
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title[locale] || post.title.tr}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        placeholder="blur"
+                        blurDataURL={getBlurDataURL(post.image)}
+                      />
+                    </div>
+                    <div className="p-5">
+                      <div className="mb-3 flex items-center gap-2 text-[11px] text-gold/70">
+                        <Calendar size={11} />
+                        {new Date(post.date).toLocaleDateString(
+                          locale === 'tr' ? 'tr-TR' : locale,
+                          { year: 'numeric', month: 'long', day: 'numeric' }
+                        )}
+                      </div>
+                      <h3 className="font-heading text-base font-semibold leading-snug text-cream line-clamp-2 group-hover:text-gold transition-colors">
+                        {post.title[locale] || post.title.tr}
+                      </h3>
+                      <p className="mt-2.5 text-xs leading-relaxed text-silver/60 line-clamp-2">
+                        {post.excerpt[locale] || post.excerpt.tr}
+                      </p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gold/70 transition-colors group-hover:text-gold">
+                        {post.readTime[locale] || post.readTime.tr}
+                        <ArrowRight size={11} className="transition-transform group-hover:translate-x-0.5" />
+                      </span>
                     </div>
                   </Link>
                 ))}

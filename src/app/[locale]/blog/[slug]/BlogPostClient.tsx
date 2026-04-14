@@ -7,6 +7,7 @@ import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { blogPosts, type BlogPost, type ContentBlock, getBlogSlug } from '@/data/blog';
+import { type Product, getProductSlug } from '@/data/products';
 import {
   ChevronLeft,
   Calendar,
@@ -280,7 +281,7 @@ function PostGallery({
 }
 
 /* ─── Main Component ─── */
-export default function BlogPostClient({ post }: { post: BlogPost }) {
+export default function BlogPostClient({ post, relatedProducts = [] }: { post: BlogPost; relatedProducts?: Product[] }) {
   const tCta = useTranslations('cta');
   const tBlog = useTranslations('blog');
   const tNav = useTranslations('nav');
@@ -495,6 +496,47 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                         </div>
                       ))}
                     </dl>
+                  </section>
+                )}
+
+                {/* Related Products */}
+                {relatedProducts.length > 0 && (
+                  <section className="!mt-10" aria-labelledby="related-products-heading">
+                    <h2
+                      id="related-products-heading"
+                      className="mb-6 font-heading text-xl font-bold tracking-tight text-cream md:text-2xl"
+                    >
+                      {tBlog('relatedProducts')}
+                    </h2>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {relatedProducts.map((product) => (
+                        <Link
+                          key={product.slug}
+                          href={{
+                            pathname: '/urunler/[slug]' as any,
+                            params: { slug: getProductSlug(product, locale) },
+                          }}
+                          className="group overflow-hidden rounded-xl border border-white/[0.06] bg-ink-800/50 transition-all duration-300 hover:border-gold/20 hover:shadow-lg hover:shadow-black/20"
+                        >
+                          <div className="relative aspect-[4/3] overflow-hidden">
+                            <Image
+                              src={product.image}
+                              alt={product.name[locale] || product.name.tr}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              placeholder="blur"
+                              blurDataURL={getBlurDataURL(product.image)}
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h3 className="text-sm font-semibold leading-snug text-cream line-clamp-2 group-hover:text-gold transition-colors">
+                              {product.name[locale] || product.name.tr}
+                            </h3>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </section>
                 )}
 

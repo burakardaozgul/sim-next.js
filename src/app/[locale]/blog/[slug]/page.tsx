@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import { blogPosts, getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
+import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
 
 export function generateStaticParams() {
@@ -42,6 +43,10 @@ export default async function BlogPostPage({
   const post = getBlogPostBySlug(slug);
 
   if (!post) notFound();
+
+  const relatedProductData = (post.relatedProducts || [])
+    .map((slug) => products.find((p) => p.slug === slug))
+    .filter((p): p is Product => p !== undefined);
 
   const BASE_URL = 'https://www.simlimited.net';
   const title = post.title[locale] || post.title.tr;
@@ -152,7 +157,7 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <BlogPostClient post={post} />
+      <BlogPostClient post={post} relatedProducts={relatedProductData} />
     </>
   );
 }

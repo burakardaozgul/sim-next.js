@@ -48,6 +48,7 @@
     "title": "Ürün Gamımız",
     "subtitle": "Baskı sektörünün tüm ihtiyaçları için geniş ürün yelpazesi",
     "viewAll": "Tümünü Gör",
+    "relatedArticles": "İlgili Yazılar",
     "categories": {
       "offset": "Offset Mürekkepleri",
       "metallic": "Metalik / Yaldız",
@@ -112,7 +113,8 @@
     "title": "Matbaa ve Baskı Sektörü Rehberi",
     "subtitle": "Baskı ve matbaa dünyasından uzman içerikler",
     "readMore": "Devamını Oku",
-    "viewAll": "Tüm Yazılar"
+    "viewAll": "Tüm Yazılar",
+    "relatedProducts": "İlgili Ürünler"
   },
   "services": {
     "tag": "Uzmanlık Alanlarımız",
