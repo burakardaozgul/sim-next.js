@@ -473,5 +473,10 @@
     "ctaTitle": "İstanbul'da Matbaa Malzemeleri İçin Bizi Arayın",
     "ctaText": "Hızlı teslimat ve teknik destek için satış ekibimizle iletişime geçin.",
     "ctaButton": "Hemen Ara"
+  },
+  "glossary": {
+    "title": "Matbaa Terimleri Sözlüğü",
+    "subtitle": "Baskı ve matbaa dünyasının temel kavramları",
+    "noResults": "Terim bulunamadı"
   }
 }

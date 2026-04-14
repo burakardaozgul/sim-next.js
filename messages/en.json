@@ -409,5 +409,10 @@
     "ctaTitle": "Call Us for Printing Materials in Istanbul",
     "ctaText": "Contact our sales team for fast delivery and technical support.",
     "ctaButton": "Call Now"
+  },
+  "glossary": {
+    "title": "Printing Glossary",
+    "subtitle": "Essential terms from the world of printing and press",
+    "noResults": "No terms found"
   }
 }

@@ -89,6 +89,7 @@ const PATH_TRANSLATIONS: Record<string, Record<string, string>> = {
   '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
   '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
   '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
+  '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
 };
 
 /**

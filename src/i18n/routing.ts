@@ -79,6 +79,12 @@ export const routing = defineRouting({
       ru: '/tipografskie-materialy-stambul',
       ar: '/mawad-altibaa-istanbul',
     },
+    '/matbaa-terimleri-sozlugu': {
+      tr: '/matbaa-terimleri-sozlugu',
+      en: '/printing-glossary',
+      ru: '/glossarij-poligrafii',
+      ar: '/mustalahaat-altibaa',
+    },
   },
 });
 
