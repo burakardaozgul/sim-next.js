@@ -120,6 +120,22 @@ export default async function BlogPostPage({
     ],
   };
 
+  const faqJsonLd = post.faq?.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        inLanguage: locale,
+        mainEntity: post.faq.map((item) => ({
+          '@type': 'Question',
+          name: item.q[locale] || item.q.tr,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a[locale] || item.a.tr,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script
@@ -130,6 +146,12 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <BlogPostClient post={post} />
     </>
   );

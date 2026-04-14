@@ -465,6 +465,39 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   <ShareButton title={title} label={shareLabel} />
                 </div>
 
+                {/* FAQ Section */}
+                {post.faq && post.faq.length > 0 && (
+                  <section className="!mt-10" aria-labelledby="faq-heading">
+                    <h2
+                      id="faq-heading"
+                      className="mb-6 font-heading text-xl font-bold tracking-tight text-cream md:text-2xl"
+                    >
+                      {locale === 'tr'
+                        ? 'Sıkça Sorulan Sorular'
+                        : locale === 'ru'
+                          ? 'Часто задаваемые вопросы'
+                          : locale === 'ar'
+                            ? 'الأسئلة الشائعة'
+                            : 'Frequently Asked Questions'}
+                    </h2>
+                    <dl className="space-y-5">
+                      {post.faq.map((item, i) => (
+                        <div
+                          key={i}
+                          className="rounded-xl border border-white/[0.06] bg-ink-800/50 px-6 py-5"
+                        >
+                          <dt className="text-sm font-semibold leading-snug text-cream">
+                            {item.q[locale] || item.q.tr}
+                          </dt>
+                          <dd className="mt-2 text-sm leading-relaxed text-silver/80">
+                            {item.a[locale] || item.a.tr}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </section>
+                )}
+
                 {/* CTA */}
                 <div className="!mt-10 overflow-hidden rounded-2xl border border-gold/15 bg-gradient-to-br from-ink-800 via-ink-800 to-ink-700/30">
                   <div className="relative p-8 md:p-10">
