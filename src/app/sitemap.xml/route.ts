@@ -16,6 +16,9 @@ const pathnames: Record<string, Record<string, string>> = {
   '/sss': { tr: '/sss', en: '/faq', ru: '/voprosy', ar: '/faq' },
   '/gizlilik-politikasi': { tr: '/gizlilik-politikasi', en: '/privacy-policy', ru: '/politika-konfidentsialnosti', ar: '/privacy-policy' },
   '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
+  '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
+  '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
+  '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
 };
 
 function getLocalizedUrl(locale: string, path: string): string {
@@ -52,6 +55,9 @@ export async function GET() {
     { path: '/sss', priority: '0.7', changefreq: 'monthly' },
     { path: '/gizlilik-politikasi', priority: '0.3', changefreq: 'yearly' },
     { path: '/kullanim-kosullari', priority: '0.3', changefreq: 'yearly' },
+    { path: '/matbaa-malzemeleri', priority: '0.9', changefreq: 'weekly' },
+    { path: '/matbaa-malzemeleri-istanbul', priority: '0.8', changefreq: 'monthly' },
+    { path: '/matbaa-terimleri-sozlugu', priority: '0.7', changefreq: 'monthly' },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
