@@ -7,15 +7,20 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
-export default function FAQPageClient() {
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+export default function FAQPageClient({ items: faqItems }: { items: FAQItem[] }) {
   const t = useTranslations('faq');
   const tCta = useTranslations('cta');
   const tFooter = useTranslations('footer');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const items = Array.from({ length: 6 }, (_, i) => ({
-    question: t(`items.${i}.q`),
-    answer: t(`items.${i}.a`),
+  const items = faqItems.map((item) => ({
+    question: item.q,
+    answer: item.a,
   }));
 
   return (

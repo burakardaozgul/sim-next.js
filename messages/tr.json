@@ -12,7 +12,10 @@
     "terms": "Kullanım Koşulları",
     "language": "Dil",
     "directions": "Yol Tarifi",
-    "callNow": "Hemen Ara"
+    "callNow": "Hemen Ara",
+    "printingMaterials": "Matbaa Malzemeleri",
+    "printingMaterialsIstanbul": "İstanbul'da Matbaa Malzemeleri",
+    "printingGlossary": "Matbaa Terimleri Sözlüğü"
   },
   "hero": {
     "seoH1": "Matbaa Malzemeleri & Ofset Mürekkep Tedarikçisi | İstanbul",
@@ -166,7 +169,8 @@
     "phone": "+90 (212) 637 62 49",
     "email": "info@simlimited.net",
     "privacyPolicy": "Gizlilik & Çerez Politikası",
-    "termsOfUse": "Kullanım Koşulları"
+    "termsOfUse": "Kullanım Koşulları",
+    "resources": "Kaynaklar"
   },
   "brandsPage": {
     "title": "Temsilciliklerimiz & Bayiliklerimiz",

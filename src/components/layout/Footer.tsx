@@ -25,6 +25,12 @@ const companyLinks = [
   { labelKey: 'faq', href: '/sss' },
 ] as const;
 
+const resourceLinks = [
+  { labelKey: 'printingMaterials', href: '/matbaa-malzemeleri' },
+  { labelKey: 'printingMaterialsIstanbul', href: '/matbaa-malzemeleri-istanbul' },
+  { labelKey: 'printingGlossary', href: '/matbaa-terimleri-sozlugu' },
+] as const;
+
 export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
@@ -101,6 +107,23 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {companyLinks.map((item) => (
+                <li key={item.labelKey}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-silver transition-colors hover:text-gold"
+                  >
+                    {tNav(item.labelKey)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Resources Sub-section */}
+            <h3 className="mb-5 mt-8 text-sm font-semibold uppercase tracking-wider text-cream">
+              {t('resources')}
+            </h3>
+            <ul className="space-y-2.5">
+              {resourceLinks.map((item) => (
                 <li key={item.labelKey}>
                   <Link
                     href={item.href}

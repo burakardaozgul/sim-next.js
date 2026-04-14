@@ -12,7 +12,10 @@
     "terms": "Условия использования",
     "language": "Язык",
     "directions": "Маршрут",
-    "callNow": "Позвонить"
+    "callNow": "Позвонить",
+    "printingMaterials": "Полиграфические материалы",
+    "printingMaterialsIstanbul": "Полиграфия в Стамбуле",
+    "printingGlossary": "Глоссарий полиграфии"
   },
   "hero": {
     "seoH1": "Типографские материалы и офсетные краски | Стамбул, Турция",
@@ -150,7 +153,8 @@
     "phone": "+90 (212) 637 62 49",
     "email": "info@simlimited.net",
     "privacyPolicy": "Политика конфиденциальности",
-    "termsOfUse": "Условия использования"
+    "termsOfUse": "Условия использования",
+    "resources": "Ресурсы"
   },
   "brandsPage": {
     "title": "Наши представительства и дилерства",

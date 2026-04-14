@@ -12,7 +12,10 @@
     "terms": "Terms of Use",
     "language": "Language",
     "directions": "Directions",
-    "callNow": "Call Now"
+    "callNow": "Call Now",
+    "printingMaterials": "Printing Materials",
+    "printingMaterialsIstanbul": "Printing Materials Istanbul",
+    "printingGlossary": "Printing Glossary"
   },
   "hero": {
     "seoH1": "Printing Materials & Offset Ink Supplier | Istanbul, Turkey",
@@ -150,7 +153,8 @@
     "phone": "+90 (212) 637 62 49",
     "email": "info@simlimited.net",
     "privacyPolicy": "Privacy & Cookie Policy",
-    "termsOfUse": "Terms of Use"
+    "termsOfUse": "Terms of Use",
+    "resources": "Resources"
   },
   "brandsPage": {
     "title": "Our Representatives & Dealerships",

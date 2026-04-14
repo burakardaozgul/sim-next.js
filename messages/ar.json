@@ -12,7 +12,10 @@
     "terms": "شروط الاستخدام",
     "language": "اللغة",
     "directions": "الاتجاهات",
-    "callNow": "اتصل الآن"
+    "callNow": "اتصل الآن",
+    "printingMaterials": "مواد الطباعة",
+    "printingMaterialsIstanbul": "مواد الطباعة في إسطنبول",
+    "printingGlossary": "مصطلحات الطباعة"
   },
   "hero": {
     "seoH1": "مواد الطباعة وأحبار الأوفست | إسطنبول، تركيا",
@@ -150,7 +153,8 @@
     "phone": "+90 (212) 637 62 49",
     "email": "info@simlimited.net",
     "privacyPolicy": "سياسة الخصوصية",
-    "termsOfUse": "شروط الاستخدام"
+    "termsOfUse": "شروط الاستخدام",
+    "resources": "الموارد"
   },
   "brandsPage": {
     "title": "تمثيلاتنا ووكالاتنا",
