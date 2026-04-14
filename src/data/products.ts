@@ -7,6 +7,7 @@ export interface Product {
   name: Record<string, string>;
   description: Record<string, string>;
   features?: Record<string, string[]>;
+  relatedBlogPosts?: string[];
 }
 
 export const products: Product[] = [
@@ -31,6 +32,7 @@ export const products: Product[] = [
       ru: 'Серия флуоресцентных красок EVA COLOR обеспечивает яркие и привлекательные цвета в офсетной печати. Высокое качество печати и производительность чернил отвечают требованиям полиграфической отрасли.',
       ar: 'توفر سلسلة الأحبار الفلورية EVA COLOR ألوانًا نابضة بالحياة وملفتة للنظر في الطباعة الأوفست. بجودة طباعة عالية وأداء حبر متميز.',
     },
+    relatedBlogPosts: ['floresan-murekkepler-uygulama-rehberi', 'ofset-murekkep-secimi'],
   },
   {
     slug: 'eva-color-gold-metalik-murekkepler',
@@ -57,6 +59,7 @@ export const products: Product[] = [
       ru: 'Серия золотых металлических красок EVA COLOR обеспечивает превосходный блеск и глубину цвета в офсетной печати. Производится в оттенках PANTONE 873-876.',
       ar: 'توفر سلسلة الأحبار المعدنية الذهبية EVA COLOR لمعانًا فائقًا وعمقًا في الألوان في الطباعة الأوفست. تُنتج بدرجات PANTONE 873-876.',
     },
+    relatedBlogPosts: ['yaldiz-baski-teknikleri-altin-gumus', 'metalik-murekkep-uretimi'],
   },
   {
     slug: 'sakata-inx-cmyk-murekkepler',
@@ -84,6 +87,7 @@ export const products: Product[] = [
       ru: ['Дистрибьютор в Турции с 2002 г.', 'Яркие цвета и чёткие детали', 'Стабильная воспроизводимость', 'Брошюры, упаковка, этикетки'],
       ar: ['موزع في تركيا منذ 2002', 'ألوان نابضة بالحياة وتفاصيل حادة', 'قابلية تكرار ثابتة', 'كتيبات، تغليف، ملصقات'],
     },
+    relatedBlogPosts: ['icc-profil-ofset-baskida-renk-yonetimi', 'cmyk-vs-spot-renk-karsilastirma', 'ofset-baskida-murekkep-kuruma-sorunlari'],
   },
   {
     slug: 'ozel-renkler',
@@ -111,6 +115,7 @@ export const products: Product[] = [
       ru: ['Лаборатория 24/7', 'Производство УФ-красок', 'Производство обычных красок', 'Подбор по образцам', 'Подбор по каталогам', 'Формулировка по LAB-значениям'],
       ar: ['مختبر إنتاج 24/7', 'إنتاج أحبار UV', 'إنتاج أحبار تقليدية', 'مطابقة من عينات طبيعية', 'مطابقة من كتالوجات', 'صياغة بقيم LAB رقمية'],
     },
+    relatedBlogPosts: ['ozel-renk-eslestirme', 'pantone-renk-sistemi-rehberi', 'cmyk-vs-spot-renk-karsilastirma'],
   },
   {
     slug: 'vector-baski-blanketleri',
@@ -139,6 +144,7 @@ export const products: Product[] = [
       ru: ['Превосходный перенос краски', 'Высокая резкость точки', 'Долгосрочная размерная стабильность', 'Надёжная высокоскоростная печать', 'Максимальная производственная эффективность'],
       ar: ['نقل حبر ممتاز', 'وضوح نقطي عالٍ', 'استقرار أبعاد طويل الأمد', 'أداء موثوق عالي السرعة', 'كفاءة إنتاج قصوى'],
     },
+    relatedBlogPosts: ['baski-blanket-secimi-ve-bakimi'],
   },
   {
     slug: 'eva-color-silver-metalik-murekkepler',
@@ -160,6 +166,7 @@ export const products: Product[] = [
       ru: 'Серия серебряных металлических красок EVA COLOR обеспечивает превосходный блеск и укрывистость в серебряных тонах. Высокая эффективность в упаковке и этикетке.',
       ar: 'توفر سلسلة الأحبار المعدنية الفضية EVA COLOR لمعانًا فائقًا وتغطية في الدرجات الفضية.',
     },
+    relatedBlogPosts: ['yaldiz-baski-teknikleri-altin-gumus', 'metalik-murekkep-uretimi'],
   },
   {
     slug: 'zeller-gmelin-uv-offset-murekkepleri',
@@ -182,6 +189,7 @@ export const products: Product[] = [
       ru: 'Немецкий производитель Zeller+Gmelin — мировой лидер в производстве высококачественных УФ-офсетных красок. Широкий ассортимент продукции предлагает передовые технологические решения.',
       ar: 'الشركة الألمانية Zeller+Gmelin رائدة عالميًا في إنتاج أحبار الأوفست فوق البنفسجية عالية الجودة.',
     },
+    relatedBlogPosts: ['uv-murekkep-teknolojisi', 'ofset-baskida-murekkep-kuruma-sorunlari', 'gida-ambalajinda-guvenli-baski-murekkeleri'],
   },
   {
     slug: 'sakata-inx-pantone-murekkepler',
@@ -209,6 +217,7 @@ export const products: Product[] = [
       ru: ['Соответствие стандартам PANTONE', 'Яркие цвета и чёткие детали', 'Стабильная воспроизводимость', 'Брошюры, упаковка и этикетки', 'Производство специальных цветов'],
       ar: ['متوافق مع معايير PANTONE الدولية', 'ألوان نابضة بالحياة وتفاصيل حادة', 'قابلية تكرار ثابتة', 'كتيبات وتغليف وملصقات', 'إنتاج ألوان مخصصة متاح'],
     },
+    relatedBlogPosts: ['pantone-renk-sistemi-rehberi', 'cmyk-vs-spot-renk-karsilastirma', 'ozel-renk-eslestirme'],
   },
   {
     slug: 'hi-tech-coatings-dispersiyon-lak',
@@ -237,6 +246,7 @@ export const products: Product[] = [
       ru: ['Улучшает внешний вид', 'Высокая стойкость к трению', 'Покрытие Soft Touch', 'Покрытие Primer', 'Покрытие Barrier'],
       ar: ['يعزز مظهر الطباعة', 'مقاومة احتكاك فائقة', 'طلاء Soft Touch', 'طلاء Primer', 'طلاء Barrier'],
     },
+    relatedBlogPosts: ['ofset-baskida-murekkep-kuruma-sorunlari', 'gida-ambalajinda-guvenli-baski-murekkeleri'],
   },
   {
     slug: 'schlenk-metalik-murekkepler',
@@ -259,6 +269,7 @@ export const products: Product[] = [
       ru: 'Серия металлических красок SCHLENK производится с точностью немецкой инженерии. Высокий блеск, превосходная укрывистость и стабильное качество цвета.',
       ar: 'تُنتج سلسلة أحبار SCHLENK المعدنية بدقة الهندسة الألمانية. لمعان عالٍ وتغطية فائقة وجودة لون ثابتة.',
     },
+    relatedBlogPosts: ['metalik-murekkep-uretimi', 'yaldiz-baski-teknikleri-altin-gumus'],
   },
 ];
 

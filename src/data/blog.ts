@@ -10,6 +10,8 @@ export interface BlogPost {
   excerpt: Record<string, string>;
   content: Record<string, ContentBlock[]>;
   keywords: string[];
+  faq?: Array<{ q: Record<string, string>; a: Record<string, string> }>;
+  relatedProducts?: string[];
 }
 
 export interface ContentBlock {
@@ -104,7 +106,22 @@ export const blogPosts = ([
         { type: 'paragraph', text: 'هل يمكن استخدام مقياس الكثافة بدلاً من مقياس الطيف الضوئي؟ لا — يقيس مقياس الكثافة الكثافة الضوئية فحسب وغير مناسب لإنشاء ملفات ICC. هل يلزم ملف جديد عند تغيير ماركة الحبر؟ نعم — الملف صالح للسلسلة المحددة من الأحبار المستخدمة في القياس. ما الدقة المستهدفة في Delta E؟ تُجيز ISO 12647-2 متوسط Delta E ≤ 3 للطباعة الأوفست؛ يجب أن تستهدف الطباعة الراقية ≤ 2؛ والألوان المرجعية الحساسة يُفضَّل أن تكون < 1. يحقق مختبر SIM بانتظام Delta E < 1 في إنتاج الألوان الخاصة.' },
       ],
     },
+    faq: [
+      {
+        q: { tr: 'ICC profil nedir?', en: 'What is an ICC profile?', ru: 'Что такое ICC-профиль?', ar: 'ما هو ملف ICC؟' },
+        a: { tr: 'ICC profil, farklı cihazlar arasında renk tutarlılığını sağlayan standart bir renk yönetim dosyasıdır. Tasarımcının monitöründen ofset baskı makinesine kadar her adımda renklerin doğru aktarılmasını mümkün kılar.', en: 'An ICC profile is a standard color management file that ensures color consistency across different devices — from the designer\'s monitor to the offset printing press.', ru: 'ICC-профиль — стандартный файл управления цветом, обеспечивающий согласованность цвета между устройствами: от монитора дизайнера до офсетной машины.', ar: 'ملف ICC هو ملف قياسي لإدارة الألوان يضمن اتساق اللون بين الأجهزة المختلفة، من شاشة المصمم إلى آلة الطباعة الأوفست.' },
+      },
+      {
+        q: { tr: 'FOGRA39 ve FOGRA51 arasındaki fark nedir?', en: 'What is the difference between FOGRA39 and FOGRA51?', ru: 'В чём разница между FOGRA39 и FOGRA51?', ar: 'ما الفرق بين FOGRA39 وFOGRA51؟' },
+        a: { tr: 'FOGRA39 (ISOcoated_v2), 2006\'dan bu yana yaygın kullanılan Avrupa ofset standardıdır. FOGRA51, 2015\'te yayımlanan güncel standarttır; daha geniş renk gamı ve gelişmiş kağıt simülasyonu sunar. Yeni kurulumlar için FOGRA51 tercih edilir.', en: 'FOGRA39 (ISOcoated_v2) is the widely-used European offset standard since 2006. FOGRA51, released in 2015, offers a wider color gamut and improved paper simulation. New setups should prefer FOGRA51.', ru: 'FOGRA39 (ISOcoated_v2) — распространённый европейский офсетный стандарт с 2006 года. FOGRA51 (2015) предлагает более широкую цветовую гамму и улучшенную симуляцию бумаги. Для новых установок рекомендуется FOGRA51.', ar: 'FOGRA39 (ISOcoated_v2) هو المعيار الأوروبي الشائع للأوفست منذ 2006. FOGRA51 (2015) يوفر طيف ألوان أوسع ومحاكاة أفضل للورق. يُنصح بـ FOGRA51 للإعدادات الجديدة.' },
+      },
+      {
+        q: { tr: 'Delta E değeri ofset baskıda ne kadar olmalıdır?', en: 'What Delta E value should be targeted in offset printing?', ru: 'Какое значение Delta E должно быть в офсетной печати?', ar: 'ما قيمة Delta E المستهدفة في الطباعة الأوفست؟' },
+        a: { tr: 'ISO 12647-2 standardı ortalama Delta E ≤ 3 kabul eder. Premium ve marka baskılarında Delta E ≤ 2 hedeflenmeli; kritik spot renkler için Delta E < 1 idealdir. SIM laboratuvarı özel renk üretiminde Delta E < 1\'i rutin hedef almaktadır.', en: 'ISO 12647-2 accepts average Delta E ≤ 3. Premium and brand work should target ≤ 2; critical spot colors ideally < 1. SIM\'s laboratory routinely achieves Delta E < 1 for custom color production.', ru: 'ISO 12647-2 допускает среднее Delta E ≤ 3. Для премиальной и брендовой печати целевое значение ≤ 2; для критических плашечных цветов идеально < 1. Лаборатория SIM регулярно достигает Delta E < 1.', ar: 'تقبل ISO 12647-2 متوسط Delta E ≤ 3. يجب أن تستهدف الطباعة الراقية ≤ 2، والألوان المرجعية الحساسة < 1. يحقق مختبر SIM بانتظام Delta E < 1 في إنتاج الألوان الخاصة.' },
+      },
+    ],
     keywords: ['ICC profil', 'ofset baskıda renk yönetimi', 'FOGRA39', 'FOGRA51', 'GRACoL', 'Delta E', 'ISO 12647-2'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'ozel-renkler', 'zeller-gmelin-uv-offset-murekkepleri'],
   },
   {
     slug: 'yaldiz-baski-teknikleri-altin-gumus',
@@ -193,7 +210,22 @@ export const blogPosts = ([
         { type: 'paragraph', text: 'Pantone 871: ذهبي فاتح؛ 872-873: ذهبي متوسط للتجميل؛ 874: ذهبي دافئ ساطع، معيار التغليف الفاخر؛ 875-876: ذهبي داكن برونزي؛ 877: فضي (قاعدة ألومنيوم). لا يمكن إنتاج أي من هذه الألوان بمزيج CMYK — يلزم استخدام أحبار معدنية مخصصة. EVA COLOR Gold على ورق مطلي لامع: 85-95 وحدة لمعان؛ مع ورنيش UV عالي اللمعان: أكثر من 100 وحدة. الورنيش المطفأ يُقلل اللمعان المعدني بشكل ملحوظ. أحبار التشطيب Hi-Tech Coatings متوافقة مع EVA COLOR Gold وSilver. الحد الأدنى للإنتاج المخصص 5 كجم، وقت التسليم 4-8 ساعات. لأنظمة UV الأوفست مطلوبة تركيبات UV-cure معدنية — SIM يوفر سلسلة Zeller+Gmelin UV Metal.' },
       ],
     },
+    faq: [
+      {
+        q: { tr: 'Altın ve gümüş metalik renkler CMYK ile basılabilir mi?', en: 'Can gold and silver metallic colors be printed with CMYK?', ru: 'Можно ли напечатать золотые и серебряные цвета с помощью CMYK?', ar: 'هل يمكن طباعة الألوان الذهبية والفضية المعدنية باستخدام CMYK؟' },
+        a: { tr: 'Hayır. CMYK karışımı metalik parlaklık efekti veremez. Altın ve gümüş baskı için alüminyum/bronz pigment içeren özel metalik mürekkepler (EVA COLOR Gold/Silver veya PANTONE 871-877 serisi) kullanılmalıdır.', en: 'No. CMYK mixing cannot replicate metallic brilliance. Gold and silver printing requires dedicated metallic inks containing aluminum or bronze pigments — such as EVA COLOR Gold/Silver or the PANTONE 871-877 series.', ru: 'Нет. Смешивание CMYK не может воспроизвести металлический блеск. Для золотой и серебряной печати требуются специальные металлические краски с пигментами из алюминия или бронзы.', ar: 'لا. لا يستطيع خلط CMYK محاكاة البريق المعدني. تتطلب الطباعة الذهبية والفضية أحباراً معدنية متخصصة تحتوي على صبغات الألومنيوم أو البرونز.' },
+      },
+      {
+        q: { tr: 'Metalik mürekkeplerde en iyi parlaklık hangi kağıt türüyle elde edilir?', en: 'Which paper type gives the best brilliance with metallic inks?', ru: 'На какой бумаге достигается наибольший блеск металлических красок?', ar: 'أي نوع من الورق يعطي أفضل لمعان مع الأحبار المعدنية؟' },
+        a: { tr: 'Parlak kuşe kağıt en yüksek metalik parlaklığı sağlar (85-95 parlaklık birimi). Mat kuşe kağıt metalik efekti belirgin biçimde azaltır. UV vernik uygulaması parlaklığı 100 birimin üzerine çıkarabilir.', en: 'Glossy coated paper delivers the highest metallic brilliance (85-95 gloss units). Matte coated paper significantly reduces the metallic effect. A UV varnish application can push gloss above 100 units.', ru: 'Глянцевая мелованная бумага обеспечивает наибольший металлический блеск (85–95 единиц глянца). Матовая бумага заметно снижает эффект. Нанесение УФ-лака позволяет превысить 100 единиц.', ar: 'يوفر الورق المطلي اللامع أعلى لمعان معدني (85-95 وحدة لمعان). يُقلل الورق المطفأ التأثير المعدني بشكل ملحوظ. يمكن لطلاء UV رفع اللمعان فوق 100 وحدة.' },
+      },
+      {
+        q: { tr: 'Pantone 871-876 serisi ile EVA COLOR Gold arasındaki fark nedir?', en: 'What is the difference between Pantone 871-876 and EVA COLOR Gold?', ru: 'В чём разница между Pantone 871-876 и EVA COLOR Gold?', ar: 'ما الفرق بين سلسلة Pantone 871-876 وEVA COLOR Gold؟' },
+        a: { tr: 'Pantone 871-876 uluslararası standart altın renkleri tanımlar (açık altından koyu bronza). EVA COLOR Gold ise bu standartlarla uyumlu, ofset baskı için formüle edilmiş hazır metalik mürekkeptir. SIM her iki seçeneği de stoktan temin edebilir.', en: 'Pantone 871-876 defines international standard gold shades (from light gold to dark bronze). EVA COLOR Gold is a ready-to-use metallic offset ink formulated to match these standards. SIM supplies both options from stock.', ru: 'Pantone 871-876 определяет международные стандарты золотых оттенков (от светлого золота до тёмной бронзы). EVA COLOR Gold — готовая металлическая офсетная краска, соответствующая этим стандартам. SIM поставляет оба варианта со склада.', ar: 'تُحدِّد Pantone 871-876 معايير الألوان الذهبية الدولية (من الذهبي الفاتح إلى البرونزي الداكن). EVA COLOR Gold هو حبر أوفست معدني جاهز للاستخدام متوافق مع هذه المعايير. تُوفر SIM كلا الخيارين من المخزون.' },
+      },
+    ],
     keywords: ['yaldız baskı', 'altın metalik mürekkep', 'gümüş metalik baskı', 'EVA COLOR Gold', 'PANTONE 871-876', 'metalik ofset mürekkep', 'SCHLENK metalik pigment'],
+    relatedProducts: ['eva-color-gold-metalik-murekkepler', 'eva-color-silver-metalik-murekkepler', 'schlenk-metalik-murekkepler'],
   },
   {
     slug: 'floresan-murekkepler-uygulama-rehberi',
@@ -286,7 +318,22 @@ export const blogPosts = ([
         { type: 'paragraph', text: 'هل يمكن استخدام الأحبار الفلورية في آلات الأوفست القياسية؟ نعم، وهي متوافقة تماماً مع المعدات القياسية وتتطلب فقط وحدة حبر منفصلة (اللون الخامس أو السادس). كيف يُقاس اللون الفلوري بدقة؟ يجب استخدام شرط القياس M1 وفق ISO 13655 — الشروط القياسية M0/M2 تُعطي نتائج غير موثوقة للمواد الفلورية. للطلب: تتوفر سلسلة EVA COLOR الفلورية من المخزون، وللألوان المخصصة يكفي إرسال رقم Pantone أو عينة اللون المرجعية.' },
       ],
     },
+    faq: [
+      {
+        q: { tr: 'Floresan mürekkepler standart ofset makinelerinde kullanılabilir mi?', en: 'Can fluorescent inks be used on standard offset machines?', ru: 'Можно ли использовать флуоресцентные краски на стандартных офсетных машинах?', ar: 'هل يمكن استخدام الأحبار الفلورية على آلات الأوفست القياسية؟' },
+        a: { tr: 'Evet. Floresan mürekkepler standart ofset ekipmanlarıyla tam uyumludur. Ancak ayrı bir mürekkep ünitesi (5. veya 6. renk grubu) gerektirir; CMYK ile aynı renk grubunda karıştırılmamalıdır.', en: 'Yes. Fluorescent inks are fully compatible with standard offset equipment. However, a separate ink unit (5th or 6th color group) is required — they must not be mixed in the same unit as CMYK.', ru: 'Да. Флуоресцентные краски полностью совместимы со стандартным офсетным оборудованием. Однако требуется отдельная красочная секция (5-я или 6-я), смешивание с CMYK в одной секции недопустимо.', ar: 'نعم. الأحبار الفلورية متوافقة تماماً مع معدات الأوفست القياسية. غير أنها تتطلب وحدة حبر منفصلة (المجموعة اللونية الخامسة أو السادسة) ولا يجوز خلطها مع CMYK في نفس الوحدة.' },
+      },
+      {
+        q: { tr: 'Floresan renkleri nasıl doğru şekilde ölçebilirim?', en: 'How do I accurately measure fluorescent colors?', ru: 'Как точно измерить флуоресцентные цвета?', ar: 'كيف أقيس الألوان الفلورية بدقة؟' },
+        a: { tr: 'ISO 13655 standardına göre M1 ölçüm koşulu kullanılmalıdır. Standart M0/M2 koşulları floresan materyaller için güvenilmez sonuçlar verir. Spektrofotometre ile ölçüm şarttır; densitometre yetersiz kalır.', en: 'The M1 measurement condition per ISO 13655 must be used. Standard M0/M2 conditions give unreliable results for fluorescent materials. Spectrophotometer measurement is mandatory; densitometers are insufficient.', ru: 'Необходимо использовать условие измерения M1 по ISO 13655. Стандартные условия M0/M2 дают ненадёжные результаты для флуоресцентных материалов. Обязателен спектрофотометр; денситометра недостаточно.', ar: 'يجب استخدام شرط القياس M1 وفق ISO 13655. تُعطي الشروط القياسية M0/M2 نتائج غير موثوقة للمواد الفلورية. يُشترط استخدام مقياس الطيف الضوئي؛ مقياس الكثافة غير كافٍ.' },
+      },
+      {
+        q: { tr: 'Floresan mürekkeplerle hangi uygulamalar yapılabilir?', en: 'What applications are possible with fluorescent inks?', ru: 'Какие применения возможны с флуоресцентными красками?', ar: 'ما التطبيقات الممكنة مع الأحبار الفلورية؟' },
+        a: { tr: 'Floresan mürekkepler güvenlik baskısı (sahtecilik önleme), ambalaj cazibi artırma, promosyon materyalleri, spor ve etkinlik malzemeleri, çocuk ürün ambalajları ve UV ışığı altında parlaması gereken her türlü baskıda kullanılır.', en: 'Fluorescent inks are used in security printing (anti-counterfeiting), packaging appeal enhancement, promotional materials, sports and event merchandise, children\'s product packaging, and any print application requiring visibility under UV light.', ru: 'Флуоресцентные краски применяются в защитной печати (защита от подделок), повышении привлекательности упаковки, промо-материалах, спортивных товарах, упаковке детских товаров и везде, где требуется видимость в УФ-свете.', ar: 'تُستخدم الأحبار الفلورية في الطباعة الأمنية (مكافحة التزوير)، وتعزيز جاذبية الأغلفة، والمواد الترويجية، ومستلزمات الرياضة والفعاليات، وعبوات منتجات الأطفال، وكل تطبيق يستلزم الظهور تحت ضوء UV.' },
+      },
+    ],
     keywords: ['floresan mürekkep', 'floresan baskı', 'EVA COLOR floresan', 'neon mürekkep', 'parlak ofset mürekkep', 'Pantone 800 serisi', 'fluorescent offset ink'],
+    relatedProducts: ['eva-color-fluorescent-murekkepler', 'sakata-inx-cmyk-murekkepler'],
   },
   {
     slug: 'pantone-renk-sistemi-rehberi',
@@ -384,6 +431,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['pantone renk sistemi', 'pantone nedir', 'PMS pantone', 'coated uncoated fark', 'pantone renk eşleştirme', 'spot renk', 'matbaada pantone'],
+    relatedProducts: ['sakata-inx-pantone-murekkepler', 'ozel-renkler'],
   },
   {
     slug: 'cmyk-vs-spot-renk-karsilastirma',
@@ -494,6 +542,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['CMYK spot renk farkı', 'pantone ile CMYK karşılaştırma', 'ne zaman spot renk kullanılır', 'marka rengi baskı', 'SAKATA INX PANTONE', 'özel renk üretimi'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'ozel-renkler'],
   },
   {
     slug: 'ofset-baskida-murekkep-kuruma-sorunlari',
@@ -593,6 +642,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['mürekkep kuruma sorunları', 'ofset baskı kuruma', 'set-off sorunu', 'tack değeri', 'ISO 2846', 'chalking tebeşirlenme'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'zeller-gmelin-uv-offset-murekkepleri', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'uv-murekkep-teknolojisi',
@@ -720,6 +770,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['UV mürekkep', 'baskı mürekkepleri', 'UV teknoloji', 'hızlı kuruma', 'ofset mürekkep', 'baskı kalitesi'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'ozel-renkler'],
   },
   {
     slug: 'baski-blanket-secimi-ve-bakimi',
@@ -845,6 +896,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['baskı blanket', 'blanket seçimi', 'baskı malzemeleri', 'ofset baskı', 'blanket bakımı', 'matbaa sarf'],
+    relatedProducts: ['vector-baski-blanketleri'],
   },
   {
     slug: 'gida-ambalajinda-guvenli-baski-murekkeleri',
@@ -972,6 +1024,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['gıda ambalajı', 'mürekkep seçimi', 'gıda güvenliği', 'EU standart', 'baskı mürekkepleri', 'ambalaj'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'sakata-inx-cmyk-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'ofset-murekkep-secimi',
@@ -1080,6 +1133,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['ofset mürekkep', 'mürekkep seçimi', 'baskı kalitesi', 'SAKATA INX', 'CMYK mürekkep'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'eva-color-fluorescent-murekkepler', 'zeller-gmelin-uv-offset-murekkepleri'],
   },
   {
     slug: 'metalik-murekkep-uretimi',
@@ -1168,6 +1222,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['metalik mürekkep', 'yaldız mürekkep', 'EVAcolor', 'altın mürekkep', 'SCHLENK'],
+    relatedProducts: ['schlenk-metalik-murekkepler', 'eva-color-gold-metalik-murekkepler', 'eva-color-silver-metalik-murekkepler'],
   },
   {
     slug: 'ozel-renk-eslestirme',
@@ -1253,6 +1308,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['renk eşleştirme', 'özel renk', 'L-A-B formülasyon', 'Pantone renk', 'spot renk'],
+    relatedProducts: ['ozel-renkler', 'sakata-inx-pantone-murekkepler', 'sakata-inx-cmyk-murekkepler'],
   },
 ] as BlogPost[]);
 
