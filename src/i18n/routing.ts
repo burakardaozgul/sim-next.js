@@ -67,6 +67,18 @@ export const routing = defineRouting({
       ru: '/usloviya-ispolzovaniya',
       ar: '/terms-of-use',
     },
+    '/matbaa-malzemeleri': {
+      tr: '/matbaa-malzemeleri',
+      en: '/printing-materials',
+      ru: '/poligraficheskie-materialy',
+      ar: '/mawad-altibaa',
+    },
+    '/matbaa-malzemeleri-istanbul': {
+      tr: '/matbaa-malzemeleri-istanbul',
+      en: '/printing-materials-istanbul',
+      ru: '/tipografskie-materialy-stambul',
+      ar: '/mawad-altibaa-istanbul',
+    },
   },
 });
 
