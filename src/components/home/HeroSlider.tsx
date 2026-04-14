@@ -123,7 +123,9 @@ export default function HeroSlider() {
                 {t('tag')}
               </motion.p>
 
-              <motion.h1
+              <motion.p
+                role="heading"
+                aria-level={2}
                 variants={textVariants}
                 initial="hidden"
                 animate="visible"
@@ -131,7 +133,7 @@ export default function HeroSlider() {
                 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-cream uppercase line-clamp-2 md:text-5xl lg:text-6xl"
               >
                 {t(`slides.${current}.title`).replace('\n', ' ')}
-              </motion.h1>
+              </motion.p>
 
               <motion.p
                 variants={textVariants}

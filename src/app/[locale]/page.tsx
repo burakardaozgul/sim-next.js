@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import { getTranslations } from 'next-intl/server';
 import { createPageMetadata } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import HeroSlider from '@/components/home/HeroSlider';
@@ -70,7 +71,9 @@ export async function generateMetadata({
   });
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getTranslations('hero');
+
   return (
     <main className="flex min-h-screen">
       {/* Vertical Navigation */}
@@ -78,6 +81,7 @@ export default function HomePage() {
 
       {/* Main Content - offset by nav width on desktop */}
       <div className="w-full overflow-x-hidden lg:ml-[260px]">
+        <h1 className="sr-only">{t('seoH1')}</h1>
         <HeroSlider />
         <FadeInSection>
           <ProductsSection />
