@@ -15,13 +15,6 @@ const SLIDE_IMAGES = [
   '/slider/baski-gorsel.webp',
 ];
 
-const SLIDE_ALTS = [
-  'SIM Baskı Malzemeleri - Matbaa malzemeleri ve ofset mürekkep üretim tesisi',
-  'SIM Baskı Malzemeleri - Özel renk üretimi laboratuvarı ve renk eşleştirme',
-  'SIM Baskı Malzemeleri - DAIHAN DEERS UV ve LED-UV mürekkep teknolojileri',
-  'SIM Baskı Malzemeleri - SAKATA INX ofset mürekkep teknolojileri',
-];
-
 const SLIDE_LINKS = ['/urunler', '/ozel-renk-uretimi', '/urunler', '/urunler'] as const;
 
 const AUTO_PLAY_INTERVAL = 6000;
@@ -100,7 +93,7 @@ export default function HeroSlider() {
         >
           <Image
             src={SLIDE_IMAGES[current]}
-            alt={SLIDE_ALTS[current]}
+            alt={t(`slides.${current}.alt`)}
             fill
             className="object-cover"
             priority={current === 0}
@@ -123,9 +116,7 @@ export default function HeroSlider() {
                 {t('tag')}
               </motion.p>
 
-              <motion.p
-                role="heading"
-                aria-level={2}
+              <motion.h2
                 variants={textVariants}
                 initial="hidden"
                 animate="visible"
@@ -133,7 +124,7 @@ export default function HeroSlider() {
                 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-cream uppercase line-clamp-2 md:text-5xl lg:text-6xl"
               >
                 {t(`slides.${current}.title`).replace('\n', ' ')}
-              </motion.p>
+              </motion.h2>
 
               <motion.p
                 variants={textVariants}

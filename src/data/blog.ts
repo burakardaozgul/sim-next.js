@@ -1,3 +1,5 @@
+import { newPosts } from './new-posts';
+
 export interface BlogPost {
   slug: string;
   slugs: Record<string, string>;
@@ -2159,7 +2161,7 @@ export const blogPosts = ([
     keywords: ['renk eşleştirme', 'özel renk', 'L-A-B formülasyon', 'Pantone renk', 'spot renk'],
     relatedProducts: ['ozel-renkler', 'sakata-inx-pantone-murekkepler', 'sakata-inx-cmyk-murekkepler'],
   },
-] as BlogPost[]);
+] as BlogPost[]).concat(newPosts);
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(

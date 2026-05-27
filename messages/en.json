@@ -28,22 +28,26 @@
       {
         "title": "CUSTOM COLOR\nPRODUCTION",
         "subtitle": "With a monthly capacity of 15,000 kg, we deliver the color you need, when you need it.",
-        "cta": "Learn More"
+        "cta": "Learn More",
+        "alt": "SIM Printing Supplies - Custom Color Production Laboratory"
       },
       {
         "title": "METALLIC (GOLD)\nINK PRODUCTION",
         "subtitle": "High quality metallic ink series suitable for offset technology, providing solutions for the industry.",
-        "cta": "Explore Products"
+        "cta": "Explore Products",
+        "alt": "SIM Printing Supplies - Metallic and Gold Ink Production"
       },
       {
         "title": "DAIHAN UV & LED-UV\nINK TECHNOLOGIES",
         "subtitle": "Developed with South Korean technology, DAIHAN (DEERS) UV and LED-UV inks deliver next-generation performance in commercial and packaging printing with instant curing, superior surface resistance, and high energy efficiency.",
-        "cta": "Learn More"
+        "cta": "Learn More",
+        "alt": "SIM Printing Supplies - DAIHAN UV and LED-UV Ink Technologies"
       },
       {
         "title": "SAKATA INX\nOFFSET INK TECHNOLOGIES",
         "subtitle": "SAKATA's offset inks, developed with Japanese engineering, offer high efficiency, balanced print performance, and reliable quality. As Turkey's representative, we combine this performance with local technical support and application expertise.",
-        "cta": "Learn More"
+        "cta": "Learn More",
+        "alt": "SIM Printing Supplies - SAKATA INX Offset Ink Technologies"
       }
     ]
   },
