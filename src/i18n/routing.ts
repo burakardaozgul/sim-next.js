@@ -79,6 +79,12 @@ export const routing = defineRouting({
       ru: '/tipografskie-materialy-stambul',
       ar: '/mawad-altibaa-istanbul',
     },
+    '/ofset-baski-malzemeleri': {
+      tr: '/ofset-baski-malzemeleri',
+      en: '/offset-printing-supplies',
+      ru: '/materialy-ofsetnoj-pechati',
+      ar: '/mawad-tibaat-offset',
+    },
     '/matbaa-terimleri-sozlugu': {
       tr: '/matbaa-terimleri-sozlugu',
       en: '/printing-glossary',

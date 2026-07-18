@@ -62,7 +62,7 @@ export default function AboutSection() {
 
             <Link
               href="/hakkimizda"
-              className="group mt-8 inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
+              className="group mt-8 inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
             >
               {t('cta')}
               <ArrowRight

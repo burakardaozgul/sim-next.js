@@ -9,7 +9,7 @@ const BASE_URL = 'https://www.simlimited.net';
 
 const META: Record<string, { title: string; description: string; keywords: string[] }> = {
   tr: {
-    title: 'Matbaa Terimleri Sözlüğü: 50+ Baskı Kavramı | SIM',
+    title: 'Matbaa Terimleri Sözlüğü: 50+ Baskı Kavramı',
     description:
       'Ofset baskı, CMYK, renk yönetimi, prepress ve bitirme işlemlerinde kullanılan matbaa terimlerinin kapsamlı sözlüğü. Türkçe, İngilizce, Rusça ve Arapça tanımlar.',
     keywords: [
@@ -19,7 +19,7 @@ const META: Record<string, { title: string; description: string; keywords: strin
     ],
   },
   en: {
-    title: 'Printing Glossary: 50+ Terms Explained | SIM',
+    title: 'Printing Glossary: 50+ Terms Explained',
     description:
       'Comprehensive glossary of printing terms covering offset printing, CMYK, color management, prepress, and finishing. Definitions in Turkish, English, Russian, and Arabic.',
     keywords: [
@@ -29,7 +29,7 @@ const META: Record<string, { title: string; description: string; keywords: strin
     ],
   },
   ru: {
-    title: 'Глоссарий полиграфии: 50+ терминов | SIM',
+    title: 'Глоссарий полиграфии: 50+ терминов',
     description:
       'Подробный глоссарий полиграфических терминов: офсетная печать, CMYK, управление цветом, допечатная подготовка и отделка. Определения на турецком, английском, русском и арабском.',
     keywords: [
@@ -38,7 +38,7 @@ const META: Record<string, { title: string; description: string; keywords: strin
     ],
   },
   ar: {
-    title: 'مصطلحات الطباعة: أكثر من 50 مصطلحاً | SIM',
+    title: 'مصطلحات الطباعة: أكثر من 50 مصطلحاً',
     description:
       'قاموس شامل لمصطلحات الطباعة يغطي الطباعة الأوفست وCMYK وإدارة الألوان وما قبل الطباعة والتشطيب. تعريفات بالتركية والإنجليزية والروسية والعربية.',
     keywords: [

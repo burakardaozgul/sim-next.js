@@ -18,6 +18,7 @@ const pathnames: Record<string, Record<string, string>> = {
   '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
   '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
   '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
+  '/ofset-baski-malzemeleri': { tr: '/ofset-baski-malzemeleri', en: '/offset-printing-supplies', ru: '/materialy-ofsetnoj-pechati', ar: '/mawad-tibaat-offset' },
   '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
 };
 
@@ -41,8 +42,13 @@ function getProductUrl(locale: string, slug: string): string {
   return `${BASE_URL}/${locale}${base}/${slug}`;
 }
 
+// Statik sayfa ve ürünler için son anlamlı içerik güncelleme tarihi.
+// Her istekte "şimdi" üretmek lastmod sinyalini anlamsızlaştırır — içerik
+// değiştiğinde bu sabiti güncelleyin. Blog yazıları kendi tarihini kullanır.
+const SITE_LASTMOD = '2026-07-18';
+
 export async function GET() {
-  const now = new Date().toISOString();
+  const now = SITE_LASTMOD;
 
   const staticPages = [
     { path: '/', priority: '1.0', changefreq: 'weekly' },
@@ -57,6 +63,7 @@ export async function GET() {
     { path: '/kullanim-kosullari', priority: '0.3', changefreq: 'yearly' },
     { path: '/matbaa-malzemeleri', priority: '0.9', changefreq: 'weekly' },
     { path: '/matbaa-malzemeleri-istanbul', priority: '0.8', changefreq: 'monthly' },
+    { path: '/ofset-baski-malzemeleri', priority: '0.9', changefreq: 'weekly' },
     { path: '/matbaa-terimleri-sozlugu', priority: '0.7', changefreq: 'monthly' },
   ];
 

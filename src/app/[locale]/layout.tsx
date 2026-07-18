@@ -16,6 +16,7 @@ import {
   getAlternateLanguages,
 } from '@/lib/seo';
 import CookieConsent from '@/components/layout/CookieConsent';
+import LocaleSuggestBanner from '@/components/layout/LocaleSuggestBanner';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import '../globals.css';
 
@@ -53,6 +54,13 @@ export function generateStaticParams() {
 }
 
 const BASE_URL = 'https://www.simlimited.net';
+
+/** Doğrulanmış kurumsal profiller — entity (E-E-A-T & GEO) sinyali */
+const SAME_AS = [
+  'https://www.facebook.com/simlimited.net/',
+  'https://www.linkedin.com/company/sim-bask%C4%B1-malzemeleri/',
+  'https://yandex.com.tr/maps/org/sim_baski_malzemeleri_san/59607491695/',
+];
 
 /* ------------------------------------------------------------------ */
 /*  Default metadata shared by every page                              */
@@ -148,12 +156,13 @@ function OrganizationJsonLd({ locale }: { locale: string }) {
     description: orgDescription,
     inLanguage: locale,
     foundingDate: '1983',
+    sameAs: SAME_AS,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
       addressLocality: 'Beylikdüzü',
       addressRegion: 'İstanbul',
-      postalCode: '34000',
+      postalCode: '34524',
       addressCountry: 'TR',
     },
     contactPoint: {
@@ -193,7 +202,7 @@ function LocalBusinessJsonLd({ locale }: { locale: string }) {
       streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
       addressLocality: 'Beylikdüzü',
       addressRegion: 'İstanbul',
-      postalCode: '34000',
+      postalCode: '34524',
       addressCountry: 'TR',
     },
     geo: {
@@ -212,6 +221,29 @@ function LocalBusinessJsonLd({ locale }: { locale: string }) {
       '@type': 'Country',
       name: 'Turkey',
     },
+    sameAs: SAME_AS,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // JSON.stringify of static data — safe, no user input
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+function WebSiteJsonLd({ locale }: { locale: string }) {
+  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    name: brandName,
+    alternateName: 'SIM Limited',
+    url: BASE_URL,
+    inLanguage: ['tr', 'en', 'ru', 'ar'],
+    publisher: { '@id': `${BASE_URL}/#localbusiness` },
   };
 
   return (
@@ -252,10 +284,12 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <OrganizationJsonLd locale={locale} />
         <LocalBusinessJsonLd locale={locale} />
+        <WebSiteJsonLd locale={locale} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <LocaleSuggestBanner />
           <MobileBottomNav />
           <CookieConsent />
         </NextIntlClientProvider>

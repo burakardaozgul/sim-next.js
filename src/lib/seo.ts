@@ -89,13 +89,14 @@ const PATH_TRANSLATIONS: Record<string, Record<string, string>> = {
   '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
   '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
   '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
+  '/ofset-baski-malzemeleri': { tr: '/ofset-baski-malzemeleri', en: '/offset-printing-supplies', ru: '/materialy-ofsetnoj-pechati', ar: '/mawad-tibaat-offset' },
   '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
 };
 
 /**
  * Translate a Turkish path to the correct locale path.
  */
-function translatePath(trPath: string, locale: string): string {
+export function translatePath(trPath: string, locale: string): string {
   // Exact match
   if (PATH_TRANSLATIONS[trPath]) {
     return PATH_TRANSLATIONS[trPath][locale] || trPath;
@@ -178,6 +179,18 @@ function buildSlugAlternates(
 }
 
 /**
+ * Meta description'ı kelime sınırında ~160 karaktere kısalt.
+ * Blog/ürün sayfaları uzun excerpt'leri description olarak geçirir;
+ * SERP snippet'i için kısa tutulmalı.
+ */
+export function truncateDescription(text: string, maxLength = 160): string {
+  if (text.length <= maxLength) return text;
+  const cut = text.slice(0, maxLength - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, lastSpace > 100 ? lastSpace : maxLength - 1).replace(/[,;:.\s]+$/, '')}…`;
+}
+
+/**
  * Generate page-specific metadata with all SEO fields.
  */
 export function createPageMetadata({
@@ -206,6 +219,7 @@ export function createPageMetadata({
     ? buildSlugAlternates(path, slugsByLocale)
     : getAlternateLanguages(path);
   const image = ogImage || '/og-image.jpg';
+  description = truncateDescription(description);
 
   return {
     title: absoluteTitle ? { absolute: title } : title,

@@ -245,9 +245,11 @@ function BlockRenderer({ block, index }: { block: ProcessedBlock; index: number 
 function PostGallery({
   images,
   galleryLabel,
+  postTitle,
 }: {
   images: string[];
   galleryLabel: string;
+  postTitle: string;
 }) {
   if (images.length === 0) return null;
 
@@ -266,7 +268,7 @@ function PostGallery({
           >
             <Image
               src={src}
-              alt=""
+              alt={`${postTitle} — ${galleryLabel} ${i + 1}`}
               fill
               className="object-cover transition-transform duration-700 hover:scale-105"
               sizes="(max-width: 768px) 100vw, 360px"
@@ -450,6 +452,7 @@ export default function BlogPostClient({ post, relatedProducts = [] }: { post: B
                 <PostGallery
                   images={post.gallery}
                   galleryLabel={galleryLabel}
+                  postTitle={title}
                 />
 
                 {/* Divider */}
@@ -558,7 +561,7 @@ export default function BlogPostClient({ post, relatedProducts = [] }: { post: B
                       <div className="mt-7 flex flex-wrap gap-3">
                         <Link
                           href="/iletisim"
-                          className="group inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-gold/20 transition-all hover:bg-gold-light hover:shadow-gold/30"
+                          className="group inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-3 text-xs font-bold uppercase tracking-wider text-ink shadow-lg shadow-gold/20 transition-all hover:bg-gold-light hover:shadow-gold/30"
                         >
                           {tCta('quote')}
                           <ArrowRight

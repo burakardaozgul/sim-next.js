@@ -117,7 +117,7 @@ export default function ProductDetailClient({ product, relatedBlogPosts = [] }: 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
                     href="/iletisim"
-                    className="inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
+                    className="inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
                   >
                     {tCta('quote')}
                     <ArrowRight size={14} />

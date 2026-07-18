@@ -97,7 +97,7 @@ export default function ContactPageClient() {
         {/* Map */}
         <section className="relative h-[350px] w-full lg:h-[450px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.5!2d28.6285!3d40.9835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5e1a0a328af%3A0x0!2sYakuplu%2C+194.+Sk.+No%3A1+D%3A176%2C+34000+Beylikd%C3%BCz%C3%BC%2F%C4%B0stanbul!5e0!3m2!1str!2str"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.5!2d28.6285!3d40.9835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5e1a0a328af%3A0x0!2sYakuplu%2C+194.+Sk.+No%3A1+D%3A176%2C+34524+Beylikd%C3%BCz%C3%BC%2F%C4%B0stanbul!5e0!3m2!1str!2str"
             className="h-full w-full border-0"
             sandbox="allow-scripts allow-same-origin"
             allowFullScreen
@@ -295,7 +295,7 @@ export default function ContactPageClient() {
                     <button
                       type="submit"
                       disabled={formState === 'sending'}
-                      className="inline-flex w-full items-center justify-center gap-2 bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold/90 disabled:opacity-60 sm:w-auto"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold/90 disabled:opacity-60 sm:w-auto"
                     >
                       {formState === 'sending' ? (
                         <>

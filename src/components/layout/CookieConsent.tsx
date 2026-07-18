@@ -35,13 +35,13 @@ export default function CookieConsent() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.06] bg-ink-900/95 px-6 py-5 backdrop-blur-md transition-all duration-400 lg:px-10 ${
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.06] bg-ink-900/95 px-4 py-3 backdrop-blur-md transition-all duration-400 sm:px-6 sm:py-4 lg:px-10 ${
         show ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-2.5 sm:flex-row sm:justify-between sm:gap-4">
         <div className="flex-1 text-center sm:text-left">
-          <p className="text-sm leading-relaxed text-silver">
+          <p className="text-xs leading-relaxed text-silver sm:text-sm">
             {t('message')}{' '}
             <Link
               href="/gizlilik-politikasi"
@@ -60,7 +60,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={() => dismiss('accepted')}
-            className="rounded-full bg-gold px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
+            className="rounded-full bg-gold px-5 py-2 text-xs font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
           >
             {t('accept')}
           </button>

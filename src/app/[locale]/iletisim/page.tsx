@@ -80,7 +80,7 @@ function ContactPageJsonLd() {
         streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
         addressLocality: 'Beylikdüzü',
         addressRegion: 'İstanbul',
-        postalCode: '34000',
+        postalCode: '34524',
         addressCountry: 'TR',
       },
     },

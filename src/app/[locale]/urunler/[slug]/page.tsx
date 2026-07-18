@@ -1,12 +1,37 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { createPageMetadata, BRAND_NAMES, translatePath } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
-import { products, getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
-import { blogPosts, BlogPost, getBlogSlug } from '@/data/blog';
+import { getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
+import { blogPosts, BlogPost } from '@/data/blog';
 
 export function generateStaticParams() {
   return getAllProductSlugs().map((slug) => ({ slug }));
+}
+
+/**
+ * Ürünün gerçek markası (schema.org Product.brand) — tedarikçi SIM değil.
+ * SIM'in kendi ürettiği markalarda (EVA COLOR, VECTOR, özel renkler)
+ * üretici de SIM'dir; distribütörlüğünü yaptığı markalarda üretici marka sahibidir.
+ */
+const PRODUCT_BRANDS: Array<{ prefix: string; brand: string; manufacturer: string }> = [
+  { prefix: 'eva-color', brand: 'EVA COLOR', manufacturer: 'SIM Baskı Malzemeleri' },
+  { prefix: 'vector', brand: 'VECTOR', manufacturer: 'SIM Baskı Malzemeleri' },
+  { prefix: 'ozel-renkler', brand: 'EVA COLOR', manufacturer: 'SIM Baskı Malzemeleri' },
+  { prefix: 'sakata-inx', brand: 'SAKATA INX', manufacturer: 'SAKATA INX' },
+  { prefix: 'zeller-gmelin', brand: 'Zeller+Gmelin', manufacturer: 'Zeller+Gmelin' },
+  { prefix: 'schlenk', brand: 'SCHLENK', manufacturer: 'SCHLENK' },
+  { prefix: 'hi-tech', brand: 'Hi-Tech Coatings', manufacturer: 'Hi-Tech Coatings' },
+];
+
+function getProductBrand(slug: string) {
+  return (
+    PRODUCT_BRANDS.find((b) => slug.startsWith(b.prefix)) ?? {
+      prefix: '',
+      brand: 'SIM Baskı Malzemeleri',
+      manufacturer: 'SIM Baskı Malzemeleri',
+    }
+  );
 }
 
 const CATEGORY_KEYWORDS: Record<string, string[]> = {
@@ -69,12 +94,13 @@ export default async function ProductDetailPage({
 
   const BASE_URL = 'https://www.simlimited.net';
   const localizedSlug = getProductSlug(product, locale);
+  const productsPath = translatePath('/urunler', locale);
   const productUrl =
     locale === 'tr'
-      ? `${BASE_URL}/urunler/${localizedSlug}`
-      : `${BASE_URL}/${locale}/urunler/${localizedSlug}`;
+      ? `${BASE_URL}${productsPath}/${localizedSlug}`
+      : `${BASE_URL}/${locale}${productsPath}/${localizedSlug}`;
   const productsUrl =
-    locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/urunler`;
+    locale === 'tr' ? `${BASE_URL}${productsPath}` : `${BASE_URL}/${locale}${productsPath}`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
   const homeLabels: Record<string, string> = { tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية' };
@@ -109,6 +135,7 @@ export default async function ProductDetailPage({
     locale === 'tr' ? `${BASE_URL}/iletisim` : `${BASE_URL}/${locale}/iletisim`;
 
   const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
+  const productBrand = getProductBrand(product.slug);
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -120,20 +147,21 @@ export default async function ProductDetailPage({
     inLanguage: locale,
     brand: {
       '@type': 'Brand',
-      name: brandName,
+      name: productBrand.brand,
     },
     manufacturer: {
       '@type': 'Organization',
-      name: brandName,
-      url: BASE_URL,
+      name: productBrand.manufacturer,
     },
     offers: {
       '@type': 'Offer',
       url: contactUrl,
       availability: 'https://schema.org/InStock',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        priceCurrency: 'TRY',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: {
+        '@type': 'Organization',
+        name: brandName,
+        url: BASE_URL,
       },
     },
   };

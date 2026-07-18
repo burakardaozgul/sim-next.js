@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
-import { blogPosts, getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
+import { getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
 import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
 

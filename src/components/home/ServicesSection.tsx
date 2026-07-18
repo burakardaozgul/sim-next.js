@@ -145,7 +145,7 @@ export default function ServicesSection() {
                 {/* Floating discover button */}
                 <Link
                   href={{ pathname: '/urunler/[slug]' as const, params: { slug: SERVICE_SLUGS[activeIndex] } }}
-                  className="absolute bottom-5 right-5 z-10 flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
+                  className="absolute bottom-5 right-5 z-10 flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
                 >
                   {t('discover')}
                   <ArrowUpRight size={14} />

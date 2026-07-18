@@ -14,6 +14,8 @@ const navItems = [
   { key: 'products', href: '/urunler' },
   { key: 'customColor', href: '/ozel-renk-uretimi' },
   { key: 'brands', href: '/temsilcilikler' },
+  { key: 'blog', href: '/blog' },
+  { key: 'faq', href: '/sss' },
   { key: 'about', href: '/hakkimizda' },
   { key: 'contact', href: '/iletisim' },
 ] as const;

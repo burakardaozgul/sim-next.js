@@ -48,7 +48,7 @@ export default function ProcessSection() {
                     <Icon size={32} className="text-gold" strokeWidth={1.5} />
                   </div>
                   {/* Step number badge */}
-                  <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-white">
+                  <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-ink">
                     {t(`steps.${i}.number`)}
                   </span>
                 </div>

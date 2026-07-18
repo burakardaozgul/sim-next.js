@@ -145,7 +145,7 @@ export default function HeroSlider() {
               >
                 <Link
                   href={SLIDE_LINKS[current]}
-                  className="group inline-flex items-center gap-3 bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold-light"
+                  className="group inline-flex items-center gap-3 bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
                 >
                   {t(`slides.${current}.cta`)}
                   <ChevronRight

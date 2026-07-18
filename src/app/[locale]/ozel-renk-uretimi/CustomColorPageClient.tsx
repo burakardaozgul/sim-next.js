@@ -63,7 +63,7 @@ export default function CustomColorPageClient() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/iletisim"
-                    className="inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold/90"
+                    className="inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold/90"
                   >
                     {tCta('quote')}
                     <ArrowRight size={14} />
@@ -141,7 +141,7 @@ export default function CustomColorPageClient() {
                       <div className="flex h-[104px] w-[104px] items-center justify-center rounded-full border border-white/[0.08] bg-ink-800 transition-all duration-300 group-hover:border-gold/30 group-hover:shadow-[0_0_30px_rgba(196,146,42,0.1)]">
                         <Icon size={32} className="text-gold" strokeWidth={1.5} />
                       </div>
-                      <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-white">
+                      <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-ink">
                         {tProcess(`steps.${i}.number`)}
                       </span>
                     </div>
