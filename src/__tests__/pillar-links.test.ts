@@ -25,12 +25,10 @@ describe('inbound links to the pillar (brief A — link flow)', () => {
   });
   it('Istanbul page intro links to the pillar in every locale', () => {
     const src = read('src/app/[locale]/matbaa-malzemeleri-istanbul/page.tsx');
-    expect(src).toMatch(/introPillar/);
-    for (const l of LOCALES) {
-      const ns = msgs(l).istanbulSeo as Record<string, string>;
-      expect(ns.introPillarText).toBeTruthy();
-      expect(ns.introPillarLink).toBeTruthy();
-    }
+    expect(src).toMatch(/intro\.pillarLink/);
+    expect(src).toMatch(/href="\/matbaa-malzemeleri"/);
+    const mod = read('src/data/istanbul.ts');
+    expect((mod.match(/pillarLink: '/g) || []).length).toBe(4);
   });
   it('offset pillar intro links to the main pillar', () => {
     const src = read('src/app/[locale]/ofset-baski-malzemeleri/page.tsx');

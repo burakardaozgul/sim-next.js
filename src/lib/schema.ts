@@ -125,6 +125,8 @@ export function localBusinessJsonLd(locale: string) {
     areaServed: [
       { '@type': 'Country', name: 'Türkiye' },
       { '@type': 'City', name: 'İstanbul' },
+      // İlçeler — yerel sayfa teslimat tablosuyla aynı tek kaynak (organization.ts serviceAreas)
+      ...ORGANIZATION.serviceAreas.map((d) => ({ '@type': 'Place', name: d.name, containedInPlace: { '@type': 'City', name: 'İstanbul' } })),
     ],
     sameAs: ORGANIZATION.sameAs,
   };

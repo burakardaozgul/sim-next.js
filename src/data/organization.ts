@@ -64,6 +64,31 @@ export const ORGANIZATION = {
     tr: "SIM Baskı Malzemeleri — 1983'ten beri Türkiye matbaa sektörünün mürekkep ve baskı malzemesi referansı: EVA COLOR ve VECTOR üreticisi; SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings ve SCHLENK Türkiye distribütörü; İstanbul'da 24/7 özel renk laboratuvarı.",
     en: "SIM Printing Supplies — Turkey's printing ink and supplies reference since 1983: manufacturer of EVA COLOR inks and VECTOR blankets; Turkish distributor of SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings and SCHLENK; 24/7 custom colour laboratory in Istanbul.",
   },
+  /**
+   * Hizmet alanları (İstanbul ilçeleri) — yerel sayfa teslimat tablosu ve LocalBusiness.areaServed aynı listeden üretilir.
+   * delivery: sameDay = stok ürünlerde aynı gün (12:00'ye kadar sipariş) · sameOrNext = aynı gün veya ertesi iş günü (planlı sevkiyat)
+   */
+  serviceAreas: [
+    { name: 'Beylikdüzü', area: 'Yakuplu, Gürpınar', side: 'europe', delivery: 'sameDay' },
+    { name: 'Esenyurt', side: 'europe', delivery: 'sameDay' },
+    { name: 'Avcılar', side: 'europe', delivery: 'sameDay' },
+    { name: 'Büyükçekmece', side: 'europe', delivery: 'sameDay' },
+    { name: 'Başakşehir', area: 'İkitelli OSB', side: 'europe', delivery: 'sameDay' },
+    { name: 'Bağcılar', area: 'Güneşli', side: 'europe', delivery: 'sameDay' },
+    { name: 'Küçükçekmece', area: 'Sefaköy', side: 'europe', delivery: 'sameDay' },
+    { name: 'Bayrampaşa', area: 'Matbaacılar Sitesi', side: 'europe', delivery: 'sameDay' },
+    { name: 'Zeytinburnu', area: 'Topkapı', side: 'europe', delivery: 'sameDay' },
+    { name: 'Bahçelievler', side: 'europe', delivery: 'sameDay' },
+    { name: 'Gaziosmanpaşa', side: 'europe', delivery: 'sameDay' },
+    { name: 'Eyüpsultan', side: 'europe', delivery: 'sameDay' },
+    { name: 'Ümraniye', area: 'Dudullu OSB', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Ataşehir', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Maltepe', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Kartal', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Pendik', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Tuzla', side: 'asia', delivery: 'sameOrNext' },
+    { name: 'Sancaktepe', side: 'asia', delivery: 'sameOrNext' },
+  ],
   /** Marka matrisi (tek kaynak): rol = own (üretici) | distributor */
   brands: [
     { name: 'EVA COLOR', country: 'TR', role: 'own', products: 'metallic, fluorescent and custom offset inks' },
@@ -96,4 +121,20 @@ export function yearsSinceFounding(now: Date = new Date()): number {
 export function formatThousands(n: number, locale: 'tr' | 'en' | 'ru' | 'ar' = 'tr'): string {
   const sep = locale === 'tr' ? '.' : locale === 'ru' ? ' ' : ',';
   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+}
+
+const DAY_NAMES = {
+  tr: { Monday: 'Pazartesi', Tuesday: 'Salı', Wednesday: 'Çarşamba', Thursday: 'Perşembe', Friday: 'Cuma', Saturday: 'Cumartesi', Sunday: 'Pazar' },
+  en: { Monday: 'Monday', Tuesday: 'Tuesday', Wednesday: 'Wednesday', Thursday: 'Thursday', Friday: 'Friday', Saturday: 'Saturday', Sunday: 'Sunday' },
+  ru: { Monday: 'Понедельник', Tuesday: 'Вторник', Wednesday: 'Среда', Thursday: 'Четверг', Friday: 'Пятница', Saturday: 'Суббота', Sunday: 'Воскресенье' },
+  ar: { Monday: 'الإثنين', Tuesday: 'الثلاثاء', Wednesday: 'الأربعاء', Thursday: 'الخميس', Friday: 'الجمعة', Saturday: 'السبت', Sunday: 'الأحد' },
+} as const;
+
+/** "Pazartesi–Cumartesi 08:30–18:00" — tek kaynak openingHours'tan, görünür metinler için */
+export function formatOpeningHours(locale: 'tr' | 'en' | 'ru' | 'ar' = 'tr'): string {
+  const names = DAY_NAMES[locale] ?? DAY_NAMES.tr;
+  const days = ORGANIZATION.openingHours.dayOfWeek;
+  const first = names[days[0] as keyof typeof names];
+  const last = names[days[days.length - 1] as keyof typeof names];
+  return `${first}–${last} ${ORGANIZATION.openingHours.opens}–${ORGANIZATION.openingHours.closes}`;
 }

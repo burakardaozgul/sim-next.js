@@ -99,6 +99,14 @@ AE=$(curl -sS -A "$UA" "$BASE/en/about")
 check "EN about H1 names Turkey + 1983"                  $(echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey' && echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
 check "blog post has author box linking to about"        $(echo "$BP" | grep -q 'href="/hakkimizda"'; echo $?)
 
+# istanbul local page (brief F): local intent H1, map embed, district table, FAQPage
+I=$(curl -sS -A "$UA" "$BASE/matbaa-malzemeleri-istanbul")
+check "istanbul H1 is local (İstanbul + Aynı Gün)"       $(echo "$I" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'İstanbul' && echo "$I" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -qi 'Aynı Gün'; echo $?)
+check "istanbul page embeds a lazy Google map"           $(echo "$I" | grep -q '<iframe' && echo "$I" | grep -q 'google.com/maps' && echo "$I" | grep -q 'loading="lazy"'; echo $?)
+check "istanbul district table has ≥ 16 rows"            $([ "$(echo "$I" | grep -o '<th scope="row"' | wc -l | tr -d ' ')" -ge 16 ]; echo $?)
+check "istanbul has FAQPage + WebPage schema"            $(echo "$I" | grep -q '"@type":"FAQPage"' && echo "$I" | grep -q '"@type":"WebPage"'; echo $?)
+check "home LocalBusiness areaServed lists districts"    $(curl -sS -A "$UA" "$BASE/" | grep -q '"name":"Beylikdüzü"'; echo $?)
+
 # generated llms.txt + sitemap hygiene + IndexNow key file
 L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
