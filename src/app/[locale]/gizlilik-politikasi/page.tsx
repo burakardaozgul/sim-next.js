@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import PrivacyPageClient from './PrivacyPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -39,6 +40,12 @@ export async function generateMetadata({
   });
 }
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <PrivacyPageClient />;
 }

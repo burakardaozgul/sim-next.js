@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { createPageMetadata } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import HeroSlider from '@/components/home/HeroSlider';
@@ -71,8 +71,14 @@ export async function generateMetadata({
   });
 }
 
-export default async function HomePage() {
-  const t = await getTranslations('hero');
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'hero' });
 
   return (
     <main className="flex min-h-screen">

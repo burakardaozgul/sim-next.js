@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# SEO smoke checks — run against a local `next start` or production.
+# Usage: scripts/seo-smoke.sh [BASE_URL]   (default http://localhost:3000)
+# Exit code 1 if any check fails. Mirrors the acceptance criteria in marketing/seo-geo/10-Teknik-Backlog.md.
+set -u
+BASE="${1:-http://localhost:3000}"
+UA="Mozilla/5.0 (compatible; seo-smoke)"
+fail=0; pass=0
+check() { # check "<label>" <condition-exit-code>
+  if [ "$2" -eq 0 ]; then echo "PASS  $1"; pass=$((pass+1)); else echo "FAIL  $1"; fail=$((fail+1)); fi
+}
+hdr() { curl -sS -I -A "$UA" --max-time 30 "$BASE$1" 2>/dev/null | tr -d '\r'; }
+hdr_with_cookie() { curl -sS -I -A "$UA" --max-time 30 -H "Cookie: $2" "$BASE$1" 2>/dev/null | tr -d '\r'; }
+status() { echo "$1" | head -1 | awk '{print $2}'; }
+
+echo "== SEO smoke @ $BASE =="
+
+# robots.txt
+R=$(curl -sS -A "$UA" "$BASE/robots.txt")
+check "robots.txt does not disallow /_next/"      $([ "$(echo "$R" | grep -c '_next')" -eq 0 ]; echo $?)
+check "robots.txt still disallows /api/"           $(echo "$R" | grep -q 'Disallow: /api/'; echo $?)
+check "robots.txt references sitemap"              $(echo "$R" | grep -qi 'Sitemap:'; echo $?)
+
+# /tr prefix → 308
+H=$(hdr /tr/urunler); check "/tr/urunler → 308" $([ "$(status "$H")" = "308" ]; echo $?)
+check "/tr/urunler location is /urunler"           $(echo "$H" | grep -qi '^location: .*/urunler$'; echo $?)
+H=$(hdr /tr);         check "/tr → 308"         $([ "$(status "$H")" = "308" ]; echo $?)
+
+# home: no Link hreflang header, no NEXT_LOCALE cookie, cacheable
+H=$(hdr /)
+check "/ returns 200"                              $([ "$(status "$H")" = "200" ]; echo $?)
+check "/ has no HTTP Link hreflang header"         $([ "$(echo "$H" | grep -ci '^link: .*hreflang')" -eq 0 ]; echo $?)
+check "/ sets no NEXT_LOCALE cookie"               $([ "$(echo "$H" | grep -ci 'set-cookie: NEXT_LOCALE')" -eq 0 ]; echo $?)
+check "/ is cacheable (no private/no-store)"       $([ "$(echo "$H" | grep -i '^cache-control' | grep -ci 'no-store')" -eq 0 ]; echo $?)
+
+# product page: no Link hreflang header either; canonical present
+H=$(hdr /urunler/sakata-inx-cmyk-murekkepler)
+check "product page 200"                           $([ "$(status "$H")" = "200" ]; echo $?)
+check "product page has no HTTP Link hreflang"     $([ "$(echo "$H" | grep -ci '^link: .*hreflang')" -eq 0 ]; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/urunler/sakata-inx-cmyk-murekkepler")
+check "product page canonical is self"             $(echo "$B" | grep -q 'rel="canonical" href="https://www.simlimited.net/urunler/sakata-inx-cmyk-murekkepler"'; echo $?)
+
+# cookie preference redirect
+H=$(hdr_with_cookie / "USER_LOCALE_PREFERENCE=en")
+check "/ with en preference → 302 /en"             $([ "$(status "$H")" = "302" ] && echo "$H" | grep -qi '^location: .*/en$'; echo $?)
+check "preference redirect is not CDN-cacheable"   $(echo "$H" | grep -i '^cache-control' | grep -qi 'no-store'; echo $?)
+
+# WordPress leftovers → 404 (not redirect to home)
+H=$(hdr /wp-admin/index.php); check "/wp-admin/* → 404" $([ "$(status "$H")" = "404" ]; echo $?)
+
+# home services link target exists
+H=$(hdr /urunler/vector-baski-blanketleri); check "7th service target product 200" $([ "$(status "$H")" = "200" ]; echo $?)
+
+echo "== $pass passed, $fail failed =="
+[ "$fail" -eq 0 ]

@@ -33,7 +33,12 @@ export default function proxy(request: NextRequest) {
     ) {
       const url = request.nextUrl.clone();
       url.pathname = `/${preference}`;
-      return NextResponse.redirect(url, 302);
+      const redirect = NextResponse.redirect(url, 302);
+      // Çereze bağlı yönlendirme asla CDN'de önbelleklenmesin (aksi hâlde çerezsiz
+      // ziyaretçiler ve botlar da /en'e yönlenebilir). Statik / sayfası ayrıca önbelleklenir.
+      redirect.headers.set('Cache-Control', 'private, no-store');
+      redirect.headers.append('Vary', 'Cookie');
+      return redirect;
     }
   }
 

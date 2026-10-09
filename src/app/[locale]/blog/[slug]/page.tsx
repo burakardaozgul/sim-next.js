@@ -4,6 +4,7 @@ import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import { getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
 import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
@@ -40,6 +41,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const post = getBlogPostBySlug(slug);
 
   if (!post) notFound();

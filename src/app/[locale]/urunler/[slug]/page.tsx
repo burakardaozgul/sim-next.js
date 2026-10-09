@@ -4,6 +4,7 @@ import { createPageMetadata, BRAND_NAMES, translatePath } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
 import { getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
 import { blogPosts, BlogPost } from '@/data/blog';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   return getAllProductSlugs().map((slug) => ({ slug }));
@@ -78,6 +79,7 @@ export default async function ProductDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const product = getProductBySlug(slug);
 
   if (!product) {

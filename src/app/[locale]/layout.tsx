@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Cormorant_Garamond, Syne, DM_Sans, Noto_Sans_Arabic } from 'next/font/google';
 import { locales, rtlLocales, type Locale } from '@/i18n/config';
@@ -266,10 +266,11 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   if (!locales.includes(locale as Locale)) notFound();
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
   const isRtl = rtlLocales.includes(locale as Locale);
 
   return (

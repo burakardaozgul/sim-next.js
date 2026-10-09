@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import CustomColorPageClient from './CustomColorPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -48,6 +49,12 @@ export async function generateMetadata({
   });
 }
 
-export default function CustomColorPage() {
+export default async function CustomColorPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <CustomColorPageClient />;
 }

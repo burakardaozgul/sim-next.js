@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
 import { blogPosts, getBlogSlug } from '@/data/blog';
 import BlogPageClient from './BlogPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -71,6 +72,7 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   const blogUrl =
     locale === 'tr' ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;

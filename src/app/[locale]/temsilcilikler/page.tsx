@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import BrandsPageClient from './BrandsPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -48,6 +49,12 @@ export async function generateMetadata({
   });
 }
 
-export default function BrandsPage() {
+export default async function BrandsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <BrandsPageClient />;
 }

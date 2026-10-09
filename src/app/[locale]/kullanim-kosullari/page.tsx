@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import TermsPageClient from './TermsPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -38,6 +39,12 @@ export async function generateMetadata({
   });
 }
 
-export default function TermsOfUsePage() {
+export default async function TermsOfUsePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <TermsPageClient />;
 }

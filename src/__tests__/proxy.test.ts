@@ -15,3 +15,22 @@ describe('default-locale prefix redirects', () => {
     expect(new URL(res.headers.get('location')!).pathname).toBe('/');
   });
 });
+
+describe('home page locale-preference redirect', () => {
+  it('redirects a user with a stored non-default preference and marks the response as cookie-dependent (Vary: Cookie)', () => {
+    const res = proxy(
+      new NextRequest('https://www.simlimited.net/', {
+        headers: { cookie: 'USER_LOCALE_PREFERENCE=en' },
+      }),
+    );
+    expect(res.status).toBe(302);
+    expect(new URL(res.headers.get('location')!).pathname).toBe('/en');
+    expect(res.headers.get('vary') ?? '').toMatch(/cookie/i);
+    expect(res.headers.get('cache-control') ?? '').toMatch(/no-store/);
+  });
+
+  it('serves the home page normally (no redirect) when no preference cookie is present', () => {
+    const res = proxy(new NextRequest('https://www.simlimited.net/'));
+    expect(res.status).toBe(200);
+  });
+});

@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { setRequestLocale } from 'next-intl/server';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -633,6 +634,7 @@ export default async function OfsetBaskiMalzemeleriPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const c = CONTENT[locale] || CONTENT.tr;
 
   const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
