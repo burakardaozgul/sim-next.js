@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { createPageMetadata } from '@/lib/seo';
+import { articleJsonLd } from '@/lib/schema';
 import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale } from '@/data/blog';
 import { locales } from '@/i18n/config';
 import { localizedBlogPath } from '@/lib/paths';
@@ -37,6 +38,9 @@ export async function generateMetadata({
     keywords: post.keywords,
     ogImage: post.image,
     slugsByLocale: post.slugs,
+    type: 'article',
+    publishedTime: post.date,
+    modifiedTime: post.updated ?? post.date,
   });
 }
 
@@ -58,7 +62,6 @@ export default async function BlogPostPage({
 
   const BASE_URL = 'https://www.simlimited.net';
   const title = post.title[locale] || post.title.tr;
-  const description = post.excerpt[locale] || post.excerpt.tr;
   const localizedSlug = getBlogSlug(post, locale);
   const postUrl =
     locale === 'tr'
@@ -74,39 +77,7 @@ export default async function BlogPostPage({
     .filter((block) => block.text)
     .reduce((count, block) => count + (block.text?.split(/\s+/).length || 0), 0);
 
-  const LOCALE_LANG: Record<string, string> = { tr: 'Turkish', en: 'English', ru: 'Russian', ar: 'Arabic' };
-
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description,
-    image: `${BASE_URL}${post.image}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    wordCount,
-    inLanguage: locale,
-    keywords: post.keywords.join(', '),
-    author: {
-      '@type': 'Organization',
-      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
-      url: BASE_URL,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
-    isAccessibleForFree: true,
-    availableLanguage: Object.values(LOCALE_LANG),
-  };
+  const articleSchema = articleJsonLd(post, locale, { wordCount });
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -153,7 +124,7 @@ export default async function BlogPostPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"

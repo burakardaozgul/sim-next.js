@@ -6,6 +6,8 @@ export interface BlogPost {
   image: string;
   gallery: string[];
   date: string;
+  /** Son içerik güncellemesi (ISO tarih) — yoksa date kullanılır */
+  updated?: string;
   author: string;
   readTime: Record<string, string>;
   title: Record<string, string>;

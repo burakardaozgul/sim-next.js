@@ -196,6 +196,9 @@ export function createPageMetadata({
   noIndex = false,
   absoluteTitle = false,
   slugsByLocale,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
 }: {
   locale: string;
   path: string;
@@ -206,6 +209,10 @@ export function createPageMetadata({
   noIndex?: boolean;
   absoluteTitle?: boolean;
   slugsByLocale?: Record<string, string>;
+  /** og:type — blog yazıları için 'article' */
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }): Metadata {
   const canonical = getCanonicalUrl(locale, path);
   const alternates = slugsByLocale
@@ -231,7 +238,9 @@ export function createPageMetadata({
       url: canonical,
       siteName: BRAND_NAMES[locale] || BRAND_NAMES.tr,
       locale: OG_LOCALES[locale] || 'tr_TR',
-      type: 'website',
+      ...(type === 'article'
+        ? { type: 'article', publishedTime, modifiedTime: modifiedTime ?? publishedTime }
+        : { type: 'website' }),
       images: [
         {
           url: image,

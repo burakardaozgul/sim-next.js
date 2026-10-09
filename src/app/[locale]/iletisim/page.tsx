@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import ContactPageClient from './ContactPageClient';
 import { setRequestLocale } from 'next-intl/server';
+import { contactPageJsonLd, jsonLdScriptProps } from '@/lib/schema';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -48,51 +49,8 @@ export async function generateMetadata({
   });
 }
 
-function ContactPageJsonLd() {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ContactPage',
-    name: 'SIM Baskı Malzemeleri İletişim',
-    url: 'https://www.simlimited.net/iletisim',
-    mainEntity: {
-      '@type': 'Organization',
-      name: 'SIM Baskı Malzemeleri',
-      url: 'https://www.simlimited.net',
-      contactPoint: [
-        {
-          '@type': 'ContactPoint',
-          telephone: '+902126376249',
-          contactType: 'customer service',
-          email: 'info@simlimited.net',
-          availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
-          areaServed: 'TR',
-        },
-        {
-          '@type': 'ContactPoint',
-          telephone: '+902126376249',
-          contactType: 'sales',
-          email: 'info@simlimited.net',
-          availableLanguage: ['Turkish', 'English'],
-          areaServed: 'TR',
-        },
-      ],
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
-        addressLocality: 'Beylikdüzü',
-        addressRegion: 'İstanbul',
-        postalCode: '34524',
-        addressCountry: 'TR',
-      },
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+function ContactPageJsonLd({ locale }: { locale: string }) {
+  return <script {...jsonLdScriptProps(contactPageJsonLd(locale))} />;
 }
 
 export default async function ContactPage({
@@ -104,7 +62,7 @@ export default async function ContactPage({
   setRequestLocale(locale);
   return (
     <>
-      <ContactPageJsonLd />
+      <ContactPageJsonLd locale={locale} />
       <ContactPageClient />
     </>
   );
