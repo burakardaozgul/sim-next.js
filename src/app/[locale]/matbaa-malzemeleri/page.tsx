@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { createPageMetadata, BRAND_NAMES, getCanonicalUrl } from '@/lib/seo';
 import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { getProductBySlug, getProductSlug } from '@/data/products';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -56,13 +57,6 @@ const HOME_NAMES: Record<string, string> = {
 const PAGE_NAMES: Record<string, string> = {
   tr: 'Matbaa Malzemeleri', en: 'Printing Materials',
   ru: 'Полиграфические Материалы', ar: 'مواد الطباعة',
-};
-
-const LOCALE_PAGE_PATHS: Record<string, string> = {
-  tr: '/matbaa-malzemeleri',
-  en: '/printing-materials',
-  ru: '/poligraficheskie-materialy',
-  ar: '/mawad-altibaa',
 };
 
 const CATEGORY_KEYS = ['Offset', 'Metalic', 'UV', 'Pantone', 'Blanket', 'Chemicals'] as const;
@@ -358,10 +352,10 @@ export default async function MatbaaMalzemeleriPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'matbaaMalzemeleri' });
 
-  const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
-  const pageUrl = locale === 'tr' ? `${BASE_URL}${localePath}` : `${BASE_URL}/${locale}${localePath}`;
+  const pageUrl = getCanonicalUrl(locale, '/matbaa-malzemeleri');
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
   const webPageJsonLd = {
@@ -469,7 +463,7 @@ export default async function MatbaaMalzemeleriPage({
                 {CATEGORY_KEYS.map((catKey) => (
                   <Link
                     key={catKey}
-                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: CATEGORY_SLUGS[catKey] } }}
+                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: getProductSlug(getProductBySlug(CATEGORY_SLUGS[catKey])!, locale) } }}
                     className="group flex flex-col rounded-xl border border-white/[0.06] bg-ink-800 p-6 transition-all hover:border-gold/40 hover:bg-ink-700"
                   >
                     <span className="mb-3 text-3xl">{CATEGORY_ICONS[catKey]}</span>

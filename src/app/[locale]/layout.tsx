@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Cormorant_Garamond, Syne, DM_Sans, Noto_Sans_Arabic } from 'next/font/google';
 import { locales, rtlLocales, type Locale } from '@/i18n/config';
@@ -8,8 +8,6 @@ import {
   BRAND_NAMES,
   BASE_KEYWORDS,
   OG_LOCALES,
-  ORG_DESCRIPTIONS,
-  LOCAL_BIZ_DESCRIPTIONS,
   LAYOUT_DESCRIPTIONS,
   LAYOUT_TITLES,
   getCanonicalUrl,
@@ -18,7 +16,9 @@ import {
 import CookieConsent from '@/components/layout/CookieConsent';
 import LocaleSuggestBanner from '@/components/layout/LocaleSuggestBanner';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
+import Analytics from '@/components/layout/Analytics';
 import '../globals.css';
+import { organizationJsonLd, localBusinessJsonLd, webSiteJsonLd, jsonLdScriptProps } from '@/lib/schema';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
@@ -54,13 +54,6 @@ export function generateStaticParams() {
 }
 
 const BASE_URL = 'https://www.simlimited.net';
-
-/** Doğrulanmış kurumsal profiller — entity (E-E-A-T & GEO) sinyali */
-const SAME_AS = [
-  'https://www.facebook.com/simlimited.net/',
-  'https://www.linkedin.com/company/sim-bask%C4%B1-malzemeleri/',
-  'https://yandex.com.tr/maps/org/sim_baski_malzemeleri_san/59607491695/',
-];
 
 /* ------------------------------------------------------------------ */
 /*  Default metadata shared by every page                              */
@@ -141,118 +134,18 @@ export async function generateMetadata({
 }
 
 /* ------------------------------------------------------------------ */
-/*  JSON-LD Structured Data                                            */
+/*  JSON-LD Structured Data — tek entity grafı (src/lib/schema.ts)      */
 /* ------------------------------------------------------------------ */
 function OrganizationJsonLd({ locale }: { locale: string }) {
-  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
-  const orgDescription = ORG_DESCRIPTIONS[locale] || ORG_DESCRIPTIONS.tr;
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: brandName,
-    alternateName: 'SIM Limited',
-    url: BASE_URL,
-    logo: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-    description: orgDescription,
-    inLanguage: locale,
-    foundingDate: '1983',
-    sameAs: SAME_AS,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
-      addressLocality: 'Beylikdüzü',
-      addressRegion: 'İstanbul',
-      postalCode: '34524',
-      addressCountry: 'TR',
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+902126376249',
-      contactType: 'customer service',
-      email: 'info@simlimited.net',
-      availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      // JSON.stringify of static data — safe, no user input
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+  return <script {...jsonLdScriptProps(organizationJsonLd(locale))} />;
 }
 
 function LocalBusinessJsonLd({ locale }: { locale: string }) {
-  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
-  const bizDescription = LOCAL_BIZ_DESCRIPTIONS[locale] || LOCAL_BIZ_DESCRIPTIONS.tr;
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${BASE_URL}/#localbusiness`,
-    name: brandName,
-    image: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-    url: BASE_URL,
-    telephone: '+902126376249',
-    email: 'info@simlimited.net',
-    description: bizDescription,
-    inLanguage: locale,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
-      addressLocality: 'Beylikdüzü',
-      addressRegion: 'İstanbul',
-      postalCode: '34524',
-      addressCountry: 'TR',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 40.9835,
-      longitude: 28.6285,
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:30',
-      closes: '18:00',
-    },
-    priceRange: '$$',
-    areaServed: {
-      '@type': 'Country',
-      name: 'Turkey',
-    },
-    sameAs: SAME_AS,
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      // JSON.stringify of static data — safe, no user input
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+  return <script {...jsonLdScriptProps(localBusinessJsonLd(locale))} />;
 }
 
-function WebSiteJsonLd({ locale }: { locale: string }) {
-  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${BASE_URL}/#website`,
-    name: brandName,
-    alternateName: 'SIM Limited',
-    url: BASE_URL,
-    inLanguage: ['tr', 'en', 'ru', 'ar'],
-    publisher: { '@id': `${BASE_URL}/#localbusiness` },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      // JSON.stringify of static data — safe, no user input
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+function WebSiteJsonLd() {
+  return <script {...jsonLdScriptProps(webSiteJsonLd())} />;
 }
 
 /* ------------------------------------------------------------------ */
@@ -268,8 +161,9 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   if (!locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
   const isRtl = rtlLocales.includes(locale as Locale);
 
   return (
@@ -284,7 +178,8 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <OrganizationJsonLd locale={locale} />
         <LocalBusinessJsonLd locale={locale} />
-        <WebSiteJsonLd locale={locale} />
+        <WebSiteJsonLd />
+        <Analytics gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

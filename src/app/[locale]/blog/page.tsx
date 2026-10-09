@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
-import { blogPosts, getBlogSlug } from '@/data/blog';
+import { blogPosts, getBlogSlug, toBlogSummary } from '@/data/blog';
 import BlogPageClient from './BlogPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -54,6 +55,7 @@ export async function generateMetadata({
     locale,
     path: '/blog',
     title: m.title,
+    absoluteTitle: true,
     description: m.description,
     keywords: [
       'matbaa haberleri',
@@ -71,6 +73,7 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   const blogUrl =
     locale === 'tr' ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
@@ -143,7 +146,7 @@ export default async function BlogPage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <BlogPageClient />
+      <BlogPageClient posts={blogPosts.map(toBlogSummary)} />
     </>
   );
 }

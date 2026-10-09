@@ -1,36 +1,19 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { createPageMetadata, BRAND_NAMES, translatePath } from '@/lib/seo';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { createPageMetadata, translatePath } from '@/lib/seo';
+import { productJsonLd } from '@/lib/schema';
 import ProductDetailClient from './ProductDetailClient';
-import { getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
-import { blogPosts, BlogPost } from '@/data/blog';
+import { getProductSlug, resolveProductForLocale, getProductSlugsForLocale } from '@/data/products';
+import { locales } from '@/i18n/config';
+import { localizedProductPath } from '@/lib/paths';
+import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
+import { blogPosts, BlogPost, toBlogSummary } from '@/data/blog';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return getAllProductSlugs().map((slug) => ({ slug }));
-}
-
-/**
- * Ürünün gerçek markası (schema.org Product.brand) — tedarikçi SIM değil.
- * SIM'in kendi ürettiği markalarda (EVA COLOR, VECTOR, özel renkler)
- * üretici de SIM'dir; distribütörlüğünü yaptığı markalarda üretici marka sahibidir.
- */
-const PRODUCT_BRANDS: Array<{ prefix: string; brand: string; manufacturer: string }> = [
-  { prefix: 'eva-color', brand: 'EVA COLOR', manufacturer: 'SIM Baskı Malzemeleri' },
-  { prefix: 'vector', brand: 'VECTOR', manufacturer: 'SIM Baskı Malzemeleri' },
-  { prefix: 'ozel-renkler', brand: 'EVA COLOR', manufacturer: 'SIM Baskı Malzemeleri' },
-  { prefix: 'sakata-inx', brand: 'SAKATA INX', manufacturer: 'SAKATA INX' },
-  { prefix: 'zeller-gmelin', brand: 'Zeller+Gmelin', manufacturer: 'Zeller+Gmelin' },
-  { prefix: 'schlenk', brand: 'SCHLENK', manufacturer: 'SCHLENK' },
-  { prefix: 'hi-tech', brand: 'Hi-Tech Coatings', manufacturer: 'Hi-Tech Coatings' },
-];
-
-function getProductBrand(slug: string) {
-  return (
-    PRODUCT_BRANDS.find((b) => slug.startsWith(b.prefix)) ?? {
-      prefix: '',
-      brand: 'SIM Baskı Malzemeleri',
-      manufacturer: 'SIM Baskı Malzemeleri',
-    }
+  // Her dil yalnızca kendi slug'larını üretir; başka dilin slug'ı istek anında 308 ile yönlenir.
+  return locales.flatMap((locale) =>
+    getProductSlugsForLocale(locale).map((slug) => ({ locale, slug })),
   );
 }
 
@@ -50,7 +33,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const product = getProductBySlug(slug);
+  const { product } = resolveProductForLocale(slug, locale);
 
   if (!product) {
     return {};
@@ -78,19 +61,19 @@ export default async function ProductDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const product = getProductBySlug(slug);
+  setRequestLocale(locale);
+  const { product, redirectSlug } = resolveProductForLocale(slug, locale);
 
-  if (!product) {
-    notFound();
-  }
+  // Başka bir dilin slug'ı ile gelen istek (kopya URL) → kalıcı 308, doğru slug.
+  if (redirectSlug) permanentRedirect(localizedProductPath(redirectSlug, locale));
+  if (!product) notFound();
 
   const relatedBlogData = (product.relatedBlogPosts || [])
     .map((slug) => blogPosts.find((p) => p.slug === slug))
-    .filter((p): p is BlogPost => p !== undefined);
+    .filter((p): p is BlogPost => p !== undefined)
+    .map(toBlogSummary);
 
   const name = product.name[locale] || product.name.tr;
-  const description = product.description[locale] || product.description.tr;
-  const categoryLabel = product.category;
 
   const BASE_URL = 'https://www.simlimited.net';
   const localizedSlug = getProductSlug(product, locale);
@@ -131,40 +114,7 @@ export default async function ProductDetailPage({
     ],
   };
 
-  const contactUrl =
-    locale === 'tr' ? `${BASE_URL}/iletisim` : `${BASE_URL}/${locale}/iletisim`;
-
-  const brandName = BRAND_NAMES[locale] || BRAND_NAMES.tr;
-  const productBrand = getProductBrand(product.slug);
-  const productJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name,
-    description,
-    image: product.gallery.length > 0 ? product.gallery.map((img) => `${BASE_URL}${img}`) : [`${BASE_URL}${product.image}`],
-    url: productUrl,
-    category: categoryLabel,
-    inLanguage: locale,
-    brand: {
-      '@type': 'Brand',
-      name: productBrand.brand,
-    },
-    manufacturer: {
-      '@type': 'Organization',
-      name: productBrand.manufacturer,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: contactUrl,
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: brandName,
-        url: BASE_URL,
-      },
-    },
-  };
+  const productSchema = productJsonLd(product, locale);
 
   return (
     <>
@@ -174,9 +124,11 @@ export default async function ProductDetailPage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
+      <LocaleSlugsProvider slugs={product.slugs}>
+        <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
+      </LocaleSlugsProvider>
     </>
   );
 }

@@ -7,11 +7,11 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { Product, products, getProductSlug } from '@/data/products';
-import { type BlogPost, getBlogSlug } from '@/data/blog';
+import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
 import { getBlurDataURL } from '@/lib/blur';
 import { ChevronLeft, Check, ArrowRight, Calendar } from 'lucide-react';
 
-export default function ProductDetailClient({ product, relatedBlogPosts = [] }: { product: Product; relatedBlogPosts?: BlogPost[] }) {
+export default function ProductDetailClient({ product, relatedBlogPosts = [] }: { product: Product; relatedBlogPosts?: BlogPostSummary[] }) {
   const t = useTranslations('products');
   const tCta = useTranslations('cta');
   const tFooter = useTranslations('footer');

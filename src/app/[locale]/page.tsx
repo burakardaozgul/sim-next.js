@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { createPageMetadata } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import HeroSlider from '@/components/home/HeroSlider';
 import ProductsSection from '@/components/home/ProductsSection';
 import FadeInSection from '@/components/ui/FadeInSection';
+import { blogPosts, toBlogSummary } from '@/data/blog';
 
 const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
 const AboutSection = dynamic(() => import('@/components/home/AboutSection'));
@@ -71,8 +72,14 @@ export async function generateMetadata({
   });
 }
 
-export default async function HomePage() {
-  const t = await getTranslations('hero');
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'hero' });
 
   return (
     <main className="flex min-h-screen">
@@ -96,7 +103,7 @@ export default async function HomePage() {
           <ServicesSection />
         </FadeInSection>
         <FadeInSection>
-          <BlogSection />
+          <BlogSection posts={blogPosts.slice(0, 3).map(toBlogSummary)} />
         </FadeInSection>
         <FadeInSection>
           <BrandsSection />

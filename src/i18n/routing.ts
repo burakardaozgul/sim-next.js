@@ -6,9 +6,12 @@ export const routing = defineRouting({
   defaultLocale,
   localePrefix: 'as-needed',
   localeDetection: false,
-  localeCookie: {
-    maxAge: 60 * 60 * 24 * 365, // 1 yıl
-  },
+  // HTML'deki <link rel="alternate" hreflang> (yerelleştirilmiş slug'larla) tek kaynak;
+  // next-intl'in HTTP Link başlığı TR slug'ını tüm dillere yazıp çelişki yaratıyordu.
+  alternateLinks: false,
+  // Her yanıta Set-Cookie: NEXT_LOCALE eklenmesin (CDN önbelleğini bozuyor;
+  // dil tercihi USER_LOCALE_PREFERENCE çerezi ile istemci tarafında tutuluyor).
+  localeCookie: false,
   pathnames: {
     '/': '/',
     '/urunler': {

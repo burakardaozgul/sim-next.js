@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import { faqData } from '@/data/faq';
 import FAQPageClient from './FAQPageClient';
+import { setRequestLocale } from 'next-intl/server';
 
 const META: Record<string, { title: string; description: string }> = {
   tr: {
@@ -80,6 +81,7 @@ export default async function FAQPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const items = faqData[locale] || faqData.tr;
 
   return (

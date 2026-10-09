@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { createPageMetadata, BRAND_NAMES, getCanonicalUrl } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { glossaryTerms } from '@/data/glossary';
@@ -59,13 +59,6 @@ const PAGE_NAMES: Record<string, string> = {
   ar: 'مصطلحات الطباعة',
 };
 
-const LOCALE_PAGE_PATHS: Record<string, string> = {
-  tr: '/matbaa-terimleri-sozlugu',
-  en: '/printing-glossary',
-  ru: '/glossarij-poligrafii',
-  ar: '/mustalahaat-altibaa',
-};
-
 export async function generateMetadata({
   params,
 }: {
@@ -89,10 +82,9 @@ export default async function GlossaryPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'glossary' });
-
-  const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
-  const pageUrl = locale === 'tr' ? `${BASE_URL}${localePath}` : `${BASE_URL}/${locale}${localePath}`;
+  const pageUrl = getCanonicalUrl(locale, '/matbaa-terimleri-sozlugu');
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
   // Build DefinedTermSet JSON-LD

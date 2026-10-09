@@ -548,9 +548,9 @@ export const newPosts: BlogPost[] = [
     ]
   },
   {
-    "slug": "flekso-baski-murakkepleri-rehberi",
+    "slug": "flekso-baski-murekkepleri-rehberi",
     "slugs": {
-      "tr": "flekso-baski-murakkepleri-rehberi",
+      "tr": "flekso-baski-murekkepleri-rehberi",
       "en": "flexographic-inks-guide",
       "ru": "rukovodstvo-po-fleksografskim-kraskam",
       "ar": "flexographic-inks-guide"

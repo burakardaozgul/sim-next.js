@@ -6,6 +6,8 @@ export interface BlogPost {
   image: string;
   gallery: string[];
   date: string;
+  /** Son içerik güncellemesi (ISO tarih) — yoksa date kullanılır */
+  updated?: string;
   author: string;
   readTime: Record<string, string>;
   title: Record<string, string>;
@@ -17,10 +19,18 @@ export interface BlogPost {
 }
 
 export interface ContentBlock {
-  type: 'intro' | 'heading' | 'paragraph' | 'image' | 'highlight';
+  type: 'intro' | 'heading' | 'paragraph' | 'image' | 'highlight' | 'table' | 'callout' | 'sources';
+  /** Metin blokları; "[etiket](/yol)" satır içi link sözdizimi desteklenir */
   text?: string;
   src?: string;
   alt?: string;
+  /** callout: başlık (ör. "Kısa cevap", "Temel bilgiler") */
+  title?: string;
+  /** table */
+  headers?: string[];
+  rows?: string[][];
+  /** sources: kaynak listesi */
+  items?: Array<{ label: string; url?: string }>;
 }
 
 export const blogPosts = ([
@@ -353,7 +363,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['ambalaj baski murekkebi', 'ambalaj murekkep secimi', 'gida ambalaji murekkebi', 'low migration UV', 'kozmetik ambalaj murekkebi', 'ilac ambalaji baski', 'EuPIA uyumlu murekkep'],
-    relatedProducts: ['zeller-gmelin-uv-murekkepler', 'sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'etiket-baskisinda-malzeme-murekkep-secimi',
@@ -446,7 +456,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['etiket baskisi', 'etiket murekkebi', 'BOPP etiket', 'shrink etiket', 'gida etiketi', 'low migration UV', 'etiket malzemeleri'],
-    relatedProducts: ['zeller-gmelin-uv-murekkepler', 'sakata-inx-cmyk-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'sakata-inx-cmyk-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'ofset-baskida-fire-oranini-dusurme',
@@ -565,7 +575,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['baski fire orani', 'matbaa fire azaltma', 'baski maliyeti dusurme', 'ofset baski optimizasyon', 'make-ready optimizasyonu', 'matbaa karlilik', 'CIP4 PPF veri akisi'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-blanket', 'ozel-renkler'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-baski-blanketleri', 'ozel-renkler'],
   },
   {
     slug: 'prepress-baski-oncesi-hazirlik-rehberi',
@@ -666,7 +676,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['prepress nedir', 'baski oncesi hazirlik', 'baski dosyasi hazirlama', 'trapping baski', 'imposition', 'preflight kontrol', 'CTP baski plakasi'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-blanket', 'ozel-renkler'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-baski-blanketleri', 'ozel-renkler'],
   },
   {
     slug: 'gracol-fogra-baski-standartlari',
@@ -759,7 +769,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['GRACoL standardi', 'FOGRA standardi', 'ISO 12647', 'baski standartlari', 'FOGRA39', 'FOGRA51', 'renk yonetimi ICC profil'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'vector-blanket'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'vector-baski-blanketleri'],
   },
   {
     slug: 'baskida-dot-gain-kontrolu',
@@ -846,7 +856,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['dot gain', 'nokta büyümesi', 'TVI tone value increase', 'ISO 12647-2 offset', 'dot gain kontrolu', 'ofset baski kalite kontrol', 'blanket dot gain'],
-    relatedProducts: ['vector-blanket', 'sakata-inx-cmyk'],
+    relatedProducts: ['vector-baski-blanketleri', 'sakata-inx-cmyk-murekkepler'],
   },
   {
     slug: 'icc-profil-ofset-baskida-renk-yonetimi',
@@ -2262,7 +2272,10 @@ export const blogPosts = ([
     keywords: ['renk eşleştirme', 'özel renk', 'L-A-B formülasyon', 'Pantone renk', 'spot renk'],
     relatedProducts: ['ozel-renkler', 'sakata-inx-pantone-murekkepler', 'sakata-inx-cmyk-murekkepler'],
   },
-] as BlogPost[]).concat(newPosts);
+] as BlogPost[])
+  .concat(newPosts)
+  // En yeni yazı önce (ana sayfa, liste ve llms için tek sıralama)
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(
@@ -2270,8 +2283,23 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   );
 }
 
-export function getBlogSlug(post: BlogPost, locale: string): string {
-  return post.slugs[locale] || post.slug;
+export { getBlogSlug, toBlogSummary, type BlogPostSummary } from '@/lib/blog-utils';
+
+/** Bağlama göre ilgili yazılar: ortak anahtar kelime ve ilgili ürün sayısına göre, eşitlikte en yeni. */
+export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
+  const kw = new Set(post.keywords.map((k) => k.toLowerCase()));
+  const prods = new Set(post.relatedProducts ?? []);
+  return blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      p,
+      score:
+        p.keywords.filter((k) => kw.has(k.toLowerCase())).length * 2 +
+        (p.relatedProducts ?? []).filter((r) => prods.has(r)).length,
+    }))
+    .sort((a, b) => b.score - a.score || b.p.date.localeCompare(a.p.date))
+    .slice(0, limit)
+    .map((x) => x.p);
 }
 
 export function getAllBlogSlugs(): string[] {
@@ -2281,4 +2309,21 @@ export function getAllBlogSlugs(): string[] {
     for (const s of Object.values(p.slugs)) slugs.add(s);
   }
   return [...slugs];
+}
+
+/** Bkz. resolveProductForLocale — blog yazıları için aynı mantık. */
+export function resolveBlogPostForLocale(
+  slug: string,
+  locale: string,
+): { post?: BlogPost; redirectSlug?: string } {
+  const own = blogPosts.find((p) => (p.slugs[locale] || p.slug) === slug);
+  if (own) return { post: own };
+  const other = blogPosts.find((p) => p.slug === slug || Object.values(p.slugs).includes(slug));
+  if (other) return { redirectSlug: other.slugs[locale] || other.slug };
+  return {};
+}
+
+/** generateStaticParams için: yalnızca bu dile ait slug'lar. */
+export function getBlogSlugsForLocale(locale: string): string[] {
+  return blogPosts.map((p) => p.slugs[locale] || p.slug);
 }

@@ -3,11 +3,12 @@ import type { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Default: allow all crawlers
+      // Default: allow all crawlers. /_next/ is NOT blocked: Googlebot needs
+      // /_next/static (JS/CSS) to render and /_next/image to index images.
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/'],
       },
       // AI bots — allow all (search, retrieval, and training)
       {

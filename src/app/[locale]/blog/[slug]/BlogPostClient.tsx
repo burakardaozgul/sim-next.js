@@ -6,7 +6,9 @@ import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
-import { blogPosts, type BlogPost, type ContentBlock, getBlogSlug } from '@/data/blog';
+import type { BlogPost, ContentBlock } from '@/data/blog';
+import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
+import { parseInlineLinks } from '@/lib/inline-links';
 import { type Product, getProductSlug } from '@/data/products';
 import {
   ChevronLeft,
@@ -169,14 +171,113 @@ function processBlocks(blocks: ContentBlock[]): ProcessedBlock[] {
   });
 }
 
+/* ─── Inline text with [label](/path) links ─── */
+function InlineText({ text }: { text?: string }) {
+  const parts = parseInlineLinks(text || '');
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.href ? (
+          part.href.startsWith('/') ? (
+            <Link
+              key={i}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              href={part.href as any}
+              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+            >
+              {part.text}
+            </Link>
+          ) : (
+            <a
+              key={i}
+              href={part.href}
+              target="_blank"
+              rel="noopener"
+              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+            >
+              {part.text}
+            </a>
+          )
+        ) : (
+          <span key={i}>{part.text}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 /* ─── Content Block Component ─── */
 function BlockRenderer({ block, index }: { block: ProcessedBlock; index: number }) {
   switch (block.type) {
     case 'intro':
       return (
         <p className="text-lg leading-[1.85] text-cream/90 first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-5xl first-letter:font-bold first-letter:leading-[0.85] first-letter:text-gold md:text-xl md:leading-[1.85]">
-          {block.text}
+          <InlineText text={block.text} />
         </p>
+      );
+
+    case 'callout':
+      return (
+        <aside className="my-8 rounded-2xl border border-gold/25 bg-gold/[0.06] px-6 py-5 md:px-8 md:py-6">
+          {block.title && (
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">{block.title}</p>
+          )}
+          <p className="text-[15px] leading-[1.85] text-cream/90">
+            <InlineText text={block.text} />
+          </p>
+        </aside>
+      );
+
+    case 'table':
+      return (
+        <div className="my-8 overflow-x-auto rounded-2xl ring-1 ring-white/[0.08]">
+          <table className="w-full text-left text-sm text-silver/90">
+            {block.headers && (
+              <thead className="bg-ink-800 text-xs uppercase tracking-wider text-cream">
+                <tr>
+                  {block.headers.map((h, i) => (
+                    <th key={i} scope="col" className="px-4 py-3 font-semibold">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody className="divide-y divide-white/[0.06]">
+              {(block.rows ?? []).map((row, r) => (
+                <tr key={r} className="odd:bg-ink-900/40">
+                  {row.map((cell, c) => (
+                    <td key={c} className="px-4 py-3 align-top">
+                      <InlineText text={cell} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+
+    case 'sources':
+      return (
+        <section className="my-8 rounded-2xl border border-white/[0.06] bg-ink-800/60 px-6 py-5">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-silver/60">
+            {block.title || 'Kaynaklar'}
+          </p>
+          <ol className="list-decimal space-y-1.5 pl-5 text-sm text-silver/90">
+            {(block.items ?? []).map((item, i) => (
+              <li key={i}>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener" className="underline decoration-white/20 underline-offset-4 hover:text-gold">
+                    {item.label}
+                  </a>
+                ) : (
+                  item.label
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
       );
 
     case 'heading': {
@@ -198,7 +299,7 @@ function BlockRenderer({ block, index }: { block: ProcessedBlock; index: number 
     case 'paragraph':
       return (
         <p className="text-[15px] leading-[1.9] text-silver/90">
-          {block.text}
+          <InlineText text={block.text} />
         </p>
       );
 
@@ -231,7 +332,7 @@ function BlockRenderer({ block, index }: { block: ProcessedBlock; index: number 
           <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-gold/[0.03]" />
           <Quote size={32} className="absolute right-6 top-6 text-gold/10" />
           <p className="relative text-sm font-medium leading-[1.85] text-cream/90 md:text-base md:leading-[1.85]">
-            {block.text}
+            <InlineText text={block.text} />
           </p>
         </div>
       );
@@ -283,7 +384,15 @@ function PostGallery({
 }
 
 /* ─── Main Component ─── */
-export default function BlogPostClient({ post, relatedProducts = [] }: { post: BlogPost; relatedProducts?: Product[] }) {
+export default function BlogPostClient({
+  post,
+  relatedProducts = [],
+  related = [],
+}: {
+  post: BlogPost;
+  relatedProducts?: Product[];
+  related?: BlogPostSummary[];
+}) {
   const tCta = useTranslations('cta');
   const tBlog = useTranslations('blog');
   const tNav = useTranslations('nav');
@@ -306,7 +415,6 @@ export default function BlogPostClient({ post, relatedProducts = [] }: { post: B
     [processedBlocks]
   );
 
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   const tocLabel =
     locale === 'tr'

@@ -87,6 +87,12 @@ const nextConfig: NextConfig = {
         destination: '/urunler/zeller-gmelin-uv-offset-murekkepleri',
         permanent: true,
       },
+      // Yazım hatalı blog slug'ı (murakkep → mürekkep)
+      {
+        source: '/blog/flekso-baski-murakkepleri-rehberi',
+        destination: '/blog/flekso-baski-murekkepleri-rehberi',
+        permanent: true,
+      },
       // Eski sayfa URL'leri
       {
         source: '/urunlerimiz',
@@ -119,27 +125,9 @@ const nextConfig: NextConfig = {
         destination: '/urunler',
         permanent: true,
       },
-      // WordPress sistem URL'leri
-      {
-        source: '/wp-admin/:path*',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-content/:path*',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-login.php',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-register.php',
-        destination: '/',
-        permanent: true,
-      },
+      // WordPress sistem URL'leri (/wp-admin, /wp-content, /wp-login.php …) artık
+      // ana sayfaya yönlendirilmiyor: alakasız hedefe 308 Google için yumuşak 404 sayılır,
+      // gerçek 404 doğru sinyaldir.
     ];
   },
   async headers() {
@@ -165,12 +153,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/fonts/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],

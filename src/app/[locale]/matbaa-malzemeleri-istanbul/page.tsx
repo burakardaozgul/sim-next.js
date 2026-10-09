@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { createPageMetadata, getCanonicalUrl } from '@/lib/seo';
 import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, MapPin, Phone, Clock, CheckCircle2 } from 'lucide-react';
+import { localPageJsonLd } from '@/lib/schema';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -60,13 +61,6 @@ const PILLAR_NAMES: Record<string, string> = {
 const PAGE_NAMES: Record<string, string> = {
   tr: "İstanbul'da Matbaa Malzemeleri", en: 'Printing Materials in Istanbul',
   ru: 'Полиграфические Материалы в Стамбуле', ar: 'مواد الطباعة في إسطنبول',
-};
-
-const LOCALE_PAGE_PATHS: Record<string, string> = {
-  tr: '/matbaa-malzemeleri-istanbul',
-  en: '/printing-materials-istanbul',
-  ru: '/tipografskie-materialy-stambul',
-  ar: '/mawad-altibaa-istanbul',
 };
 
 const LOCALE_PILLAR_PATHS: Record<string, string> = {
@@ -306,58 +300,20 @@ export default async function MatbaaMalzemeleriIstanbulPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'istanbulSeo' });
-
-  const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
   const pillarPath = LOCALE_PILLAR_PATHS[locale] || LOCALE_PILLAR_PATHS.tr;
-  const pageUrl = locale === 'tr' ? `${BASE_URL}${localePath}` : `${BASE_URL}/${locale}${localePath}`;
+  const pageUrl = getCanonicalUrl(locale, '/matbaa-malzemeleri-istanbul');
   const pillarUrl = locale === 'tr' ? `${BASE_URL}${pillarPath}` : `${BASE_URL}/${locale}${pillarPath}`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
-  const localBusinessJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${BASE_URL}/#localbusiness`,
-    name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
-    description: (META[locale] || META.tr).description,
-    url: BASE_URL,
-    telephone: '+90-212-637-62-49',
-    priceRange: '$$',
-    areaServed: {
-      '@type': 'Country',
-      name: 'Turkey',
-    },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Yakuplu, 194. Sk. No:1 D:176',
-      addressLocality: 'Beylikdüzü',
-      addressRegion: 'İstanbul',
-      postalCode: '34524',
-      addressCountry: 'TR',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 40.9835,
-      longitude: 28.6285,
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:30',
-        closes: '18:00',
-      },
-    ],
-    logo: {
-      '@type': 'ImageObject',
-      url: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-    },
-    sameAs: [
-      'https://www.facebook.com/simlimited.net/',
-      'https://www.linkedin.com/company/sim-bask%C4%B1-malzemeleri/',
-      'https://yandex.com.tr/maps/org/sim_baski_malzemeleri_san/59607491695/',
-    ],
-  };
+  // Kopya LocalBusiness yerine site geneli #localbusiness'a referans veren WebPage
+  const localBusinessJsonLd = localPageJsonLd(
+    locale,
+    '/matbaa-malzemeleri-istanbul',
+    (META[locale] || META.tr).title,
+    (META[locale] || META.tr).description,
+  );
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',

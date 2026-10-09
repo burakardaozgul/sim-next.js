@@ -4,7 +4,9 @@ import { useState, useSyncExternalStore } from 'react';
 import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { X } from 'lucide-react';
-import { Link, usePathname } from '@/i18n/navigation';
+import { usePathname } from '@/i18n/navigation';
+import NextLink from 'next/link';
+import { localeSwitchHref } from '@/lib/locale-switch';
 import { setLocalePreference } from '@/lib/locale-cookie';
 
 const DISMISS_KEY = 'locale-suggest-dismissed';
@@ -57,23 +59,20 @@ export default function LocaleSuggestBanner() {
   const s = SUGGESTIONS[suggest];
 
   const slug = params?.slug as string | undefined;
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  const href = slug
-    ? { pathname: pathname as any, params: { slug } }
-    : { pathname: pathname as any };
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  // Hedef dilin URL'si (slug haritası yok: mevcut slug korunur, sunucu 308 ile düzeltir).
+  const href = localeSwitchHref(pathname, suggest, slug);
 
   return (
     <div className="fixed inset-x-0 top-0 z-[60] flex items-center justify-center gap-3 border-b border-gold/20 bg-ink-800/95 px-4 py-2 text-xs backdrop-blur-md sm:text-sm lg:pl-[260px]">
       <span className="text-silver">{s.text}</span>
-      <Link
+      <NextLink
         href={href}
-        locale={suggest}
+        hrefLang={suggest}
         onClick={() => setLocalePreference(suggest)}
         className="font-semibold text-gold underline underline-offset-2 hover:text-gold-light"
       >
         {s.cta}
-      </Link>
+      </NextLink>
       <button
         onClick={() => {
           localStorage.setItem(DISMISS_KEY, '1');

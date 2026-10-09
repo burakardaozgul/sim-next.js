@@ -27,6 +27,15 @@ export default function CookieConsent() {
 
   const dismiss = useCallback((decision: string) => {
     localStorage.setItem(STORAGE_KEY, decision);
+    // Consent Mode v2: GTM varsa rıza durumunu güncelle
+    const w = window as Window & { gtag?: (...args: unknown[]) => void };
+    const state = decision === 'accepted' ? 'granted' : 'denied';
+    w.gtag?.('consent', 'update', {
+      ad_storage: state,
+      ad_user_data: state,
+      ad_personalization: state,
+      analytics_storage: state,
+    });
     setShow(false);
   }, []);
 

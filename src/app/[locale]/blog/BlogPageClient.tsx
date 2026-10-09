@@ -6,10 +6,10 @@ import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
-import { blogPosts, getBlogSlug } from '@/data/blog';
+import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
 import { Calendar, ArrowRight } from 'lucide-react';
 
-export default function BlogPageClient() {
+export default function BlogPageClient({ posts }: { posts: BlogPostSummary[] }) {
   const t = useTranslations('blog');
   const locale = useLocale();
 
@@ -36,7 +36,7 @@ export default function BlogPageClient() {
         <section className="border-t border-white/[0.06] bg-ink-800 px-6 py-16 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {blogPosts.map((post) => (
+              {posts.map((post) => (
                 <Link
                   key={post.slug}
                   href={{ pathname: '/blog/[slug]', params: { slug: getBlogSlug(post, locale) } }}

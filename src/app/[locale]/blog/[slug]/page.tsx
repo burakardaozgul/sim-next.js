@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
-import { getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { createPageMetadata } from '@/lib/seo';
+import { articleJsonLd } from '@/lib/schema';
+import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale, getRelatedPosts, toBlogSummary } from '@/data/blog';
+import { locales } from '@/i18n/config';
+import { localizedBlogPath } from '@/lib/paths';
+import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
 import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return getAllBlogSlugs().map((slug) => ({ slug }));
+  return locales.flatMap((locale) =>
+    getBlogSlugsForLocale(locale).map((slug) => ({ locale, slug })),
+  );
 }
 
 export async function generateMetadata({
@@ -15,7 +22,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const { post } = resolveBlogPostForLocale(slug, locale);
 
   if (!post) return {};
 
@@ -31,6 +38,9 @@ export async function generateMetadata({
     keywords: post.keywords,
     ogImage: post.image,
     slugsByLocale: post.slugs,
+    type: 'article',
+    publishedTime: post.date,
+    modifiedTime: post.updated ?? post.date,
   });
 }
 
@@ -40,8 +50,10 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  setRequestLocale(locale);
+  const { post, redirectSlug } = resolveBlogPostForLocale(slug, locale);
 
+  if (redirectSlug) permanentRedirect(localizedBlogPath(redirectSlug, locale));
   if (!post) notFound();
 
   const relatedProductData = (post.relatedProducts || [])
@@ -50,7 +62,6 @@ export default async function BlogPostPage({
 
   const BASE_URL = 'https://www.simlimited.net';
   const title = post.title[locale] || post.title.tr;
-  const description = post.excerpt[locale] || post.excerpt.tr;
   const localizedSlug = getBlogSlug(post, locale);
   const postUrl =
     locale === 'tr'
@@ -66,39 +77,7 @@ export default async function BlogPostPage({
     .filter((block) => block.text)
     .reduce((count, block) => count + (block.text?.split(/\s+/).length || 0), 0);
 
-  const LOCALE_LANG: Record<string, string> = { tr: 'Turkish', en: 'English', ru: 'Russian', ar: 'Arabic' };
-
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description,
-    image: `${BASE_URL}${post.image}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    wordCount,
-    inLanguage: locale,
-    keywords: post.keywords.join(', '),
-    author: {
-      '@type': 'Organization',
-      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
-      url: BASE_URL,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: BRAND_NAMES[locale] || BRAND_NAMES.tr,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${BASE_URL}/images/sim-baski-malzemeleri.webp`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
-    isAccessibleForFree: true,
-    availableLanguage: Object.values(LOCALE_LANG),
-  };
+  const articleSchema = articleJsonLd(post, locale, { wordCount });
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -145,7 +124,7 @@ export default async function BlogPostPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
@@ -157,7 +136,13 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <BlogPostClient post={post} relatedProducts={relatedProductData} />
+      <LocaleSlugsProvider slugs={post.slugs}>
+        <BlogPostClient
+          post={post}
+          relatedProducts={relatedProductData}
+          related={getRelatedPosts(post, 3).map(toBlogSummary)}
+        />
+      </LocaleSlugsProvider>
     </>
   );
 }
