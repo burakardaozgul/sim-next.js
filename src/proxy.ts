@@ -42,7 +42,19 @@ export default function proxy(request: NextRequest) {
     }
   }
 
-  return intlMiddleware(request);
+  return permanent(intlMiddleware(request));
+}
+
+/**
+ * next-intl'in yol/önek kanonikleştirme yönlendirmeleri (ör. /en/iletisim → /en/contact,
+ * /products/x → /urunler/x) geçici 307 döner; bunlar kalıcı kanonikleştirmedir → 308.
+ */
+function permanent(response: NextResponse): NextResponse {
+  if (response.status === 307) {
+    const location = response.headers.get('location');
+    if (location) return NextResponse.redirect(location, 308);
+  }
+  return response;
 }
 
 export const config = {

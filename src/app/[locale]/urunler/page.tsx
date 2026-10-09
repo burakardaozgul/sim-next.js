@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, getCanonicalUrl } from '@/lib/seo';
 import ProductsPageClient from './ProductsPageClient';
 import { setRequestLocale } from 'next-intl/server';
 
@@ -63,8 +63,7 @@ function ProductsBreadcrumbJsonLd({ locale }: { locale: string }) {
   const labels = BREADCRUMB_LABELS[locale] || BREADCRUMB_LABELS.tr;
   const BASE_URL = 'https://www.simlimited.net';
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
-  const productsUrl =
-    locale === 'tr' ? `${BASE_URL}/urunler` : `${BASE_URL}/${locale}/${locale === 'en' ? 'products' : locale === 'ru' ? 'produkty' : 'products'}`;
+  const productsUrl = getCanonicalUrl(locale, '/urunler');
 
   const jsonLd = {
     '@context': 'https://schema.org',

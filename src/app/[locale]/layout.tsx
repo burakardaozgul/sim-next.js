@@ -159,9 +159,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
 
   if (!locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
 
   const messages = await getMessages({ locale });
   const isRtl = rtlLocales.includes(locale as Locale);

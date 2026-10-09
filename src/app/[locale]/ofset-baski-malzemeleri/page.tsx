@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
+import { createPageMetadata, BRAND_NAMES, getCanonicalUrl } from '@/lib/seo';
 import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
@@ -9,13 +9,6 @@ import { getProductBySlug, getProductSlug } from '@/data/products';
 import { getBlogPostBySlug, getBlogSlug } from '@/data/blog';
 
 const BASE_URL = 'https://www.simlimited.net';
-
-const LOCALE_PAGE_PATHS: Record<string, string> = {
-  tr: '/ofset-baski-malzemeleri',
-  en: '/offset-printing-supplies',
-  ru: '/materialy-ofsetnoj-pechati',
-  ar: '/mawad-tibaat-offset',
-};
 
 const HOME_NAMES: Record<string, string> = {
   tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية',
@@ -639,8 +632,7 @@ export default async function OfsetBaskiMalzemeleriPage({
   setRequestLocale(locale);
   const c = CONTENT[locale] || CONTENT.tr;
 
-  const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
-  const pageUrl = locale === 'tr' ? `${BASE_URL}${localePath}` : `${BASE_URL}/${locale}${localePath}`;
+  const pageUrl = getCanonicalUrl(locale, '/ofset-baski-malzemeleri');
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
   const webPageJsonLd = {

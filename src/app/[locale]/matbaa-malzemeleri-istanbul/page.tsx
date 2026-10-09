@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, getCanonicalUrl } from '@/lib/seo';
 import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
@@ -61,13 +61,6 @@ const PILLAR_NAMES: Record<string, string> = {
 const PAGE_NAMES: Record<string, string> = {
   tr: "İstanbul'da Matbaa Malzemeleri", en: 'Printing Materials in Istanbul',
   ru: 'Полиграфические Материалы в Стамбуле', ar: 'مواد الطباعة في إسطنبول',
-};
-
-const LOCALE_PAGE_PATHS: Record<string, string> = {
-  tr: '/matbaa-malzemeleri-istanbul',
-  en: '/printing-materials-istanbul',
-  ru: '/tipografskie-materialy-stambul',
-  ar: '/mawad-altibaa-istanbul',
 };
 
 const LOCALE_PILLAR_PATHS: Record<string, string> = {
@@ -309,10 +302,8 @@ export default async function MatbaaMalzemeleriIstanbulPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'istanbulSeo' });
-
-  const localePath = LOCALE_PAGE_PATHS[locale] || LOCALE_PAGE_PATHS.tr;
   const pillarPath = LOCALE_PILLAR_PATHS[locale] || LOCALE_PILLAR_PATHS.tr;
-  const pageUrl = locale === 'tr' ? `${BASE_URL}${localePath}` : `${BASE_URL}/${locale}${localePath}`;
+  const pageUrl = getCanonicalUrl(locale, '/matbaa-malzemeleri-istanbul');
   const pillarUrl = locale === 'tr' ? `${BASE_URL}${pillarPath}` : `${BASE_URL}/${locale}${pillarPath}`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 

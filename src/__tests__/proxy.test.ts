@@ -34,3 +34,16 @@ describe('home page locale-preference redirect', () => {
     expect(res.status).toBe(200);
   });
 });
+
+describe('next-intl canonicalisation redirects are permanent (308), not 307', () => {
+  it('wrong-locale static path → 308 to the localized path', () => {
+    const res = proxy(new NextRequest('https://www.simlimited.net/en/iletisim'));
+    expect(res.status).toBe(308);
+    expect(new URL(res.headers.get('location')!).pathname).toBe('/en/contact');
+  });
+  it('EN path under the default locale → 308 to the TR path', () => {
+    const res = proxy(new NextRequest('https://www.simlimited.net/products/sakata-inx-cmyk-inks'));
+    expect(res.status).toBe(308);
+    expect(new URL(res.headers.get('location')!).pathname).toBe('/urunler/sakata-inx-cmyk-inks');
+  });
+});

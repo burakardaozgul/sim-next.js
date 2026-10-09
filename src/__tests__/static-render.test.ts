@@ -13,6 +13,15 @@ function collectRouteFiles(dir: string, out: string[] = []): string[] {
   return out;
 }
 
+function collectAll(dir: string, out: string[] = []): string[] {
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) collectAll(full, out);
+    else if (entry.endsWith('.tsx')) out.push(full);
+  }
+  return out;
+}
+
 const files = collectRouteFiles(LOCALE_APP_DIR);
 const rel = (f: string) => f.slice(LOCALE_APP_DIR.length + 1);
 
@@ -27,12 +36,23 @@ describe('static rendering of [locale] routes (next-intl)', () => {
   });
 
   it('server translation helpers always receive the locale explicitly (no header-based locale lookup)', () => {
+    // Pages/layouts plus server components (files without 'use client') under src/components
+    const componentsDir = join(__dirname, '..', 'components');
+    const serverComponents = collectAll(componentsDir).filter((f) => !/^['"]use client['"]/.test(readFileSync(f, 'utf8')));
     const offenders: string[] = [];
-    for (const f of files) {
+    const HEADER_BASED = /\b(getTranslations|getMessages|getFormatter|getLocale|getNow|getTimeZone)\(\s*(\)|['"]|\{(?![^}]*\blocale\b))/;
+    for (const f of [...files, ...serverComponents]) {
       const src = readFileSync(f, 'utf8');
-      if (/getTranslations\(\s*['"]/.test(src)) offenders.push(`${rel(f)}: getTranslations('…')`);
-      if (/getMessages\(\s*\)/.test(src)) offenders.push(`${rel(f)}: getMessages()`);
+      const m = src.match(HEADER_BASED);
+      if (m) offenders.push(`${f.split('/src/')[1]}: ${m[0]}`);
     }
     expect(offenders).toEqual([]);
+  });
+
+  it('the locale layout validates the locale before seeding it for static rendering', () => {
+    const src = readFileSync(join(LOCALE_APP_DIR, 'layout.tsx'), 'utf8');
+    const body = src.slice(src.indexOf('export default async function'));
+    expect(body.indexOf('notFound()')).toBeGreaterThan(-1);
+    expect(body.indexOf('notFound()')).toBeLessThan(body.indexOf('setRequestLocale('));
   });
 });
