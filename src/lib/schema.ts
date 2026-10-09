@@ -7,6 +7,7 @@ import { getBlogSlug } from '@/data/blog';
 import { glossaryTerms } from '@/data/glossary';
 import { slugify } from '@/lib/slugify';
 import { inlineLinksToPlainText } from '@/lib/inline-links';
+import { ABOUT_PEOPLE, ABOUT_CREDENTIALS, type AboutPerson } from '@/data/about';
 
 /**
  * JSON-LD üreticileri — tek entity grafı:
@@ -15,6 +16,49 @@ import { inlineLinksToPlainText } from '@/lib/inline-links';
  */
 
 const orgRef = { '@id': ORGANIZATION.id } as const;
+
+/** Entity için uzmanlık alanları (E-E-A-T / knowsAbout) */
+const KNOWS_ABOUT = [
+  'Offset printing inks',
+  'PANTONE colour matching',
+  'Custom colour formulation',
+  'Metallic inks',
+  'Fluorescent inks',
+  'UV offset inks',
+  'Offset printing blankets',
+  'Pressroom chemicals',
+  'Dispersion varnishes',
+];
+
+/** İsimli uzman (Hakkımızda ekip bölümü, Organization.employee, ileride Article.author) */
+export function personJsonLd(person: AboutPerson, locale: string) {
+  const l = locale as keyof typeof person.jobTitle;
+  return {
+    '@type': 'Person',
+    name: person.name,
+    jobTitle: person.jobTitle[l] || person.jobTitle.tr,
+    worksFor: orgRef,
+    ...(person.image ? { image: `${BASE_URL}${person.image}` } : {}),
+    ...(person.linkedin ? { sameAs: [person.linkedin] } : {}),
+  };
+}
+
+/** Hakkımızda: kuruma işaret eden AboutPage. */
+export function aboutPageJsonLd(locale: string, meta: { name: string; description: string }) {
+  const url = getCanonicalUrl(locale, '/hakkimizda');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': url,
+    url,
+    name: meta.name,
+    description: meta.description,
+    inLanguage: locale,
+    mainEntity: orgRef,
+    isPartOf: { '@id': ORGANIZATION.websiteId },
+    publisher: orgRef,
+  };
+}
 
 const postalAddress = {
   '@type': 'PostalAddress',
@@ -33,6 +77,20 @@ export function organizationJsonLd(locale: string) {
     logo: ORGANIZATION.logo,
     description: ORG_DESCRIPTIONS[locale] || ORG_DESCRIPTIONS.tr,
     foundingDate: ORGANIZATION.foundingDate,
+    foundingLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' } },
+    brand: ORGANIZATION.brands.filter((b) => b.role === 'own').map((b) => ({ '@type': 'Brand', name: b.name })),
+    knowsAbout: KNOWS_ABOUT,
+    ...(ABOUT_CREDENTIALS.length
+      ? {
+          hasCredential: ABOUT_CREDENTIALS.map((c) => ({
+            '@type': 'EducationalOccupationalCredential',
+            name: c.name[locale as keyof typeof c.name] || c.name.tr,
+            ...(c.issuer ? { recognizedBy: { '@type': 'Organization', name: c.issuer } } : {}),
+            ...(c.url ? { url: c.url } : {}),
+          })),
+        }
+      : {}),
+    ...(ABOUT_PEOPLE.length ? { employee: ABOUT_PEOPLE.map((p) => personJsonLd(p, locale)) } : {}),
     sameAs: ORGANIZATION.sameAs,
     address: postalAddress,
     contactPoint: {

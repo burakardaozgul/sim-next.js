@@ -88,6 +88,17 @@ check "EN pillar inline product links use EN slugs"      $(echo "$PE" | grep -q 
 BP=$(curl -sS -A "$UA" "$BASE/blog/ofset-murekkep-secimi")
 check "blog post shows pillar guide block"               $(echo "$BP" | grep -q 'href="/matbaa-malzemeleri"'; echo $?)
 
+# about /hakkimizda (brief G): E-E-A-T page, schema, EN, author box
+A=$(curl -sS -A "$UA" "$BASE/hakkimizda")
+check "about H1 names 1983"                              $(echo "$A" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "about has AboutPage + FAQPage JSON-LD"            $(echo "$A" | grep -q '"@type":"AboutPage"' && echo "$A" | grep -q '"@type":"FAQPage"'; echo $?)
+AW=$(echo "$A" | sed -e 's/<script[^>]*>[^<]*<\/script>//g' -e 's/<[^>]*>/ /g' | wc -w | tr -d ' ')
+check "about body ≥ 1000 words ($AW)"                     $([ "$AW" -ge 1000 ]; echo $?)
+check "about timeline shows 1983 and 1998"               $(echo "$A" | grep -q '>1983<' && echo "$A" | grep -q '>1998<'; echo $?)
+AE=$(curl -sS -A "$UA" "$BASE/en/about")
+check "EN about H1 names Turkey + 1983"                  $(echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey' && echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "blog post has author box linking to about"        $(echo "$BP" | grep -q 'href="/hakkimizda"'; echo $?)
+
 # generated llms.txt + sitemap hygiene + IndexNow key file
 L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)

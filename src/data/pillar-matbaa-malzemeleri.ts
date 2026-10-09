@@ -566,7 +566,8 @@ const TR: PillarContent = {
       { label: 'Dil ve pazar', value: `Türkçe, İngilizce, Rusça ve Arapça hizmet; ${F.exportRegions.tr} pazarlarına ihracat` },
     ],
     timeline: [
-      { year: String(F.foundingYear), text: 'SIM Baskı Malzemeleri İstanbul\'da kuruldu; ofset mürekkep ve sarf malzemesi tedarikine başladı.' },
+      { year: String(F.foundingYear), text: 'SIM Baskı Malzemeleri İstanbul\'da kâğıt, karton ve baskı malzemeleri tedariki için kuruldu.' },
+      { year: '1998', text: 'Odak ofset baskı mürekkepleri, baskı üstü laklar, blanketler ve ofset kimyasallarına kaydı.' },
       { year: SAKATA_SINCE, text: 'SAKATA INX (Japonya) Türkiye distribütörlüğü; CMYK ve PANTONE serileri stoğa girdi.' },
       { year: 'Sonrası', text: 'EVA COLOR metalik ve floresan mürekkep üretimi, VECTOR blanket markası; Zeller+Gmelin, Hi-Tech Coatings ve SCHLENK distribütörlükleri.' },
       { year: 'Bugün', text: `${F.labAvailability} özel renk laboratuvarı, dört dilde hizmet, Türkiye geneli dağıtım ve ihracat.` },
@@ -746,7 +747,8 @@ const EN: PillarContent = {
       { label: 'Languages and markets', value: `Turkish, English, Russian and Arabic service; exports to ${F.exportRegions.en}` },
     ],
     timeline: [
-      { year: String(F.foundingYear), text: 'SIM Printing Supplies is founded in Istanbul and starts supplying offset inks and consumables.' },
+      { year: String(F.foundingYear), text: 'SIM Printing Supplies is founded in Istanbul to supply paper, board and printing materials.' },
+      { year: '1998', text: 'Focus moves to offset inks, overprint varnishes, blankets and pressroom chemicals.' },
       { year: SAKATA_SINCE, text: 'Turkish distributorship for SAKATA INX (Japan); CMYK and PANTONE series enter stock.' },
       { year: 'Later', text: 'EVA COLOR metallic and fluorescent ink production, the VECTOR blanket brand; Zeller+Gmelin, Hi-Tech Coatings and SCHLENK distributorships.' },
       { year: 'Today', text: `${F.labAvailability} custom colour laboratory, service in four languages, nationwide distribution and export.` },
@@ -911,7 +913,8 @@ const RU: PillarContent = {
       { label: 'Языки и рынки', value: 'Турецкий, английский, русский, арабский; экспорт на Ближний Восток, в Центральную Азию и на Балканы' },
     ],
     timeline: [
-      { year: String(F.foundingYear), text: 'Основание SIM в Стамбуле, начало поставок офсетных красок и расходных материалов.' },
+      { year: String(F.foundingYear), text: 'Основание SIM в Стамбуле для поставок бумаги, картона и полиграфических материалов.' },
+      { year: '1998', text: 'Фокус смещается на офсетные краски, лаки, полотна и печатную химию.' },
       { year: SAKATA_SINCE, text: 'Дистрибуция SAKATA INX (Япония) в Турции; серии CMYK и PANTONE на складе.' },
       { year: 'Сегодня', text: `Производство EVA COLOR и VECTOR, лаборатория ${F.labAvailability}, обслуживание на четырёх языках, экспорт.` },
     ],
@@ -1068,7 +1071,8 @@ const AR: PillarContent = {
       { label: 'اللغات والأسواق', value: 'التركية والإنجليزية والروسية والعربية؛ تصدير إلى الشرق الأوسط وآسيا الوسطى والبلقان' },
     ],
     timeline: [
-      { year: String(F.foundingYear), text: 'تأسيس SIM في إسطنبول وبدء توريد أحبار الأوفست والمستهلكات.' },
+      { year: String(F.foundingYear), text: 'تأسيس SIM في إسطنبول لتوريد الورق والكرتون ومواد الطباعة.' },
+      { year: '1998', text: 'يتحول التركيز إلى أحبار الأوفست والورنيشات والبطانيات وكيماويات الطباعة.' },
       { year: SAKATA_SINCE, text: 'وكالة توزيع SAKATA INX (اليابان) في تركيا؛ سلاسل CMYK وPANTONE في المخزون.' },
       { year: 'اليوم', text: `إنتاج EVA COLOR وVECTOR، مختبر ${F.labAvailability}، خدمة بأربع لغات، تصدير.` },
     ],

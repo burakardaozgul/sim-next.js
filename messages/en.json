@@ -129,7 +129,11 @@
     "relatedProducts": "Related Products",
     "pillarGuideTitle": "Printing Materials Guide",
     "pillarGuideText": "This article is part of our complete guide to printing materials: eight product groups, selection criteria, paper–ink compatibility and how supply from Turkey works.",
-    "pillarGuideCta": "Read the guide"
+    "pillarGuideCta": "Read the guide",
+    "authorBoxTitle": "Author",
+    "authorBoxText": "SIM Technical Team is the joint byline of our colour laboratory, technical sales and field support teams. Articles draw on press-side experience gained supplying the printing industry since 1983.",
+    "authorBoxAbout": "About us",
+    "authorBoxCta": "Ask our technical team"
   },
   "services": {
     "tag": "Our Expertise",
@@ -240,76 +244,6 @@
         "desc": "Operating since 1866, Zeller+Gmelin is one of Europe's most established manufacturers of offset inks and industrial chemicals."
       }
     ]
-  },
-  "aboutPage": {
-    "title": "About Us",
-    "subtitle": "A trusted partner of the printing industry since 1983",
-    "history": {
-      "title": "Our History",
-      "intro": "With eco-friendly products, a commitment to quality, and ethical values, we aim to elevate our technical, logistical, and commercial services to the highest level...",
-      "p1": "Founded in 1983 to supply paper, cardboard, and printing materials to the printing industry, Sim Baskı Malzemeleri Ltd. Şti. shifted its focus from 1998 onwards to offset printing inks, coatings, offset blankets, and offset chemicals.",
-      "p2": "Having taken on the Turkish representation of EFI offset printing plates from the Italian Samor Group in 2001, Sim Baskı Malzemeleri has been representing SAKATA offset inks, Hi-Tech Coatings water-based and UV varnishes, Fujikura offset blankets since 2002, and DEERS (DAIHAN) inks from South Korea since 2008. From 2024, the company has taken on the Turkish representation of selected product lines from the Italian Acoma brand, continuously expanding its product portfolio and service quality.",
-      "p3": "Today, Sim Baskı Malzemeleri offers advanced custom color solutions with a monthly production capacity of 15 tons and its registered EVAcolor brand, technically designing colors requested from digital or printed references or nature in chemical compositions suitable for pre-press and post-press applications, bringing them to life through precision manufacturing processes. Under the EVAcolor brand, fluorescent and metallic ink production is carried out while providing uninterrupted service to customers with an experienced team.",
-      "p4": "Sim Baskı Malzemeleri carries a versatile identity as a manufacturer, supplier, and solution partner, with a strong import network through global collaborations, as well as production capabilities and export activities targeting international markets."
-    },
-    "strengths": {
-      "title": "Our Strengths",
-      "items": [
-        {
-          "title": "Global Brands, Strong Partnerships",
-          "desc": "Thanks to long-term representations with leading manufacturers based in Japan, South Korea, and Europe, we offer products that meet world standards."
-        },
-        {
-          "title": "Integrated Production, Import & Export",
-          "desc": "By combining our own production capacity with international supply and export capabilities, we provide flexible and sustainable solutions to our customers."
-        },
-        {
-          "title": "Technical Expertise & Field Experience",
-          "desc": "Our experienced technical team supports production continuity by responding quickly and accurately to situations encountered in printing processes."
-        },
-        {
-          "title": "Fast & Uninterrupted Service",
-          "desc": "With our strong stock structure, effective logistics processes, and solution-oriented service approach, we respond to our customers' needs in the shortest time."
-        },
-        {
-          "title": "Quality & Continuity Focused Service",
-          "desc": "We adopt high quality standards, consistency, and a long-term business partnership approach in all our products and services."
-        }
-      ]
-    },
-    "mission": {
-      "title": "Our Mission",
-      "text": "To enhance our customers' print quality by providing reliable supply, advanced technology products, and sustainable solutions supported by technical expertise."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "text": "To be a trusted solution partner recognized as a reference in the region and at an international scale."
-    },
-    "values": {
-      "title": "Our Core Values",
-      "items": [
-        {
-          "title": "Reliability",
-          "desc": "With over 40 years of industry experience, we consistently deliver dependable service to our customers."
-        },
-        {
-          "title": "Technical Expertise",
-          "desc": "Our expert team provides technical support from color formulation to print optimization."
-        },
-        {
-          "title": "Quality Focus",
-          "desc": "We maintain the highest print quality through international-standard production and supply."
-        },
-        {
-          "title": "Sustainability",
-          "desc": "We invest in the future with eco-friendly products and sustainable production processes."
-        },
-        {
-          "title": "Customer Commitment",
-          "desc": "With 24/7 service, we provide fast and effective solutions to our customers' needs."
-        }
-      ]
-    }
   },
   "customColorPage": {
     "title": "Custom Color Production",

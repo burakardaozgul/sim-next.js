@@ -129,7 +129,11 @@
     "relatedProducts": "İlgili Ürünler",
     "pillarGuideTitle": "Matbaa Malzemeleri Rehberi",
     "pillarGuideText": "Bu yazı, ofset mürekkepten blankete ve baskı kimyasallarına kadar tüm ürün gruplarını, seçim kriterlerini ve tedarik sürecini anlatan kapsamlı rehberimizin bir parçasıdır.",
-    "pillarGuideCta": "Rehberi okuyun"
+    "pillarGuideCta": "Rehberi okuyun",
+    "authorBoxTitle": "Yazar",
+    "authorBoxText": "SIM Teknik Ekip; renk laboratuvarı, teknik satış ve saha destek ekiplerimizin ortak imzasıdır. Yazılar 1983'ten beri matbaa sektörüne tedarik yaparken makine başında edinilen deneyimle hazırlanır.",
+    "authorBoxAbout": "Hakkımızda",
+    "authorBoxCta": "Teknik ekibimize sorun"
   },
   "services": {
     "tag": "Uzmanlık Alanlarımız",
@@ -240,76 +244,6 @@
         "desc": "1866'dan bu yana faaliyet gösteren Zeller+Gmelin, ofset mürekkepleri ve endüstriyel kimyasallar alanında Avrupa'nın köklü üreticilerinden biridir."
       }
     ]
-  },
-  "aboutPage": {
-    "title": "Hakkımızda",
-    "subtitle": "1983'ten bu yana matbaa sektörünün güvenilir çözüm ortağı",
-    "history": {
-      "title": "Tarihçemiz",
-      "intro": "Sunduğu çevre dostu ürünler, kalite anlayışı ve benimsediği etik değerler ile teknik, lojistik ve ticari anlamda sunduğu hizmeti en üst noktaya taşımayı hedefliyoruz...",
-      "p1": "1983 yılında matbaacılık sektörüne kâğıt, karton ve baskı materyalleri tedariki amacıyla kurulan Sim Baskı Malzemeleri Ltd. Şti., 1998 yılından itibaren faaliyet odağını ofset baskı mürekkepleri, baskı üstü laklar, ofset blanketleri ve ofset kimyasalları alanlarına yöneltmiştir.",
-      "p2": "2001 yılında İtalyan Samor Grubu'na bağlı EFI ofset baskı kalıplarının Türkiye temsilciliğini üstlenen Sim Baskı Malzemeleri; 2002 yılından bu yana SAKATA ofset baskı mürekkepleri, Hi-Tech Coatings su bazlı ve UV lak-vernikleri, Fujikura ofset blanketleri ve 2008 itibarıyla Güney Kore DEERS (DAIHAN) mürekkeplerinin Türkiye temsilciliklerini yürütmektedir. 2024 yılından itibaren ise İtalyan Acoma markasının seçili ürün gruplarının Türkiye temsilciliğini üstlenerek ürün portföyünü ve hizmet kalitesini sürekli geliştirmektedir.",
-      "p3": "Bugün Sim Baskı Malzemeleri; aylık 15 ton kapasiteli özel renk üretim ünitesi ve tescilli EVAcolor markasıyla ileri seviye özel renk çözümleri sunmakta, dijital veya basılı referanslardan ya da doğadan talep edilen renkleri baskı altı ve baskı sonrası uygulamalara uygun kimyasal yapıda teknik olarak tasarlayıp, hassas üretim süreçleriyle hayata geçirmektedir. EVAcolor markası altında florasan ve metalik mürekkep üretimleri gerçekleştirilirken; deneyimli ekibiyle müşterilerine kesintisiz hizmet sağlamaktadır.",
-      "p4": "Sim Baskı Malzemeleri; global iş birlikleriyle güçlü bir ithalat ağına sahip olmasının yanı sıra, üretim kabiliyeti ve uluslararası pazarlara yönelik ihracat faaliyetleriyle çok yönlü bir üretici, tedarikçi ve çözüm ortağı kimliği taşımaktadır."
-    },
-    "strengths": {
-      "title": "Güçlü Yönlerimiz",
-      "items": [
-        {
-          "title": "Global Markalar, Güçlü İş Birlikleri",
-          "desc": "Japonya, Güney Kore ve Avrupa merkezli lider üreticilerle kurduğumuz uzun vadeli temsilcilikler sayesinde dünya standartlarında ürünler sunarız."
-        },
-        {
-          "title": "Üretim, İthalat ve İhracatı Birleştiren Yapı",
-          "desc": "Kendi üretim gücümüzü uluslararası tedarik ve ihracat kabiliyetimizle birleştirerek müşterilerimize esnek ve sürdürülebilir çözümler sağlarız."
-        },
-        {
-          "title": "Teknik Uzmanlık ve Saha Deneyimi",
-          "desc": "Deneyimli teknik ekibimiz, baskı süreçlerinde karşılaşılan durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini destekler."
-        },
-        {
-          "title": "Hızlı ve Kesintisiz Hizmet",
-          "desc": "Güçlü stok yapımız, etkin lojistik süreçlerimiz ve çözüm odaklı hizmet anlayışımız sayesinde müşterilerimizin ihtiyaçlarına en kısa sürede yanıt veririz."
-        },
-        {
-          "title": "Kalite ve Süreklilik Odaklı Hizmet",
-          "desc": "Tüm ürün ve hizmetlerimizde yüksek kalite standardı, tutarlılık ve uzun vadeli iş ortaklığı yaklaşımını esas alırız."
-        }
-      ]
-    },
-    "mission": {
-      "title": "Misyonumuz",
-      "text": "Matbaa sektörüne güvenilir tedarik, ileri teknoloji ürünler ve teknik uzmanlıkla desteklenen sürdürülebilir çözümler sunarak müşterilerimizin baskı kalitesini geliştirmek."
-    },
-    "vision": {
-      "title": "Vizyonumuz",
-      "text": "Bölgesinde referans gösterilen, uluslararası ölçekte güvenilir bir çözüm ortağı olmak."
-    },
-    "values": {
-      "title": "Temel Değerlerimiz",
-      "items": [
-        {
-          "title": "Güvenilirlik",
-          "desc": "40 yılı aşkın sektör deneyimi ile müşterilerimize her zaman tutarlı ve güvenilir hizmet sunuyoruz."
-        },
-        {
-          "title": "Teknik Uzmanlık",
-          "desc": "Uzman kadromuz ile renk formülasyonundan baskı optimizasyonuna kadar teknik destek sağlıyoruz."
-        },
-        {
-          "title": "Kalite Odaklılık",
-          "desc": "Uluslararası standartlarda üretim ve tedarik ile baskı kalitesini en üst seviyede tutuyoruz."
-        },
-        {
-          "title": "Sürdürülebilirlik",
-          "desc": "Çevre dostu ürünler ve sürdürülebilir üretim süreçleri ile geleceğe yatırım yapıyoruz."
-        },
-        {
-          "title": "Müşteri Yaklaşımı",
-          "desc": "7/24 hizmet anlayışı ile müşterilerimizin ihtiyaçlarına hızlı ve etkin çözümler üretiyoruz."
-        }
-      ]
-    }
   },
   "customColorPage": {
     "title": "Özel Renk Üretimi",
