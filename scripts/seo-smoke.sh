@@ -116,11 +116,20 @@ HE=$(curl -sS -A "$UA" "$BASE/en/printing-inks")
 check "EN ink hub H1 is export-oriented (Turkey)"        $(echo "$HE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
 check "nav links the ink hub"                            $(echo "$P" | grep -q 'href="/matbaa-murekkepleri"'; echo $?)
 
+# export pages (brief H)
+EX=$(curl -sS -A "$UA" "$BASE/en/printing-supplies-turkey")
+check "EN export hub 200 + H1 names Turkey"             $(echo "$EX" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
+check "EN export hub has RFQ form (country + incoterm)" $(echo "$EX" | grep -q 'name="country"' && echo "$EX" | grep -q 'name="incoterm"'; echo $?)
+check "EN export hub has FAQPage + WebPage schema"      $(echo "$EX" | grep -q '"@type":"FAQPage"' && echo "$EX" | grep -q '"@type":"WebPage"'; echo $?)
+EI=$(curl -sS -A "$UA" "$BASE/en/offset-ink-supplier-turkey")
+check "EN offset ink supplier page H1 (Turkey)"         $(echo "$EI" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
+check "TR export page exists (/ihracat)"                $([ "$(hdr /ihracat | head -1 | grep -oE '[0-9]{3}')" = "200" ]; echo $?)
+
 # generated llms.txt + sitemap hygiene + IndexNow key file
 L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
 S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex pages" $([ "$(echo "$S" | grep -c 'gizlilik-politikasi\|privacy-policy')" -eq 0 ]; echo $?)
-check "sitemap has 142 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 142 ]; echo $?)
+check "sitemap has 150 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 150 ]; echo $?)
 check "sitemap has no ru/ar blog URLs"                $(! echo "$S" | grep -qE '/(ru|ar)/blog/'; echo $?)
 H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
 

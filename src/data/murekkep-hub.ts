@@ -78,6 +78,7 @@ export const HUB_RELATED_LINKS: { path: StaticPagePath; label: L }[] = [
   { path: '/urunler', label: { tr: 'Ürün Kataloğu', en: 'Product Catalogue', ru: 'Каталог продукции', ar: 'كتالوج المنتجات' } },
   { path: '/matbaa-malzemeleri-istanbul', label: { tr: 'İstanbul Teslimat', en: 'Istanbul Delivery', ru: 'Доставка по Стамбулу', ar: 'التوصيل في إسطنبول' } },
   { path: '/temsilcilikler', label: { tr: 'Temsilciliklerimiz', en: 'Our Brands', ru: 'Наши бренды', ar: 'علاماتنا' } },
+  { path: '/ofset-murekkep-ihracati', label: { tr: 'Ofset Mürekkep İhracatı', en: 'Offset Ink Supplier in Turkey', ru: 'Офсетные краски из Турции', ar: 'أحبار الأوفست من تركيا' } },
 ];
 
 /* ------------------------------------------------------------------ */

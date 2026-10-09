@@ -7,7 +7,7 @@ const root = join(__dirname, '..', '..');
 const read = (p: string) => readFileSync(join(root, p), 'utf8');
 
 describe('EN landing H1 revisions (08 §3): supplier intent + export section', () => {
-  it('offset supplies page EN: title/H1 say "Supplier in Turkey" and an Export section links to the EN pillar', () => {
+  it('offset supplies page EN: title/H1 say "Supplier in Turkey" and an Export section links to the export hub', () => {
     const src = read('src/app/[locale]/ofset-baski-malzemeleri/page.tsx');
     expect(src).toMatch(/metaTitle: 'Offset Printing Supplies Supplier in Turkey[^']*'/);
     const m = src.match(/metaTitle: '(Offset Printing Supplies Supplier in Turkey[^']*)'/);
@@ -15,7 +15,7 @@ describe('EN landing H1 revisions (08 §3): supplier intent + export section', (
     expect(src).toMatch(/title: 'Offset Printing Supplies Supplier in Turkey'/);
     expect(src).toMatch(/exportTitle: 'Export[^']*'/);
     expect(src).toMatch(/exportText:\s*'[^']{400,}'/);
-    expect(src).toMatch(/exportText[\s\S]*?<Link[\s\S]*?href="\/matbaa-malzemeleri"/);
+    expect(src).toMatch(/exportText[\s\S]*?<Link[\s\S]*?href="\/ihracat"/);
   });
   it('home EN H1 carries supplies + Turkey', () => {
     const en = JSON.parse(read('messages/en.json'));

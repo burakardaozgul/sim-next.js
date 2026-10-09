@@ -109,6 +109,7 @@ export const PILLAR_RELATED_LINKS: { path: StaticPagePath; label: L }[] = [
   { path: '/ozel-renk-uretimi', label: { tr: 'Özel Renk Üretimi', en: 'Custom Colour Production', ru: 'Производство цветов на заказ', ar: 'إنتاج الألوان الخاصة' } },
   { path: '/urunler', label: { tr: 'Ürün Kataloğu', en: 'Product Catalogue', ru: 'Каталог продукции', ar: 'كتالوج المنتجات' } },
   { path: '/matbaa-terimleri-sozlugu', label: { tr: 'Matbaa Terimleri Sözlüğü', en: 'Printing Glossary', ru: 'Словарь полиграфических терминов', ar: 'مسرد مصطلحات الطباعة' } },
+  { path: '/ihracat', label: { tr: 'İhracat', en: 'Export from Turkey', ru: 'Экспорт из Турции', ar: 'التصدير من تركيا' } },
   { path: '/sss', label: { tr: 'Sık Sorulan Sorular', en: 'FAQ', ru: 'Вопросы и ответы', ar: 'الأسئلة الشائعة' } },
 ];
 

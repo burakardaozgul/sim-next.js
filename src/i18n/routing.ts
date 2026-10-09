@@ -94,6 +94,18 @@ export const routing = defineRouting({
       ru: '/pechatnye-kraski',
       ar: '/ahbar-altibaa',
     },
+    '/ihracat': {
+      tr: '/ihracat',
+      en: '/printing-supplies-turkey',
+      ru: '/postavki-iz-turtsii',
+      ar: '/tawreed-min-turkiya',
+    },
+    '/ofset-murekkep-ihracati': {
+      tr: '/ofset-murekkep-ihracati',
+      en: '/offset-ink-supplier-turkey',
+      ru: '/ofsetnye-kraski-iz-turtsii',
+      ar: '/ahbar-offset-min-turkiya',
+    },
     '/matbaa-terimleri-sozlugu': {
       tr: '/matbaa-terimleri-sozlugu',
       en: '/printing-glossary',

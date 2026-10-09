@@ -21,6 +21,8 @@ const PAGES = {
   '/matbaa-malzemeleri': ['src/app/[locale]/matbaa-malzemeleri', 'src/data/pillar-matbaa-malzemeleri.ts'],
   '/matbaa-malzemeleri-istanbul': ['src/app/[locale]/matbaa-malzemeleri-istanbul', 'src/data/istanbul.ts'],
   '/matbaa-murekkepleri': ['src/app/[locale]/matbaa-murekkepleri', 'src/data/murekkep-hub.ts'],
+  '/ihracat': ['src/app/[locale]/ihracat', 'src/data/export.ts'],
+  '/ofset-murekkep-ihracati': ['src/app/[locale]/ofset-murekkep-ihracati', 'src/data/export.ts'],
   '/hakkimizda': ['src/app/[locale]/hakkimizda', 'src/data/about.ts'],
   '/ofset-baski-malzemeleri': ['src/app/[locale]/ofset-baski-malzemeleri'],
   '/matbaa-terimleri-sozlugu': ['src/data/glossary.ts', 'src/app/[locale]/matbaa-terimleri-sozlugu'],

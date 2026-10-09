@@ -29,6 +29,7 @@ const companyLinks = [
 const resourceLinks = [
   { labelKey: 'printingMaterials', href: '/matbaa-malzemeleri' },
   { labelKey: 'printingInks', href: '/matbaa-murekkepleri' },
+  { labelKey: 'export', href: '/ihracat' },
   { labelKey: 'offsetSupplies', href: '/ofset-baski-malzemeleri' },
   { labelKey: 'printingMaterialsIstanbul', href: '/matbaa-malzemeleri-istanbul' },
   { labelKey: 'printingGlossary', href: '/matbaa-terimleri-sozlugu' },

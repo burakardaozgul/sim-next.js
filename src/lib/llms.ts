@@ -12,6 +12,8 @@ type StaticKey = keyof typeof routing.pathnames;
 
 const PAGES: Array<{ path: StaticKey; title: string; desc: string }> = [
   { path: '/matbaa-malzemeleri', title: 'Printing Materials Guide (pillar)', desc: 'Pillar guide: 8 product groups (offset, PANTONE/custom, metallic, fluorescent, UV, blankets, chemicals, varnish), 7 selection criteria, paper–ink compatibility, price factors, supply from Istanbul, brand matrix, 10 FAQs.' },
+  { path: '/ihracat', title: 'Export: Printing Supplies from Turkey', desc: 'Export hub for international buyers: 8 product groups, why source from Turkey, Incoterms/MOQ/payment, compliance documents, remote colour matching, RFQ form, 8 FAQs.' },
+  { path: '/ofset-murekkep-ihracati', title: 'Offset Ink Supplier & Manufacturer in Turkey', desc: 'EVA COLOR manufacturer identity + SAKATA INX / Zeller+Gmelin / SCHLENK distributorships; ink type table, TDS properties, sample and colour-matching process, export logistics, FAQ.' },
   { path: '/matbaa-murekkepleri', title: 'Printing Inks Hub', desc: 'Six ink types (conventional sheetfed CMYK, UV/LED-UV, metallic, fluorescent, PANTONE/custom, low-migration), brand × type matrix (SAKATA INX, Zeller+Gmelin, SCHLENK, EVA COLOR), selection table, manufacturer + distributor, price factors, 10 FAQs.' },
   { path: '/ofset-baski-malzemeleri', title: 'Offset Printing Supplies Guide (pillar)', desc: 'Offset inks, blankets, pressroom chemicals and varnishes; conventional vs UV comparison; FAQ.' },
   { path: '/matbaa-malzemeleri-istanbul', title: 'Printing Materials in Istanbul', desc: 'Districts served, same-day delivery, warehouse pickup in Beylikdüzü.' },
