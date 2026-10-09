@@ -168,8 +168,10 @@ export function productFaqJsonLd(product: Product, locale: string) {
   };
 }
 
-export function glossaryTermAnchor(term: Record<string, string>, locale: string): string {
-  return `term-${slugify(term[locale] || term.tr)}`;
+/** Terim çapası dil bağımsız (İngilizce terimden): Kiril/Arapça slug'a çevrilemez; tüm dillerde aynı #id. */
+export function glossaryTermAnchor(term: Record<string, string>, _locale?: string): string {
+  void _locale;
+  return `term-${slugify(term.en || term.tr)}`;
 }
 
 export function glossaryJsonLd(locale: string, meta: { name?: string; description?: string } = {}) {

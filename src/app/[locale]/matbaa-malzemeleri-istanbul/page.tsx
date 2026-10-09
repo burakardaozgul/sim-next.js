@@ -132,7 +132,7 @@ const LOCAL_EXTRA: Record<string, LocalExtra> = {
       },
       {
         q: 'Depodan elden teslim alabilir miyim?',
-        a: 'Evet. Hafta içi 08:30-18:00 saatleri arasında Beylikdüzü depomuzdan elden teslim alabilirsiniz. Gelmeden önce telefonla stok teyidi almanızı öneririz.',
+        a: 'Evet. Pazartesi–Cumartesi 08:30-18:00 saatleri arasında Beylikdüzü depomuzdan elden teslim alabilirsiniz. Gelmeden önce telefonla stok teyidi almanızı öneririz.',
       },
     ],
     directionsLabel: 'Yol Tarifi Al',
@@ -177,7 +177,7 @@ const LOCAL_EXTRA: Record<string, LocalExtra> = {
       },
       {
         q: 'Can I pick up from the warehouse?',
-        a: 'Yes. Pickup is available from our Beylikdüzü warehouse on weekdays between 08:30 and 18:00. We recommend calling ahead to confirm stock.',
+        a: 'Yes. Pickup is available from our Beylikdüzü warehouse Monday to Saturday between 08:30 and 18:00. We recommend calling ahead to confirm stock.',
       },
     ],
     directionsLabel: 'Get Directions',
@@ -222,7 +222,7 @@ const LOCAL_EXTRA: Record<string, LocalExtra> = {
       },
       {
         q: 'Возможен ли самовывоз со склада?',
-        a: 'Да, в будние дни с 08:30 до 18:00 со склада в Бейликдюзю. Рекомендуем предварительно подтвердить наличие по телефону.',
+        a: 'Да, с понедельника по субботу с 08:30 до 18:00 со склада в Бейликдюзю. Рекомендуем предварительно подтвердить наличие по телефону.',
       },
     ],
     directionsLabel: 'Построить маршрут',
@@ -267,7 +267,7 @@ const LOCAL_EXTRA: Record<string, LocalExtra> = {
       },
       {
         q: 'هل يمكن الاستلام من المستودع مباشرة؟',
-        a: 'نعم، أيام الأسبوع بين 08:30 و18:00 من مستودع بيليك دوزو. ننصح بتأكيد توفر المنتج هاتفياً قبل الحضور.',
+        a: 'نعم، من الإثنين إلى السبت بين 08:30 و18:00 من مستودع بيليك دوزو. ننصح بتأكيد توفر المنتج هاتفياً قبل الحضور.',
       },
     ],
     directionsLabel: 'احصل على الاتجاهات',

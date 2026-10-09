@@ -1,6 +1,7 @@
 export type InlineSegment = { text: string; href?: string };
 
-const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+// URL'de bir seviye dengeli parantez desteklenir: [x](https://…/Offset_(printing))
+const LINK_RE = /\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)/g;
 
 /** "[etiket](/yol)" biçimindeki satır içi linkleri parçalara ayırır; linksiz metin tek parça döner. */
 export function parseInlineLinks(text: string): InlineSegment[] {

@@ -39,7 +39,14 @@ function gitDate(paths) {
 }
 
 const previous = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : { pages: {} };
-const hasGit = gitDate(['package.json']) !== null;
+// Sığ klonda (depth 1) her dosyanın "son commit"i HEAD olur → anlamsız lastmod; committed dosya korunur.
+let shallow = false;
+try {
+  shallow = execSync('git rev-parse --is-shallow-repository', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() === 'true';
+} catch {
+  shallow = false;
+}
+const hasGit = !shallow && gitDate(['package.json']) !== null;
 
 const pages = {};
 for (const [path, files] of Object.entries(PAGES)) {
@@ -48,6 +55,8 @@ for (const [path, files] of Object.entries(PAGES)) {
 const products = (hasGit && gitDate(['src/data/products.ts'])) || previous.products || today;
 const site = Object.values(pages).concat(products).sort().at(-1);
 
-const next = { generatedAt: today, source: hasGit ? 'git' : previous.source || 'fallback', site, products, pages };
-writeFileSync(OUT, JSON.stringify(next, null, 2) + '\n');
-console.log(`content-dates: ${hasGit ? 'git' : 'fallback'} → ${OUT} (site ${site}, products ${products})`);
+const next = { source: hasGit ? 'git' : previous.source || 'fallback', site, products, pages };
+const serialized = JSON.stringify(next, null, 2) + '\n';
+// Değişiklik yoksa yazma (her build'de kirli dosya oluşmasın)
+if (!existsSync(OUT) || readFileSync(OUT, 'utf8') !== serialized) writeFileSync(OUT, serialized);
+console.log(`content-dates: ${hasGit ? 'git' : shallow ? 'shallow→fallback' : 'fallback'} → ${OUT} (site ${site}, products ${products})`);

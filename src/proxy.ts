@@ -49,6 +49,8 @@ export default function proxy(request: NextRequest) {
  * next-intl'in yol/önek kanonikleştirme yönlendirmeleri (ör. /en/iletisim → /en/contact,
  * /products/x → /urunler/x) geçici 307 döner; bunlar kalıcı kanonikleştirmedir → 308.
  */
+// DİKKAT: routing.localeDetection yeniden açılırsa Accept-Language yönlendirmeleri de buradan geçer
+// ve kalıcı olur; bu durumda yalnızca pathname-çeviri yönlendirmeleri 308'e yükseltilmelidir.
 function permanent(response: NextResponse): NextResponse {
   if (response.status === 307) {
     const location = response.headers.get('location');

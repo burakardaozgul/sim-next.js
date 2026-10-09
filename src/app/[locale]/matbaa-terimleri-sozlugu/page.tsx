@@ -4,8 +4,7 @@ import { createPageMetadata, BRAND_NAMES, getCanonicalUrl } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { glossaryTerms } from '@/data/glossary';
-import { glossaryJsonLd } from '@/lib/schema';
-import { slugify } from '@/lib/slugify';
+import { glossaryJsonLd, glossaryTermAnchor } from '@/lib/schema';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -208,7 +207,7 @@ export default async function GlossaryPage({
                       return (
                         <div
                           key={termName}
-                          id={`term-${slugify(termName)}`}
+                          id={glossaryTermAnchor(termItem.term, locale)}
                           className="scroll-mt-24 rounded-lg border border-ink-600 bg-ink-800 px-5 py-4 transition-colors hover:border-gold/40"
                         >
                           <dt className="font-heading text-base font-bold text-cream">

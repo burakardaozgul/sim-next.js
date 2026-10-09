@@ -146,7 +146,7 @@ const nextConfig: NextConfig = {
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src 'self' data: blob: https:",
           "font-src 'self' data: https://fonts.gstatic.com",
-          "connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://challenges.cloudflare.com",
+          "connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.google.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://challenges.cloudflare.com",
           "frame-src https://www.google.com https://maps.google.com https://challenges.cloudflare.com https://www.googletagmanager.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",

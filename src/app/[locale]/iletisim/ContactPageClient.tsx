@@ -66,6 +66,8 @@ export default function ContactPageClient() {
         body: JSON.stringify({ ...formData, consent, turnstileToken }),
       });
 
+      // Turnstile token tek kullanımlık: her denemeden sonra widget sıfırlanır
+      (window as Window & { turnstile?: { reset?: () => void } }).turnstile?.reset?.();
       if (!res.ok) throw new Error('Failed');
       setFormState('success');
       track('contact_form_submit', { form: 'contact' });

@@ -63,7 +63,7 @@ describe('glossary terms get stable anchors and URLs (PR-9)', () => {
   });
   it('the glossary page renders matching anchor ids', () => {
     const src = readFileSync(join(__dirname, '..', 'app', '[locale]', 'matbaa-terimleri-sozlugu', 'page.tsx'), 'utf8');
-    expect(src).toMatch(/id=\{`term-\$\{slugify\(/);
+    expect(src).toMatch(/id=\{glossaryTermAnchor\(/);
   });
 });
 
