@@ -158,7 +158,8 @@ function buildSlugAlternates(
   const trPrefix = lastSlash > 0 ? currentPath.substring(0, lastSlash) : '';
 
   const result: Record<string, string> = {};
-  for (const loc of ['tr', 'en', 'ru', 'ar'] as const) {
+  // Yalnızca verilen dillerin hreflang'ı yazılır (ru/ar özetleri dışarıda kalabilir); TR her zaman vardır.
+  for (const loc of (['tr', 'en', 'ru', 'ar'] as const).filter((l) => l === 'tr' || l in slugsByLocale)) {
     const slug = slugsByLocale[loc] || slugsByLocale.tr;
     const translatedPrefix = translatePath(trPrefix, loc);
     if (loc === DEFAULT_LOCALE) {

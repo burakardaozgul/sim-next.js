@@ -16,7 +16,9 @@
     "printingMaterials": "Matbaa Malzemeleri",
     "printingMaterialsIstanbul": "İstanbul'da Matbaa Malzemeleri",
     "printingGlossary": "Matbaa Terimleri Sözlüğü",
-    "offsetSupplies": "Ofset Baskı Malzemeleri"
+    "offsetSupplies": "Ofset Baskı Malzemeleri",
+    "printingInks": "Matbaa Mürekkepleri",
+    "export": "İhracat"
   },
   "hero": {
     "seoH1": "Matbaa Malzemeleri & Ofset Mürekkep Tedarikçisi | İstanbul",
@@ -126,7 +128,14 @@
     "subtitle": "Baskı ve matbaa dünyasından uzman içerikler",
     "readMore": "Devamını Oku",
     "viewAll": "Tüm Yazılar",
-    "relatedProducts": "İlgili Ürünler"
+    "relatedProducts": "İlgili Ürünler",
+    "pillarGuideTitle": "Matbaa Malzemeleri Rehberi",
+    "pillarGuideText": "Bu yazı, ofset mürekkepten blankete ve baskı kimyasallarına kadar tüm ürün gruplarını, seçim kriterlerini ve tedarik sürecini anlatan kapsamlı rehberimizin bir parçasıdır.",
+    "pillarGuideCta": "Rehberi okuyun",
+    "authorBoxTitle": "Yazar",
+    "authorBoxText": "SIM Teknik Ekip; renk laboratuvarı, teknik satış ve saha destek ekiplerimizin ortak imzasıdır. Yazılar 1983'ten beri matbaa sektörüne tedarik yaparken makine başında edinilen deneyimle hazırlanır.",
+    "authorBoxAbout": "Hakkımızda",
+    "authorBoxCta": "Teknik ekibimize sorun"
   },
   "services": {
     "tag": "Uzmanlık Alanlarımız",
@@ -161,7 +170,8 @@
         "title": "Yüksek Performanslı Ofset Blanket Çözümleri",
         "desc": "ST PRO DOT ve SX DOT COMBI ofset blanketleri; ticari ve ambalaj baskılarında yüksek baskı kalitesi ile üretim güvenilirliğini bir arada sunmak üzere geliştirilmiş profesyonel blanket çözümleridir. ST PRO DOT serisi, hassas nokta aktarımı ve dengeli mürekkep transferiyle tutarlı ve net baskı sonuçları sağlarken; SX DOT COMBI hibrit yapısıyla konvansiyonel ve UV baskı uygulamalarında geniş kimyasal dayanım ve esnek kullanım avantajı sunar.\n\nUzun ömürlü yapıları, stabil yüzey performansları ve farklı baskı koşullarına uyum sağlayan teknik karakterleri sayesinde her iki blanket çözümü de makine verimliliğini koruyarak kesintisiz, öngörülebilir ve yüksek kaliteli baskı süreçlerine katkı sağlar."
       }
-    ]
+    ],
+    "guideLink": "Matbaa Malzemeleri Rehberi'ni inceleyin"
   },
   "cta": {
     "title": "Projeniz İçin Özel Fiyat Alın",
@@ -236,76 +246,6 @@
         "desc": "1866'dan bu yana faaliyet gösteren Zeller+Gmelin, ofset mürekkepleri ve endüstriyel kimyasallar alanında Avrupa'nın köklü üreticilerinden biridir."
       }
     ]
-  },
-  "aboutPage": {
-    "title": "Hakkımızda",
-    "subtitle": "1983'ten bu yana matbaa sektörünün güvenilir çözüm ortağı",
-    "history": {
-      "title": "Tarihçemiz",
-      "intro": "Sunduğu çevre dostu ürünler, kalite anlayışı ve benimsediği etik değerler ile teknik, lojistik ve ticari anlamda sunduğu hizmeti en üst noktaya taşımayı hedefliyoruz...",
-      "p1": "1983 yılında matbaacılık sektörüne kâğıt, karton ve baskı materyalleri tedariki amacıyla kurulan Sim Baskı Malzemeleri Ltd. Şti., 1998 yılından itibaren faaliyet odağını ofset baskı mürekkepleri, baskı üstü laklar, ofset blanketleri ve ofset kimyasalları alanlarına yöneltmiştir.",
-      "p2": "2001 yılında İtalyan Samor Grubu'na bağlı EFI ofset baskı kalıplarının Türkiye temsilciliğini üstlenen Sim Baskı Malzemeleri; 2002 yılından bu yana SAKATA ofset baskı mürekkepleri, Hi-Tech Coatings su bazlı ve UV lak-vernikleri, Fujikura ofset blanketleri ve 2008 itibarıyla Güney Kore DEERS (DAIHAN) mürekkeplerinin Türkiye temsilciliklerini yürütmektedir. 2024 yılından itibaren ise İtalyan Acoma markasının seçili ürün gruplarının Türkiye temsilciliğini üstlenerek ürün portföyünü ve hizmet kalitesini sürekli geliştirmektedir.",
-      "p3": "Bugün Sim Baskı Malzemeleri; aylık 15 ton kapasiteli özel renk üretim ünitesi ve tescilli EVAcolor markasıyla ileri seviye özel renk çözümleri sunmakta, dijital veya basılı referanslardan ya da doğadan talep edilen renkleri baskı altı ve baskı sonrası uygulamalara uygun kimyasal yapıda teknik olarak tasarlayıp, hassas üretim süreçleriyle hayata geçirmektedir. EVAcolor markası altında florasan ve metalik mürekkep üretimleri gerçekleştirilirken; deneyimli ekibiyle müşterilerine kesintisiz hizmet sağlamaktadır.",
-      "p4": "Sim Baskı Malzemeleri; global iş birlikleriyle güçlü bir ithalat ağına sahip olmasının yanı sıra, üretim kabiliyeti ve uluslararası pazarlara yönelik ihracat faaliyetleriyle çok yönlü bir üretici, tedarikçi ve çözüm ortağı kimliği taşımaktadır."
-    },
-    "strengths": {
-      "title": "Güçlü Yönlerimiz",
-      "items": [
-        {
-          "title": "Global Markalar, Güçlü İş Birlikleri",
-          "desc": "Japonya, Güney Kore ve Avrupa merkezli lider üreticilerle kurduğumuz uzun vadeli temsilcilikler sayesinde dünya standartlarında ürünler sunarız."
-        },
-        {
-          "title": "Üretim, İthalat ve İhracatı Birleştiren Yapı",
-          "desc": "Kendi üretim gücümüzü uluslararası tedarik ve ihracat kabiliyetimizle birleştirerek müşterilerimize esnek ve sürdürülebilir çözümler sağlarız."
-        },
-        {
-          "title": "Teknik Uzmanlık ve Saha Deneyimi",
-          "desc": "Deneyimli teknik ekibimiz, baskı süreçlerinde karşılaşılan durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini destekler."
-        },
-        {
-          "title": "Hızlı ve Kesintisiz Hizmet",
-          "desc": "Güçlü stok yapımız, etkin lojistik süreçlerimiz ve çözüm odaklı hizmet anlayışımız sayesinde müşterilerimizin ihtiyaçlarına en kısa sürede yanıt veririz."
-        },
-        {
-          "title": "Kalite ve Süreklilik Odaklı Hizmet",
-          "desc": "Tüm ürün ve hizmetlerimizde yüksek kalite standardı, tutarlılık ve uzun vadeli iş ortaklığı yaklaşımını esas alırız."
-        }
-      ]
-    },
-    "mission": {
-      "title": "Misyonumuz",
-      "text": "Matbaa sektörüne güvenilir tedarik, ileri teknoloji ürünler ve teknik uzmanlıkla desteklenen sürdürülebilir çözümler sunarak müşterilerimizin baskı kalitesini geliştirmek."
-    },
-    "vision": {
-      "title": "Vizyonumuz",
-      "text": "Bölgesinde referans gösterilen, uluslararası ölçekte güvenilir bir çözüm ortağı olmak."
-    },
-    "values": {
-      "title": "Temel Değerlerimiz",
-      "items": [
-        {
-          "title": "Güvenilirlik",
-          "desc": "40 yılı aşkın sektör deneyimi ile müşterilerimize her zaman tutarlı ve güvenilir hizmet sunuyoruz."
-        },
-        {
-          "title": "Teknik Uzmanlık",
-          "desc": "Uzman kadromuz ile renk formülasyonundan baskı optimizasyonuna kadar teknik destek sağlıyoruz."
-        },
-        {
-          "title": "Kalite Odaklılık",
-          "desc": "Uluslararası standartlarda üretim ve tedarik ile baskı kalitesini en üst seviyede tutuyoruz."
-        },
-        {
-          "title": "Sürdürülebilirlik",
-          "desc": "Çevre dostu ürünler ve sürdürülebilir üretim süreçleri ile geleceğe yatırım yapıyoruz."
-        },
-        {
-          "title": "Müşteri Yaklaşımı",
-          "desc": "7/24 hizmet anlayışı ile müşterilerimizin ihtiyaçlarına hızlı ve etkin çözümler üretiyoruz."
-        }
-      ]
-    }
   },
   "customColorPage": {
     "title": "Özel Renk Üretimi",
@@ -497,57 +437,6 @@
         "a": "SAKATA INX (Japonya), DEERS/DAIHAN (Güney Kore), Hi-Tech Coatings (Hollanda), Zeller+Gmelin (Almanya), Baltink (Litvanya) ve Stahl (Hollanda) markalarının Türkiye distribütörüyüz. Ayrıca EVAcolor ve VECTOR kendi markalarımızdır."
       }
     ]
-  },
-  "matbaaMalzemeleri": {
-    "title": "Matbaa Malzemeleri: Kapsamlı Rehber ve Ürünler",
-    "subtitle": "Ofset mürekkep, metalik yaldız, UV mürekkep, blanket ve baskı kimyasallarında Türkiye'nin güvenilir tedarikçisi",
-    "description": "1983'ten bu yana Türkiye'nin lider matbaa malzemeleri tedarikçisi olarak ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, PANTONE renkleri, baskı blanketleri ve kimyasallar sunuyoruz.",
-    "section1Title": "Matbaa Malzemeleri Nedir?",
-    "section1Text": "Matbaa malzemeleri; ofset, dijital ve flekso baskı süreçlerinde kullanılan mürekkep, blanket, vernik ve kimyasal ürünlerin tümünü kapsar. Kaliteli matbaa malzemeleri, renk doğruluğunu ve baskı stabilitesini doğrudan etkiler. SIM Baskı Malzemeleri olarak dünya markalarının Türkiye distribütörü sıfatıyla sektörün her ihtiyacına çözüm üretiyoruz.",
-    "section2Title": "Ürün Kategorilerimiz",
-    "categoryOffset": "Ofset Mürekkep",
-    "categoryOffsetDesc": "SAKATA INX CMYK ofset mürekkepleri; yüksek renk yoğunluğu, mükemmel baskı stabilitesi ve hızlı kuruma ile ticari baskının vazgeçilmez çözümü.",
-    "categoryMetalic": "Metalik & Yaldız Mürekkep",
-    "categoryMetalicDesc": "EVA COLOR altın ve gümüş metalik mürekkep serimiz; parlak kuşe kağıtlarda göz alıcı yaldız efekti ile ambalaj ve premium baskı için ideal.",
-    "categoryUV": "UV Mürekkep",
-    "categoryUVDesc": "Zeller+Gmelin UV ofset mürekkepleri; anında UV kürleme, üstün sürtünme direnci ve plastik-metal yüzeylerde mükemmel yapışma.",
-    "categoryPantone": "PANTONE Mürekkep",
-    "categoryPantoneDesc": "SAKATA INX PANTONE spot renk mürekkepleri; Delta-E < 1,5 renk doğruluğu ile kurumsal kimlik renklerinizi baskıda mükemmel yansıtır.",
-    "categoryBlanket": "Baskı Blanket",
-    "categoryBlanketDesc": "VECTOR baskı blanketleri; uzun ömürlü kullanım, düzgün mürekkep transferi ve stabil baskı kalitesi için ofset makinenize özel çözümler.",
-    "categoryChemicals": "Baskı Kimyasalları",
-    "categoryChemicalsDesc": "Hi-Tech Coatings dispersiyon vernik ve kaplama kimyasalları; baskı yüzeyini korur, parlaklık katar ve mürekkep haslığını artırır.",
-    "section3Title": "Neden SIM Baskı Malzemeleri?",
-    "reason1": "40+ yıl sektör deneyimi (1983'ten beri)",
-    "reason2": "SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings gibi dünya markalarının resmi Türkiye distribütörü",
-    "reason3": "İstanbul içinde aynı gün teslimat imkânı",
-    "reason4": "Yerinde teknik destek ve renk kalibrasyonu hizmeti",
-    "reason5": "ISO 2846-1 ve EuPIA standartlarına uygun ürünler",
-    "reason6": "Özel renk üretimi — aylık 15.000 kg kapasite",
-    "ctaTitle": "Matbaa Malzemeleri İçin Teklif Alın",
-    "ctaText": "Uzman ekibimiz ihtiyaçlarınıza özel çözüm sunar. Hemen iletişime geçin.",
-    "ctaButton": "İletişime Geçin"
-  },
-  "istanbulSeo": {
-    "title": "İstanbul'da Matbaa Malzemeleri Tedarikçisi",
-    "subtitle": "Beylikdüzü merkezli depomuzdan İstanbul'un her noktasına aynı gün teslimat",
-    "introTitle": "İstanbul Matbaa Sektörüne Güvenilir Tedarik",
-    "introText": "SIM Baskı Malzemeleri, İstanbul Beylikdüzü'ndeki merkezi deposundan İstanbul'daki matbaalara ofset mürekkep, metalik yaldız mürekkep, UV mürekkep, baskı blanket ve kimyasal ürünler tedarik etmektedir. 40 yılı aşkın deneyimimizle İstanbul matbaa sektörünün vazgeçilmez tedarikçisi olmaya devam ediyoruz.",
-    "locationTitle": "Konum & İletişim Bilgileri",
-    "address": "Yakuplu, 194. Sk. No:1 D:176, Beylikdüzü, İstanbul",
-    "phone": "+90 212 637 62 49",
-    "workingHours": "Pazartesi - Cumartesi: 08:30 - 18:00",
-    "servicesTitle": "İstanbul'a Sunduğumuz Hizmetler",
-    "service1": "Aynı gün teslimat (saat 12:00'ye kadar verilen siparişler)",
-    "service2": "Yerinde teknik destek ve mürekkep kalibrasyonu",
-    "service3": "Özel renk (spot color) üretimi ve formülasyon",
-    "service4": "ICC profil oluşturma ve baskı standardizasyonu",
-    "service5": "Tüm mürekkep ve baskı malzemeleri stok danışmanlığı",
-    "whyIstanbulTitle": "İstanbul Matbaacılığında SIM Farkı",
-    "whyIstanbulText": "İstanbul, Türkiye'nin baskı ve matbaacılık sektörünün kalbidir. Yüzlerce ticari matbaa, ambalaj baskı tesisi ve dijital baskı merkezi bu kentte faaliyet göstermektedir. SIM Baskı Malzemeleri olarak Beylikdüzü merkezimizden İstanbul'un her ilçesine hızlı lojistik ve teknik destek sunuyoruz. Avrupa Yakası'ndan Anadolu Yakası'na, büyük ölçekli tesislerden küçük matbaacılara kadar tüm müşterilerimize eşit hizmet anlayışıyla yaklaşıyoruz.",
-    "ctaTitle": "İstanbul'da Matbaa Malzemeleri İçin Bizi Arayın",
-    "ctaText": "Hızlı teslimat ve teknik destek için satış ekibimizle iletişime geçin.",
-    "ctaButton": "Hemen Ara"
   },
   "glossary": {
     "title": "Matbaa Terimleri Sözlüğü",

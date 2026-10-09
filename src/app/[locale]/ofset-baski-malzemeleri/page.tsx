@@ -29,6 +29,12 @@ interface PillarContent {
   subtitle: string;
   title: string;
   intro: string;
+  /** Giriş altında ana pillar'a (Matbaa Malzemeleri Rehberi) bağlantı etiketi */
+  introPillarLabel: string;
+  /** EN ihracat bölümü (08 §3); diğer dillerde boş bırakılabilir */
+  exportTitle?: string;
+  exportText?: string;
+  exportLink?: string;
   howTitle: string;
   howText1: string;
   howText2: string;
@@ -71,6 +77,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'Ofset Baskı Malzemeleri',
     intro:
       'Ofset baskı kalitesi, makinenin olduğu kadar kullanılan malzemelerin de eseridir. CMYK ve PANTONE mürekkeplerden baskı blanketlerine, nemlendirme kimyasallarından dispersiyon laklara kadar her bileşen; renk tutarlılığını, kuruma süresini ve fire oranını doğrudan belirler. SIM Baskı Malzemeleri, 1983\'ten beri Türkiye\'deki matbaalara dünya markalarının ofset baskı malzemelerini tek çatı altında sunar.',
+    introPillarLabel: 'Tüm matbaa malzemeleri rehberine gidin',
     howTitle: 'Ofset Baskı Nasıl Çalışır, Malzeme Neden Bu Kadar Kritik?',
     howText1:
       'Ofset baskı; mürekkebin kalıptan doğrudan kağıda değil, önce kauçuk bir blankete, oradan da baskı yüzeyine aktarıldığı dolaylı bir baskı tekniğidir. Su ile mürekkebin birbirini itmesi prensibiyle çalışan bu sistemde dört ana unsur sürekli etkileşim hâlindedir: kalıp, mürekkep, nemlendirme solüsyonu ve blanket.',
@@ -187,7 +194,7 @@ const CONTENT: Record<string, PillarContent> = {
 
   /* ---------------------------------------------------------------- */
   en: {
-    metaTitle: 'Offset Printing Supplies: Ink, Blanket & Chemicals Guide',
+    metaTitle: 'Offset Printing Supplies Supplier in Turkey | Inks, Blankets',
     metaDescription:
       'Offset printing supplies from a 40+ year supplier: CMYK and PANTONE inks, UV inks, printing blankets, pressroom chemicals and varnishes. Fast delivery from Istanbul.',
     keywords: [
@@ -197,9 +204,13 @@ const CONTENT: Record<string, PillarContent> = {
     ],
     breadcrumbName: 'Offset Printing Supplies',
     subtitle: 'Complete Supply from Ink to Blanket',
-    title: 'Offset Printing Supplies',
+    title: 'Offset Printing Supplies Supplier in Turkey',
     intro:
       'Offset print quality is shaped as much by the materials as by the press itself. From CMYK and PANTONE inks to printing blankets, from fountain chemistry to dispersion varnishes, every component directly determines colour consistency, drying time and waste rates. Since 1983, SIM has supplied Turkish printers with world-brand offset printing materials under one roof.',
+    introPillarLabel: 'See the complete printing materials guide',
+    exportTitle: 'Export: sourcing offset printing supplies from Turkey',
+    exportText: 'SIM Printing Supplies ships offset inks, printing blankets, pressroom chemicals and dispersion varnishes from Istanbul to printers and distributors abroad. As the Turkish distributor of SAKATA INX (CMYK and PANTONE inks), Zeller+Gmelin (UV inks) and Hi-Tech Coatings (dispersion varnishes) and the manufacturer of EVA COLOR inks and VECTOR blankets, we can consolidate Japanese, German, Dutch and Turkish-made supplies into one shipment. Quotations are given on EXW, FOB or CIF terms; English TDS and SDS, certificates of origin and analysis and transport classification for sea and air freight are prepared with the offer. Stock items have no minimum order quantity, custom colours start at 5 kg, and our 24/7 colour laboratory matches brand colours remotely from L*a*b* readings and ships an approved sample before production. Lead times: stock items leave the Beylikdüzü warehouse within 1–2 working days of order confirmation; custom colours 1–3 working days after sample approval. For the full product range, Incoterms, compliance documents and an RFQ form see our export hub.',
+    exportLink: 'Export hub: printing supplies from Turkey',
     howTitle: 'How Offset Printing Works — and Why Materials Matter',
     howText1:
       'Offset is an indirect printing technique: ink travels from the plate to a rubber blanket and only then onto the substrate. The process relies on water and ink repelling each other, with four elements in constant interaction: plate, ink, fountain solution and blanket.',
@@ -328,6 +339,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'Материалы для офсетной печати',
     intro:
       'Качество офсетной печати определяется не только машиной, но и материалами. От красок CMYK и PANTONE до офсетных полотен, от увлажняющей химии до дисперсионных лаков — каждый компонент напрямую влияет на стабильность цвета, время высыхания и уровень брака. С 1983 года SIM поставляет турецким типографиям офсетные материалы мировых брендов из одних рук.',
+    introPillarLabel: 'Полное руководство по полиграфическим материалам',
     howTitle: 'Как работает офсетная печать и почему материалы так важны',
     howText1:
       'Офсет — это непрямой способ печати: краска переходит с формы сначала на резиновое полотно и лишь затем на запечатываемый материал. Процесс основан на взаимном отталкивании воды и краски, при этом четыре элемента находятся в постоянном взаимодействии: форма, краска, увлажняющий раствор и полотно.',
@@ -456,6 +468,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'مستلزمات طباعة الأوفست',
     intro:
       'جودة طباعة الأوفست ليست نتاج الماكينة وحدها، بل المواد المستخدمة أيضاً. من أحبار CMYK وPANTONE إلى بطانيات الطباعة، ومن كيماويات الترطيب إلى الورنيش الدسبرسي — كل مكوّن يحدد مباشرة ثبات اللون وزمن الجفاف ونسبة الهدر. منذ عام 1983 تزوّد SIM المطابع بمستلزمات طباعة الأوفست من علامات عالمية تحت سقف واحد.',
+    introPillarLabel: 'الدليل الكامل لمواد الطباعة',
     howTitle: 'كيف تعمل طباعة الأوفست، ولماذا المواد بهذه الأهمية؟',
     howText1:
       'الأوفست تقنية طباعة غير مباشرة: ينتقل الحبر من اللوح (البليت) إلى بطانية مطاطية أولاً، ثم إلى سطح الطباعة. تعتمد العملية على تنافر الماء والحبر، مع أربعة عناصر في تفاعل مستمر: اللوح، الحبر، محلول الترطيب، والبطانية.',
@@ -707,6 +720,23 @@ export default async function OfsetBaskiMalzemeleriPage({
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-silver">
                 {c.intro}
               </p>
+              <Link
+                href="/matbaa-malzemeleri"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+              >
+                {c.introPillarLabel}
+                <ArrowRight size={14} />
+              </Link>
+              {c.exportTitle && c.exportText && (
+                <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-gold/20 bg-gold/5 p-6 text-left lg:p-8">
+                  <h2 className="font-heading text-xl font-bold text-cream">{c.exportTitle}</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-silver">{c.exportText}</p>
+                  <Link href="/ihracat" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold transition-all hover:gap-3">
+                    {c.exportLink}
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
 

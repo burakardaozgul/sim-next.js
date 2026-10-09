@@ -16,10 +16,12 @@
     "printingMaterials": "Printing Materials",
     "printingMaterialsIstanbul": "Printing Materials Istanbul",
     "printingGlossary": "Printing Glossary",
-    "offsetSupplies": "Offset Printing Supplies"
+    "offsetSupplies": "Offset Printing Supplies",
+    "printingInks": "Printing Inks",
+    "export": "Export from Turkey"
   },
   "hero": {
-    "seoH1": "Printing Materials & Offset Ink Supplier | Istanbul, Turkey",
+    "seoH1": "Printing Supplies & Offset Ink Supplier in Istanbul, Turkey",
     "tag": "In the Printing Industry Since 1983",
     "title": "The Expert Power\nBehind Color",
     "subtitle": "Turkey's leading supplier of offset inks, metallic inks, and custom color production.",
@@ -126,7 +128,14 @@
     "subtitle": "Expert content from the world of printing and publishing",
     "readMore": "Read More",
     "viewAll": "All Articles",
-    "relatedProducts": "Related Products"
+    "relatedProducts": "Related Products",
+    "pillarGuideTitle": "Printing Materials Guide",
+    "pillarGuideText": "This article is part of our complete guide to printing materials: eight product groups, selection criteria, paper–ink compatibility and how supply from Turkey works.",
+    "pillarGuideCta": "Read the guide",
+    "authorBoxTitle": "Author",
+    "authorBoxText": "SIM Technical Team is the joint byline of our colour laboratory, technical sales and field support teams. Articles draw on press-side experience gained supplying the printing industry since 1983.",
+    "authorBoxAbout": "About us",
+    "authorBoxCta": "Ask our technical team"
   },
   "services": {
     "tag": "Our Expertise",
@@ -161,7 +170,8 @@
         "title": "High-Performance Offset Blanket Solutions",
         "desc": "ST PRO DOT and SX DOT COMBI offset blankets are professional solutions developed to combine high print quality with production reliability in commercial and packaging printing. The ST PRO DOT series provides consistent and sharp print results with precise dot transfer and balanced ink transfer, while SX DOT COMBI offers broad chemical resistance and flexible usage advantages in conventional and UV printing applications with its hybrid structure.\n\nWith their long-lasting construction, stable surface performance, and technical characteristics that adapt to different printing conditions, both blanket solutions contribute to uninterrupted, predictable, and high-quality print processes while maintaining machine efficiency."
       }
-    ]
+    ],
+    "guideLink": "Explore the Printing Materials Guide"
   },
   "cta": {
     "title": "Get a Custom Quote for Your Project",
@@ -236,76 +246,6 @@
         "desc": "Operating since 1866, Zeller+Gmelin is one of Europe's most established manufacturers of offset inks and industrial chemicals."
       }
     ]
-  },
-  "aboutPage": {
-    "title": "About Us",
-    "subtitle": "A trusted partner of the printing industry since 1983",
-    "history": {
-      "title": "Our History",
-      "intro": "With eco-friendly products, a commitment to quality, and ethical values, we aim to elevate our technical, logistical, and commercial services to the highest level...",
-      "p1": "Founded in 1983 to supply paper, cardboard, and printing materials to the printing industry, Sim Baskı Malzemeleri Ltd. Şti. shifted its focus from 1998 onwards to offset printing inks, coatings, offset blankets, and offset chemicals.",
-      "p2": "Having taken on the Turkish representation of EFI offset printing plates from the Italian Samor Group in 2001, Sim Baskı Malzemeleri has been representing SAKATA offset inks, Hi-Tech Coatings water-based and UV varnishes, Fujikura offset blankets since 2002, and DEERS (DAIHAN) inks from South Korea since 2008. From 2024, the company has taken on the Turkish representation of selected product lines from the Italian Acoma brand, continuously expanding its product portfolio and service quality.",
-      "p3": "Today, Sim Baskı Malzemeleri offers advanced custom color solutions with a monthly production capacity of 15 tons and its registered EVAcolor brand, technically designing colors requested from digital or printed references or nature in chemical compositions suitable for pre-press and post-press applications, bringing them to life through precision manufacturing processes. Under the EVAcolor brand, fluorescent and metallic ink production is carried out while providing uninterrupted service to customers with an experienced team.",
-      "p4": "Sim Baskı Malzemeleri carries a versatile identity as a manufacturer, supplier, and solution partner, with a strong import network through global collaborations, as well as production capabilities and export activities targeting international markets."
-    },
-    "strengths": {
-      "title": "Our Strengths",
-      "items": [
-        {
-          "title": "Global Brands, Strong Partnerships",
-          "desc": "Thanks to long-term representations with leading manufacturers based in Japan, South Korea, and Europe, we offer products that meet world standards."
-        },
-        {
-          "title": "Integrated Production, Import & Export",
-          "desc": "By combining our own production capacity with international supply and export capabilities, we provide flexible and sustainable solutions to our customers."
-        },
-        {
-          "title": "Technical Expertise & Field Experience",
-          "desc": "Our experienced technical team supports production continuity by responding quickly and accurately to situations encountered in printing processes."
-        },
-        {
-          "title": "Fast & Uninterrupted Service",
-          "desc": "With our strong stock structure, effective logistics processes, and solution-oriented service approach, we respond to our customers' needs in the shortest time."
-        },
-        {
-          "title": "Quality & Continuity Focused Service",
-          "desc": "We adopt high quality standards, consistency, and a long-term business partnership approach in all our products and services."
-        }
-      ]
-    },
-    "mission": {
-      "title": "Our Mission",
-      "text": "To enhance our customers' print quality by providing reliable supply, advanced technology products, and sustainable solutions supported by technical expertise."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "text": "To be a trusted solution partner recognized as a reference in the region and at an international scale."
-    },
-    "values": {
-      "title": "Our Core Values",
-      "items": [
-        {
-          "title": "Reliability",
-          "desc": "With over 40 years of industry experience, we consistently deliver dependable service to our customers."
-        },
-        {
-          "title": "Technical Expertise",
-          "desc": "Our expert team provides technical support from color formulation to print optimization."
-        },
-        {
-          "title": "Quality Focus",
-          "desc": "We maintain the highest print quality through international-standard production and supply."
-        },
-        {
-          "title": "Sustainability",
-          "desc": "We invest in the future with eco-friendly products and sustainable production processes."
-        },
-        {
-          "title": "Customer Commitment",
-          "desc": "With 24/7 service, we provide fast and effective solutions to our customers' needs."
-        }
-      ]
-    }
   },
   "customColorPage": {
     "title": "Custom Color Production",
@@ -497,57 +437,6 @@
         "a": "We are the Turkish distributor for SAKATA INX (Japan), DEERS/DAIHAN (South Korea), Hi-Tech Coatings (Netherlands), Zeller+Gmelin (Germany), Baltink (Lithuania), and Stahl (Netherlands). EVAcolor and VECTOR are our own brands."
       }
     ]
-  },
-  "matbaaMalzemeleri": {
-    "title": "Printing Materials: Comprehensive Guide & Products",
-    "subtitle": "Turkey's trusted supplier for offset ink, metallic gold, UV ink, blankets and printing chemicals",
-    "description": "Turkey's leading printing materials supplier since 1983 — offering offset ink, metallic gold ink, UV ink, PANTONE colors, printing blankets and chemicals.",
-    "section1Title": "What Are Printing Materials?",
-    "section1Text": "Printing materials encompass all inks, blankets, varnishes and chemicals used in offset, digital and flexo printing processes. High-quality printing materials directly affect color accuracy and press stability. As the official Turkish distributor for world-leading brands, SIM Printing Supplies provides solutions for every sector need.",
-    "section2Title": "Our Product Categories",
-    "categoryOffset": "Offset Ink",
-    "categoryOffsetDesc": "SAKATA INX CMYK offset inks deliver high color density, excellent press stability and fast drying — the essential solution for commercial printing.",
-    "categoryMetalic": "Metallic & Gold Ink",
-    "categoryMetalicDesc": "The EVA COLOR gold and silver metallic ink range creates stunning foil effects on high-gloss coated papers — ideal for packaging and premium print.",
-    "categoryUV": "UV Ink",
-    "categoryUVDesc": "Zeller+Gmelin UV offset inks offer instant UV curing, superior rub resistance and excellent adhesion on plastic and metal substrates.",
-    "categoryPantone": "PANTONE Ink",
-    "categoryPantoneDesc": "SAKATA INX PANTONE spot color inks reproduce your brand identity colors on press with Delta-E < 1.5 color accuracy.",
-    "categoryBlanket": "Printing Blanket",
-    "categoryBlanketDesc": "VECTOR printing blankets provide long service life, consistent ink transfer and stable print quality — tailored solutions for your offset press.",
-    "categoryChemicals": "Printing Chemicals",
-    "categoryChemicalsDesc": "Hi-Tech Coatings dispersion varnishes and coating chemicals protect the print surface, add gloss and improve ink resistance.",
-    "section3Title": "Why SIM Printing Supplies?",
-    "reason1": "40+ years of industry experience (since 1983)",
-    "reason2": "Official Turkish distributor for SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings and more",
-    "reason3": "Same-day delivery within Istanbul",
-    "reason4": "On-site technical support and color calibration service",
-    "reason5": "Products conforming to ISO 2846-1 and EuPIA standards",
-    "reason6": "Custom color production — 15,000 kg/month capacity",
-    "ctaTitle": "Get a Quote for Printing Materials",
-    "ctaText": "Our expert team provides tailored solutions for your needs. Get in touch today.",
-    "ctaButton": "Contact Us"
-  },
-  "istanbulSeo": {
-    "title": "Printing Materials Supplier in Istanbul",
-    "subtitle": "Same-day delivery from our Beylikdüzü warehouse to any point in Istanbul",
-    "introTitle": "Reliable Supply for Istanbul's Printing Industry",
-    "introText": "SIM Printing Supplies delivers offset ink, metallic gold ink, UV ink, printing blankets and chemical products to Istanbul printers from its central warehouse in Beylikdüzü. With over 40 years of experience, we remain the indispensable supplier for Istanbul's printing sector.",
-    "locationTitle": "Location & Contact Details",
-    "address": "Yakuplu, 194. Sk. No:1 D:176, Beylikdüzü, Istanbul",
-    "phone": "+90 212 637 62 49",
-    "workingHours": "Monday - Saturday: 08:30 - 18:00",
-    "servicesTitle": "Services We Offer in Istanbul",
-    "service1": "Same-day delivery (orders placed before 12:00 noon)",
-    "service2": "On-site technical support and ink calibration",
-    "service3": "Custom color (spot color) production and formulation",
-    "service4": "ICC profile creation and print standardization",
-    "service5": "Full stock advisory for all inks and printing materials",
-    "whyIstanbulTitle": "The SIM Difference in Istanbul Printing",
-    "whyIstanbulText": "Istanbul is the heart of Turkey's printing and publishing industry. Hundreds of commercial printers, packaging facilities and digital print centers operate in this city. From our Beylikdüzü base, SIM Printing Supplies offers fast logistics and technical support to every district of Istanbul — serving everyone from large-scale facilities on the European side to small print shops on the Asian side with equal dedication.",
-    "ctaTitle": "Call Us for Printing Materials in Istanbul",
-    "ctaText": "Contact our sales team for fast delivery and technical support.",
-    "ctaButton": "Call Now"
   },
   "glossary": {
     "title": "Printing Glossary",

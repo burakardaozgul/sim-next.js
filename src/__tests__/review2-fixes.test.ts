@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { formatOpeningHours } from '@/data/organization';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { glossaryJsonLd, glossaryTermAnchor } from '@/lib/schema';
@@ -72,7 +73,8 @@ describe('single source for contact facts', () => {
     const hasSaturday = ORGANIZATION.openingHours.dayOfWeek.includes('Saturday');
     for (const l of ['tr', 'en', 'ru', 'ar']) {
       const m = JSON.parse(readFileSync(join(root, 'messages', `${l}.json`), 'utf8'));
-      expect(m.istanbulSeo.workingHours.includes(saturday[l]), `${l}: ${m.istanbulSeo.workingHours}`).toBe(hasSaturday);
+      // İstanbul sayfası saatleri artık organization.ts'ten türetilir (formatOpeningHours); mesaj alanı kaldırıldı
+      expect(formatOpeningHours(l as 'tr' | 'en' | 'ru' | 'ar').includes(saturday[l]), `${l}: ${formatOpeningHours(l as 'tr' | 'en' | 'ru' | 'ar')}`).toBe(hasSaturday);
       expect(m.contact.workingHoursValue.includes(saturday[l]), l).toBe(hasSaturday);
     }
   });

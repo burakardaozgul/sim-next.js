@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
@@ -46,6 +46,13 @@ export default function ServicesSection() {
           <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-cream md:text-4xl lg:text-5xl">
             {t('title')}
           </h2>
+          <Link
+            href="/matbaa-malzemeleri"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold transition-all hover:gap-3"
+          >
+            {t('guideLink')}
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">

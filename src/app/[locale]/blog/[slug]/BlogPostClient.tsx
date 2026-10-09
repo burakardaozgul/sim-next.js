@@ -8,8 +8,7 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import type { BlogPost, ContentBlock } from '@/data/blog';
 import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
-import { parseInlineLinks } from '@/lib/inline-links';
-import NextLink from 'next/link';
+import InlineText from '@/components/ui/InlineText';
 import { type Product, getProductSlug } from '@/data/products';
 import {
   ChevronLeft,
@@ -170,41 +169,6 @@ function processBlocks(blocks: ContentBlock[]): ProcessedBlock[] {
     }
     return block;
   });
-}
-
-/* ─── Inline text with [label](/path) links ─── */
-function InlineText({ text }: { text?: string }) {
-  const parts = parseInlineLinks(text || '');
-  return (
-    <>
-      {parts.map((part, i) =>
-        part.href ? (
-          part.href.startsWith('/') ? (
-            // Sunucuda yerelleştirilmiş (önek + dil slug'ı) yol → düz next/link, ek önek yok
-            <NextLink
-              key={i}
-              href={part.href}
-              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
-            >
-              {part.text}
-            </NextLink>
-          ) : (
-            <a
-              key={i}
-              href={part.href}
-              target="_blank"
-              rel="noopener"
-              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
-            >
-              {part.text}
-            </a>
-          )
-        ) : (
-          <span key={i}>{part.text}</span>
-        ),
-      )}
-    </>
-  );
 }
 
 /* ─── Content Block Component ─── */
@@ -610,6 +574,50 @@ export default function BlogPostClient({
                     </dl>
                   </section>
                 )}
+
+                {/* Author box — E-E-A-T: yazar kimliği + Hakkımızda + "Teknik ekibimize sorun" */}
+                <aside
+                  className="!mt-10 flex flex-col gap-4 rounded-2xl border border-white/[0.06] bg-ink-800/50 p-6 sm:flex-row sm:items-start"
+                  aria-label={tBlog('authorBoxTitle')}
+                >
+                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-gold/10 font-heading text-base font-bold text-gold">
+                    SIM
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-gold">{tBlog('authorBoxTitle')}</p>
+                    <p className="mt-1 font-heading text-base font-semibold text-cream">{post.author}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-silver">{tBlog('authorBoxText')}</p>
+                    <div className="mt-3 flex flex-wrap gap-5">
+                      <Link href="/hakkimizda" className="text-xs font-semibold uppercase tracking-wider text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold">
+                        {tBlog('authorBoxAbout')}
+                      </Link>
+                      <Link href="/iletisim" className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-gold transition-all hover:gap-2">
+                        {tBlog('authorBoxCta')}
+                        <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
+                </aside>
+
+                {/* Pillar guide block — her yazıdan "Matbaa Malzemeleri Rehberi"ne bağlamsal link */}
+                <aside
+                  className="!mt-10 rounded-2xl border border-gold/20 bg-gold/5 p-6 lg:p-8"
+                  aria-labelledby="pillar-guide-heading"
+                >
+                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-gold">
+                    {tBlog('pillarGuideTitle')}
+                  </p>
+                  <p id="pillar-guide-heading" className="text-base leading-relaxed text-silver">
+                    {tBlog('pillarGuideText')}
+                  </p>
+                  <Link
+                    href="/matbaa-malzemeleri"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold transition-all hover:gap-3"
+                  >
+                    {tBlog('pillarGuideCta')}
+                    <ArrowRight size={14} />
+                  </Link>
+                </aside>
 
                 {/* Related Products */}
                 {relatedProducts.length > 0 && (

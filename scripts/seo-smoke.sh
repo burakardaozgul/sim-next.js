@@ -72,14 +72,65 @@ B=$(curl -sS -A "$UA" "$BASE/en/unknown-page-xyz"); check "EN 404 is localized" 
 
 # blog: typo slug redirect, newest-first ordering on home, single brand in list title
 H=$(hdr /blog/flekso-baski-murakkepleri-rehberi); check "typo blog slug → 308" $([ "$(status "$H")" = "308" ] && echo "$H" | grep -qi 'murekkepleri-rehberi'; echo $?)
-B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (chemicals guide)" $(echo "$B" | grep -q 'href="/blog/baski-kimyasallari-rehberi"'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (ink prices 2026)" $(echo "$B" | grep -q 'href="/blog/ofset-murekkep-fiyatlari-2026"'; echo $?)
 B=$(curl -sS -A "$UA" "$BASE/blog"); check "blog list title has the brand once" $([ "$(echo "$B" | grep -oE '<title>[^<]*' | grep -o 'SIM Baskı Malzemeleri' | wc -l | tr -d ' ')" = "1" ]; echo $?)
 
+# pillar /matbaa-malzemeleri (brief A): depth, schema, EN export page, blog guide block
+P=$(curl -sS -A "$UA" "$BASE/matbaa-malzemeleri")
+check "pillar H1 names keyword + 1983"                  $(echo "$P" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Matbaa Malzemeleri' && echo "$P" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "pillar has ItemList + FAQPage + BreadcrumbList JSON-LD" $(echo "$P" | grep -q '"@type":"ItemList"' && echo "$P" | grep -q '"@type":"FAQPage"' && echo "$P" | grep -q '"@type":"BreadcrumbList"'; echo $?)
+PW=$(echo "$P" | sed -e 's/<script[^>]*>[^<]*<\/script>//g' -e 's/<[^>]*>/ /g' | wc -w | tr -d ' ')
+check "pillar body ≥ 2500 words ($PW)"                   $([ "$PW" -ge 2500 ]; echo $?)
+check "pillar links 8 categories to products/guides"     $([ "$(echo "$P" | grep -o 'id="\(offset\|pantone\|metallic\|fluorescent\|uv\|blanket\|chemicals\|varnish\)"' | sort -u | wc -l | tr -d ' ')" = "8" ]; echo $?)
+PE=$(curl -sS -A "$UA" "$BASE/en/printing-materials")
+check "EN pillar H1 is export-oriented (Turkey + 1983)"  $(echo "$PE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey' && echo "$PE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "EN pillar inline product links use EN slugs"      $(echo "$PE" | grep -q 'href="/en/products/' && ! echo "$PE" | grep -q 'href="/urunler/'; echo $?)
+BP=$(curl -sS -A "$UA" "$BASE/blog/ofset-murekkep-secimi")
+check "blog post shows pillar guide block"               $(echo "$BP" | grep -q 'href="/matbaa-malzemeleri"'; echo $?)
+
+# about /hakkimizda (brief G): E-E-A-T page, schema, EN, author box
+A=$(curl -sS -A "$UA" "$BASE/hakkimizda")
+check "about H1 names 1983"                              $(echo "$A" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "about has AboutPage + FAQPage JSON-LD"            $(echo "$A" | grep -q '"@type":"AboutPage"' && echo "$A" | grep -q '"@type":"FAQPage"'; echo $?)
+AW=$(echo "$A" | sed -e 's/<script[^>]*>[^<]*<\/script>//g' -e 's/<[^>]*>/ /g' | wc -w | tr -d ' ')
+check "about body ≥ 1000 words ($AW)"                     $([ "$AW" -ge 1000 ]; echo $?)
+check "about timeline shows 1983 and 1998"               $(echo "$A" | grep -q '>1983<' && echo "$A" | grep -q '>1998<'; echo $?)
+AE=$(curl -sS -A "$UA" "$BASE/en/about")
+check "EN about H1 names Turkey + 1983"                  $(echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey' && echo "$AE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "blog post has author box linking to about"        $(echo "$BP" | grep -q 'href="/hakkimizda"'; echo $?)
+
+# istanbul local page (brief F): local intent H1, map embed, district table, FAQPage
+I=$(curl -sS -A "$UA" "$BASE/matbaa-malzemeleri-istanbul")
+check "istanbul H1 is local (İstanbul + Aynı Gün)"       $(echo "$I" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'İstanbul' && echo "$I" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -qi 'Aynı Gün'; echo $?)
+check "istanbul page embeds a lazy Google map"           $(echo "$I" | grep -q '<iframe' && echo "$I" | grep -q 'google.com/maps' && echo "$I" | grep -q 'loading="lazy"'; echo $?)
+check "istanbul district table has ≥ 16 rows"            $([ "$(echo "$I" | grep -o '<th scope="row"' | wc -l | tr -d ' ')" -ge 16 ]; echo $?)
+check "istanbul has FAQPage + WebPage schema"            $(echo "$I" | grep -q '"@type":"FAQPage"' && echo "$I" | grep -q '"@type":"WebPage"'; echo $?)
+check "home LocalBusiness areaServed lists districts"    $(curl -sS -A "$UA" "$BASE/" | grep -q '"name":"Beylikdüzü"'; echo $?)
+
+# ink hub /matbaa-murekkepleri (brief B)
+HB=$(curl -sS -A "$UA" "$BASE/matbaa-murekkepleri")
+check "ink hub H1 names Matbaa Mürekkepleri"             $(echo "$HB" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Matbaa Mürekkepleri'; echo $?)
+check "ink hub has ItemList + FAQPage + BreadcrumbList"  $(echo "$HB" | grep -q '"@type":"ItemList"' && echo "$HB" | grep -q '"@type":"FAQPage"' && echo "$HB" | grep -q '"@type":"BreadcrumbList"'; echo $?)
+check "ink hub links 6 ink types to product pages"       $([ "$(echo "$HB" | grep -o 'href="/urunler/[a-z0-9-]*"' | sort -u | wc -l | tr -d ' ')" -ge 6 ]; echo $?)
+HE=$(curl -sS -A "$UA" "$BASE/en/printing-inks")
+check "EN ink hub H1 is export-oriented (Turkey)"        $(echo "$HE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
+check "nav links the ink hub"                            $(echo "$P" | grep -q 'href="/matbaa-murekkepleri"'; echo $?)
+
+# export pages (brief H)
+EX=$(curl -sS -A "$UA" "$BASE/en/printing-supplies-turkey")
+check "EN export hub 200 + H1 names Turkey"             $(echo "$EX" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
+check "EN export hub has RFQ form (country + incoterm)" $(echo "$EX" | grep -q 'name="country"' && echo "$EX" | grep -q 'name="incoterm"'; echo $?)
+check "EN export hub has FAQPage + WebPage schema"      $(echo "$EX" | grep -q '"@type":"FAQPage"' && echo "$EX" | grep -q '"@type":"WebPage"'; echo $?)
+EI=$(curl -sS -A "$UA" "$BASE/en/offset-ink-supplier-turkey")
+check "EN offset ink supplier page H1 (Turkey)"         $(echo "$EI" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey'; echo $?)
+check "TR export page exists (/ihracat)"                $([ "$(hdr /ihracat | head -1 | grep -oE '[0-9]{3}')" = "200" ]; echo $?)
+
 # generated llms.txt + sitemap hygiene + IndexNow key file
-L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
+L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'ofset-murekkep-fiyatlari-2026' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
 S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex pages" $([ "$(echo "$S" | grep -c 'gizlilik-politikasi\|privacy-policy')" -eq 0 ]; echo $?)
-check "sitemap has 188 URLs"                         $([ "$(echo "$S" | grep -c '<loc>')" -eq 188 ]; echo $?)
+check "sitemap has 162 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 162 ]; echo $?)
+check "sitemap has no ru/ar blog URLs"                $(! echo "$S" | grep -qE '/(ru|ar)/blog/'; echo $?)
 H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
 
 # PR-7/PR-8: CSP header, visible H1, all service descriptions in HTML, consent checkbox

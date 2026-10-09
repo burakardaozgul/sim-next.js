@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { createPageMetadata } from '@/lib/seo';
 import { articleJsonLd } from '@/lib/schema';
 import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale, getRelatedPosts, toBlogSummary } from '@/data/blog';
+import { buildBlogPostMetadata } from '@/lib/blog-utils';
 import { locales } from '@/i18n/config';
 import { localizedBlogPath } from '@/lib/paths';
 import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
@@ -24,25 +24,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const { post } = resolveBlogPostForLocale(slug, locale);
-
   if (!post) return {};
-
-  const title = post.title[locale] || post.title.tr;
-  const description = post.excerpt[locale] || post.excerpt.tr;
-
-  const localizedSlug = getBlogSlug(post, locale);
-  return createPageMetadata({
-    locale,
-    path: `/blog/${localizedSlug}`,
-    title,
-    description,
-    keywords: post.keywords,
-    ogImage: post.image,
-    slugsByLocale: post.slugs,
-    type: 'article',
-    publishedTime: post.date,
-    modifiedTime: post.updated ?? post.date,
-  });
+  // ru/ar özetleri noindex + hreflang dışı (08 §2); tek kaynak: buildBlogPostMetadata
+  return buildBlogPostMetadata(post, locale);
 }
 
 export default async function BlogPostPage({
