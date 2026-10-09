@@ -4,6 +4,8 @@ import { createPageMetadata, BRAND_NAMES, getCanonicalUrl } from '@/lib/seo';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { glossaryTerms } from '@/data/glossary';
+import { glossaryJsonLd } from '@/lib/schema';
+import { slugify } from '@/lib/slugify';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -87,20 +89,7 @@ export default async function GlossaryPage({
   const pageUrl = getCanonicalUrl(locale, '/matbaa-terimleri-sozlugu');
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
-  // Build DefinedTermSet JSON-LD
-  const definedTermSetJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'DefinedTermSet',
-    name: t('title'),
-    description: t('subtitle'),
-    url: pageUrl,
-    inLanguage: locale,
-    hasDefinedTerm: glossaryTerms.map((item) => ({
-      '@type': 'DefinedTerm',
-      name: item.term[locale] || item.term.tr,
-      description: item.definition[locale] || item.definition.tr,
-    })),
-  };
+  const definedTermSetJsonLd = glossaryJsonLd(locale, { name: t('title'), description: t('subtitle') });
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -219,7 +208,8 @@ export default async function GlossaryPage({
                       return (
                         <div
                           key={termName}
-                          className="rounded-lg border border-ink-600 bg-ink-800 px-5 py-4 transition-colors hover:border-gold/40"
+                          id={`term-${slugify(termName)}`}
+                          className="scroll-mt-24 rounded-lg border border-ink-600 bg-ink-800 px-5 py-4 transition-colors hover:border-gold/40"
                         >
                           <dt className="font-heading text-base font-bold text-cream">
                             {termName}

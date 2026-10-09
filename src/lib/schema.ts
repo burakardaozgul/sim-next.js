@@ -4,6 +4,8 @@ import type { Product } from '@/data/products';
 import { getProductSlug } from '@/data/products';
 import type { BlogPost } from '@/data/blog';
 import { getBlogSlug } from '@/data/blog';
+import { glossaryTerms } from '@/data/glossary';
+import { slugify } from '@/lib/slugify';
 
 /**
  * JSON-LD üreticileri — tek entity grafı:
@@ -121,6 +123,73 @@ export function productJsonLd(product: Product, locale: string) {
     manufacturer: brand.manufacturer
       ? { '@type': 'Organization', name: brand.manufacturer }
       : orgRef,
+    ...(product.specs?.length
+      ? {
+          additionalProperty: product.specs.map((s) => ({
+            '@type': 'PropertyValue',
+            name: s.label[locale] || s.label.tr,
+            value: s.value[locale] || s.value.tr,
+          })),
+        }
+      : {}),
+  };
+}
+
+const HOME_LABELS: Record<string, string> = { tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية' };
+const PILLAR_LABELS: Record<string, string> = { tr: 'Matbaa Malzemeleri', en: 'Printing Materials', ru: 'Полиграфические материалы', ar: 'مواد الطباعة' };
+const PRODUCTS_LABELS: Record<string, string> = { tr: 'Ürünler', en: 'Products', ru: 'Продукция', ar: 'المنتجات' };
+
+/** Ana Sayfa › Matbaa Malzemeleri (pillar) › Ürünler › Ürün */
+export function productBreadcrumbJsonLd(product: Product, locale: string) {
+  const items = [
+    { name: HOME_LABELS[locale] || HOME_LABELS.tr, item: getCanonicalUrl(locale, '/') },
+    { name: PILLAR_LABELS[locale] || PILLAR_LABELS.tr, item: getCanonicalUrl(locale, '/matbaa-malzemeleri') },
+    { name: PRODUCTS_LABELS[locale] || PRODUCTS_LABELS.tr, item: getCanonicalUrl(locale, '/urunler') },
+    { name: product.name[locale] || product.name.tr, item: getCanonicalUrl(locale, `/urunler/${getProductSlug(product, locale)}`) },
+  ];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, ...it })),
+  };
+}
+
+export function productFaqJsonLd(product: Product, locale: string) {
+  if (!product.faq?.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: product.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q[locale] || f.q.tr,
+      acceptedAnswer: { '@type': 'Answer', text: f.a[locale] || f.a.tr },
+    })),
+  };
+}
+
+export function glossaryTermAnchor(term: Record<string, string>, locale: string): string {
+  return `term-${slugify(term[locale] || term.tr)}`;
+}
+
+export function glossaryJsonLd(locale: string, meta: { name?: string; description?: string } = {}) {
+  const pageUrl = getCanonicalUrl(locale, '/matbaa-terimleri-sozlugu');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    '@id': pageUrl,
+    name: meta.name ?? (locale === 'tr' ? 'Matbaa Terimleri Sözlüğü' : 'Printing Glossary'),
+    ...(meta.description ? { description: meta.description } : {}),
+    url: pageUrl,
+    inLanguage: locale,
+    publisher: orgRef,
+    hasDefinedTerm: glossaryTerms.map((item) => ({
+      '@type': 'DefinedTerm',
+      name: item.term[locale] || item.term.tr,
+      description: item.definition[locale] || item.definition.tr,
+      url: `${pageUrl}#${glossaryTermAnchor(item.term, locale)}`,
+      inDefinedTermSet: pageUrl,
+    })),
   };
 }
 

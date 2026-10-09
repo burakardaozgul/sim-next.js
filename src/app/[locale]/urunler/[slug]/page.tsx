@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { createPageMetadata, translatePath } from '@/lib/seo';
-import { productJsonLd } from '@/lib/schema';
+import { createPageMetadata } from '@/lib/seo';
+import { productJsonLd, productBreadcrumbJsonLd, productFaqJsonLd } from '@/lib/schema';
 import ProductDetailClient from './ProductDetailClient';
 import { getProductSlug, resolveProductForLocale, getProductSlugsForLocale } from '@/data/products';
 import { locales } from '@/i18n/config';
@@ -73,47 +73,8 @@ export default async function ProductDetailPage({
     .filter((p): p is BlogPost => p !== undefined)
     .map(toBlogSummary);
 
-  const name = product.name[locale] || product.name.tr;
-
-  const BASE_URL = 'https://www.simlimited.net';
-  const localizedSlug = getProductSlug(product, locale);
-  const productsPath = translatePath('/urunler', locale);
-  const productUrl =
-    locale === 'tr'
-      ? `${BASE_URL}${productsPath}/${localizedSlug}`
-      : `${BASE_URL}/${locale}${productsPath}/${localizedSlug}`;
-  const productsUrl =
-    locale === 'tr' ? `${BASE_URL}${productsPath}` : `${BASE_URL}/${locale}${productsPath}`;
-  const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
-
-  const homeLabels: Record<string, string> = { tr: 'Ana Sayfa', en: 'Home', ru: 'Главная', ar: 'الرئيسية' };
-  const productsLabels: Record<string, string> = { tr: 'Ürünler', en: 'Products', ru: 'Продукция', ar: 'المنتجات' };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: homeLabels[locale] || homeLabels.tr,
-        item: homeUrl,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: productsLabels[locale] || productsLabels.tr,
-        item: productsUrl,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name,
-        item: productUrl,
-      },
-    ],
-  };
-
+  const breadcrumbJsonLd = productBreadcrumbJsonLd(product, locale);
+  const faqSchema = productFaqJsonLd(product, locale);
   const productSchema = productJsonLd(product, locale);
 
   return (
@@ -126,6 +87,9 @@ export default async function ProductDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <LocaleSlugsProvider slugs={product.slugs}>
         <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
       </LocaleSlugsProvider>

@@ -8,6 +8,16 @@ export interface Product {
   description: Record<string, string>;
   features?: Record<string, string[]>;
   relatedBlogPosts?: string[];
+  /** Teknik özellik tablosu (schema.org additionalProperty) */
+  specs?: Array<{ label: Record<string, string>; value: Record<string, string> }>;
+  /** TDS / MSDS / katalog PDF'leri (public/docs/...) */
+  documents?: Array<{ label: string; url: string; type: 'TDS' | 'MSDS' | 'Catalog' | 'Other' }>;
+  /** Kullanım alanları (dil bazlı madde listesi) */
+  useCases?: Record<string, string[]>;
+  /** Ürün SSS'si → FAQPage şeması */
+  faq?: Array<{ q: Record<string, string>; a: Record<string, string> }>;
+  /** Son içerik güncellemesi (ISO) */
+  updated?: string;
 }
 
 export const products: Product[] = [

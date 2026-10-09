@@ -65,7 +65,11 @@
       "custom": "Özel Renkler",
       "blanket": "Offset Blanketleri",
       "chemicals": "Kimyasallar"
-    }
+    },
+    "specsTitle": "Teknik Özellikler",
+    "documentsTitle": "Belgeler (TDS / MSDS)",
+    "useCasesTitle": "Kullanım Alanları",
+    "faqTitle": "Sık Sorulan Sorular"
   },
   "process": {
     "title": "Özel Renk Üretim Süreci",

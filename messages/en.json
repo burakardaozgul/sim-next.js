@@ -65,7 +65,11 @@
       "custom": "Custom Colors",
       "blanket": "Offset Blankets",
       "chemicals": "Chemicals"
-    }
+    },
+    "specsTitle": "Technical Specifications",
+    "documentsTitle": "Documents (TDS / MSDS)",
+    "useCasesTitle": "Applications",
+    "faqTitle": "Frequently Asked Questions"
   },
   "process": {
     "title": "Custom Color Production Process",

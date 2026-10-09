@@ -65,7 +65,11 @@
       "custom": "ألوان مخصصة",
       "blanket": "بطانيات الأوفست",
       "chemicals": "المواد الكيميائية"
-    }
+    },
+    "specsTitle": "المواصفات الفنية",
+    "documentsTitle": "المستندات (TDS / MSDS)",
+    "useCasesTitle": "مجالات الاستخدام",
+    "faqTitle": "الأسئلة الشائعة"
   },
   "process": {
     "title": "عملية إنتاج الألوان المخصصة",
