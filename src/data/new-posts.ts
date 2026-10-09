@@ -1,6 +1,6 @@
 import { BlogPost } from './blog';
 
-export const newPosts: BlogPost[] = [
+export const newPosts: BlogPost[] =  [
   {
     "slug": "dispersiyon-lak-kaplama-cesitleri",
     "slugs": {
@@ -37,7 +37,7 @@ export const newPosts: BlogPost[] = [
       "tr": [
         {
           "type": "intro",
-          "text": "Baskı sonrasında yüzeyin korunması, mürekkebin çizilmesinin önlenmesi ve ürüne estetik bir dokunuş kazandırılması için lak (vernik) kaplama hayati önem taşır. Solvent bazlı geleneksel verniklerin yerini alan su bazlı dispersiyon laklar, çevre dostu yapıları, hızlı kurumaları ve geri dönüşüm kolaylıklarıyla modern ambalaj ve yayın baskısının standardı haline gelmiştir. Bu rehberde, temsilcisi olduğumuz Hollanda merkezli Hi-Tech Coatings ürün gamı üzerinden Soft Touch, Primer ve Bariyer lakların teknik detaylarını inceliyoruz."
+          "text": "Baskı sonrasında yüzeyin korunması, mürekkebin çizilmesinin önlenmesi ve ürüne estetik bir dokunuş kazandırılması için lak (vernik) kaplama hayati önem taşır. Solvent bazlı geleneksel verniklerin yerini alan su bazlı dispersiyon laklar, çevre dostu yapıları, hızlı kurumaları ve geri dönüşüm kolaylıklarıyla modern ambalaj ve yayın baskısının standardı haline gelmiştir. Bu rehberde, temsilcisi olduğumuz Hollanda merkezli Hi-Tech Coatings ürün gamı üzerinden Soft Touch, Primer ve Bariyer lakların teknik detaylarını inceliyoruz. Ürün tarafında [Hi-Tech Coatings dispersiyon lak](/urunler/hi-tech-coatings-dispersiyon-lak), lakın mürekkeple ilişkisi için [baskı kimyasalları rehberimiz](/blog/baski-kimyasallari-rehberi) ve tüm ürün gruplarını anlatan [matbaa malzemeleri rehberi](/matbaa-malzemeleri) bu yazıyı tamamlar."
         },
         {
           "type": "heading",
@@ -79,7 +79,7 @@ export const newPosts: BlogPost[] = [
       "en": [
         {
           "type": "intro",
-          "text": "Post-press varnish coating is vital for protecting the printed surface, preventing ink scratching, and adding an aesthetic touch. Replacing solvent-based varnishes, water-based dispersion coatings have become the standard in modern packaging due to their eco-friendly structure, fast drying, and ease of recycling. In this guide, we examine the technical details of Soft Touch, Primer, and Barrier coatings through our Dutch partner Hi-Tech Coatings' portfolio."
+          "text": "Post-press varnish coating is vital for protecting the printed surface, preventing ink scratching, and adding an aesthetic touch. Replacing solvent-based varnishes, water-based dispersion coatings have become the standard in modern packaging due to their eco-friendly structure, fast drying, and ease of recycling. In this guide, we examine the technical details of Soft Touch, Primer, and Barrier coatings through our Dutch partner Hi-Tech Coatings' portfolio. On the product side see [Hi-Tech Coatings dispersion varnish](/urunler/hi-tech-coatings-dispersiyon-lak), our [printing chemicals guide](/blog/baski-kimyasallari-rehberi) for how varnish interacts with ink, and the [printing materials guide](/matbaa-malzemeleri) covering every product group."
         },
         {
           "type": "heading",
@@ -178,6 +178,50 @@ export const newPosts: BlogPost[] = [
       "bariyer kaplama",
       "Hi-Tech Coatings"
     ],
+    "faq": [
+      {
+        "q": {
+          "tr": "Dispersiyon lak ile UV lak arasındaki fark nedir?",
+          "en": "What is the difference between dispersion varnish and UV varnish?",
+          "ru": "В чём разница между дисперсионным и УФ-лаком?",
+          "ar": "ما الفرق بين ورنيش التشتت وورنيش UV؟"
+        },
+        "a": {
+          "tr": "Dispersiyon lak su bazlı akriliktir, IR ile kurur, geri dönüşüm dostudur ve ekonomiktir; UV lak fotobaşlatıcılı reçinedir, anında kürlenir, daha yüksek parlaklık ve kimyasal direnç verir ancak maliyeti ve deinking sorunu daha yüksektir.",
+          "en": "Dispersion varnish is a water-based acrylic dried by IR, recyclable and economical; UV varnish is a photoinitiated resin that cures instantly with higher gloss and chemical resistance but higher cost and deinking issues.",
+          "ru": "Дисперсионный лак — водный акрил, сохнет под ИК, пригоден к переработке и экономичен; УФ-лак — фотоотверждаемая смола с мгновенным отверждением, выше глянец и химстойкость, но дороже и хуже удаляется при переработке.",
+          "ar": "ورنيش التشتت أكريليك مائي يجف بالأشعة تحت الحمراء وقابل لإعادة التدوير واقتصادي؛ أما ورنيش UV فراتنج يتصلب فوراً بلمعان ومقاومة كيميائية أعلى لكن بتكلفة أعلى ومشكلات في إزالة الحبر."
+        }
+      },
+      {
+        "q": {
+          "tr": "Soft touch lak hangi işlerde kullanılır?",
+          "en": "Where is soft-touch varnish used?",
+          "ru": "Где применяется лак soft-touch?",
+          "ar": "أين يُستخدم ورنيش الملمس الناعم؟"
+        },
+        "a": {
+          "tr": "Kozmetik ve lüks ambalaj kutuları, kitap ve dergi kapakları, kartvizit ve davetiyelerde kadifemsi dokunsal etki için; mat görünüm verir, parmak izi tutmaz, ancak sürtünmeye karşı koruyucu üst lak veya dikkatli istif gerektirir.",
+          "en": "On cosmetics and luxury packaging, book and magazine covers, business cards and invitations for a velvety tactile effect; it gives a matte look and hides fingerprints but needs careful stacking or a protective top coat against scuffing.",
+          "ru": "На косметической и премиальной упаковке, обложках книг и журналов, визитках и приглашениях для бархатистого тактильного эффекта; даёт матовый вид, не оставляет отпечатков, но требует аккуратной укладки.",
+          "ar": "على علب مستحضرات التجميل والتغليف الفاخر وأغلفة الكتب والمجلات وبطاقات الأعمال والدعوات لإضفاء ملمس مخملي؛ يمنح مظهراً مطفياً ولا يُظهر بصمات الأصابع لكنه يحتاج تكديساً حذراً أو طبقة حماية."
+        }
+      },
+      {
+        "q": {
+          "tr": "Bariyer kaplama gıda ambalajında neyi sağlar?",
+          "en": "What does a barrier coating do in food packaging?",
+          "ru": "Что даёт барьерное покрытие в пищевой упаковке?",
+          "ar": "ما وظيفة الطلاء الحاجز في تغليف الأغذية؟"
+        },
+        "a": {
+          "tr": "Kartonun yağ, nem ve su buharına direncini artırır; fast-food kutuları, dondurulmuş gıda ve bakery ambalajlarında plastik laminasyon yerine geri dönüştürülebilir bir çözüm sunar. Gıda teması için düşük migrasyon beyanı ve uygun kuruma koşulları gerekir.",
+          "en": "It raises the board's resistance to grease, moisture and water vapour, offering a recyclable alternative to plastic lamination in fast-food boxes, frozen-food and bakery packaging. Food contact requires a low-migration statement and correct drying conditions.",
+          "ru": "Повышает стойкость картона к жирам, влаге и водяному пару, заменяя пластиковую ламинацию в упаковке фастфуда, замороженных продуктов и выпечки. Для пищевого контакта нужны декларация о низкой миграции и правильные условия сушки.",
+          "ar": "يرفع مقاومة الكرتون للدهون والرطوبة وبخار الماء، ويوفر بديلاً قابلاً لإعادة التدوير عن التغليف البلاستيكي في علب الوجبات السريعة والأغذية المجمدة والمخبوزات. ويتطلب الملامسة للأغذية إقرار هجرة منخفضة وظروف جفاف مناسبة."
+        }
+      }
+    ],
     "relatedProducts": [
       "hi-tech-coatings-dispersiyon-lak",
       "zeller-gmelin-uv-offset-murekkepleri"
@@ -219,7 +263,7 @@ export const newPosts: BlogPost[] = [
       "tr": [
         {
           "type": "intro",
-          "text": "Baskı endüstrisinde doğru teknolojiyi seçmek hem bütçe optimizasyonu hem de nihai ürün kalitesi açısından en kritik karardır. Tarihsel olarak ofset baskı yüksek tirajların lideriyken, dijital baskı düşük hacimli ve kişiselleştirilmiş işlerin vazgeçilmezi olmuştur. 2026 yılı itibarıyla, dijital baskı makinelerinin hız ve mürekkep kalitesindeki artışı ile ofset baskının otomatik kalıp değiştirme gibi prepress (hazırlık) hızlanmaları aradaki çizgiyi inceltmiştir. Bu rehberde, iki teknolojiyi maliyet, hız ve kalite dengesinde objektif olarak karşılaştırıyoruz."
+          "text": "Baskı endüstrisinde doğru teknolojiyi seçmek hem bütçe optimizasyonu hem de nihai ürün kalitesi açısından en kritik karardır. Tarihsel olarak ofset baskı yüksek tirajların lideriyken, dijital baskı düşük hacimli ve kişiselleştirilmiş işlerin vazgeçilmezi olmuştur. 2026 yılı itibarıyla, dijital baskı makinelerinin hız ve mürekkep kalitesindeki artışı ile ofset baskının otomatik kalıp değiştirme gibi prepress (hazırlık) hızlanmaları aradaki çizgiyi inceltmiştir. Bu rehberde, iki teknolojiyi maliyet, hız ve kalite dengesinde objektif olarak karşılaştırıyoruz. Ofset tarafının malzeme sistemi için [matbaa malzemeleri rehberine](/matbaa-malzemeleri), mürekkep seçimi için [SAKATA INX CMYK](/urunler/sakata-inx-cmyk-murekkepler) sayfasına ve [ofset mürekkep seçimi](/blog/ofset-murekkep-secimi) yazımıza bakabilirsiniz."
         },
         {
           "type": "heading",
@@ -261,7 +305,7 @@ export const newPosts: BlogPost[] = [
       "en": [
         {
           "type": "intro",
-          "text": "Choosing the right printing technology is a critical decision for budget optimization and final product quality. Historically, offset has dominated high-volume runs, while digital has been indispensable for short and personalized jobs. As of 2026, advances in digital press speed and offset automated plate prepress have blurred the lines. This guide provides an objective cost, speed, and quality comparison."
+          "text": "Choosing the right printing technology is a critical decision for budget optimization and final product quality. Historically, offset has dominated high-volume runs, while digital has been indispensable for short and personalized jobs. As of 2026, advances in digital press speed and offset automated plate prepress have blurred the lines. This guide provides an objective cost, speed, and quality comparison. For the offset material system see our [printing materials guide](/matbaa-malzemeleri), the [SAKATA INX CMYK](/urunler/sakata-inx-cmyk-murekkepler) page for ink selection and our [offset ink selection](/blog/ofset-murekkep-secimi) article."
         },
         {
           "type": "heading",
@@ -360,6 +404,50 @@ export const newPosts: BlogPost[] = [
       "baskı kalitesi",
       "prepress hazırlık"
     ],
+    "faq": [
+      {
+        "q": {
+          "tr": "Dijital mi ofset mi: hangi tirajda ofset daha ekonomik olur?",
+          "en": "At what run length does offset become cheaper than digital?",
+          "ru": "При каком тираже офсет дешевле цифровой печати?",
+          "ar": "عند أي كمية تصبح طباعة الأوفست أرخص من الرقمية؟"
+        },
+        "a": {
+          "tr": "Kesin eşik işe göre değişir; A4 broşür benzeri işlerde break-even genellikle 500–1.000 adet civarındadır. Ofsetin sabit maliyeti (kalıp, make-ready) tiraj büyüdükçe dağılır; dijitalde ise birim maliyet sabit kalır. Değişken veri gerektiren işlerde yüksek tirajda bile dijital tercih edilebilir.",
+          "en": "The exact threshold depends on the job; for A4 brochure-type work the break-even is usually around 500–1,000 copies. Offset's fixed costs (plates, make-ready) spread over longer runs, while digital unit cost stays flat. Jobs needing variable data may stay digital even at higher volumes.",
+          "ru": "Порог зависит от задачи; для брошюр формата A4 точка безубыточности обычно около 500–1000 экз. Постоянные затраты офсета (формы, приладка) распределяются на тираж, у цифры стоимость единицы постоянна. Работы с переменными данными могут оставаться цифровыми и при больших тиражах.",
+          "ar": "يختلف الحد حسب العمل؛ ولأعمال الكتيبات A4 يكون التعادل عادة نحو 500–1000 نسخة. تتوزع تكاليف الأوفست الثابتة (الألواح والتجهيز) على الكميات الكبيرة بينما تبقى تكلفة الوحدة الرقمية ثابتة. وقد تبقى الأعمال ذات البيانات المتغيرة رقمية حتى بكميات أعلى."
+        }
+      },
+      {
+        "q": {
+          "tr": "Dijital baskıda PANTONE renkleri basılabilir mi?",
+          "en": "Can PANTONE colours be printed digitally?",
+          "ru": "Можно ли печатать цвета PANTONE на цифровых машинах?",
+          "ar": "هل يمكن طباعة ألوان PANTONE رقمياً؟"
+        },
+        "a": {
+          "tr": "Çoğu dijital sistem PANTONE renklerini CMYK (bazılarında ek turuncu/yeşil/mor) ile simüle eder; gamut dışı tonlarda Delta E 2–5 kalır. Kurumsal renk ve metalik/floresan gerektiren işlerde ofset spot mürekkep (SAKATA INX PANTONE veya laboratuvar üretimi) kesin eşleşme sağlar.",
+          "en": "Most digital presses simulate PANTONE colours with CMYK (some add orange/green/violet); out-of-gamut shades stay at Delta E 2–5. Brand colours and jobs needing metallic or fluorescent inks require offset spot inks (SAKATA INX PANTONE or laboratory-mixed) for an exact match.",
+          "ru": "Большинство цифровых машин имитируют PANTONE триадой (иногда с оранжевым/зелёным/фиолетовым); для цветов вне охвата Delta E остаётся 2–5. Фирменные цвета и металлик/флуоресцент требуют офсетных плашечных красок (SAKATA INX PANTONE или лабораторных).",
+          "ar": "تحاكي معظم الماكينات الرقمية ألوان PANTONE بـ CMYK (وبعضها يضيف البرتقالي والأخضر والبنفسجي)؛ وتبقى الدرجات خارج النطاق عند Delta E 2–5. وتحتاج ألوان العلامات والأعمال المعدنية والفلورية إلى أحبار أوفست خاصة (SAKATA INX PANTONE أو من المختبر) لمطابقة دقيقة."
+        }
+      },
+      {
+        "q": {
+          "tr": "Hibrit baskı (dijital + ofset) ne zaman mantıklıdır?",
+          "en": "When does hybrid (digital + offset) printing make sense?",
+          "ru": "Когда оправдана гибридная печать (цифра + офсет)?",
+          "ar": "متى تكون الطباعة الهجينة (رقمية + أوفست) منطقية؟"
+        },
+        "a": {
+          "tr": "Sabit kısmı ofsetle yüksek tirajda basıp değişken veriyi (seri numarası, QR, kişiselleştirme) dijitalle eklemek; etiket ve ambalajda promosyon serilerinde yaygındır. Mürekkep ve lak uyumu (ofset mürekkebi üzerine toner/inkjet) önceden test edilmelidir.",
+          "en": "Printing the static part offset at volume and adding variable data (serial numbers, QR codes, personalisation) digitally; common in label and packaging promotions. Ink and varnish compatibility (toner or inkjet over offset ink) must be tested beforehand.",
+          "ru": "Статичную часть печатают офсетом большим тиражом, а переменные данные (серийные номера, QR, персонализацию) добавляют цифрой; распространено в промо-этикетках и упаковке. Совместимость красок и лаков нужно тестировать заранее.",
+          "ar": "طباعة الجزء الثابت بالأوفست بكميات كبيرة وإضافة البيانات المتغيرة (الأرقام التسلسلية ورموز QR والتخصيص) رقمياً؛ شائع في الملصقات والعبوات الترويجية. ويجب اختبار توافق الحبر والورنيش مسبقاً."
+        }
+      }
+    ],
     "relatedProducts": [
       "sakata-inx-cmyk-murekkepler",
       "ozel-renkler"
@@ -401,7 +489,7 @@ export const newPosts: BlogPost[] = [
       "tr": [
         {
           "type": "intro",
-          "text": "Ofset baskı teknolojisinin temeli, yağ bazlı mürekkep ile su bazlı nemlendirme çözeltisinin birbirini itmesi prensibine dayanır. Bu prensibin sahada kararlı bir üretim sürecine dönüşmesi ise tamamen su-mürekkep dengesinin (dampening balance) hassas kontrolü ile mümkündür. Su-mürekkep dengesinin kurulamaması; baskıda ton yapma (scumming), geç kuruma, nokta büyümesi (dot gain), mürekkep emülsiyonu ve şerit izleri gibi matbaalarda karşılaşılan teknik sorunların %70'inin ana nedenidir. Bu rehberde, nemlendirme suyunun pH, iletkenlik (conductivity) ve alkol (IPA) parametrelerini teknik olarak inceliyoruz."
+          "text": "Ofset baskı teknolojisinin temeli, yağ bazlı mürekkep ile su bazlı nemlendirme çözeltisinin birbirini itmesi prensibine dayanır. Bu prensibin sahada kararlı bir üretim sürecine dönüşmesi ise tamamen su-mürekkep dengesinin (dampening balance) hassas kontrolü ile mümkündür. Su-mürekkep dengesinin kurulamaması; baskıda ton yapma (scumming), geç kuruma, nokta büyümesi (dot gain), mürekkep emülsiyonu ve şerit izleri gibi matbaalarda karşılaşılan teknik sorunların %70'inin ana nedenidir. Bu rehberde, nemlendirme suyunun pH, iletkenlik (conductivity) ve alkol (IPA) parametrelerini teknik olarak inceliyoruz. Nemlendirme katkıları ve yıkama kimyasallarının tamamı için [baskı kimyasalları rehberimize](/blog/baski-kimyasallari-rehberi), su dengesinin kuruma üzerindeki etkisi için [kuruma sorunları](/blog/ofset-baskida-murekkep-kuruma-sorunlari) yazımıza ve [matbaa malzemeleri rehberine](/matbaa-malzemeleri) bakın."
         },
         {
           "type": "heading",
@@ -443,7 +531,7 @@ export const newPosts: BlogPost[] = [
       "en": [
         {
           "type": "intro",
-          "text": "The foundation of offset printing lies in the repellent principle between oil-based ink and water-based dampening solution. Translating this principle into a stable press production process requires precise control of the water-ink balance. Imbalances account for 70% of press issues like scumming, slow drying, excessive dot gain, and emulsification. In this technical guide, we examine fount pH, conductivity, and isopropyl alcohol (IPA) parameters."
+          "text": "The foundation of offset printing lies in the repellent principle between oil-based ink and water-based dampening solution. Translating this principle into a stable press production process requires precise control of the water-ink balance. Imbalances account for 70% of press issues like scumming, slow drying, excessive dot gain, and emulsification. In this technical guide, we examine fount pH, conductivity, and isopropyl alcohol (IPA) parameters. See our [printing chemicals guide](/blog/baski-kimyasallari-rehberi) for all fountain additives and wash chemicals, the [ink drying problems](/blog/ofset-baskida-murekkep-kuruma-sorunlari) article for how water balance affects drying, and the [printing materials guide](/matbaa-malzemeleri)."
         },
         {
           "type": "heading",
@@ -542,6 +630,50 @@ export const newPosts: BlogPost[] = [
       "IPA-free",
       "iletkenlik ölçümü"
     ],
+    "faq": [
+      {
+        "q": {
+          "tr": "Hazne suyunun ideal pH değeri kaçtır?",
+          "en": "What is the ideal fountain solution pH?",
+          "ru": "Какой pH увлажняющего раствора оптимален?",
+          "ar": "ما قيمة pH المثالية لمحلول الترطيب؟"
+        },
+        "a": {
+          "tr": "Hedef 4,8–5,5 aralığıdır. pH 4,5'in altına inerse kurutucular bastırılır ve mürekkep geç kurur; 5,5'in üstünde kalıp körlenmesi ve tonlama riski artar. Değer her vardiyada ölçülüp kaydedilmelidir.",
+          "en": "The target is 4.8–5.5. Below pH 4.5 the driers are suppressed and ink dries slowly; above 5.5 plate blinding and toning risk increase. Measure and log the value every shift.",
+          "ru": "Целевой диапазон 4,8–5,5. Ниже pH 4,5 подавляются сиккативы и краска сохнет медленно; выше 5,5 растёт риск засаливания формы и тонирования. Измеряйте и записывайте каждую смену.",
+          "ar": "النطاق المستهدف 4.8–5.5. تحت pH 4.5 تُكبح المجففات ويجف الحبر ببطء؛ وفوق 5.5 يزداد خطر انسداد اللوح والتلوين. تُقاس القيمة وتُسجل في كل وردية."
+        }
+      },
+      {
+        "q": {
+          "tr": "İletkenlik neden ölçülür, hangi aralık normaldir?",
+          "en": "Why measure conductivity and what range is normal?",
+          "ru": "Зачем измерять проводимость и какой диапазон нормален?",
+          "ar": "لماذا تُقاس التوصيلية وما النطاق الطبيعي؟"
+        },
+        "a": {
+          "tr": "İletkenlik, solüsyondaki çözünmüş tuz ve katkı miktarını gösterir; 800–1500 µS/cm normaldir. Taze suya göre 1000 µS/cm üzerindeki artış mürekkep ve kâğıt kirlenmesini işaret eder; bu noktada solüsyon yenilenmelidir.",
+          "en": "Conductivity indicates dissolved salts and additives; 800–1500 µS/cm is normal. A rise of more than 1000 µS/cm above fresh water signals contamination from ink and paper, at which point the solution should be replaced.",
+          "ru": "Проводимость показывает количество растворённых солей и добавок; норма 800–1500 мкСм/см. Рост более чем на 1000 мкСм/см относительно свежей воды указывает на загрязнение краской и бумагой — раствор нужно заменить.",
+          "ar": "تدل التوصيلية على الأملاح والإضافات الذائبة؛ والطبيعي 800–1500 ميكروسيمنز/سم. ويشير ارتفاع يزيد على 1000 ميكروسيمنز/سم فوق الماء النقي إلى تلوث من الحبر والورق فيجب تجديد المحلول."
+        }
+      },
+      {
+        "q": {
+          "tr": "Alkolsüz (IPA-free) baskıya nasıl geçilir?",
+          "en": "How do I switch to IPA-free printing?",
+          "ru": "Как перейти на печать без изопропилового спирта?",
+          "ar": "كيف أنتقل إلى الطباعة بدون كحول (IPA-free)؟"
+        },
+        "a": {
+          "tr": "Kademeli geçiş: IPA %8'den %3–5'e, ardından alkol ikamesi içeren fount katkısıyla sıfıra. Merdane ayarları (sertlik, basınç), su sıcaklığı (10–12 °C) ve kâğıt tozu kontrolü yeniden yapılır; ilk haftalarda pH ve iletkenlik daha sık ölçülür. Teknik ekibimiz makine başında destek verir.",
+          "en": "Step by step: IPA from 8% to 3–5%, then to zero with a fountain additive containing an alcohol substitute. Roller settings (hardness, pressure), water temperature (10–12 °C) and paper dust control are re-adjusted; pH and conductivity are measured more often in the first weeks. Our technicians support the conversion at the press.",
+          "ru": "Поэтапно: ИПС с 8 % до 3–5 %, затем до нуля с добавкой-заменителем спирта. Перенастраиваются валы (твёрдость, давление), температура воды (10–12 °C) и контроль бумажной пыли; в первые недели чаще измеряют pH и проводимость. Наши специалисты помогают у машины.",
+          "ar": "تدريجياً: من 8٪ كحول إلى 3–5٪ ثم إلى الصفر بإضافة ترطيب تحتوي بديل الكحول. تُعاد معايرة الأسطوانات (الصلابة والضغط) ودرجة حرارة الماء (10–12 °م) والتحكم في غبار الورق؛ وتُقاس pH والتوصيلية أكثر في الأسابيع الأولى. ويدعم فريقنا الفني التحول عند الماكينة."
+        }
+      }
+    ],
     "relatedProducts": [
       "hi-tech-coatings-dispersiyon-lak",
       "vector-baski-blanketleri"
@@ -583,7 +715,7 @@ export const newPosts: BlogPost[] = [
       "tr": [
         {
           "type": "intro",
-          "text": "Gıda, kozmetik ve temizlik ürünlerinin esnek ambalajları ile kendinden yapışkanlı etiketlerin üretiminde en yaygın kullanılan baskı teknolojisi fleksografidir (flekso). Flekso baskının yüksek hızlarda kararlı ve kaliteli sonuçlar vermesi, büyük ölçüde doğru mürekkep seçimine ve kimyasal parametrelerin kontrolüne bağlıdır. Günümüzde sürdürülebilirlik regülasyonları (AB PPWR ve Türkiye Çevre Mevzuatları), flekso mürekkeplerinde VOC emisyonlarının azaltılmasını zorunlu kılmaktadır. Bu rehberde, su bazlı, solvent bazlı ve UV flekso mürekkeplerini teknik boyutlarıyla analiz ediyoruz."
+          "text": "Gıda, kozmetik ve temizlik ürünlerinin esnek ambalajları ile kendinden yapışkanlı etiketlerin üretiminde en yaygın kullanılan baskı teknolojisi fleksografidir (flekso). Flekso baskının yüksek hızlarda kararlı ve kaliteli sonuçlar vermesi, büyük ölçüde doğru mürekkep seçimine ve kimyasal parametrelerin kontrolüne bağlıdır. Günümüzde sürdürülebilirlik regülasyonları (AB PPWR ve Türkiye Çevre Mevzuatları), flekso mürekkeplerinde VOC emisyonlarının azaltılmasını zorunlu kılmaktadır. Bu rehberde, su bazlı, solvent bazlı ve UV flekso mürekkeplerini teknik boyutlarıyla analiz ediyoruz. Ofset tarafındaki karşılıklar için [UV ofset mürekkepleri](/urunler/zeller-gmelin-uv-offset-murekkepleri), [esnek ambalaj mürekkebi seçimi](/blog/ambalaj-baskisinda-murekkep-secimi-rehberi) yazımız ve [matbaa malzemeleri rehberi](/matbaa-malzemeleri) bu yazıyı tamamlar."
         },
         {
           "type": "heading",
@@ -617,7 +749,7 @@ export const newPosts: BlogPost[] = [
       "en": [
         {
           "type": "intro",
-          "text": "Flexography (flexo) is the most widely used printing technology for flexible packaging of food, cosmetics, and self-adhesive labels. Delivering high-quality and stable results at high speeds depends heavily on selecting the correct ink and controlling chemical parameters. Today, environmental regulations (EU PPWR) mandate reducing VOC emissions in flexo inks. This guide technical analyzes water-based, solvent-based, and UV flexo inks."
+          "text": "Flexography (flexo) is the most widely used printing technology for flexible packaging of food, cosmetics, and self-adhesive labels. Delivering high-quality and stable results at high speeds depends heavily on selecting the correct ink and controlling chemical parameters. Today, environmental regulations (EU PPWR) mandate reducing VOC emissions in flexo inks. This guide technical analyzes water-based, solvent-based, and UV flexo inks. For the offset counterparts see [UV offset inks](/urunler/zeller-gmelin-uv-offset-murekkepleri), our [packaging ink selection](/blog/ambalaj-baskisinda-murekkep-secimi-rehberi) article and the [printing materials guide](/matbaa-malzemeleri)."
         },
         {
           "type": "heading",
@@ -708,6 +840,50 @@ export const newPosts: BlogPost[] = [
       "viskozite kontrolü",
       "aniloks merdane"
     ],
+    "faq": [
+      {
+        "q": {
+          "tr": "Flekso mürekkep çeşitleri nelerdir?",
+          "en": "What types of flexo ink are there?",
+          "ru": "Какие бывают флексографские краски?",
+          "ar": "ما أنواع أحبار الفلكسو؟"
+        },
+        "a": {
+          "tr": "Su bazlı (kâğıt, oluklu mukavva, kese kâğıdı), solvent bazlı (esnek plastik film, laminasyon) ve UV/LED-UV (etiket, dar en). Seçim yüzeye, kuruma sistemine ve gıda teması gereksinimine göre yapılır; her tip ayrı aniloks ve klişe uyumu ister.",
+          "en": "Water-based (paper, corrugated board, paper bags), solvent-based (flexible plastic film, lamination) and UV/LED-UV (labels, narrow web). The choice depends on substrate, drying system and food-contact requirements; each type needs matching anilox and plate compatibility.",
+          "ru": "Водные (бумага, гофрокартон, пакеты), сольвентные (гибкие плёнки, ламинация) и УФ/LED-UV (этикетки, узкорулонная печать). Выбор зависит от материала, системы сушки и требований пищевого контакта; каждому типу нужны свои анилокс и формы.",
+          "ar": "مائية (الورق والكرتون المضلع والأكياس)، ومذيبية (الأفلام البلاستيكية المرنة والتغليف)، وUV/LED-UV (الملصقات والعرض الضيق). يعتمد الاختيار على السطح ونظام التجفيف ومتطلبات ملامسة الأغذية؛ ويحتاج كل نوع إلى أنيلوكس وألواح متوافقة."
+        }
+      },
+      {
+        "q": {
+          "tr": "Flekso baskıda viskozite nasıl kontrol edilir?",
+          "en": "How is viscosity controlled in flexo printing?",
+          "ru": "Как контролировать вязкость флексокраски?",
+          "ar": "كيف يُتحكم في اللزوجة في طباعة الفلكسو؟"
+        },
+        "a": {
+          "tr": "Zahn veya DIN kabı ile saniye cinsinden ölçülür (su bazlıda tipik 18–25 s, DIN 4); sıcaklık ve çözücü buharlaşması viskoziteyi sürekli değiştirdiği için otomatik viskozite kontrol ünitesi veya 30 dakikada bir manuel ölçüm önerilir. Yükselen viskozite dolguyu azaltır ve nokta kazancını artırır.",
+          "en": "It is measured in seconds with a Zahn or DIN cup (typically 18–25 s, DIN 4, for water-based inks); because temperature and solvent evaporation change viscosity continuously, an automatic viscosity controller or a manual check every 30 minutes is recommended. Rising viscosity reduces coverage and increases dot gain.",
+          "ru": "Измеряется в секундах воронкой Zahn или DIN (для водных красок обычно 18–25 с, DIN 4); температура и испарение растворителя постоянно меняют вязкость, поэтому рекомендуются автоматический контроллер или ручной замер каждые 30 минут. Рост вязкости снижает кроющую способность и увеличивает растискивание.",
+          "ar": "تُقاس بالثواني بكأس Zahn أو DIN (عادة 18–25 ثانية، DIN 4، للأحبار المائية)؛ ولأن الحرارة وتبخر المذيب يغيّران اللزوجة باستمرار، يُنصح بوحدة تحكم آلية أو قياس يدوي كل 30 دقيقة. وترفع اللزوجة المتزايدة تضخم النقطة وتقلل التغطية."
+        }
+      },
+      {
+        "q": {
+          "tr": "Aniloks merdane seçimi mürekkep transferini nasıl etkiler?",
+          "en": "How does anilox selection affect ink transfer?",
+          "ru": "Как выбор анилокса влияет на перенос краски?",
+          "ar": "كيف يؤثر اختiار أسطوانة الأنيلوكس في نقل الحبر؟"
+        },
+        "a": {
+          "tr": "Hücre hacmi (BCM) transfer edilen mürekkep miktarını, tram sıklığı (LPI) ise detay çözünürlüğünü belirler; ince tramlı işler için yüksek LPI–düşük BCM, dolgu alanlar için düşük LPI–yüksek BCM seçilir. Yanlış aniloks, viskozite doğru olsa bile renk yoğunluğunu tutturamaz.",
+          "en": "Cell volume (BCM) sets how much ink is transferred and screen count (LPI) the detail resolution; fine-screen work needs high LPI with low BCM, solids need low LPI with high BCM. A wrong anilox misses target density even when viscosity is correct.",
+          "ru": "Объём ячейки (BCM) определяет количество переносимой краски, линиатура (LPI) — детализацию; для тонких растров — высокий LPI и низкий BCM, для плашек — низкий LPI и высокий BCM. Неверный анилокс не даст нужной плотности даже при правильной вязкости.",
+          "ar": "يحدد حجم الخلية (BCM) كمية الحبر المنقولة وتحدد دقة الشبكة (LPI) دقة التفاصيل؛ فالأعمال الدقيقة تحتاج LPI عالياً وBCM منخفضاً، والمساحات الممتلئة العكس. والأنيلوكس الخاطئ لا يحقق الكثافة المستهدفة حتى مع لزوجة صحيحة."
+        }
+      }
+    ],
     "relatedProducts": [
       "hi-tech-coatings-dispersiyon-lak",
       "zeller-gmelin-uv-offset-murekkepleri"
@@ -749,7 +925,7 @@ export const newPosts: BlogPost[] = [
       "tr": [
         {
           "type": "intro",
-          "text": "Türkiye baskı ve ambalaj endüstrisi, 2026 yılı itibarıyla küresel tedarik zincirlerinin yeniden yapılanmasında en stratejik oyunculardan biri haline gelmiştir. Avrupa pazarına olan coğrafi yakınlık, esnek üretim kabiliyeti ve yüksek teknolojik makine parkuru sayesinde Türkiye matbaa sektörü yıllık 2 milyar USD'yi aşan bir ihracat hacmine ulaşmıştır. Ancak bu büyüme, beraberinde ciddi bir dönüşüm zorunluluğu da getirmektedir: AB Yeşil Mutabakatı, Karbon Sınır Vergisi (CBAM) ve PPWR ambalaj yönetmeliği. Bu teknik makalede, sektörün 2026 yılındaki temel trendlerini, ihracat fırsatlarını ve regülasyon kaynaklı teknik zorlukları ele alıyoruz."
+          "text": "Türkiye baskı ve ambalaj endüstrisi, 2026 yılı itibarıyla küresel tedarik zincirlerinin yeniden yapılanmasında en stratejik oyunculardan biri haline gelmiştir. Avrupa pazarına olan coğrafi yakınlık, esnek üretim kabiliyeti ve yüksek teknolojik makine parkuru sayesinde Türkiye matbaa sektörü yıllık 2 milyar USD'yi aşan bir ihracat hacmine ulaşmıştır. Ancak bu büyüme, beraberinde ciddi bir dönüşüm zorunluluğu da getirmektedir: AB Yeşil Mutabakatı, Karbon Sınır Vergisi (CBAM) ve PPWR ambalaj yönetmeliği. Bu teknik makalede, sektörün 2026 yılındaki temel trendlerini, ihracat fırsatlarını ve regülasyon kaynaklı teknik zorlukları ele alıyoruz. Yerel laboratuvar ve hızlı lojistik için [özel renk üretimi](/ozel-renk-uretimi) ve [İstanbul teslimat](/matbaa-malzemeleri-istanbul) sayfalarına, sürdürülebilir malzeme seçimi için [sürdürülebilir baskı](/blog/surdurulebilir-baski-cevreye-duyarli-malzemeler) yazımıza ve [matbaa malzemeleri rehberine](/matbaa-malzemeleri) bakın."
         },
         {
           "type": "heading",
@@ -791,7 +967,7 @@ export const newPosts: BlogPost[] = [
       "en": [
         {
           "type": "intro",
-          "text": "As of 2026, the Turkish printing and packaging industry has become one of the most strategic players in global supply chains. Geographical proximity to Europe, flexible manufacturing capabilities, and advanced machinery have pushed Turkish print exports past USD 2 billion annually. However, this growth demands transition: the EU Green Deal, CBAM carbon tax, and PPWR packaging regulations. This article analyzes sector trends, export opportunities, and technical regulations."
+          "text": "As of 2026, the Turkish printing and packaging industry has become one of the most strategic players in global supply chains. Geographical proximity to Europe, flexible manufacturing capabilities, and advanced machinery have pushed Turkish print exports past USD 2 billion annually. However, this growth demands transition: the EU Green Deal, CBAM carbon tax, and PPWR packaging regulations. This article analyzes sector trends, export opportunities, and technical regulations. See [custom colour production](/ozel-renk-uretimi) and [Istanbul delivery](/matbaa-malzemeleri-istanbul) for local laboratory and fast logistics, our [sustainable printing](/blog/surdurulebilir-baski-cevreye-duyarli-malzemeler) article for material choices and the [printing materials guide](/matbaa-malzemeleri)."
         },
         {
           "type": "heading",
@@ -889,6 +1065,50 @@ export const newPosts: BlogPost[] = [
       "yeşil mutabakat ambalaj",
       "mono-malzeme ambalaj",
       "renk laboratuvarı"
+    ],
+    "faq": [
+      {
+        "q": {
+          "tr": "Türkiye baskı sektörünün 2026'daki en büyük fırsatı nedir?",
+          "en": "What is the biggest opportunity for Turkey's printing industry in 2026?",
+          "ru": "Главная возможность для полиграфии Турции в 2026 году?",
+          "ar": "ما أكبر فرصة لقطاع الطباعة في تركيا عام 2026؟"
+        },
+        "a": {
+          "tr": "Avrupa'ya yakın, hızlı ve esnek ambalaj üretimi: AB müşterilerinin tedarik zincirini kısaltma eğilimi Türkiye'ye avantaj sağlıyor. Bunun koşulu PPWR, düşük migrasyon ve belgelendirme (FSC, ISO 14001) gereklerine uyumlu malzeme ve süreçlerdir.",
+          "en": "Fast, flexible packaging production close to Europe: EU customers shortening supply chains favours Turkey. The condition is materials and processes that meet PPWR, low-migration and certification requirements (FSC, ISO 14001).",
+          "ru": "Быстрое и гибкое производство упаковки рядом с Европой: стремление клиентов ЕС сократить цепочки поставок играет на руку Турции. Условие — материалы и процессы, отвечающие PPWR, требованиям низкой миграции и сертификации (FSC, ISO 14001).",
+          "ar": "إنتاج تغليف سريع ومرن قرب أوروبا: ميل عملاء الاتحاد الأوروبي لتقصير سلاسل التوريد يصب في مصلحة تركيا. والشرط مواد وعمليات مطابقة لـ PPWR ومتطلبات الهجرة المنخفضة والشهادات (FSC وISO 14001)."
+        }
+      },
+      {
+        "q": {
+          "tr": "Yeşil Mutabakat matbaalardan hangi belgeleri ister?",
+          "en": "Which documents does the Green Deal expect from printers?",
+          "ru": "Какие документы требует Зелёный курс от типографий?",
+          "ar": "ما الوثائق التي يتطلبها الاتفاق الأخضر من المطابع؟"
+        },
+        "a": {
+          "tr": "Müşteri denetimlerinde FSC zincir sertifikası, ISO 14001, mürekkep ve lak için deinking/geri dönüşüm uyum beyanları, gıda ambalajında migrasyon sertifikası ve VOC emisyon kayıtları istenir. Malzeme tedarikçinizden bu belgeleri teklif aşamasında talep edin.",
+          "en": "Customer audits ask for FSC chain-of-custody, ISO 14001, deinking and recyclability statements for inks and varnishes, migration certificates for food packaging and VOC emission records. Request these from your material supplier at quotation stage.",
+          "ru": "При аудитах клиенты запрашивают сертификат FSC, ISO 14001, декларации о пригодности красок и лаков к переработке, миграционные сертификаты для пищевой упаковки и учёт выбросов VOC. Требуйте их у поставщика материалов на этапе предложения.",
+          "ar": "تطلب عمليات تدقيق العملاء شهادة FSC وISO 14001 وإقرارات قابلية إزالة الحبر وإعادة التدوير للأحبار والورنيشات وشهادات الهجرة لتغليف الأغذية وسجلات انبعاثات VOC. اطلبها من مورّد المواد في مرحلة عرض السعر."
+        }
+      },
+      {
+        "q": {
+          "tr": "Yerel renk laboratuvarı ihracatçı matbaaya ne kazandırır?",
+          "en": "What does a local colour laboratory give an exporting printer?",
+          "ru": "Что даёт экспортёру местная лаборатория цвета?",
+          "ar": "ماذا يقدم مختبر الألوان المحلي للمطبعة المصدّرة؟"
+        },
+        "a": {
+          "tr": "Marka rengini günler değil saatler içinde eşleyip tekrar siparişlerde aynı reçeteyle üretmek, numuneyi aynı gün teslim etmek ve ithal mürekkep bekleme süresini sıfırlamak. SIM'in İstanbul'daki 24/7 laboratuvarı tam bu ihtiyaç için çalışır.",
+          "en": "Matching a brand colour in hours rather than days, reproducing the same recipe on repeat orders, delivering samples the same day and eliminating the wait for imported inks. SIM's 24/7 laboratory in Istanbul exists for exactly this need.",
+          "ru": "Подбор фирменного цвета за часы, а не дни, воспроизведение той же рецептуры при повторных заказах, образцы в тот же день и отсутствие ожидания импортных красок. Лаборатория SIM 24/7 в Стамбуле работает именно для этого.",
+          "ar": "مطابقة لون العلامة في ساعات لا أيام، وإعادة إنتاج الوصفة نفسها في الطلبات المتكررة، وتسليم العينات في اليوم نفسه، وإلغاء انتظار الأحبار المستوردة. مختبر SIM العامل على مدار الساعة في إسطنبول يخدم هذه الحاجة تحديداً."
+        }
+      }
     ],
     "relatedProducts": [
       "ozel-renkler",

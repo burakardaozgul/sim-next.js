@@ -2,6 +2,7 @@ import { ORGANIZATION, BASE_URL, formatTelephone, formatAddress } from '@/data/o
 import { routing } from '@/i18n/routing';
 import { products } from '@/data/products';
 import { blogPosts } from '@/data/blog';
+import { isIndexableLocale } from '@/lib/blog-utils';
 import { glossaryTerms } from '@/data/glossary';
 import { faqData } from '@/data/faq';
 import { localizedStaticPath, localizedProductPath, localizedBlogPath } from '@/lib/paths';
@@ -21,9 +22,14 @@ const PAGES: Array<{ path: StaticKey; title: string; desc: string }> = [
   { path: '/iletisim', title: 'Contact', desc: 'Address, phone, email, quote requests.' },
 ];
 
-function urls(path: string, kind: 'static' | 'product' | 'blog'): string {
+function urls(path: string, kind: 'static' | 'product' | 'blog', only: readonly string[] = routing.locales): string {
   const fn = kind === 'static' ? (l: string) => localizedStaticPath(path as StaticKey, l) : kind === 'product' ? (l: string) => localizedProductPath(path, l) : (l: string) => localizedBlogPath(path, l);
-  return routing.locales.map((l) => `${l.toUpperCase()}: ${abs(fn(l))}`).join(' · ');
+  return routing.locales.filter((l) => only.includes(l)).map((l) => `${l.toUpperCase()}: ${abs(fn(l))}`).join(' · ');
+}
+
+/** Blog: yalnızca dizine giren dillerin URL'leri (ru/ar özetleri hariç, 08 §2) */
+function blogUrls(post: (typeof blogPosts)[number]): string {
+  return urls(post.slug, 'blog', routing.locales.filter((l) => isIndexableLocale(post, l)));
 }
 
 function header(): string {
@@ -54,7 +60,7 @@ export function buildLlmsTxt(): string {
   lines.push('\n## Pages');
   for (const pg of PAGES) lines.push(`- ${pg.title}: ${pg.desc}\n  ${urls(pg.path, 'static')}`);
   lines.push('\n## Blog articles (newest first)');
-  for (const post of blogPosts) lines.push(`- ${post.title.en} (${post.date}): ${post.excerpt.en}\n  ${urls(post.slug, 'blog')}`);
+  for (const post of blogPosts) lines.push(`- ${post.title.en} (${post.date}): ${post.excerpt.en}\n  ${blogUrls(post)}`);
   lines.push(`\nFull text version: ${BASE_URL}/llms-full.txt`);
   return lines.join('\n') + '\n';
 }
@@ -69,7 +75,7 @@ export function buildLlmsFullTxt(): string {
   for (const pg of PAGES) lines.push(`- ${pg.title}: ${pg.desc}\n  ${urls(pg.path, 'static')}`);
   lines.push('\n## Blog articles / Blog yazıları');
   for (const post of blogPosts) {
-    lines.push(`### ${post.title.en}\nTR: ${post.title.tr}\nPublished: ${post.date}${post.updated ? ` · Updated: ${post.updated}` : ''}\n${post.excerpt.en}\n${urls(post.slug, 'blog')}`);
+    lines.push(`### ${post.title.en}\nTR: ${post.title.tr}\nPublished: ${post.date}${post.updated ? ` · Updated: ${post.updated}` : ''}\n${post.excerpt.en}\n${blogUrls(post)}`);
     if (post.faq?.length) {
       for (const f of post.faq) lines.push(`- Q: ${f.q.en}\n  A: ${f.a.en}`);
     }

@@ -103,7 +103,8 @@ check "blog post has author box linking to about"        $(echo "$BP" | grep -q 
 L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
 S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex pages" $([ "$(echo "$S" | grep -c 'gizlilik-politikasi\|privacy-policy')" -eq 0 ]; echo $?)
-check "sitemap has 188 URLs"                         $([ "$(echo "$S" | grep -c '<loc>')" -eq 188 ]; echo $?)
+check "sitemap has 138 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 138 ]; echo $?)
+check "sitemap has no ru/ar blog URLs"                $(! echo "$S" | grep -qE '/(ru|ar)/blog/'; echo $?)
 H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
 
 # PR-7/PR-8: CSP header, visible H1, all service descriptions in HTML, consent checkbox

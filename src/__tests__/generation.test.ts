@@ -16,9 +16,10 @@ describe('sitemap.xml', async () => {
   const xml = await (await sitemapGET()).text();
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-  it('excludes noindex pages (privacy, terms) and keeps the rest (188 URLs)', () => {
+  it('excludes noindex pages (privacy, terms) and ru/ar blog summaries; keeps the rest', () => {
     expect(locs.some((l) => /gizlilik|privacy|politika|kullanim|terms|usloviya/.test(l))).toBe(false);
-    expect(locs).toHaveLength(188);
+    // 188 (önceki) − 2 × yazı sayısı (ru/ar özetleri, 08 §2)
+    expect(locs).toHaveLength(188 - 2 * blogPosts.length);
   });
 
   it('uses the post date (or updated) as lastmod for blog URLs', () => {

@@ -2,6 +2,7 @@ import { routing } from '@/i18n/routing';
 import { locales, defaultLocale } from '@/i18n/config';
 import { products } from '@/data/products';
 import { blogPosts } from '@/data/blog';
+import { isIndexableLocale } from '@/lib/blog-utils';
 import { BASE_URL } from '@/data/organization';
 import { localizedStaticPath, localizedProductPath, localizedBlogPath } from '@/lib/paths';
 import contentDates from '@/data/content-dates.json';
@@ -95,8 +96,10 @@ export async function GET() {
 
   // Blog yazıları — lastmod: güncelleme tarihi yoksa yayın tarihi
   for (const post of blogPosts) {
-    const locs = Object.fromEntries(locales.map((l) => [l, abs(localizedBlogPath(post.slug, l))]));
-    for (const locale of locales) {
+    // ru/ar özetleri dizine girmez (08 §2) → ne URL ne alternate olarak yazılır
+    const indexable = locales.filter((l) => isIndexableLocale(post, l));
+    const locs = Object.fromEntries(indexable.map((l) => [l, abs(localizedBlogPath(post.slug, l))]));
+    for (const locale of indexable) {
       xml += urlEntry(locs, post.updated ?? post.date, 'monthly', '0.6').replace(
         `<loc>${locs[locales[0]]}</loc>`,
         `<loc>${locs[locale]}</loc>`,
