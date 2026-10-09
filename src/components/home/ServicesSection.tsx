@@ -85,21 +85,18 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Expandable description */}
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-1 pb-5 text-sm leading-relaxed text-silver/80">
-                          {item.desc}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Açıklama her zaman DOM'da (SSR/arama motoru görür); kapalıyken yükseklik 0 */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                    aria-hidden={!isActive}
+                  >
+                    <p className="px-1 pb-5 text-sm leading-relaxed text-silver/80">
+                      {item.desc}
+                    </p>
+                  </motion.div>
 
                   {/* Active indicator bar */}
                   {isActive && (

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
-import { Home, Package, Navigation, PhoneCall } from 'lucide-react';
+import { Home, Package, Navigation, PhoneCall, BookOpen } from 'lucide-react';
 
 const PHONE_NUMBER = '+902126376249';
 const GOOGLE_MAPS_URL =
@@ -14,6 +14,7 @@ export default function MobileBottomNav() {
 
   const isHome = pathname === '/';
   const isProducts = pathname.startsWith('/urunler');
+  const isPillar = pathname.startsWith('/matbaa-malzemeleri');
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.08] bg-ink-900/95 backdrop-blur-md lg:hidden">
@@ -43,6 +44,21 @@ export default function MobileBottomNav() {
             <Package size={20} strokeWidth={isProducts ? 2.2 : 1.6} className={isProducts ? 'text-gold' : ''} />
             <span className="leading-none">{t('products')}</span>
             {isProducts && (
+              <span className="absolute top-0 left-1/2 h-[2px] w-8 -translate-x-1/2 rounded-b-full bg-gold" />
+            )}
+          </span>
+        </Link>
+
+        {/* Matbaa Malzemeleri (pillar) */}
+        <Link href="/matbaa-malzemeleri" className="relative flex flex-1">
+          <span
+            className={`flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-[10px] font-medium tracking-wide transition-colors ${
+              isPillar ? 'text-gold' : 'text-silver/70 active:text-gold'
+            }`}
+          >
+            <BookOpen size={20} strokeWidth={isPillar ? 2.2 : 1.6} className={isPillar ? 'text-gold' : ''} />
+            <span className="leading-none">{t('printingMaterials')}</span>
+            {isPillar && (
               <span className="absolute top-0 left-1/2 h-[2px] w-8 -translate-x-1/2 rounded-b-full bg-gold" />
             )}
           </span>

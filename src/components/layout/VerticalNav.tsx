@@ -15,6 +15,7 @@ import { useParams } from 'next/navigation';
 const navItems = [
   { key: 'home', href: '/' },
   { key: 'products', href: '/urunler' },
+  { key: 'printingMaterials', href: '/matbaa-malzemeleri' },
   { key: 'customColor', href: '/ozel-renk-uretimi' },
   { key: 'brands', href: '/temsilcilikler' },
   { key: 'blog', href: '/blog' },

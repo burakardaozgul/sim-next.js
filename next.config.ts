@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
+    // Düzen en fazla ~1200px içerik + 2x retina; daha büyük varyantlar gereksiz
+    deviceSizes: [640, 828, 1080, 1200, 1920],
+    imageSizes: [64, 96, 128, 256, 384],
   },
   async redirects() {
     return [
