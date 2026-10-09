@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
 import { HOME_SERVICE_SLUGS } from '@/data/home-services';
+import { getProductBySlug, getProductSlug } from '@/data/products';
 
 const SERVICE_IMAGES = [
   '/images/DSC07958.webp',
@@ -22,6 +23,11 @@ const SERVICE_IMAGES = [
 
 export default function ServicesSection() {
   const t = useTranslations('services');
+  const locale = useLocale();
+  const serviceSlug = (trSlug: string) => {
+    const product = getProductBySlug(trSlug);
+    return product ? getProductSlug(product, locale) : trSlug;
+  };
   const [activeIndex, setActiveIndex] = useState(0);
 
   const items = Array.from({ length: 7 }, (_, i) => ({
@@ -136,7 +142,7 @@ export default function ServicesSection() {
 
                 {/* Floating discover button */}
                 <Link
-                  href={{ pathname: '/urunler/[slug]' as const, params: { slug: HOME_SERVICE_SLUGS[activeIndex] } }}
+                  href={{ pathname: '/urunler/[slug]' as const, params: { slug: serviceSlug(HOME_SERVICE_SLUGS[activeIndex]) } }}
                   className="absolute bottom-5 right-5 z-10 flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
                 >
                   {t('discover')}

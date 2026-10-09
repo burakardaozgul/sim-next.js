@@ -48,6 +48,28 @@ check "preference redirect is not CDN-cacheable"   $(echo "$H" | grep -i '^cache
 # WordPress leftovers → 404 (not redirect to home)
 H=$(hdr /wp-admin/index.php); check "/wp-admin/* → 404" $([ "$(status "$H")" = "404" ]; echo $?)
 
+# wrong-locale slugs → 308 to the locale's own slug
+H=$(hdr /urunler/sakata-inx-cmyk-inks);        check "EN slug under TR path → 308 TR slug"   $([ "$(status "$H")" = "308" ] && echo "$H" | grep -qi 'location: .*/urunler/sakata-inx-cmyk-murekkepler$'; echo $?)
+H=$(hdr /en/products/sakata-inx-cmyk-murekkepler); check "TR slug under EN path → 308 EN slug" $([ "$(status "$H")" = "308" ] && echo "$H" | grep -qi 'location: .*/en/products/sakata-inx-cmyk-inks$'; echo $?)
+H=$(hdr /blog/pantone-color-system-guide);     check "EN blog slug under TR → 308"          $([ "$(status "$H")" = "308" ]; echo $?)
+
+# no hard-coded TR slugs inside EN pages; language switcher uses EN slug
+B=$(curl -sS -A "$UA" "$BASE/en/printing-materials")
+check "EN landing has no TR product slugs"         $([ "$(echo "$B" | grep -c '/en/products/sakata-inx-cmyk-murekkepler')" -eq 0 ]; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/urunler/sakata-inx-cmyk-murekkepler")
+check "TR product page: EN switcher link uses EN slug" $(echo "$B" | grep -q 'href="/en/products/sakata-inx-cmyk-inks"'; echo $?)
+check "TR product page: RU switcher link uses RU slug" $(echo "$B" | grep -q 'href="/ru/produkty/sakata-inx-cmyk-kraski"'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/en/products/sakata-inx-cmyk-inks")
+check "EN product page: TR switcher link is unprefixed TR slug" $(echo "$B" | grep -q 'href="/urunler/sakata-inx-cmyk-murekkepler"'; echo $?)
+check "EN product page: no /tr/ or /en/urunler links" $([ "$(echo "$B" | grep -cE 'href="/(tr/|en/urunler/|ru/urunler/|ar/urunler/)')" -eq 0 ]; echo $?)
+check "TR product page: no /tr/ switcher link"     $([ "$(echo "$B" | grep -c 'href="/tr/')" -eq 0 ]; echo $?)
+
+# branded 404s
+H=$(hdr /bilinmeyen-sayfa-xyz); check "unknown URL → 404" $([ "$(status "$H")" = "404" ]; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/bilinmeyen-sayfa-xyz"); check "root 404 is branded (title + body) and noindex" $(echo "$B" | grep -q 'Sayfa Bulunamadı' && echo "$B" | grep -qi 'name="robots" content="noindex'; echo $?)
+H=$(hdr /en/unknown-page-xyz); check "unknown EN URL → 404" $([ "$(status "$H")" = "404" ]; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/en/unknown-page-xyz"); check "EN 404 is localized" $(echo "$B" | grep -q 'Page Not Found'; echo $?)
+
 # home services link target exists
 H=$(hdr /urunler/vector-baski-blanketleri); check "7th service target product 200" $([ "$(status "$H")" = "200" ]; echo $?)
 

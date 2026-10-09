@@ -2282,3 +2282,20 @@ export function getAllBlogSlugs(): string[] {
   }
   return [...slugs];
 }
+
+/** Bkz. resolveProductForLocale — blog yazıları için aynı mantık. */
+export function resolveBlogPostForLocale(
+  slug: string,
+  locale: string,
+): { post?: BlogPost; redirectSlug?: string } {
+  const own = blogPosts.find((p) => (p.slugs[locale] || p.slug) === slug);
+  if (own) return { post: own };
+  const other = blogPosts.find((p) => p.slug === slug || Object.values(p.slugs).includes(slug));
+  if (other) return { redirectSlug: other.slugs[locale] || other.slug };
+  return {};
+}
+
+/** generateStaticParams için: yalnızca bu dile ait slug'lar. */
+export function getBlogSlugsForLocale(locale: string): string[] {
+  return blogPosts.map((p) => p.slugs[locale] || p.slug);
+}

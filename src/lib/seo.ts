@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { routing } from '@/i18n/routing';
 
 const BASE_URL = 'https://www.simlimited.net';
 const DEFAULT_LOCALE = 'tr';
@@ -78,20 +79,12 @@ export const LAYOUT_TITLES: Record<string, string> = {
  * Path translations matching i18n/routing.ts pathname config.
  * Maps Turkish (default) paths to their locale equivalents.
  */
-const PATH_TRANSLATIONS: Record<string, Record<string, string>> = {
-  '/urunler': { tr: '/urunler', en: '/products', ru: '/produkty', ar: '/products' },
-  '/ozel-renk-uretimi': { tr: '/ozel-renk-uretimi', en: '/custom-color-production', ru: '/proizvodstvo-tsvetov', ar: '/custom-color-production' },
-  '/temsilcilikler': { tr: '/temsilcilikler', en: '/brands', ru: '/brendy', ar: '/brands' },
-  '/hakkimizda': { tr: '/hakkimizda', en: '/about', ru: '/o-nas', ar: '/about' },
-  '/iletisim': { tr: '/iletisim', en: '/contact', ru: '/kontakty', ar: '/contact' },
-  '/sss': { tr: '/sss', en: '/faq', ru: '/voprosy', ar: '/faq' },
-  '/gizlilik-politikasi': { tr: '/gizlilik-politikasi', en: '/privacy-policy', ru: '/politika-konfidentsialnosti', ar: '/privacy-policy' },
-  '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
-  '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
-  '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
-  '/ofset-baski-malzemeleri': { tr: '/ofset-baski-malzemeleri', en: '/offset-printing-supplies', ru: '/materialy-ofsetnoj-pechati', ar: '/mawad-tibaat-offset' },
-  '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
-};
+// Tek kaynak: src/i18n/routing.ts pathnames (dinamik [slug] rotaları hariç).
+const PATH_TRANSLATIONS: Record<string, Record<string, string>> = Object.fromEntries(
+  Object.entries(routing.pathnames)
+    .filter(([key, value]) => typeof value === 'object' && !key.includes('['))
+    .map(([key, value]) => [key, value as Record<string, string>]),
+);
 
 /**
  * Translate a Turkish path to the correct locale path.

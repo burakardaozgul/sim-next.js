@@ -7,6 +7,9 @@ import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
 import { setLocalePreference } from '@/lib/locale-cookie';
+import { useLocaleSlugs } from './LocaleSlugsContext';
+import NextLink from 'next/link';
+import { localeSwitchHref } from '@/lib/locale-switch';
 import { useParams } from 'next/navigation';
 
 const navItems = [
@@ -39,11 +42,9 @@ export default function VerticalNav() {
   // usePathname() from next-intl returns the template pattern (e.g. '/urunler/[slug]')
   // so we just need to pass the params alongside it for dynamic routes
   const slug = params?.slug as string | undefined;
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  const localeHref = slug
-    ? { pathname: pathname as any, params: { slug } }
-    : { pathname: pathname as any };
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  const localeSlugs = useLocaleSlugs();
+  // Hedef dilin URL'si: yerelleştirilmiş yol + hedef dilin kendi slug'ı; /tr/ öneki üretilmez.
+  const hrefFor = (loc: string) => localeSwitchHref(pathname, loc, slug, localeSlugs);
 
   return (
     <>
@@ -128,11 +129,10 @@ export default function VerticalNav() {
             </p>
             <div className="grid grid-cols-2 gap-1.5">
               {locales.map((loc) => (
-                <Link
+                <NextLink
                   key={loc}
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  href={localeHref as any}
-                  locale={loc}
+                  href={hrefFor(loc)}
+                  hrefLang={loc}
                   onClick={() => {
                     setLocalePreference(loc);
                     setMobileOpen(false);
@@ -145,7 +145,7 @@ export default function VerticalNav() {
                 >
                   <span className="text-base leading-none">{localeData[loc].flag}</span>
                   <span className="text-xs font-semibold tracking-wide">{localeData[loc].label}</span>
-                </Link>
+                </NextLink>
               ))}
             </div>
           </div>

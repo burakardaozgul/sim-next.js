@@ -5,6 +5,8 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
+import { getProductBySlug, getProductSlug } from '@/data/products';
+import { getBlogPostBySlug, getBlogSlug } from '@/data/blog';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -737,7 +739,7 @@ export default async function OfsetBaskiMalzemeleriPage({
                 {c.categories.map((cat) => (
                   <Link
                     key={cat.slug}
-                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: cat.slug } }}
+                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: getProductSlug(getProductBySlug(cat.slug)!, locale) } }}
                     className="group flex flex-col rounded-xl border border-white/[0.06] bg-ink-800 p-6 transition-all hover:border-gold/40 hover:bg-ink-700"
                   >
                     <span className="mb-3 text-3xl">{cat.icon}</span>
@@ -871,7 +873,7 @@ export default async function OfsetBaskiMalzemeleriPage({
                 {RELATED_BLOG_SLUGS.map((slug) => (
                   <li key={slug}>
                     <Link
-                      href={{ pathname: '/blog/[slug]' as const, params: { slug } }}
+                      href={{ pathname: '/blog/[slug]' as const, params: { slug: getBlogSlug(getBlogPostBySlug(slug)!, locale) } }}
                       className="group inline-flex items-center gap-2 text-sm text-silver underline decoration-white/20 underline-offset-4 transition-colors hover:text-gold hover:decoration-gold/40"
                     >
                       {RELATED_BLOG_TITLES[slug][locale] || RELATED_BLOG_TITLES[slug].tr}

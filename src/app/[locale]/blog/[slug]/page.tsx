@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES } from '@/lib/seo';
-import { getBlogPostBySlug, getAllBlogSlugs, getBlogSlug } from '@/data/blog';
+import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale } from '@/data/blog';
+import { locales } from '@/i18n/config';
+import { localizedBlogPath } from '@/lib/paths';
+import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
 import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
 import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return getAllBlogSlugs().map((slug) => ({ slug }));
+  return locales.flatMap((locale) =>
+    getBlogSlugsForLocale(locale).map((slug) => ({ locale, slug })),
+  );
 }
 
 export async function generateMetadata({
@@ -16,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const { post } = resolveBlogPostForLocale(slug, locale);
 
   if (!post) return {};
 
@@ -42,8 +47,9 @@ export default async function BlogPostPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const post = getBlogPostBySlug(slug);
+  const { post, redirectSlug } = resolveBlogPostForLocale(slug, locale);
 
+  if (redirectSlug) permanentRedirect(localizedBlogPath(redirectSlug, locale));
   if (!post) notFound();
 
   const relatedProductData = (post.relatedProducts || [])
@@ -159,7 +165,9 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <BlogPostClient post={post} relatedProducts={relatedProductData} />
+      <LocaleSlugsProvider slugs={post.slugs}>
+        <BlogPostClient post={post} relatedProducts={relatedProductData} />
+      </LocaleSlugsProvider>
     </>
   );
 }

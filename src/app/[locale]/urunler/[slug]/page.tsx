@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { createPageMetadata, BRAND_NAMES, translatePath } from '@/lib/seo';
 import ProductDetailClient from './ProductDetailClient';
-import { getProductBySlug, getAllProductSlugs, getProductSlug } from '@/data/products';
+import { getProductSlug, resolveProductForLocale, getProductSlugsForLocale } from '@/data/products';
+import { locales } from '@/i18n/config';
+import { localizedProductPath } from '@/lib/paths';
+import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
 import { blogPosts, BlogPost } from '@/data/blog';
 import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return getAllProductSlugs().map((slug) => ({ slug }));
+  // Her dil yalnızca kendi slug'larını üretir; başka dilin slug'ı istek anında 308 ile yönlenir.
+  return locales.flatMap((locale) =>
+    getProductSlugsForLocale(locale).map((slug) => ({ locale, slug })),
+  );
 }
 
 /**
@@ -51,7 +57,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const product = getProductBySlug(slug);
+  const { product } = resolveProductForLocale(slug, locale);
 
   if (!product) {
     return {};
@@ -80,11 +86,11 @@ export default async function ProductDetailPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const product = getProductBySlug(slug);
+  const { product, redirectSlug } = resolveProductForLocale(slug, locale);
 
-  if (!product) {
-    notFound();
-  }
+  // Başka bir dilin slug'ı ile gelen istek (kopya URL) → kalıcı 308, doğru slug.
+  if (redirectSlug) permanentRedirect(localizedProductPath(redirectSlug, locale));
+  if (!product) notFound();
 
   const relatedBlogData = (product.relatedBlogPosts || [])
     .map((slug) => blogPosts.find((p) => p.slug === slug))
@@ -178,7 +184,9 @@ export default async function ProductDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
+      <LocaleSlugsProvider slugs={product.slugs}>
+        <ProductDetailClient product={product} relatedBlogPosts={relatedBlogData} />
+      </LocaleSlugsProvider>
     </>
   );
 }

@@ -291,3 +291,23 @@ export function getAllProductSlugs(): string[] {
   }
   return [...slugs];
 }
+
+/**
+ * Slug'ı istenen dil için çözer. Slug o dilin slug'ı ise ürünü döndürür; başka bir dilin
+ * slug'ı ise (kopya URL) doğru slug'a 308 için redirectSlug verir; bilinmiyorsa boş döner.
+ */
+export function resolveProductForLocale(
+  slug: string,
+  locale: string,
+): { product?: Product; redirectSlug?: string } {
+  const own = products.find((p) => (p.slugs[locale] || p.slug) === slug);
+  if (own) return { product: own };
+  const other = products.find((p) => p.slug === slug || Object.values(p.slugs).includes(slug));
+  if (other) return { redirectSlug: other.slugs[locale] || other.slug };
+  return {};
+}
+
+/** generateStaticParams için: yalnızca bu dile ait slug'lar. */
+export function getProductSlugsForLocale(locale: string): string[] {
+  return products.map((p) => p.slugs[locale] || p.slug);
+}

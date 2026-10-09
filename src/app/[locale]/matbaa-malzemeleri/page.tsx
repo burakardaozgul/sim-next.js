@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { getProductBySlug, getProductSlug } from '@/data/products';
 
 const BASE_URL = 'https://www.simlimited.net';
 
@@ -470,7 +471,7 @@ export default async function MatbaaMalzemeleriPage({
                 {CATEGORY_KEYS.map((catKey) => (
                   <Link
                     key={catKey}
-                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: CATEGORY_SLUGS[catKey] } }}
+                    href={{ pathname: '/urunler/[slug]' as const, params: { slug: getProductSlug(getProductBySlug(CATEGORY_SLUGS[catKey])!, locale) } }}
                     className="group flex flex-col rounded-xl border border-white/[0.06] bg-ink-800 p-6 transition-all hover:border-gold/40 hover:bg-ink-700"
                   >
                     <span className="mb-3 text-3xl">{CATEGORY_ICONS[catKey]}</span>
