@@ -68,7 +68,7 @@ export default function ContactPageClient() {
 
       if (!res.ok) throw new Error('Failed');
       setFormState('success');
-      track('contact_form_submit', { subject: formData.subject || 'none' });
+      track('contact_form_submit', { form: 'contact' });
       setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '', _honey: '' });
       setConsent(false);
     } catch {
