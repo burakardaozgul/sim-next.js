@@ -75,6 +75,13 @@ H=$(hdr /blog/flekso-baski-murakkepleri-rehberi); check "typo blog slug → 308"
 B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (chemicals guide)" $(echo "$B" | grep -q 'href="/blog/baski-kimyasallari-rehberi"'; echo $?)
 B=$(curl -sS -A "$UA" "$BASE/blog"); check "blog list title has the brand once" $([ "$(echo "$B" | grep -oE '<title>[^<]*' | grep -o 'SIM Baskı Malzemeleri' | wc -l | tr -d ' ')" = "1" ]; echo $?)
 
+# generated llms.txt + sitemap hygiene + IndexNow key file
+L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
+check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
+S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex pages" $([ "$(echo "$S" | grep -c 'gizlilik-politikasi\|privacy-policy')" -eq 0 ]; echo $?)
+check "sitemap has 188 URLs"                         $([ "$(echo "$S" | grep -c '<loc>')" -eq 188 ]; echo $?)
+H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
+
 # home services link target exists
 H=$(hdr /urunler/vector-baski-blanketleri); check "7th service target product 200" $([ "$(status "$H")" = "200" ]; echo $?)
 

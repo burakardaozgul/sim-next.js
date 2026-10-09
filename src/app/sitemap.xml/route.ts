@@ -1,145 +1,106 @@
-import { products, getProductSlug } from '@/data/products';
-import { blogPosts, getBlogSlug } from '@/data/blog';
+import { routing } from '@/i18n/routing';
+import { locales, defaultLocale } from '@/i18n/config';
+import { products } from '@/data/products';
+import { blogPosts } from '@/data/blog';
+import { BASE_URL } from '@/data/organization';
+import { localizedStaticPath, localizedProductPath, localizedBlogPath } from '@/lib/paths';
+import contentDates from '@/data/content-dates.json';
 
-const BASE_URL = 'https://www.simlimited.net';
-const locales = ['tr', 'en', 'ru', 'ar'] as const;
-const defaultLocale = 'tr';
+export const dynamic = 'force-static';
 
-// Localized pathname mappings (must match routing.ts)
-const pathnames: Record<string, Record<string, string>> = {
-  '/urunler': { tr: '/urunler', en: '/products', ru: '/produkty', ar: '/products' },
-  '/ozel-renk-uretimi': { tr: '/ozel-renk-uretimi', en: '/custom-color-production', ru: '/proizvodstvo-tsvetov', ar: '/custom-color-production' },
-  '/temsilcilikler': { tr: '/temsilcilikler', en: '/brands', ru: '/brendy', ar: '/brands' },
-  '/hakkimizda': { tr: '/hakkimizda', en: '/about', ru: '/o-nas', ar: '/about' },
-  '/iletisim': { tr: '/iletisim', en: '/contact', ru: '/kontakty', ar: '/contact' },
-  '/blog': { tr: '/blog', en: '/blog', ru: '/blog', ar: '/blog' },
-  '/sss': { tr: '/sss', en: '/faq', ru: '/voprosy', ar: '/faq' },
-  '/gizlilik-politikasi': { tr: '/gizlilik-politikasi', en: '/privacy-policy', ru: '/politika-konfidentsialnosti', ar: '/privacy-policy' },
-  '/kullanim-kosullari': { tr: '/kullanim-kosullari', en: '/terms-of-use', ru: '/usloviya-ispolzovaniya', ar: '/terms-of-use' },
-  '/matbaa-malzemeleri': { tr: '/matbaa-malzemeleri', en: '/printing-materials', ru: '/poligraficheskie-materialy', ar: '/mawad-altibaa' },
-  '/matbaa-malzemeleri-istanbul': { tr: '/matbaa-malzemeleri-istanbul', en: '/printing-materials-istanbul', ru: '/tipografskie-materialy-stambul', ar: '/mawad-altibaa-istanbul' },
-  '/ofset-baski-malzemeleri': { tr: '/ofset-baski-malzemeleri', en: '/offset-printing-supplies', ru: '/materialy-ofsetnoj-pechati', ar: '/mawad-tibaat-offset' },
-  '/matbaa-terimleri-sozlugu': { tr: '/matbaa-terimleri-sozlugu', en: '/printing-glossary', ru: '/glossarij-poligrafii', ar: '/mustalahaat-altibaa' },
+/** Dizine girmeyen sayfalar sitemap'te yer almaz */
+const NOINDEX_PATHS = new Set(['/gizlilik-politikasi', '/kullanim-kosullari']);
+
+const PRIORITY: Record<string, { priority: string; changefreq: string }> = {
+  '/': { priority: '1.0', changefreq: 'weekly' },
+  '/urunler': { priority: '0.9', changefreq: 'weekly' },
+  '/matbaa-malzemeleri': { priority: '0.9', changefreq: 'weekly' },
+  '/ofset-baski-malzemeleri': { priority: '0.9', changefreq: 'weekly' },
+  '/matbaa-malzemeleri-istanbul': { priority: '0.8', changefreq: 'monthly' },
+  '/ozel-renk-uretimi': { priority: '0.8', changefreq: 'monthly' },
+  '/temsilcilikler': { priority: '0.8', changefreq: 'monthly' },
+  '/iletisim': { priority: '0.8', changefreq: 'monthly' },
+  '/hakkimizda': { priority: '0.7', changefreq: 'monthly' },
+  '/sss': { priority: '0.7', changefreq: 'monthly' },
+  '/matbaa-terimleri-sozlugu': { priority: '0.7', changefreq: 'monthly' },
+  '/blog': { priority: '0.6', changefreq: 'weekly' },
 };
 
-function getLocalizedUrl(locale: string, path: string): string {
-  // Check if path has a localized version
-  const localized = pathnames[path];
-  const resolvedPath = localized ? localized[locale] || path : path;
-  const cleanPath = resolvedPath === '/' ? '' : resolvedPath;
+type StaticKey = keyof typeof routing.pathnames;
+const staticPaths = (Object.keys(routing.pathnames) as StaticKey[]).filter(
+  (key) => !key.includes('[') && !NOINDEX_PATHS.has(key),
+);
 
-  if (locale === defaultLocale) {
-    return `${BASE_URL}${cleanPath}`;
+const abs = (path: string) => `${BASE_URL}${path === '/' ? '' : path}`;
+
+function urlEntry(
+  locs: Record<string, string>,
+  lastmod: string,
+  changefreq: string,
+  priority: string,
+): string {
+  const locale = locales.find((l) => locs[l]) ?? defaultLocale;
+  let xml = `
+  <url>
+    <loc>${locs[locale]}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>`;
+  for (const alt of locales) {
+    xml += `
+    <xhtml:link rel="alternate" hreflang="${alt}" href="${locs[alt]}" />`;
   }
-  return `${BASE_URL}/${locale}${cleanPath}`;
+  xml += `
+    <xhtml:link rel="alternate" hreflang="x-default" href="${locs[defaultLocale]}" />
+  </url>`;
+  return xml;
 }
-
-function getProductUrl(locale: string, slug: string): string {
-  const base = pathnames['/urunler']?.[locale] || '/urunler';
-  if (locale === defaultLocale) {
-    return `${BASE_URL}${base}/${slug}`;
-  }
-  return `${BASE_URL}/${locale}${base}/${slug}`;
-}
-
-// Statik sayfa ve ürünler için son anlamlı içerik güncelleme tarihi.
-// Her istekte "şimdi" üretmek lastmod sinyalini anlamsızlaştırır — içerik
-// değiştiğinde bu sabiti güncelleyin. Blog yazıları kendi tarihini kullanır.
-const SITE_LASTMOD = '2026-07-18';
 
 export async function GET() {
-  const now = SITE_LASTMOD;
-
-  const staticPages = [
-    { path: '/', priority: '1.0', changefreq: 'weekly' },
-    { path: '/urunler', priority: '0.9', changefreq: 'weekly' },
-    { path: '/ozel-renk-uretimi', priority: '0.8', changefreq: 'monthly' },
-    { path: '/temsilcilikler', priority: '0.8', changefreq: 'monthly' },
-    { path: '/hakkimizda', priority: '0.7', changefreq: 'monthly' },
-    { path: '/iletisim', priority: '0.8', changefreq: 'monthly' },
-    { path: '/blog', priority: '0.6', changefreq: 'weekly' },
-    { path: '/sss', priority: '0.7', changefreq: 'monthly' },
-    { path: '/gizlilik-politikasi', priority: '0.3', changefreq: 'yearly' },
-    { path: '/kullanim-kosullari', priority: '0.3', changefreq: 'yearly' },
-    { path: '/matbaa-malzemeleri', priority: '0.9', changefreq: 'weekly' },
-    { path: '/matbaa-malzemeleri-istanbul', priority: '0.8', changefreq: 'monthly' },
-    { path: '/ofset-baski-malzemeleri', priority: '0.9', changefreq: 'weekly' },
-    { path: '/matbaa-terimleri-sozlugu', priority: '0.7', changefreq: 'monthly' },
-  ];
-
+  const dates = contentDates as { site: string; products: string; pages: Record<string, string> };
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
 
-  // Static pages for each locale
-  for (const page of staticPages) {
+  // Statik sayfalar — her dil için ayrı <url>, hreflang seti ortak
+  for (const path of staticPaths) {
+    const meta = PRIORITY[path] ?? { priority: '0.5', changefreq: 'monthly' };
+    const lastmod = dates.pages[path] ?? dates.site;
     for (const locale of locales) {
-      xml += `
-  <url>
-    <loc>${getLocalizedUrl(locale, page.path)}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>`;
-
-      // hreflang alternates
-      for (const altLocale of locales) {
-        xml += `
-    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${getLocalizedUrl(altLocale, page.path)}" />`;
-      }
-      xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${getLocalizedUrl(defaultLocale, page.path)}" />`;
-
-      xml += `
-  </url>`;
+      const locs = Object.fromEntries(
+        locales.map((l) => {
+          const localized = localizedStaticPath(path, l);
+          return [l, abs(localized)];
+        }),
+      );
+      // <loc> için istenen dilin URL'si başa alınır
+      xml += urlEntry({ ...locs, [locale]: locs[locale] }, lastmod, meta.changefreq, meta.priority).replace(
+        `<loc>${locs[locales[0]]}</loc>`,
+        `<loc>${locs[locale]}</loc>`,
+      );
     }
   }
 
-  // Product detail pages
+  // Ürünler
   for (const product of products) {
+    const locs = Object.fromEntries(locales.map((l) => [l, abs(localizedProductPath(product.slug, l))]));
     for (const locale of locales) {
-      const locSlug = getProductSlug(product, locale);
-      xml += `
-  <url>
-    <loc>${getProductUrl(locale, locSlug)}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>`;
-
-      for (const altLocale of locales) {
-        xml += `
-    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${getProductUrl(altLocale, getProductSlug(product, altLocale))}" />`;
-      }
-      xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${getProductUrl(defaultLocale, product.slug)}" />`;
-
-      xml += `
-  </url>`;
+      xml += urlEntry(locs, dates.products, 'monthly', '0.7').replace(
+        `<loc>${locs[locales[0]]}</loc>`,
+        `<loc>${locs[locale]}</loc>`,
+      );
     }
   }
 
-  // Blog post pages
+  // Blog yazıları — lastmod: güncelleme tarihi yoksa yayın tarihi
   for (const post of blogPosts) {
+    const locs = Object.fromEntries(locales.map((l) => [l, abs(localizedBlogPath(post.slug, l))]));
     for (const locale of locales) {
-      const locSlug = getBlogSlug(post, locale);
-      const blogBase = locale === defaultLocale ? '/blog' : `/${locale}/blog`;
-      xml += `
-  <url>
-    <loc>${BASE_URL}${blogBase}/${locSlug}</loc>
-    <lastmod>${post.date}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>`;
-
-      for (const altLocale of locales) {
-        const altBase = altLocale === defaultLocale ? '/blog' : `/${altLocale}/blog`;
-        xml += `
-    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altBase}/${getBlogSlug(post, altLocale)}" />`;
-      }
-      xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/${post.slug}" />`;
-
-      xml += `
-  </url>`;
+      xml += urlEntry(locs, post.updated ?? post.date, 'monthly', '0.6').replace(
+        `<loc>${locs[locales[0]]}</loc>`,
+        `<loc>${locs[locale]}</loc>`,
+      );
     }
   }
 

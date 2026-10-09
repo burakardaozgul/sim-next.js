@@ -39,4 +39,18 @@ export const ORGANIZATION = {
     'https://yandex.com.tr/maps/org/sim_baski_malzemeleri_san/59607491695/',
   ],
   availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
+  /** Konumlanma cümlesi — şema description, llms.txt, GBP ve Hakkımızda ile aynı olgular */
+  positioning: {
+    tr: "SIM Baskı Malzemeleri — 1983'ten beri Türkiye matbaa sektörünün mürekkep ve baskı malzemesi referansı: EVA COLOR ve VECTOR üreticisi; SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings ve SCHLENK Türkiye distribütörü; İstanbul'da 24/7 özel renk laboratuvarı.",
+    en: "SIM Printing Supplies — Turkey's printing ink and supplies reference since 1983: manufacturer of EVA COLOR inks and VECTOR blankets; Turkish distributor of SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings and SCHLENK; 24/7 custom colour laboratory in Istanbul.",
+  },
+  /** Marka matrisi (tek kaynak): rol = own (üretici) | distributor */
+  brands: [
+    { name: 'EVA COLOR', country: 'TR', role: 'own', products: 'metallic, fluorescent and custom offset inks' },
+    { name: 'VECTOR', country: 'TR', role: 'own', products: 'offset printing blankets' },
+    { name: 'SAKATA INX', country: 'JP', role: 'distributor', products: 'CMYK and PANTONE offset inks', since: '2002' },
+    { name: 'Zeller+Gmelin', country: 'DE', role: 'distributor', products: 'UV offset inks' },
+    { name: 'Hi-Tech Coatings', country: 'NL', role: 'distributor', products: 'water-based dispersion varnishes' },
+    { name: 'SCHLENK', country: 'DE', role: 'distributor', products: 'metallic inks and pigments' },
+  ],
 } as const;

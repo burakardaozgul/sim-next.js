@@ -16,6 +16,7 @@ import {
 import CookieConsent from '@/components/layout/CookieConsent';
 import LocaleSuggestBanner from '@/components/layout/LocaleSuggestBanner';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
+import Analytics from '@/components/layout/Analytics';
 import '../globals.css';
 import { organizationJsonLd, localBusinessJsonLd, webSiteJsonLd, jsonLdScriptProps } from '@/lib/schema';
 
@@ -178,6 +179,7 @@ export default async function LocaleLayout({
         <OrganizationJsonLd locale={locale} />
         <LocalBusinessJsonLd locale={locale} />
         <WebSiteJsonLd />
+        <Analytics gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

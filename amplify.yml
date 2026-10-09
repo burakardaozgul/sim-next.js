@@ -9,6 +9,10 @@ frontend:
     build:
       commands:
         - npm run build
+    postBuild:
+      commands:
+        # IndexNow bildirimi yalnızca INDEXNOW_PING=1 ortam değişkeni tanımlıysa (Amplify env)
+        - if [ "$INDEXNOW_PING" = "1" ]; then node scripts/indexnow.mjs; fi
   artifacts:
     baseDirectory: .next
     files:
