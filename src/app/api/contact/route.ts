@@ -143,6 +143,25 @@ function buildEmailHtml({
 </html>`;
 }
 
+/** Cloudflare Turnstile doğrulaması — TURNSTILE_SECRET_KEY tanımlıysa zorunlu */
+async function verifyTurnstile(token: unknown, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true;
+  if (typeof token !== 'string' || !token) return false;
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, response: token, remoteip: ip }),
+    });
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch (err) {
+    console.error('[contact] Turnstile verification failed:', err instanceof Error ? err.message : err);
+    return false;
+  }
+}
+
 function createTransporter() {
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -153,7 +172,8 @@ function createTransporter() {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: false,
+      // Sertifika doğrulaması açık; yalnızca eski sunucular için legacy renegotiation izni
+      rejectUnauthorized: true,
       secureOptions: cryptoConstants.SSL_OP_LEGACY_SERVER_CONNECT,
     },
   });
@@ -183,7 +203,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { name, email, phone, company, subject, message, _honey } = body;
+    const { name, email, phone, company, subject, message, _honey, consent, turnstileToken } = body;
 
     // Honeypot check — bots fill hidden fields
     if (_honey) {
@@ -192,6 +212,16 @@ export async function POST(request: Request) {
         userAgent: request.headers.get('user-agent'),
       });
       return NextResponse.json({ success: true });
+    }
+
+    // KVKK açık rıza — form onay kutusu zorunlu
+    if (consent !== true) {
+      return NextResponse.json({ error: 'Consent is required.' }, { status: 400 });
+    }
+
+    // Bot koruması (Turnstile) — anahtar tanımlıysa geçerli token şart
+    if (!(await verifyTurnstile(turnstileToken, clientIp))) {
+      return NextResponse.json({ error: 'Verification failed.' }, { status: 400 });
     }
 
     // Validation
@@ -257,11 +287,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    console.error('[contact] Error:', errorMessage);
-    return NextResponse.json(
-      { error: 'Internal server error', debug: errorMessage },
-      { status: 500 },
-    );
+    // Ayrıntı yalnızca sunucu günlüğüne; istemciye genel mesaj
+    console.error('[contact] Error:', err instanceof Error ? err.message : 'Unknown error');
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

@@ -135,11 +135,11 @@
       },
       {
         "title": "SAKATA INX Ofset Mürekkep Teknolojileri",
-        "desc": "SAKATA\u2019nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz."
+        "desc": "SAKATA’nın Japon mühendisliğiyle geliştirilen ofset mürekkepleri; yüksek verimlilik, dengeli baskı performansı ve güvenilir kalite sunar. Türkiye temsilcisi olarak bu performansı yerel teknik destek ve uygulama uzmanlığıyla buluşturuyoruz."
       },
       {
         "title": "Global Mürekkep Teknolojilerimiz",
-        "desc": "Japonya ve Güney Kore\u2019nin ileri mühendisliğini temsil eden mürekkep teknolojilerimizle; farklı baskı süreçlerine yüksek performans, güvenilir kalite ve sürdürülebilir verimlilik sunuyoruz."
+        "desc": "Japonya ve Güney Kore’nin ileri mühendisliğini temsil eden mürekkep teknolojilerimizle; farklı baskı süreçlerine yüksek performans, güvenilir kalite ve sürdürülebilir verimlilik sunuyoruz."
       },
       {
         "title": "Kesintisiz Baskı İçin Teknik Güvence",
@@ -247,11 +247,26 @@
     "strengths": {
       "title": "Güçlü Yönlerimiz",
       "items": [
-        { "title": "Global Markalar, Güçlü İş Birlikleri", "desc": "Japonya, Güney Kore ve Avrupa merkezli lider üreticilerle kurduğumuz uzun vadeli temsilcilikler sayesinde dünya standartlarında ürünler sunarız." },
-        { "title": "Üretim, İthalat ve İhracatı Birleştiren Yapı", "desc": "Kendi üretim gücümüzü uluslararası tedarik ve ihracat kabiliyetimizle birleştirerek müşterilerimize esnek ve sürdürülebilir çözümler sağlarız." },
-        { "title": "Teknik Uzmanlık ve Saha Deneyimi", "desc": "Deneyimli teknik ekibimiz, baskı süreçlerinde karşılaşılan durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini destekler." },
-        { "title": "Hızlı ve Kesintisiz Hizmet", "desc": "Güçlü stok yapımız, etkin lojistik süreçlerimiz ve çözüm odaklı hizmet anlayışımız sayesinde müşterilerimizin ihtiyaçlarına en kısa sürede yanıt veririz." },
-        { "title": "Kalite ve Süreklilik Odaklı Hizmet", "desc": "Tüm ürün ve hizmetlerimizde yüksek kalite standardı, tutarlılık ve uzun vadeli iş ortaklığı yaklaşımını esas alırız." }
+        {
+          "title": "Global Markalar, Güçlü İş Birlikleri",
+          "desc": "Japonya, Güney Kore ve Avrupa merkezli lider üreticilerle kurduğumuz uzun vadeli temsilcilikler sayesinde dünya standartlarında ürünler sunarız."
+        },
+        {
+          "title": "Üretim, İthalat ve İhracatı Birleştiren Yapı",
+          "desc": "Kendi üretim gücümüzü uluslararası tedarik ve ihracat kabiliyetimizle birleştirerek müşterilerimize esnek ve sürdürülebilir çözümler sağlarız."
+        },
+        {
+          "title": "Teknik Uzmanlık ve Saha Deneyimi",
+          "desc": "Deneyimli teknik ekibimiz, baskı süreçlerinde karşılaşılan durumlara hızlı ve doğru müdahale ederek üretim sürekliliğini destekler."
+        },
+        {
+          "title": "Hızlı ve Kesintisiz Hizmet",
+          "desc": "Güçlü stok yapımız, etkin lojistik süreçlerimiz ve çözüm odaklı hizmet anlayışımız sayesinde müşterilerimizin ihtiyaçlarına en kısa sürede yanıt veririz."
+        },
+        {
+          "title": "Kalite ve Süreklilik Odaklı Hizmet",
+          "desc": "Tüm ürün ve hizmetlerimizde yüksek kalite standardı, tutarlılık ve uzun vadeli iş ortaklığı yaklaşımını esas alırız."
+        }
       ]
     },
     "mission": {
@@ -265,11 +280,26 @@
     "values": {
       "title": "Temel Değerlerimiz",
       "items": [
-        { "title": "Güvenilirlik", "desc": "40 yılı aşkın sektör deneyimi ile müşterilerimize her zaman tutarlı ve güvenilir hizmet sunuyoruz." },
-        { "title": "Teknik Uzmanlık", "desc": "Uzman kadromuz ile renk formülasyonundan baskı optimizasyonuna kadar teknik destek sağlıyoruz." },
-        { "title": "Kalite Odaklılık", "desc": "Uluslararası standartlarda üretim ve tedarik ile baskı kalitesini en üst seviyede tutuyoruz." },
-        { "title": "Sürdürülebilirlik", "desc": "Çevre dostu ürünler ve sürdürülebilir üretim süreçleri ile geleceğe yatırım yapıyoruz." },
-        { "title": "Müşteri Yaklaşımı", "desc": "7/24 hizmet anlayışı ile müşterilerimizin ihtiyaçlarına hızlı ve etkin çözümler üretiyoruz." }
+        {
+          "title": "Güvenilirlik",
+          "desc": "40 yılı aşkın sektör deneyimi ile müşterilerimize her zaman tutarlı ve güvenilir hizmet sunuyoruz."
+        },
+        {
+          "title": "Teknik Uzmanlık",
+          "desc": "Uzman kadromuz ile renk formülasyonundan baskı optimizasyonuna kadar teknik destek sağlıyoruz."
+        },
+        {
+          "title": "Kalite Odaklılık",
+          "desc": "Uluslararası standartlarda üretim ve tedarik ile baskı kalitesini en üst seviyede tutuyoruz."
+        },
+        {
+          "title": "Sürdürülebilirlik",
+          "desc": "Çevre dostu ürünler ve sürdürülebilir üretim süreçleri ile geleceğe yatırım yapıyoruz."
+        },
+        {
+          "title": "Müşteri Yaklaşımı",
+          "desc": "7/24 hizmet anlayışı ile müşterilerimizin ihtiyaçlarına hızlı ve etkin çözümler üretiyoruz."
+        }
       ]
     }
   },
@@ -280,20 +310,50 @@
     "whyTitle": "Neden SIM Özel Renk?",
     "whySubtitle": "Fark yaratan avantajlarımız",
     "why": [
-      { "title": "7/24 Renk Laboratuvarı", "desc": "Kesintisiz hizmet veren renk eşleştirme laboratuvarımız ile acil siparişlerinize anında yanıt veririz." },
-      { "title": "L-A-B Dijital Formülizasyon", "desc": "Uluslararası renk değerlerine göre hassas dijital formülasyon ile hedefteki renge en yüksek doğrulukla ulaşılır." },
-      { "title": "UV & Konvansiyonel Uyum", "desc": "Hem UV hem de konvansiyonel baskı süreçlerine uygun özel renk formülleri üretiyoruz." },
-      { "title": "15.000 kg Aylık Kapasite", "desc": "Geniş üretim kapasitemiz ile küçük partilerden büyük hacimli siparişlere kadar her talebe hızlı yanıt." },
-      { "title": "Farklı Altlıklarda Test", "desc": "Farklı kağıt gramajları ve yüzey tiplerinde numune üretimi ile baskıda tutarlı sonuç garantisi." },
-      { "title": "EVAcolor Tescilli Marka", "desc": "Kendi tescilli markamız EVAcolor altında metalik, florasan ve özel renk mürekkep üretimi gerçekleştiriyoruz." }
+      {
+        "title": "7/24 Renk Laboratuvarı",
+        "desc": "Kesintisiz hizmet veren renk eşleştirme laboratuvarımız ile acil siparişlerinize anında yanıt veririz."
+      },
+      {
+        "title": "L-A-B Dijital Formülizasyon",
+        "desc": "Uluslararası renk değerlerine göre hassas dijital formülasyon ile hedefteki renge en yüksek doğrulukla ulaşılır."
+      },
+      {
+        "title": "UV & Konvansiyonel Uyum",
+        "desc": "Hem UV hem de konvansiyonel baskı süreçlerine uygun özel renk formülleri üretiyoruz."
+      },
+      {
+        "title": "15.000 kg Aylık Kapasite",
+        "desc": "Geniş üretim kapasitemiz ile küçük partilerden büyük hacimli siparişlere kadar her talebe hızlı yanıt."
+      },
+      {
+        "title": "Farklı Altlıklarda Test",
+        "desc": "Farklı kağıt gramajları ve yüzey tiplerinde numune üretimi ile baskıda tutarlı sonuç garantisi."
+      },
+      {
+        "title": "EVAcolor Tescilli Marka",
+        "desc": "Kendi tescilli markamız EVAcolor altında metalik, florasan ve özel renk mürekkep üretimi gerçekleştiriyoruz."
+      }
     ],
     "typesTitle": "Üretim Kapsamımız",
     "typesSubtitle": "Özel renk üretimimizde sunduğumuz çözümler",
     "types": [
-      { "title": "Pantone & Spot Renkler", "desc": "Pantone renk kataloğundaki tüm referanslar ile özel spot renk üretimi." },
-      { "title": "Metalik & Yaldız Renkler", "desc": "EVAcolor markası ile altın, gümüş ve özel metalik efektli mürekkep üretimi." },
-      { "title": "Florasan Renkler", "desc": "Yüksek canlılık ve görünürlük gerektiren tasarımlar için florasan mürekkep çözümleri." },
-      { "title": "Kurumsal Kimlik Renkleri", "desc": "Markaların kurumsal renk standartlarına uygun, tutarlı ve tekrarlanabilir renk üretimi." }
+      {
+        "title": "Pantone & Spot Renkler",
+        "desc": "Pantone renk kataloğundaki tüm referanslar ile özel spot renk üretimi."
+      },
+      {
+        "title": "Metalik & Yaldız Renkler",
+        "desc": "EVAcolor markası ile altın, gümüş ve özel metalik efektli mürekkep üretimi."
+      },
+      {
+        "title": "Florasan Renkler",
+        "desc": "Yüksek canlılık ve görünürlük gerektiren tasarımlar için florasan mürekkep çözümleri."
+      },
+      {
+        "title": "Kurumsal Kimlik Renkleri",
+        "desc": "Markaların kurumsal renk standartlarına uygun, tutarlı ve tekrarlanabilir renk üretimi."
+      }
     ],
     "ctaTitle": "Özel Renk İhtiyacınız mı Var?",
     "ctaText": "Renk referansınızı bize iletin, uzman ekibimiz en kısa sürede numune hazırlasın."
@@ -318,7 +378,9 @@
     "phoneLabel": "Telefon",
     "emailLabel": "E-posta",
     "workingHours": "Çalışma Saatleri",
-    "workingHoursValue": "Pazartesi - Cumartesi: 08:30 - 18:00"
+    "workingHoursValue": "Pazartesi - Cumartesi: 08:30 - 18:00",
+    "consentLabel": "Kişisel verilerimin <a>Gizlilik ve KVKK Aydınlatma Metni</a> kapsamında işlenmesini kabul ediyorum.",
+    "whatsapp": "WhatsApp ile yazın"
   },
   "cookie": {
     "message": "Bu web sitesi, deneyiminizi iyileştirmek için çerezler kullanmaktadır. Sitemizi kullanmaya devam ederek çerez politikamızı kabul etmiş olursunuz.",
