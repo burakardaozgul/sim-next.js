@@ -137,7 +137,7 @@ const EN: IstanbulContent = {
   pageName: 'Printing Materials in Istanbul',
   hero: {
     eyebrow: "Beylikdüzü · Yakuplu · all of Istanbul's printing districts",
-    h1: 'Printing Materials Supplier in Istanbul: Same-Day Delivery from Beylikdüzü',
+    h1: 'Printing Supplies Supplier in Istanbul: Same-Day Delivery from Beylikdüzü',
     lead: `In Istanbul since ${F.foundingYear}: from our central warehouse and ${F.labAvailability} custom colour laboratory in Beylikdüzü Yakuplu we deliver stock items the same day on the European side (orders by ${F.sameDayCutoff}) and the same or next working day on the Asian side. Warehouse pickup, press-side technical support and sample approval together at the laboratory.`,
   },
   intro: {
@@ -165,7 +165,7 @@ const EN: IstanbulContent = {
   },
   transport: {
     title: 'Access: E-5, TEM and Ambarlı',
-    text: 'Our warehouse in Beylikdüzü Yakuplu is minutes from the E-5 (D-100) Beylikdüzü–Yakuplu exit and the TEM Esenyurt–Hadımköy connection; being next to Ambarlı Port lets imported products move from customs to the warehouse the same day. European-side printing districts are reached in 20–45 minutes via the E-5, the Asian side via the TEM and the Northern Marmara Motorway on a planned route. The Beylikdüzü Metrobüs stop and the E-5 connection make pickup visits easy as well.',
+    text: 'Our warehouse in Beylikdüzü Yakuplu is minutes from the E-5 (D-100) Beylikdüzü–Yakuplu exit and the TEM Esenyurt–Hadımköy connection; being next to Ambarlı Port lets imported products move from customs to the warehouse the same day. European-side printing districts are reached in 20–45 minutes via the E-5, the Asian side via the TEM and the Northern Marmara Motorway on a planned route. The Beylikdüzü Metrobüs stop and the E-5 connection make pickup visits easy as well. For export, Ambarlı Port handles sea freight and Istanbul Airport is about an hour away for air cargo.',
   },
   pickup: {
     title: 'Warehouse pickup',

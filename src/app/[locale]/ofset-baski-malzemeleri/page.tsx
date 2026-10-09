@@ -31,6 +31,10 @@ interface PillarContent {
   intro: string;
   /** Giriş altında ana pillar'a (Matbaa Malzemeleri Rehberi) bağlantı etiketi */
   introPillarLabel: string;
+  /** EN ihracat bölümü (08 §3); diğer dillerde boş bırakılabilir */
+  exportTitle?: string;
+  exportText?: string;
+  exportLink?: string;
   howTitle: string;
   howText1: string;
   howText2: string;
@@ -190,7 +194,7 @@ const CONTENT: Record<string, PillarContent> = {
 
   /* ---------------------------------------------------------------- */
   en: {
-    metaTitle: 'Offset Printing Supplies: Ink, Blanket & Chemicals Guide',
+    metaTitle: 'Offset Printing Supplies Supplier in Turkey | Inks, Blankets',
     metaDescription:
       'Offset printing supplies from a 40+ year supplier: CMYK and PANTONE inks, UV inks, printing blankets, pressroom chemicals and varnishes. Fast delivery from Istanbul.',
     keywords: [
@@ -200,10 +204,13 @@ const CONTENT: Record<string, PillarContent> = {
     ],
     breadcrumbName: 'Offset Printing Supplies',
     subtitle: 'Complete Supply from Ink to Blanket',
-    title: 'Offset Printing Supplies',
+    title: 'Offset Printing Supplies Supplier in Turkey',
     intro:
       'Offset print quality is shaped as much by the materials as by the press itself. From CMYK and PANTONE inks to printing blankets, from fountain chemistry to dispersion varnishes, every component directly determines colour consistency, drying time and waste rates. Since 1983, SIM has supplied Turkish printers with world-brand offset printing materials under one roof.',
     introPillarLabel: 'See the complete printing materials guide',
+    exportTitle: 'Export: sourcing offset printing supplies from Turkey',
+    exportText: 'SIM Printing Supplies ships offset inks, printing blankets, pressroom chemicals and dispersion varnishes from Istanbul to printers and distributors abroad. As the Turkish distributor of SAKATA INX (CMYK and PANTONE inks), Zeller+Gmelin (UV inks) and Hi-Tech Coatings (dispersion varnishes) and the manufacturer of EVA COLOR inks and VECTOR blankets, we can consolidate Japanese, German, Dutch and Turkish-made supplies into one shipment. Quotations are given on EXW, FOB or CIF terms; English TDS and SDS, certificates of origin and analysis and transport classification for sea and air freight are prepared with the offer. Stock items have no minimum order quantity, custom colours start at 5 kg, and our 24/7 colour laboratory matches brand colours remotely from L*a*b* readings and ships an approved sample before production. Lead times: stock items leave the Beylikdüzü warehouse within 1–2 working days of order confirmation; custom colours 1–3 working days after sample approval. For the full product range and selection criteria see our printing materials guide.',
+    exportLink: 'Printing materials guide for export buyers',
     howTitle: 'How Offset Printing Works — and Why Materials Matter',
     howText1:
       'Offset is an indirect printing technique: ink travels from the plate to a rubber blanket and only then onto the substrate. The process relies on water and ink repelling each other, with four elements in constant interaction: plate, ink, fountain solution and blanket.',
@@ -720,6 +727,16 @@ export default async function OfsetBaskiMalzemeleriPage({
                 {c.introPillarLabel}
                 <ArrowRight size={14} />
               </Link>
+              {c.exportTitle && c.exportText && (
+                <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-gold/20 bg-gold/5 p-6 text-left lg:p-8">
+                  <h2 className="font-heading text-xl font-bold text-cream">{c.exportTitle}</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-silver">{c.exportText}</p>
+                  <Link href="/matbaa-malzemeleri" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold transition-all hover:gap-3">
+                    {c.exportLink}
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
 
