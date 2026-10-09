@@ -119,27 +119,9 @@ const nextConfig: NextConfig = {
         destination: '/urunler',
         permanent: true,
       },
-      // WordPress sistem URL'leri
-      {
-        source: '/wp-admin/:path*',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-content/:path*',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-login.php',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-register.php',
-        destination: '/',
-        permanent: true,
-      },
+      // WordPress sistem URL'leri (/wp-admin, /wp-content, /wp-login.php …) artık
+      // ana sayfaya yönlendirilmiyor: alakasız hedefe 308 Google için yumuşak 404 sayılır,
+      // gerçek 404 doğru sinyaldir.
     ];
   },
   async headers() {

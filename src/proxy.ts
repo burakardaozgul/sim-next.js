@@ -8,9 +8,18 @@ import { LOCALE_COOKIE_NAME } from './lib/locale-cookie';
 // Geo/çereze göre aynı URL'de farklı dil sunmak, ABD'den tarayan Googlebot'un
 // TR-canonical sayfalarda İngilizce içerik görmesine yol açıyordu (cloaking sinyali).
 const intlMiddleware = createMiddleware(routing);
+const DEFAULT_PREFIX = `/${defaultLocale}`;
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Varsayılan dilin önekli URL'leri (/tr, /tr/...) kanonik değil. next-intl bunları
+  // geçici (307) yönlendirir; Google'ın kopya URL'leri bırakması için kalıcı 308 gerekir.
+  if (pathname === DEFAULT_PREFIX || pathname.startsWith(`${DEFAULT_PREFIX}/`)) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.slice(DEFAULT_PREFIX.length) || '/';
+    return NextResponse.redirect(url, 308);
+  }
 
   // Dili elle seçmiş kullanıcıyı yalnızca ana sayfada kendi diline yönlendir.
   // Botlar çerez taşımadığı için bu yönlendirmeyi hiç görmez; diğer tüm

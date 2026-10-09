@@ -7,6 +7,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { getBlurDataURL } from '@/lib/blur';
+import { HOME_SERVICE_SLUGS } from '@/data/home-services';
 
 const SERVICE_IMAGES = [
   '/images/DSC07958.webp',
@@ -18,15 +19,6 @@ const SERVICE_IMAGES = [
   '/images/blanket2.webp',
 ];
 
-const SERVICE_SLUGS = [
-  'zeller-gmelin-uv-offset-murekkepleri',
-  'sakata-inx-cmyk-murekkepler',
-  'ozel-renkler',
-  'hi-tech-coatings-dispersiyon-lak',
-  'eva-color-gold-metalik-murekkepler',
-  'eva-color-fluorescent-murekkepler',
-  'st-dot-offset-blanketleri',
-];
 
 export default function ServicesSection() {
   const t = useTranslations('services');
@@ -144,7 +136,7 @@ export default function ServicesSection() {
 
                 {/* Floating discover button */}
                 <Link
-                  href={{ pathname: '/urunler/[slug]' as const, params: { slug: SERVICE_SLUGS[activeIndex] } }}
+                  href={{ pathname: '/urunler/[slug]' as const, params: { slug: HOME_SERVICE_SLUGS[activeIndex] } }}
                   className="absolute bottom-5 right-5 z-10 flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink transition-all hover:bg-gold-light"
                 >
                   {t('discover')}

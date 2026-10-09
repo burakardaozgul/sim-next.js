@@ -353,7 +353,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['ambalaj baski murekkebi', 'ambalaj murekkep secimi', 'gida ambalaji murekkebi', 'low migration UV', 'kozmetik ambalaj murekkebi', 'ilac ambalaji baski', 'EuPIA uyumlu murekkep'],
-    relatedProducts: ['zeller-gmelin-uv-murekkepler', 'sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'etiket-baskisinda-malzeme-murekkep-secimi',
@@ -446,7 +446,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['etiket baskisi', 'etiket murekkebi', 'BOPP etiket', 'shrink etiket', 'gida etiketi', 'low migration UV', 'etiket malzemeleri'],
-    relatedProducts: ['zeller-gmelin-uv-murekkepler', 'sakata-inx-cmyk-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
+    relatedProducts: ['zeller-gmelin-uv-offset-murekkepleri', 'sakata-inx-cmyk-murekkepler', 'hi-tech-coatings-dispersiyon-lak'],
   },
   {
     slug: 'ofset-baskida-fire-oranini-dusurme',
@@ -565,7 +565,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['baski fire orani', 'matbaa fire azaltma', 'baski maliyeti dusurme', 'ofset baski optimizasyon', 'make-ready optimizasyonu', 'matbaa karlilik', 'CIP4 PPF veri akisi'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-blanket', 'ozel-renkler'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-baski-blanketleri', 'ozel-renkler'],
   },
   {
     slug: 'prepress-baski-oncesi-hazirlik-rehberi',
@@ -666,7 +666,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['prepress nedir', 'baski oncesi hazirlik', 'baski dosyasi hazirlama', 'trapping baski', 'imposition', 'preflight kontrol', 'CTP baski plakasi'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-blanket', 'ozel-renkler'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'vector-baski-blanketleri', 'ozel-renkler'],
   },
   {
     slug: 'gracol-fogra-baski-standartlari',
@@ -759,7 +759,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['GRACoL standardi', 'FOGRA standardi', 'ISO 12647', 'baski standartlari', 'FOGRA39', 'FOGRA51', 'renk yonetimi ICC profil'],
-    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'vector-blanket'],
+    relatedProducts: ['sakata-inx-cmyk-murekkepler', 'sakata-inx-pantone-murekkepler', 'vector-baski-blanketleri'],
   },
   {
     slug: 'baskida-dot-gain-kontrolu',
@@ -846,7 +846,7 @@ export const blogPosts = ([
       ],
     },
     keywords: ['dot gain', 'nokta büyümesi', 'TVI tone value increase', 'ISO 12647-2 offset', 'dot gain kontrolu', 'ofset baski kalite kontrol', 'blanket dot gain'],
-    relatedProducts: ['vector-blanket', 'sakata-inx-cmyk'],
+    relatedProducts: ['vector-baski-blanketleri', 'sakata-inx-cmyk-murekkepler'],
   },
   {
     slug: 'icc-profil-ofset-baskida-renk-yonetimi',
