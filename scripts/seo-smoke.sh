@@ -75,6 +75,19 @@ H=$(hdr /blog/flekso-baski-murakkepleri-rehberi); check "typo blog slug → 308"
 B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (chemicals guide)" $(echo "$B" | grep -q 'href="/blog/baski-kimyasallari-rehberi"'; echo $?)
 B=$(curl -sS -A "$UA" "$BASE/blog"); check "blog list title has the brand once" $([ "$(echo "$B" | grep -oE '<title>[^<]*' | grep -o 'SIM Baskı Malzemeleri' | wc -l | tr -d ' ')" = "1" ]; echo $?)
 
+# pillar /matbaa-malzemeleri (brief A): depth, schema, EN export page, blog guide block
+P=$(curl -sS -A "$UA" "$BASE/matbaa-malzemeleri")
+check "pillar H1 names keyword + 1983"                  $(echo "$P" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Matbaa Malzemeleri' && echo "$P" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "pillar has ItemList + FAQPage + BreadcrumbList JSON-LD" $(echo "$P" | grep -q '"@type":"ItemList"' && echo "$P" | grep -q '"@type":"FAQPage"' && echo "$P" | grep -q '"@type":"BreadcrumbList"'; echo $?)
+PW=$(echo "$P" | sed -e 's/<script[^>]*>[^<]*<\/script>//g' -e 's/<[^>]*>/ /g' | wc -w | tr -d ' ')
+check "pillar body ≥ 2500 words ($PW)"                   $([ "$PW" -ge 2500 ]; echo $?)
+check "pillar links 8 categories to products/guides"     $([ "$(echo "$P" | grep -o 'id="\(offset\|pantone\|metallic\|fluorescent\|uv\|blanket\|chemicals\|varnish\)"' | sort -u | wc -l | tr -d ' ')" = "8" ]; echo $?)
+PE=$(curl -sS -A "$UA" "$BASE/en/printing-materials")
+check "EN pillar H1 is export-oriented (Turkey + 1983)"  $(echo "$PE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q 'Turkey' && echo "$PE" | grep -oE '<h1[^>]*>[^<]*</h1>' | grep -q '1983'; echo $?)
+check "EN pillar inline product links use EN slugs"      $(echo "$PE" | grep -q 'href="/en/products/' && ! echo "$PE" | grep -q 'href="/urunler/'; echo $?)
+BP=$(curl -sS -A "$UA" "$BASE/blog/ofset-murekkep-secimi")
+check "blog post shows pillar guide block"               $(echo "$BP" | grep -q 'href="/matbaa-malzemeleri"'; echo $?)
+
 # generated llms.txt + sitemap hygiene + IndexNow key file
 L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)

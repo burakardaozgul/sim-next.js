@@ -19,7 +19,7 @@ const PAGES = {
   '/iletisim': ['src/app/[locale]/iletisim', 'src/data/organization.ts'],
   '/blog': ['src/data/blog.ts', 'src/data/new-posts.ts'],
   '/sss': ['src/data/faq.ts'],
-  '/matbaa-malzemeleri': ['src/app/[locale]/matbaa-malzemeleri'],
+  '/matbaa-malzemeleri': ['src/app/[locale]/matbaa-malzemeleri', 'src/data/pillar-matbaa-malzemeleri.ts'],
   '/matbaa-malzemeleri-istanbul': ['src/app/[locale]/matbaa-malzemeleri-istanbul'],
   '/ofset-baski-malzemeleri': ['src/app/[locale]/ofset-baski-malzemeleri'],
   '/matbaa-terimleri-sozlugu': ['src/data/glossary.ts', 'src/app/[locale]/matbaa-terimleri-sozlugu'],

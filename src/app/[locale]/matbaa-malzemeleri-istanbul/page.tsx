@@ -391,6 +391,12 @@ export default async function MatbaaMalzemeleriIstanbulPage({
               <p className="mt-4 text-base leading-relaxed text-silver">
                 {t('introText')}
               </p>
+              <p className="mt-4 text-base leading-relaxed text-silver">
+                {t('introPillarText')}{' '}
+                <Link href="/matbaa-malzemeleri" className="font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold">
+                  {t('introPillarLink')}
+                </Link>
+              </p>
             </div>
           </section>
 

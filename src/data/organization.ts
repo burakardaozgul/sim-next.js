@@ -39,6 +39,26 @@ export const ORGANIZATION = {
     'https://yandex.com.tr/maps/org/sim_baski_malzemeleri_san/59607491695/',
   ],
   availableLanguage: ['Turkish', 'English', 'Russian', 'Arabic'],
+  /** Sayısal olgular — sitede geçen her rakam buradan türetilir (pillar, Hakkımızda, SSS, llms). */
+  facts: {
+    foundingYear: 1983,
+    /** Özel renk üretim kapasitesi (kg/ay) */
+    customColorCapacityKgPerMonth: 15000,
+    /** Özel renk laboratuvarı çalışma düzeni */
+    labAvailability: '24/7',
+    /** Özel renk üretiminde hedeflenen azami Delta E */
+    deltaEMax: 1.5,
+    /** Özel renk minimum sipariş (kg); stok ürünlerde minimum yok */
+    customColorMinimumKg: 5,
+    /** İstanbul içi aynı gün teslimat için sipariş saati */
+    sameDayCutoff: '12:00',
+    /** Türkiye geneli stok teslimat (iş günü) */
+    domesticLeadTimeDays: '1–2',
+    /** Özel renk teslimi, numune onayından sonra (iş günü) */
+    customColorLeadTimeDays: '1–3',
+    /** İhracat yapılan ana bölgeler */
+    exportRegions: { tr: 'Orta Doğu, Orta Asya ve Balkanlar', en: 'the Middle East, Central Asia and the Balkans' },
+  },
   /** Konumlanma cümlesi — şema description, llms.txt, GBP ve Hakkımızda ile aynı olgular */
   positioning: {
     tr: "SIM Baskı Malzemeleri — 1983'ten beri Türkiye matbaa sektörünün mürekkep ve baskı malzemesi referansı: EVA COLOR ve VECTOR üreticisi; SAKATA INX, Zeller+Gmelin, Hi-Tech Coatings ve SCHLENK Türkiye distribütörü; İstanbul'da 24/7 özel renk laboratuvarı.",
@@ -65,4 +85,15 @@ export function formatTelephone(e164: string = ORGANIZATION.telephone): string {
 export function formatAddress(): string {
   const a = ORGANIZATION.address;
   return `${a.streetAddress}, ${a.postalCode} ${a.addressLocality}/${a.addressRegion}`;
+}
+
+/** Kuruluştan bu yana geçen yıl (build zamanında hesaplanır; yıllık yeniden build ile güncellenir). */
+export function yearsSinceFounding(now: Date = new Date()): number {
+  return now.getFullYear() - ORGANIZATION.facts.foundingYear;
+}
+
+/** 15000 → "15.000" (TR) | "15,000" (EN) */
+export function formatThousands(n: number, locale: 'tr' | 'en' | 'ru' | 'ar' = 'tr'): string {
+  const sep = locale === 'tr' ? '.' : locale === 'ru' ? ' ' : ',';
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 }

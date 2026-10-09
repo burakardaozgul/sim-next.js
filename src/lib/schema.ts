@@ -6,6 +6,7 @@ import type { BlogPost } from '@/data/blog';
 import { getBlogSlug } from '@/data/blog';
 import { glossaryTerms } from '@/data/glossary';
 import { slugify } from '@/lib/slugify';
+import { inlineLinksToPlainText } from '@/lib/inline-links';
 
 /**
  * JSON-LD üreticileri — tek entity grafı:
@@ -238,6 +239,69 @@ export function localPageJsonLd(locale: string, path: string, name: string, desc
     inLanguage: locale,
     about: { '@id': ORGANIZATION.localBusinessId },
     publisher: orgRef,
+  };
+}
+
+/** Genel SSS şeması (landing/pillar sayfaları). Cevaplardaki satır içi link sözdizimi düz metne çevrilir. */
+export function faqPageJsonLd(locale: string, faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: inlineLinksToPlainText(f.q),
+      acceptedAnswer: { '@type': 'Answer', text: inlineLinksToPlainText(f.a) },
+    })),
+  };
+}
+
+/** Sıralı liste (ör. pillar'daki 8 ürün kategorisi). */
+export function itemListJsonLd(locale: string, name: string, items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    inLanguage: locale,
+    numberOfItems: items.length,
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: it.url })),
+  };
+}
+
+/** Breadcrumb; yollar TR anahtar yollardır, dile göre canonical URL'ye çevrilir. */
+export function breadcrumbJsonLd(locale: string, items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: getCanonicalUrl(locale, it.path),
+    })),
+  };
+}
+
+/** Entity grafına bağlı WebPage (website + organization @id'leri). */
+export function webPageJsonLd(
+  locale: string,
+  path: string,
+  meta: { name: string; description: string; image?: string; dateModified?: string },
+) {
+  const url = getCanonicalUrl(locale, path);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': url,
+    url,
+    name: meta.name,
+    description: meta.description,
+    inLanguage: locale,
+    isPartOf: { '@id': ORGANIZATION.websiteId },
+    publisher: orgRef,
+    about: orgRef,
+    ...(meta.image ? { primaryImageOfPage: { '@type': 'ImageObject', url: `${BASE_URL}${meta.image}` } } : {}),
+    ...(meta.dateModified ? { dateModified: meta.dateModified } : {}),
   };
 }
 

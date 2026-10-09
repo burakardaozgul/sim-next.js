@@ -10,7 +10,7 @@ const abs = (path: string) => `${BASE_URL}${path === '/' ? '' : path}`;
 type StaticKey = keyof typeof routing.pathnames;
 
 const PAGES: Array<{ path: StaticKey; title: string; desc: string }> = [
-  { path: '/matbaa-malzemeleri', title: 'Printing Materials Guide (pillar)', desc: 'Categories, buying criteria, paper–ink compatibility and the supply process.' },
+  { path: '/matbaa-malzemeleri', title: 'Printing Materials Guide (pillar)', desc: 'Pillar guide: 8 product groups (offset, PANTONE/custom, metallic, fluorescent, UV, blankets, chemicals, varnish), 7 selection criteria, paper–ink compatibility, price factors, supply from Istanbul, brand matrix, 10 FAQs.' },
   { path: '/ofset-baski-malzemeleri', title: 'Offset Printing Supplies Guide (pillar)', desc: 'Offset inks, blankets, pressroom chemicals and varnishes; conventional vs UV comparison; FAQ.' },
   { path: '/matbaa-malzemeleri-istanbul', title: 'Printing Materials in Istanbul', desc: 'Districts served, same-day delivery, warehouse pickup in Beylikdüzü.' },
   { path: '/matbaa-terimleri-sozlugu', title: `Printing Glossary (${glossaryTerms.length} terms)`, desc: 'Printing terms defined in Turkish, English, Russian and Arabic.' },

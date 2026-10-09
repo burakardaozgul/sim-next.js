@@ -8,8 +8,7 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
 import type { BlogPost, ContentBlock } from '@/data/blog';
 import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
-import { parseInlineLinks } from '@/lib/inline-links';
-import NextLink from 'next/link';
+import InlineText from '@/components/ui/InlineText';
 import { type Product, getProductSlug } from '@/data/products';
 import {
   ChevronLeft,
@@ -170,41 +169,6 @@ function processBlocks(blocks: ContentBlock[]): ProcessedBlock[] {
     }
     return block;
   });
-}
-
-/* ─── Inline text with [label](/path) links ─── */
-function InlineText({ text }: { text?: string }) {
-  const parts = parseInlineLinks(text || '');
-  return (
-    <>
-      {parts.map((part, i) =>
-        part.href ? (
-          part.href.startsWith('/') ? (
-            // Sunucuda yerelleştirilmiş (önek + dil slug'ı) yol → düz next/link, ek önek yok
-            <NextLink
-              key={i}
-              href={part.href}
-              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
-            >
-              {part.text}
-            </NextLink>
-          ) : (
-            <a
-              key={i}
-              href={part.href}
-              target="_blank"
-              rel="noopener"
-              className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
-            >
-              {part.text}
-            </a>
-          )
-        ) : (
-          <span key={i}>{part.text}</span>
-        ),
-      )}
-    </>
-  );
 }
 
 /* ─── Content Block Component ─── */
@@ -610,6 +574,26 @@ export default function BlogPostClient({
                     </dl>
                   </section>
                 )}
+
+                {/* Pillar guide block — her yazıdan "Matbaa Malzemeleri Rehberi"ne bağlamsal link */}
+                <aside
+                  className="!mt-10 rounded-2xl border border-gold/20 bg-gold/5 p-6 lg:p-8"
+                  aria-labelledby="pillar-guide-heading"
+                >
+                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-gold">
+                    {tBlog('pillarGuideTitle')}
+                  </p>
+                  <p id="pillar-guide-heading" className="text-base leading-relaxed text-silver">
+                    {tBlog('pillarGuideText')}
+                  </p>
+                  <Link
+                    href="/matbaa-malzemeleri"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold transition-all hover:gap-3"
+                  >
+                    {tBlog('pillarGuideCta')}
+                    <ArrowRight size={14} />
+                  </Link>
+                </aside>
 
                 {/* Related Products */}
                 {relatedProducts.length > 0 && (

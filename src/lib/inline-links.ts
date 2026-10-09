@@ -16,3 +16,8 @@ export function parseInlineLinks(text: string): InlineSegment[] {
   if (last < text.length) out.push({ text: text.slice(last) });
   return out.length ? out : [{ text }];
 }
+
+/** "[etiket](/yol)" → "etiket" (şema metinleri, meta açıklamaları için). */
+export function inlineLinksToPlainText(text: string): string {
+  return parseInlineLinks(text).map((p) => p.text).join('');
+}

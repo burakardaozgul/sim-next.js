@@ -29,6 +29,8 @@ interface PillarContent {
   subtitle: string;
   title: string;
   intro: string;
+  /** Giriş altında ana pillar'a (Matbaa Malzemeleri Rehberi) bağlantı etiketi */
+  introPillarLabel: string;
   howTitle: string;
   howText1: string;
   howText2: string;
@@ -71,6 +73,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'Ofset Baskı Malzemeleri',
     intro:
       'Ofset baskı kalitesi, makinenin olduğu kadar kullanılan malzemelerin de eseridir. CMYK ve PANTONE mürekkeplerden baskı blanketlerine, nemlendirme kimyasallarından dispersiyon laklara kadar her bileşen; renk tutarlılığını, kuruma süresini ve fire oranını doğrudan belirler. SIM Baskı Malzemeleri, 1983\'ten beri Türkiye\'deki matbaalara dünya markalarının ofset baskı malzemelerini tek çatı altında sunar.',
+    introPillarLabel: 'Tüm matbaa malzemeleri rehberine gidin',
     howTitle: 'Ofset Baskı Nasıl Çalışır, Malzeme Neden Bu Kadar Kritik?',
     howText1:
       'Ofset baskı; mürekkebin kalıptan doğrudan kağıda değil, önce kauçuk bir blankete, oradan da baskı yüzeyine aktarıldığı dolaylı bir baskı tekniğidir. Su ile mürekkebin birbirini itmesi prensibiyle çalışan bu sistemde dört ana unsur sürekli etkileşim hâlindedir: kalıp, mürekkep, nemlendirme solüsyonu ve blanket.',
@@ -200,6 +203,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'Offset Printing Supplies',
     intro:
       'Offset print quality is shaped as much by the materials as by the press itself. From CMYK and PANTONE inks to printing blankets, from fountain chemistry to dispersion varnishes, every component directly determines colour consistency, drying time and waste rates. Since 1983, SIM has supplied Turkish printers with world-brand offset printing materials under one roof.',
+    introPillarLabel: 'See the complete printing materials guide',
     howTitle: 'How Offset Printing Works — and Why Materials Matter',
     howText1:
       'Offset is an indirect printing technique: ink travels from the plate to a rubber blanket and only then onto the substrate. The process relies on water and ink repelling each other, with four elements in constant interaction: plate, ink, fountain solution and blanket.',
@@ -328,6 +332,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'Материалы для офсетной печати',
     intro:
       'Качество офсетной печати определяется не только машиной, но и материалами. От красок CMYK и PANTONE до офсетных полотен, от увлажняющей химии до дисперсионных лаков — каждый компонент напрямую влияет на стабильность цвета, время высыхания и уровень брака. С 1983 года SIM поставляет турецким типографиям офсетные материалы мировых брендов из одних рук.',
+    introPillarLabel: 'Полное руководство по полиграфическим материалам',
     howTitle: 'Как работает офсетная печать и почему материалы так важны',
     howText1:
       'Офсет — это непрямой способ печати: краска переходит с формы сначала на резиновое полотно и лишь затем на запечатываемый материал. Процесс основан на взаимном отталкивании воды и краски, при этом четыре элемента находятся в постоянном взаимодействии: форма, краска, увлажняющий раствор и полотно.',
@@ -456,6 +461,7 @@ const CONTENT: Record<string, PillarContent> = {
     title: 'مستلزمات طباعة الأوفست',
     intro:
       'جودة طباعة الأوفست ليست نتاج الماكينة وحدها، بل المواد المستخدمة أيضاً. من أحبار CMYK وPANTONE إلى بطانيات الطباعة، ومن كيماويات الترطيب إلى الورنيش الدسبرسي — كل مكوّن يحدد مباشرة ثبات اللون وزمن الجفاف ونسبة الهدر. منذ عام 1983 تزوّد SIM المطابع بمستلزمات طباعة الأوفست من علامات عالمية تحت سقف واحد.',
+    introPillarLabel: 'الدليل الكامل لمواد الطباعة',
     howTitle: 'كيف تعمل طباعة الأوفست، ولماذا المواد بهذه الأهمية؟',
     howText1:
       'الأوفست تقنية طباعة غير مباشرة: ينتقل الحبر من اللوح (البليت) إلى بطانية مطاطية أولاً، ثم إلى سطح الطباعة. تعتمد العملية على تنافر الماء والحبر، مع أربعة عناصر في تفاعل مستمر: اللوح، الحبر، محلول الترطيب، والبطانية.',
@@ -707,6 +713,13 @@ export default async function OfsetBaskiMalzemeleriPage({
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-silver">
                 {c.intro}
               </p>
+              <Link
+                href="/matbaa-malzemeleri"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+              >
+                {c.introPillarLabel}
+                <ArrowRight size={14} />
+              </Link>
             </div>
           </section>
 
