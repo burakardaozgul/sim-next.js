@@ -4,7 +4,9 @@ import { getProductBySlug } from '@/data/products';
 import { routing } from '@/i18n/routing';
 
 const LOCALES = ['tr', 'en', 'ru', 'ar'] as const;
-const text = (post: (typeof blogPosts)[number], l: string) => (post.content[l] || []).map((b) => b.text || '').join(' ');
+// Görünen metnin tamamı: paragraflar, callout başlıkları ve tablo hücreleri (tablolar sayfada okunan içeriktir)
+const text = (post: (typeof blogPosts)[number], l: string) =>
+  (post.content[l] || []).map((b) => [b.title, b.text, ...(b.headers || []), ...(b.rows || []).flat()].filter(Boolean).join(' ')).join(' ');
 const links = (s: string) => [...s.matchAll(/\]\((\/[^)\s]*)\)/g)].map((m) => m[1]);
 
 describe('blog maintenance (brief E1): structured FAQs, contextual links, Pantone snippet', () => {
@@ -45,5 +47,29 @@ describe('blog maintenance (brief E1): structured FAQs, contextual links, Panton
     expect(post.updated).toBeDefined();
     expect(post.updated! >= '2026-10-09').toBe(true);
     expect(text(post, 'tr')).not.toMatch(/Delta E < 1\b(?![,.]5)/);
+  });
+});
+
+describe('brief E2: the three short commercial posts are expanded to full guides', () => {
+  const SHORT = ['ofset-murekkep-secimi', 'metalik-murekkep-uretimi', 'ozel-renk-eslestirme'];
+  const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+  it.each(SHORT)('%s has ≥ 1,200 TR words and ≥ 1,000 EN words, a short answer, tables and an updated date', (slug) => {
+    const post = getBlogPostBySlug(slug)!;
+    expect(words(text(post, 'tr'))).toBeGreaterThanOrEqual(1200);
+    expect(words(text(post, 'en'))).toBeGreaterThanOrEqual(1000);
+    expect(post.content.tr.some((b) => b.type === 'callout' && /kısa cevap/i.test(b.title || ''))).toBe(true);
+    expect(post.content.tr.some((b) => b.type === 'table' && (b.rows?.length ?? 0) >= 4)).toBe(true);
+    expect(post.content.en.some((b) => b.type === 'table')).toBe(true);
+    expect(post.content.tr.filter((b) => b.type === 'heading').length).toBeGreaterThanOrEqual(6);
+    expect(post.updated).toBeDefined();
+    expect(post.updated! >= '2026-10-09').toBe(true);
+    expect(post.faq?.length ?? 0).toBeGreaterThanOrEqual(4);
+  });
+  it.each(SHORT)('%s uses single-source facts (no DEERS/DAIHAN, ΔE 1,5, no "40 yıl")', (slug) => {
+    const post = getBlogPostBySlug(slug)!;
+    const all = text(post, 'tr') + ' ' + text(post, 'en');
+    expect(all).not.toMatch(/DEERS|DAIHAN/);
+    expect(all).not.toMatch(/Delta E[^.]{0,20}\b1(?![.,]5)\b['’]?in altında|ΔE[^.]{0,10}<\s*1(?![.,]5)/);
+    expect(text(post, 'tr')).not.toMatch(/40 yıl/);
   });
 });
