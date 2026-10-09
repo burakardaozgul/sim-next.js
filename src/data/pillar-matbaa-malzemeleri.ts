@@ -103,6 +103,7 @@ export const PILLAR_RELATED_POSTS = [
 ] as const;
 
 export const PILLAR_RELATED_LINKS: { path: StaticPagePath; label: L }[] = [
+  { path: '/matbaa-murekkepleri', label: { tr: 'Matbaa Mürekkepleri Rehberi', en: 'Printing Inks Hub', ru: 'Печатные краски', ar: 'أحبار الطباعة' } },
   { path: '/ofset-baski-malzemeleri', label: { tr: 'Ofset Baskı Malzemeleri Rehberi', en: 'Offset Printing Supplies Guide', ru: 'Материалы для офсетной печати', ar: 'دليل مستلزمات طباعة الأوفست' } },
   { path: '/matbaa-malzemeleri-istanbul', label: { tr: 'İstanbul Teslimat ve Depo', en: 'Istanbul Delivery & Warehouse', ru: 'Доставка по Стамбулу', ar: 'التوصيل والمستودع في إسطنبول' } },
   { path: '/ozel-renk-uretimi', label: { tr: 'Özel Renk Üretimi', en: 'Custom Colour Production', ru: 'Производство цветов на заказ', ar: 'إنتاج الألوان الخاصة' } },

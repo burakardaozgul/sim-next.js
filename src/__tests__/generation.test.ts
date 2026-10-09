@@ -18,8 +18,8 @@ describe('sitemap.xml', async () => {
 
   it('excludes noindex pages (privacy, terms) and ru/ar blog summaries; keeps the rest', () => {
     expect(locs.some((l) => /gizlilik|privacy|politika|kullanim|terms|usloviya/.test(l))).toBe(false);
-    // 188 (önceki) − 2 × yazı sayısı (ru/ar özetleri, 08 §2)
-    expect(locs).toHaveLength(188 - 2 * blogPosts.length);
+    // 188 (önceki) + 4 (mürekkep hub'ı, 4 dil) − 2 × yazı sayısı (ru/ar özetleri, 08 §2)
+    expect(locs).toHaveLength(192 - 2 * blogPosts.length);
   });
 
   it('uses the post date (or updated) as lastmod for blog URLs', () => {

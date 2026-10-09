@@ -88,6 +88,12 @@ export const routing = defineRouting({
       ru: '/materialy-ofsetnoj-pechati',
       ar: '/mawad-tibaat-offset',
     },
+    '/matbaa-murekkepleri': {
+      tr: '/matbaa-murekkepleri',
+      en: '/printing-inks',
+      ru: '/pechatnye-kraski',
+      ar: '/ahbar-altibaa',
+    },
     '/matbaa-terimleri-sozlugu': {
       tr: '/matbaa-terimleri-sozlugu',
       en: '/printing-glossary',
