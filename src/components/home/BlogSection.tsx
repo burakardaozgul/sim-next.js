@@ -6,9 +6,9 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Clock } from 'lucide-react';
 import { getBlurDataURL } from '@/lib/blur';
-import { blogPosts, getBlogSlug } from '@/data/blog';
+import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
 
-export default function BlogSection() {
+export default function BlogSection({ posts }: { posts: BlogPostSummary[] }) {
   const t = useTranslations('blog');
   const locale = useLocale();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +59,7 @@ export default function BlogSection() {
           ref={scrollRef}
           className="scrollbar-hide -mx-6 flex gap-6 overflow-x-auto px-6 snap-x snap-mandatory lg:-mx-0 lg:px-0"
         >
-          {blogPosts.slice(0, 3).map((post) => {
+          {posts.map((post) => {
             const title = post.title[locale] || post.title.tr;
             const excerpt = post.excerpt[locale] || post.excerpt.tr;
             const readTime = post.readTime[locale] || post.readTime.tr;

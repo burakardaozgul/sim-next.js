@@ -70,6 +70,11 @@ B=$(curl -sS -A "$UA" "$BASE/bilinmeyen-sayfa-xyz"); check "root 404 is branded 
 H=$(hdr /en/unknown-page-xyz); check "unknown EN URL → 404" $([ "$(status "$H")" = "404" ]; echo $?)
 B=$(curl -sS -A "$UA" "$BASE/en/unknown-page-xyz"); check "EN 404 is localized" $(echo "$B" | grep -q 'Page Not Found'; echo $?)
 
+# blog: typo slug redirect, newest-first ordering on home, single brand in list title
+H=$(hdr /blog/flekso-baski-murakkepleri-rehberi); check "typo blog slug → 308" $([ "$(status "$H")" = "308" ] && echo "$H" | grep -qi 'murekkepleri-rehberi'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (chemicals guide)" $(echo "$B" | grep -q 'href="/blog/baski-kimyasallari-rehberi"'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/blog"); check "blog list title has the brand once" $([ "$(echo "$B" | grep -oE '<title>[^<]*' | grep -o 'SIM Baskı Malzemeleri' | wc -l | tr -d ' ')" = "1" ]; echo $?)
+
 # home services link target exists
 H=$(hdr /urunler/vector-baski-blanketleri); check "7th service target product 200" $([ "$(status "$H")" = "200" ]; echo $?)
 

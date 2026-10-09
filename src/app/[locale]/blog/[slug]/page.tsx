@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { createPageMetadata } from '@/lib/seo';
 import { articleJsonLd } from '@/lib/schema';
-import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale } from '@/data/blog';
+import { getBlogSlug, resolveBlogPostForLocale, getBlogSlugsForLocale, getRelatedPosts, toBlogSummary } from '@/data/blog';
 import { locales } from '@/i18n/config';
 import { localizedBlogPath } from '@/lib/paths';
 import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
@@ -137,7 +137,11 @@ export default async function BlogPostPage({
         />
       )}
       <LocaleSlugsProvider slugs={post.slugs}>
-        <BlogPostClient post={post} relatedProducts={relatedProductData} />
+        <BlogPostClient
+          post={post}
+          relatedProducts={relatedProductData}
+          related={getRelatedPosts(post, 3).map(toBlogSummary)}
+        />
       </LocaleSlugsProvider>
     </>
   );

@@ -7,7 +7,7 @@ import { getProductSlug, resolveProductForLocale, getProductSlugsForLocale } fro
 import { locales } from '@/i18n/config';
 import { localizedProductPath } from '@/lib/paths';
 import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
-import { blogPosts, BlogPost } from '@/data/blog';
+import { blogPosts, BlogPost, toBlogSummary } from '@/data/blog';
 import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
@@ -70,7 +70,8 @@ export default async function ProductDetailPage({
 
   const relatedBlogData = (product.relatedBlogPosts || [])
     .map((slug) => blogPosts.find((p) => p.slug === slug))
-    .filter((p): p is BlogPost => p !== undefined);
+    .filter((p): p is BlogPost => p !== undefined)
+    .map(toBlogSummary);
 
   const name = product.name[locale] || product.name.tr;
 

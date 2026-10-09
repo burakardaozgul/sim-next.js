@@ -87,6 +87,12 @@ const nextConfig: NextConfig = {
         destination: '/urunler/zeller-gmelin-uv-offset-murekkepleri',
         permanent: true,
       },
+      // Yazım hatalı blog slug'ı (murakkep → mürekkep)
+      {
+        source: '/blog/flekso-baski-murakkepleri-rehberi',
+        destination: '/blog/flekso-baski-murekkepleri-rehberi',
+        permanent: true,
+      },
       // Eski sayfa URL'leri
       {
         source: '/urunlerimiz',

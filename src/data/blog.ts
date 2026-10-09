@@ -19,10 +19,18 @@ export interface BlogPost {
 }
 
 export interface ContentBlock {
-  type: 'intro' | 'heading' | 'paragraph' | 'image' | 'highlight';
+  type: 'intro' | 'heading' | 'paragraph' | 'image' | 'highlight' | 'table' | 'callout' | 'sources';
+  /** Metin blokları; "[etiket](/yol)" satır içi link sözdizimi desteklenir */
   text?: string;
   src?: string;
   alt?: string;
+  /** callout: başlık (ör. "Kısa cevap", "Temel bilgiler") */
+  title?: string;
+  /** table */
+  headers?: string[];
+  rows?: string[][];
+  /** sources: kaynak listesi */
+  items?: Array<{ label: string; url?: string }>;
 }
 
 export const blogPosts = ([
@@ -2264,7 +2272,10 @@ export const blogPosts = ([
     keywords: ['renk eşleştirme', 'özel renk', 'L-A-B formülasyon', 'Pantone renk', 'spot renk'],
     relatedProducts: ['ozel-renkler', 'sakata-inx-pantone-murekkepler', 'sakata-inx-cmyk-murekkepler'],
   },
-] as BlogPost[]).concat(newPosts);
+] as BlogPost[])
+  .concat(newPosts)
+  // En yeni yazı önce (ana sayfa, liste ve llms için tek sıralama)
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(
@@ -2272,8 +2283,23 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   );
 }
 
-export function getBlogSlug(post: BlogPost, locale: string): string {
-  return post.slugs[locale] || post.slug;
+export { getBlogSlug, toBlogSummary, type BlogPostSummary } from '@/lib/blog-utils';
+
+/** Bağlama göre ilgili yazılar: ortak anahtar kelime ve ilgili ürün sayısına göre, eşitlikte en yeni. */
+export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
+  const kw = new Set(post.keywords.map((k) => k.toLowerCase()));
+  const prods = new Set(post.relatedProducts ?? []);
+  return blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      p,
+      score:
+        p.keywords.filter((k) => kw.has(k.toLowerCase())).length * 2 +
+        (p.relatedProducts ?? []).filter((r) => prods.has(r)).length,
+    }))
+    .sort((a, b) => b.score - a.score || b.p.date.localeCompare(a.p.date))
+    .slice(0, limit)
+    .map((x) => x.p);
 }
 
 export function getAllBlogSlugs(): string[] {

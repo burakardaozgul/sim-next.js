@@ -6,6 +6,7 @@ import VerticalNav from '@/components/layout/VerticalNav';
 import HeroSlider from '@/components/home/HeroSlider';
 import ProductsSection from '@/components/home/ProductsSection';
 import FadeInSection from '@/components/ui/FadeInSection';
+import { blogPosts, toBlogSummary } from '@/data/blog';
 
 const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
 const AboutSection = dynamic(() => import('@/components/home/AboutSection'));
@@ -102,7 +103,7 @@ export default async function HomePage({
           <ServicesSection />
         </FadeInSection>
         <FadeInSection>
-          <BlogSection />
+          <BlogSection posts={blogPosts.slice(0, 3).map(toBlogSummary)} />
         </FadeInSection>
         <FadeInSection>
           <BrandsSection />
