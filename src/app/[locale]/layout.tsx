@@ -20,16 +20,18 @@ import Analytics from '@/components/layout/Analytics';
 import '../globals.css';
 import { organizationJsonLd, localBusinessJsonLd, webSiteJsonLd, jsonLdScriptProps } from '@/lib/schema';
 
+// Yalnızca drop-cap ve dekoratif sayılarda kullanılır: 2 ağırlık, italik yok, preload yok
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '700'],
   variable: '--font-cormorant-garamond',
   display: 'swap',
+  preload: false,
 });
 
+// Başlık fontu: Türkçe karakterler için latin-ext şart (Syne Kiril içermez; RU başlıklar sistem fontuna düşer)
 const syne = Syne({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-syne',
   display: 'swap',
@@ -42,11 +44,13 @@ const dmSans = DM_Sans({
   display: 'swap',
 });
 
+// Yalnızca Arapça sayfalarda gerekir: preload kapalı (unicode-range ile gerektiğinde iner)
 const notoSansArabic = Noto_Sans_Arabic({
   subsets: ['arabic'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '700'],
   variable: '--font-noto-sans-arabic',
   display: 'swap',
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -173,6 +177,8 @@ export default async function LocaleLayout({
       className={`${cormorant.variable} ${syne.variable} ${dmSans.variable} ${notoSansArabic.variable}`}
     >
       <head>
+        {/* JS varsa html.js: animasyon başlangıç gizlemeleri yalnızca bu kapsamda (JS'siz içerik görünür) */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />

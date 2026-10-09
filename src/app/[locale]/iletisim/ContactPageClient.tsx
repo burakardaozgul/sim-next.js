@@ -4,6 +4,10 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import VerticalNav from '@/components/layout/VerticalNav';
 import Footer from '@/components/layout/Footer';
+import Script from 'next/script';
+import { Link } from '@/i18n/navigation';
+import { ORGANIZATION } from '@/data/organization';
+import { track } from '@/lib/analytics';
 import {
   MapPin,
   Phone,
@@ -32,6 +36,9 @@ export default function ContactPageClient() {
     message: '',
     _honey: '',
   });
+  const [consent, setConsent] = useState(false);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER; // ör. 905xxxxxxxxx (uluslararası, + olmadan)
 
   // Reset status message after 5 seconds
   useEffect(() => {
@@ -50,21 +57,28 @@ export default function ContactPageClient() {
     setFormState('sending');
 
     try {
+      const form = e.currentTarget as HTMLFormElement;
+      const turnstileToken =
+        (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value ?? undefined;
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, consent, turnstileToken }),
       });
 
+      // Turnstile token tek kullanımlık: her denemeden sonra widget sıfırlanır
+      (window as Window & { turnstile?: { reset?: () => void } }).turnstile?.reset?.();
       if (!res.ok) throw new Error('Failed');
       setFormState('success');
+      track('contact_form_submit', { form: 'contact' });
       setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '', _honey: '' });
+      setConsent(false);
     } catch {
       setFormState('error');
     }
   };
 
-  const contactInfo = [
+  const contactInfo: Array<{ icon: typeof MapPin; label: string; value: string; href?: string; onClick?: () => void }> = [
     {
       icon: MapPin,
       label: t('addressLabel'),
@@ -75,13 +89,15 @@ export default function ContactPageClient() {
       icon: Phone,
       label: t('phoneLabel'),
       value: tFooter('phone'),
-      href: `tel:${tFooter('phone')}`,
+      href: `tel:${ORGANIZATION.telephone}`,
+      onClick: () => track('click_tel', { place: 'contact_page' }),
     },
     {
       icon: Mail,
       label: t('emailLabel'),
       value: tFooter('email'),
       href: `mailto:${tFooter('email')}`,
+      onClick: () => track('click_mail', { place: 'contact_page' }),
     },
     {
       icon: Clock,
@@ -151,6 +167,7 @@ export default function ContactPageClient() {
                       <a
                         key={item.label}
                         href={item.href}
+                        onClick={item.onClick}
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="block rounded-xl border border-white/[0.06] bg-ink-900 p-5 transition-all hover:border-gold/20"
@@ -277,6 +294,35 @@ export default function ContactPageClient() {
                       />
                     </div>
 
+                    {/* KVKK açık rıza (zorunlu) */}
+                    <label className="flex items-start gap-3 text-xs leading-relaxed text-silver">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        checked={consent}
+                        onChange={(ev) => setConsent(ev.target.checked)}
+                        className="mt-0.5 h-4 w-4 shrink-0 accent-gold"
+                      />
+                      <span>
+                        {t.rich('consentLabel', {
+                          a: (chunks) => (
+                            <Link href="/gizlilik-politikasi" className="underline decoration-gold/40 underline-offset-2 hover:text-gold">
+                              {chunks}
+                            </Link>
+                          ),
+                        })}
+                      </span>
+                    </label>
+
+                    {/* Cloudflare Turnstile (NEXT_PUBLIC_TURNSTILE_SITE_KEY tanımlıysa) */}
+                    {turnstileSiteKey && (
+                      <>
+                        <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />
+                        <div className="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark" />
+                      </>
+                    )}
+
                     {/* Status Messages */}
                     {formState === 'success' && (
                       <div className="flex items-center gap-3 rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-400">
@@ -309,6 +355,18 @@ export default function ContactPageClient() {
                         </>
                       )}
                     </button>
+
+                    {whatsappNumber && (
+                      <a
+                        href={`https://wa.me/${whatsappNumber}`}
+                        target="_blank"
+                        rel="noopener"
+                        onClick={() => track('click_whatsapp', { place: 'contact_page' })}
+                        className="ml-0 mt-3 inline-flex w-full items-center justify-center gap-2 border border-white/10 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-all hover:border-gold/40 hover:text-gold sm:ml-3 sm:mt-0 sm:w-auto"
+                      >
+                        {t('whatsapp')}
+                      </a>
+                    )}
                   </form>
                 </div>
               </div>

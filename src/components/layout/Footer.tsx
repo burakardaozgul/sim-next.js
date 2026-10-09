@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { getProductBySlug, getProductSlug } from '@/data/products';
+import { ORGANIZATION } from '@/data/organization';
 
 const productLinkDefs = [
   { key: 'offset', slug: 'sakata-inx-cmyk-murekkepler' },
@@ -73,7 +74,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2.5 text-sm text-silver">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0 text-gold" />
-                <span>Yakuplu, 194. Sk. No:1 D:176, 34524 Beylikdüzü/İstanbul</span>
+                <span>{`${ORGANIZATION.address.streetAddress}, ${ORGANIZATION.address.postalCode} ${ORGANIZATION.address.addressLocality}/${ORGANIZATION.address.addressRegion}`}</span>
               </div>
             </div>
           </div>

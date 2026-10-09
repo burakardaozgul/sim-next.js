@@ -82,6 +82,13 @@ S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex page
 check "sitemap has 188 URLs"                         $([ "$(echo "$S" | grep -c '<loc>')" -eq 188 ]; echo $?)
 H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
 
+# PR-7/PR-8: CSP header, visible H1, all service descriptions in HTML, consent checkbox
+H=$(hdr /); check "CSP header present" $(echo "$H" | grep -qi '^content-security-policy:'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/"); check "home H1 is visible (not sr-only)" $(echo "$B" | grep -oE '<h1[^>]*>' | grep -vq 'sr-only' && [ "$(echo "$B" | grep -c '<h1')" -ge 1 ]; echo $?)
+check "all 7 service descriptions are in the home HTML" $([ "$(echo "$B" | grep -o 'ST PRO DOT' | wc -l | tr -d ' ')" -ge 1 ] && echo "$B" | grep -q 'Fluorescent\|floresan\|Floresan'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/iletisim"); check "contact form has KVKK consent checkbox" $(echo "$B" | grep -q 'name="consent"'; echo $?)
+check "contact tel link is E.164" $(echo "$B" | grep -q 'href="tel:+902126376249"'; echo $?)
+
 # home services link target exists
 H=$(hdr /urunler/vector-baski-blanketleri); check "7th service target product 200" $([ "$(status "$H")" = "200" ]; echo $?)
 

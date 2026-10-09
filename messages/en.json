@@ -65,16 +65,36 @@
       "custom": "Custom Colors",
       "blanket": "Offset Blankets",
       "chemicals": "Chemicals"
-    }
+    },
+    "specsTitle": "Technical Specifications",
+    "documentsTitle": "Documents (TDS / MSDS)",
+    "useCasesTitle": "Applications",
+    "faqTitle": "Frequently Asked Questions"
   },
   "process": {
     "title": "Custom Color Production Process",
     "subtitle": "Perfect color in 4 steps",
     "steps": [
-      { "number": "01", "title": "Color Formula", "desc": "Digital formulation according to international L-A-B values" },
-      { "number": "02", "title": "Sample Production", "desc": "Target color testing under different print values and substrates" },
-      { "number": "03", "title": "Approval", "desc": "Sample presentation on various paper weights and approval" },
-      { "number": "04", "title": "Production", "desc": "Production of the approved formula in requested quantities" }
+      {
+        "number": "01",
+        "title": "Color Formula",
+        "desc": "Digital formulation according to international L-A-B values"
+      },
+      {
+        "number": "02",
+        "title": "Sample Production",
+        "desc": "Target color testing under different print values and substrates"
+      },
+      {
+        "number": "03",
+        "title": "Approval",
+        "desc": "Sample presentation on various paper weights and approval"
+      },
+      {
+        "number": "04",
+        "title": "Production",
+        "desc": "Production of the approved formula in requested quantities"
+      }
     ]
   },
   "stats": {
@@ -231,11 +251,26 @@
     "strengths": {
       "title": "Our Strengths",
       "items": [
-        { "title": "Global Brands, Strong Partnerships", "desc": "Thanks to long-term representations with leading manufacturers based in Japan, South Korea, and Europe, we offer products that meet world standards." },
-        { "title": "Integrated Production, Import & Export", "desc": "By combining our own production capacity with international supply and export capabilities, we provide flexible and sustainable solutions to our customers." },
-        { "title": "Technical Expertise & Field Experience", "desc": "Our experienced technical team supports production continuity by responding quickly and accurately to situations encountered in printing processes." },
-        { "title": "Fast & Uninterrupted Service", "desc": "With our strong stock structure, effective logistics processes, and solution-oriented service approach, we respond to our customers' needs in the shortest time." },
-        { "title": "Quality & Continuity Focused Service", "desc": "We adopt high quality standards, consistency, and a long-term business partnership approach in all our products and services." }
+        {
+          "title": "Global Brands, Strong Partnerships",
+          "desc": "Thanks to long-term representations with leading manufacturers based in Japan, South Korea, and Europe, we offer products that meet world standards."
+        },
+        {
+          "title": "Integrated Production, Import & Export",
+          "desc": "By combining our own production capacity with international supply and export capabilities, we provide flexible and sustainable solutions to our customers."
+        },
+        {
+          "title": "Technical Expertise & Field Experience",
+          "desc": "Our experienced technical team supports production continuity by responding quickly and accurately to situations encountered in printing processes."
+        },
+        {
+          "title": "Fast & Uninterrupted Service",
+          "desc": "With our strong stock structure, effective logistics processes, and solution-oriented service approach, we respond to our customers' needs in the shortest time."
+        },
+        {
+          "title": "Quality & Continuity Focused Service",
+          "desc": "We adopt high quality standards, consistency, and a long-term business partnership approach in all our products and services."
+        }
       ]
     },
     "mission": {
@@ -249,11 +284,26 @@
     "values": {
       "title": "Our Core Values",
       "items": [
-        { "title": "Reliability", "desc": "With over 40 years of industry experience, we consistently deliver dependable service to our customers." },
-        { "title": "Technical Expertise", "desc": "Our expert team provides technical support from color formulation to print optimization." },
-        { "title": "Quality Focus", "desc": "We maintain the highest print quality through international-standard production and supply." },
-        { "title": "Sustainability", "desc": "We invest in the future with eco-friendly products and sustainable production processes." },
-        { "title": "Customer Commitment", "desc": "With 24/7 service, we provide fast and effective solutions to our customers' needs." }
+        {
+          "title": "Reliability",
+          "desc": "With over 40 years of industry experience, we consistently deliver dependable service to our customers."
+        },
+        {
+          "title": "Technical Expertise",
+          "desc": "Our expert team provides technical support from color formulation to print optimization."
+        },
+        {
+          "title": "Quality Focus",
+          "desc": "We maintain the highest print quality through international-standard production and supply."
+        },
+        {
+          "title": "Sustainability",
+          "desc": "We invest in the future with eco-friendly products and sustainable production processes."
+        },
+        {
+          "title": "Customer Commitment",
+          "desc": "With 24/7 service, we provide fast and effective solutions to our customers' needs."
+        }
       ]
     }
   },
@@ -264,20 +314,50 @@
     "whyTitle": "Why SIM Custom Color?",
     "whySubtitle": "Our distinctive advantages",
     "why": [
-      { "title": "24/7 Color Laboratory", "desc": "Our color matching laboratory operates around the clock, providing instant response to your urgent orders." },
-      { "title": "L-A-B Digital Formulation", "desc": "Precise digital formulation according to international color values achieves the target color with the highest accuracy." },
-      { "title": "UV & Conventional Compatible", "desc": "We produce custom color formulas suitable for both UV and conventional printing processes." },
-      { "title": "15,000 kg Monthly Capacity", "desc": "Our extensive production capacity provides fast response from small batches to high-volume orders." },
-      { "title": "Multi-Substrate Testing", "desc": "Sample production on different paper weights and surface types guarantees consistent results in printing." },
-      { "title": "EVAcolor Registered Brand", "desc": "Under our registered EVAcolor brand, we produce metallic, fluorescent, and custom color inks." }
+      {
+        "title": "24/7 Color Laboratory",
+        "desc": "Our color matching laboratory operates around the clock, providing instant response to your urgent orders."
+      },
+      {
+        "title": "L-A-B Digital Formulation",
+        "desc": "Precise digital formulation according to international color values achieves the target color with the highest accuracy."
+      },
+      {
+        "title": "UV & Conventional Compatible",
+        "desc": "We produce custom color formulas suitable for both UV and conventional printing processes."
+      },
+      {
+        "title": "15,000 kg Monthly Capacity",
+        "desc": "Our extensive production capacity provides fast response from small batches to high-volume orders."
+      },
+      {
+        "title": "Multi-Substrate Testing",
+        "desc": "Sample production on different paper weights and surface types guarantees consistent results in printing."
+      },
+      {
+        "title": "EVAcolor Registered Brand",
+        "desc": "Under our registered EVAcolor brand, we produce metallic, fluorescent, and custom color inks."
+      }
     ],
     "typesTitle": "Our Production Scope",
     "typesSubtitle": "Solutions we offer in custom color production",
     "types": [
-      { "title": "Pantone & Spot Colors", "desc": "Custom spot color production for all references in the Pantone color catalog." },
-      { "title": "Metallic & Gold Colors", "desc": "Gold, silver, and custom metallic effect ink production under the EVAcolor brand." },
-      { "title": "Fluorescent Colors", "desc": "Fluorescent ink solutions for designs requiring high vibrancy and visibility." },
-      { "title": "Corporate Identity Colors", "desc": "Consistent and repeatable color production matching brand corporate color standards." }
+      {
+        "title": "Pantone & Spot Colors",
+        "desc": "Custom spot color production for all references in the Pantone color catalog."
+      },
+      {
+        "title": "Metallic & Gold Colors",
+        "desc": "Gold, silver, and custom metallic effect ink production under the EVAcolor brand."
+      },
+      {
+        "title": "Fluorescent Colors",
+        "desc": "Fluorescent ink solutions for designs requiring high vibrancy and visibility."
+      },
+      {
+        "title": "Corporate Identity Colors",
+        "desc": "Consistent and repeatable color production matching brand corporate color standards."
+      }
     ],
     "ctaTitle": "Need a Custom Color?",
     "ctaText": "Send us your color reference and our expert team will prepare a sample for you as soon as possible."
@@ -302,7 +382,9 @@
     "phoneLabel": "Phone",
     "emailLabel": "Email",
     "workingHours": "Working Hours",
-    "workingHoursValue": "Monday - Saturday: 08:30 - 18:00"
+    "workingHoursValue": "Monday - Saturday: 08:30 - 18:00",
+    "consentLabel": "I consent to the processing of my personal data as described in the <a>Privacy Policy (KVKK)</a>.",
+    "whatsapp": "Message us on WhatsApp"
   },
   "cookie": {
     "message": "This website uses cookies to improve your experience. By continuing to use our site, you accept our cookie policy.",
@@ -314,28 +396,76 @@
     "title": "Privacy & Cookie Policy",
     "lastUpdated": "Last updated: March 1, 2026",
     "sections": [
-      { "title": "1. General Information", "content": "At SIM Baskı Malzemeleri San. Tic. Ltd. Şti., we value the protection of your personal data. This policy explains how data collected on our website is processed." },
-      { "title": "2. Data Collected", "content": "Through contact forms, we may collect your name, email, phone number, and company information. When you visit our website, technical data such as IP address, browser information, and visited pages are automatically recorded." },
-      { "title": "3. Purpose of Data Use", "content": "Collected data is used to respond to your inquiries, improve our service quality, fulfill legal obligations, and communicate with you." },
-      { "title": "4. Cookie Policy", "content": "Our website uses essential cookies (for site functionality), analytics cookies (for visitor statistics), and preference cookies (for language and region preferences). You can disable cookies through your browser settings, but some features may not function properly." },
-      { "title": "5. Data Security", "content": "Your personal data is protected with technical and administrative measures against unauthorized access, loss, and misuse." },
-      { "title": "6. Third-Party Sharing", "content": "Your personal data is not shared with third parties except where legally required. Analytics tools such as Google Analytics may be used." },
-      { "title": "7. Your Rights", "content": "Under Turkish data protection law (KVKK No. 6698), you have the right to access, correct, delete, and object to the processing of your personal data. Contact us at info@simlimited.net to exercise these rights." },
-      { "title": "8. Contact", "content": "For questions about our privacy policy, contact us at info@simlimited.net or +90 (212) 637 62 49." }
+      {
+        "title": "1. General Information",
+        "content": "At SIM Baskı Malzemeleri San. Tic. Ltd. Şti., we value the protection of your personal data. This policy explains how data collected on our website is processed."
+      },
+      {
+        "title": "2. Data Collected",
+        "content": "Through contact forms, we may collect your name, email, phone number, and company information. When you visit our website, technical data such as IP address, browser information, and visited pages are automatically recorded."
+      },
+      {
+        "title": "3. Purpose of Data Use",
+        "content": "Collected data is used to respond to your inquiries, improve our service quality, fulfill legal obligations, and communicate with you."
+      },
+      {
+        "title": "4. Cookie Policy",
+        "content": "Our website uses essential cookies (for site functionality), analytics cookies (for visitor statistics), and preference cookies (for language and region preferences). You can disable cookies through your browser settings, but some features may not function properly."
+      },
+      {
+        "title": "5. Data Security",
+        "content": "Your personal data is protected with technical and administrative measures against unauthorized access, loss, and misuse."
+      },
+      {
+        "title": "6. Third-Party Sharing",
+        "content": "Your personal data is not shared with third parties except where legally required. Analytics tools such as Google Analytics may be used."
+      },
+      {
+        "title": "7. Your Rights",
+        "content": "Under Turkish data protection law (KVKK No. 6698), you have the right to access, correct, delete, and object to the processing of your personal data. Contact us at info@simlimited.net to exercise these rights."
+      },
+      {
+        "title": "8. Contact",
+        "content": "For questions about our privacy policy, contact us at info@simlimited.net or +90 (212) 637 62 49."
+      }
     ]
   },
   "termsPage": {
     "title": "Terms of Use",
     "lastUpdated": "Last updated: March 1, 2026",
     "sections": [
-      { "title": "1. Acceptance", "content": "By using this website, you agree to the following terms of use. If you do not accept these terms, please do not use the site." },
-      { "title": "2. Service Description", "content": "The SIM Baskı Malzemeleri website is designed to provide information about our products and services. Information on the site is for general informational purposes." },
-      { "title": "3. Intellectual Property Rights", "content": "All content, images, logos, designs, and texts on this website belong to SIM Baskı Malzemeleri and are protected by copyright. Unauthorized use, copying, or distribution is prohibited." },
-      { "title": "4. Limitation of Liability", "content": "While every effort is made to ensure accuracy, the completeness and correctness of information is not guaranteed. SIM Baskı Malzemeleri cannot be held liable for direct or indirect damages arising from use of the site." },
-      { "title": "5. External Links", "content": "Our website may contain links to third-party websites. We are not responsible for their content or privacy practices." },
-      { "title": "6. Modifications", "content": "SIM Baskı Malzemeleri reserves the right to modify these terms without prior notice. Current terms are always published on this page." },
-      { "title": "7. Governing Law", "content": "These terms are governed by the laws of the Republic of Turkey. Istanbul Courts and Enforcement Offices have jurisdiction over disputes." },
-      { "title": "8. Contact", "content": "For questions about our terms of use, contact us at info@simlimited.net or +90 (212) 637 62 49." }
+      {
+        "title": "1. Acceptance",
+        "content": "By using this website, you agree to the following terms of use. If you do not accept these terms, please do not use the site."
+      },
+      {
+        "title": "2. Service Description",
+        "content": "The SIM Baskı Malzemeleri website is designed to provide information about our products and services. Information on the site is for general informational purposes."
+      },
+      {
+        "title": "3. Intellectual Property Rights",
+        "content": "All content, images, logos, designs, and texts on this website belong to SIM Baskı Malzemeleri and are protected by copyright. Unauthorized use, copying, or distribution is prohibited."
+      },
+      {
+        "title": "4. Limitation of Liability",
+        "content": "While every effort is made to ensure accuracy, the completeness and correctness of information is not guaranteed. SIM Baskı Malzemeleri cannot be held liable for direct or indirect damages arising from use of the site."
+      },
+      {
+        "title": "5. External Links",
+        "content": "Our website may contain links to third-party websites. We are not responsible for their content or privacy practices."
+      },
+      {
+        "title": "6. Modifications",
+        "content": "SIM Baskı Malzemeleri reserves the right to modify these terms without prior notice. Current terms are always published on this page."
+      },
+      {
+        "title": "7. Governing Law",
+        "content": "These terms are governed by the laws of the Republic of Turkey. Istanbul Courts and Enforcement Offices have jurisdiction over disputes."
+      },
+      {
+        "title": "8. Contact",
+        "content": "For questions about our terms of use, contact us at info@simlimited.net or +90 (212) 637 62 49."
+      }
     ]
   },
   "faq": {
@@ -406,7 +536,7 @@
     "locationTitle": "Location & Contact Details",
     "address": "Yakuplu, 194. Sk. No:1 D:176, Beylikdüzü, Istanbul",
     "phone": "+90 212 637 62 49",
-    "workingHours": "Monday - Friday: 08:30 - 18:00",
+    "workingHours": "Monday - Saturday: 08:30 - 18:00",
     "servicesTitle": "Services We Offer in Istanbul",
     "service1": "Same-day delivery (orders placed before 12:00 noon)",
     "service2": "On-site technical support and ink calibration",

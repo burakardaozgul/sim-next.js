@@ -9,6 +9,7 @@ import { LocaleSlugsProvider } from '@/components/layout/LocaleSlugsContext';
 import { products, Product } from '@/data/products';
 import BlogPostClient from './BlogPostClient';
 import { setRequestLocale } from 'next-intl/server';
+import { localizeInlineLinks } from '@/lib/inline-links-localize';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -71,8 +72,13 @@ export default async function BlogPostPage({
     locale === 'tr' ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
   const homeUrl = locale === 'tr' ? BASE_URL : `${BASE_URL}/${locale}`;
 
-  // Calculate word count from content blocks
-  const content = post.content[locale] || post.content.tr;
+  // İçerik yalnızca sayfa dilinde ve iç linkler yerelleştirilmiş olarak istemciye gider
+  const content = (post.content[locale] || post.content.tr).map((block) => ({
+    ...block,
+    ...(block.text ? { text: localizeInlineLinks(block.text, locale) } : {}),
+    ...(block.rows ? { rows: block.rows.map((r) => r.map((c) => localizeInlineLinks(c, locale))) } : {}),
+  }));
+  const localizedPost = { ...post, content: { [locale]: content } };
   const wordCount = content
     .filter((block) => block.text)
     .reduce((count, block) => count + (block.text?.split(/\s+/).length || 0), 0);
@@ -138,7 +144,7 @@ export default async function BlogPostPage({
       )}
       <LocaleSlugsProvider slugs={post.slugs}>
         <BlogPostClient
-          post={post}
+          post={localizedPost}
           relatedProducts={relatedProductData}
           related={getRelatedPosts(post, 3).map(toBlogSummary)}
         />

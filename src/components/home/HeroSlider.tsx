@@ -19,7 +19,7 @@ const SLIDE_LINKS = ['/urunler', '/ozel-renk-uretimi', '/urunler', '/urunler'] a
 
 const AUTO_PLAY_INTERVAL = 6000;
 
-export default function HeroSlider() {
+export default function HeroSlider({ heading }: { heading?: string }) {
   const t = useTranslations('hero');
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -106,15 +106,16 @@ export default function HeroSlider() {
 
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-3xl px-8 text-center">
-              <motion.p
+              {/* Görünür H1: anahtar kelime cümlesi, hero üst satırı olarak */}
+              <motion.h1
                 variants={textVariants}
                 initial="hidden"
                 animate="visible"
                 custom={0.1}
-                className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-gold"
+                className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-gold md:text-sm"
               >
-                {t('tag')}
-              </motion.p>
+                {heading ?? t('tag')}
+              </motion.h1>
 
               <motion.h2
                 variants={textVariants}

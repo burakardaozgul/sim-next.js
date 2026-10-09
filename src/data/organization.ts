@@ -54,3 +54,15 @@ export const ORGANIZATION = {
     { name: 'SCHLENK', country: 'DE', role: 'distributor', products: 'metallic inks and pigments' },
   ],
 } as const;
+
+/** E.164 → görünür biçim: +90 212 637 62 49 */
+export function formatTelephone(e164: string = ORGANIZATION.telephone): string {
+  const d = e164.replace('+90', '');
+  return `+90 ${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6, 8)} ${d.slice(8)}`;
+}
+
+/** Tek satır posta adresi (footer, iletişim, llms) */
+export function formatAddress(): string {
+  const a = ORGANIZATION.address;
+  return `${a.streetAddress}, ${a.postalCode} ${a.addressLocality}/${a.addressRegion}`;
+}

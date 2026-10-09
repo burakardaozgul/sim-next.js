@@ -1,4 +1,4 @@
-import { ORGANIZATION, BASE_URL } from '@/data/organization';
+import { ORGANIZATION, BASE_URL, formatTelephone, formatAddress } from '@/data/organization';
 import { routing } from '@/i18n/routing';
 import { products } from '@/data/products';
 import { blogPosts } from '@/data/blog';
@@ -27,7 +27,6 @@ function urls(path: string, kind: 'static' | 'product' | 'blog'): string {
 }
 
 function header(): string {
-  const a = ORGANIZATION.address;
   return `# ${ORGANIZATION.name}
 
 > ${ORGANIZATION.positioning.en}
@@ -37,8 +36,8 @@ ${ORGANIZATION.positioning.tr}
 Legal name: ${ORGANIZATION.legalName}
 Founded: ${ORGANIZATION.foundingDate}
 Website: ${BASE_URL} (TR) · ${BASE_URL}/en (EN) · ${BASE_URL}/ru (RU) · ${BASE_URL}/ar (AR)
-Address: ${a.streetAddress}, ${a.postalCode} ${a.addressLocality}/${a.addressRegion}, Türkiye
-Phone: +90 212 637 62 49
+Address: ${formatAddress()}, Türkiye
+Phone: ${formatTelephone()}
 Email: ${ORGANIZATION.email}
 Opening hours: ${ORGANIZATION.openingHours.dayOfWeek[0]}–${ORGANIZATION.openingHours.dayOfWeek.at(-1)} ${ORGANIZATION.openingHours.opens}–${ORGANIZATION.openingHours.closes}
 Profiles: ${ORGANIZATION.sameAs.join(' · ')}

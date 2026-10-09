@@ -88,8 +88,7 @@ export default async function HomePage({
 
       {/* Main Content - offset by nav width on desktop */}
       <div className="w-full overflow-x-hidden lg:ml-[260px]">
-        <h1 className="sr-only">{t('seoH1')}</h1>
-        <HeroSlider />
+        <HeroSlider heading={t('seoH1')} />
         <FadeInSection>
           <ProductsSection />
         </FadeInSection>

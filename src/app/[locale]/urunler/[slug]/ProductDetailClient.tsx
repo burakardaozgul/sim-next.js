@@ -10,17 +10,23 @@ import { Product, products, getProductSlug } from '@/data/products';
 import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
 import { getBlurDataURL } from '@/lib/blur';
 import { ChevronLeft, Check, ArrowRight, Calendar } from 'lucide-react';
+import { ORGANIZATION } from '@/data/organization';
+import { track } from '@/lib/analytics';
 
 export default function ProductDetailClient({ product, relatedBlogPosts = [] }: { product: Product; relatedBlogPosts?: BlogPostSummary[] }) {
   const t = useTranslations('products');
+  const tNav = useTranslations('nav');
   const tCta = useTranslations('cta');
-  const tFooter = useTranslations('footer');
   const locale = useLocale();
   const [activeImage, setActiveImage] = useState(0);
 
   const name = product.name[locale] || product.name.tr;
   const description = product.description[locale] || product.description.tr;
   const features = product.features?.[locale] || product.features?.tr;
+  const specs = product.specs;
+  const documents = product.documents;
+  const useCases = product.useCases?.[locale] || product.useCases?.tr;
+  const faq = product.faq;
 
   // Related products (same category, excluding current)
   const related = products
@@ -34,13 +40,18 @@ export default function ProductDetailClient({ product, relatedBlogPosts = [] }: 
         {/* Breadcrumb */}
         <div className="bg-ink-900 px-6 pt-20 lg:px-10 lg:pt-24">
           <div className="mx-auto max-w-7xl">
-            <Link
-              href="/urunler"
-              className="inline-flex items-center gap-1.5 text-xs text-silver transition-colors hover:text-gold"
-            >
-              <ChevronLeft size={14} />
-              {t('title')}
-            </Link>
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-silver">
+              <Link href="/" className="transition-colors hover:text-gold">{tNav('home')}</Link>
+              <span aria-hidden>›</span>
+              <Link href="/matbaa-malzemeleri" className="transition-colors hover:text-gold">{tNav('printingMaterials')}</Link>
+              <span aria-hidden>›</span>
+              <Link href="/urunler" className="inline-flex items-center gap-1 transition-colors hover:text-gold">
+                <ChevronLeft size={12} />
+                {t('title')}
+              </Link>
+              <span aria-hidden>›</span>
+              <span className="text-cream/80" aria-current="page">{name}</span>
+            </nav>
           </div>
         </div>
 
@@ -123,7 +134,8 @@ export default function ProductDetailClient({ product, relatedBlogPosts = [] }: 
                     <ArrowRight size={14} />
                   </Link>
                   <a
-                    href={`tel:${tFooter('phone')}`}
+                    href={`tel:${ORGANIZATION.telephone}`}
+                    onClick={() => track('click_tel', { place: 'product_page' })}
                     className="inline-flex items-center gap-2 border border-white/20 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-all hover:border-gold/40 hover:text-gold"
                   >
                     {tCta('call')}
@@ -131,6 +143,75 @@ export default function ProductDetailClient({ product, relatedBlogPosts = [] }: 
                 </div>
               </div>
             </div>
+
+            {/* Teknik özellikler / belgeler / kullanım alanları / SSS — veri varsa */}
+            {(specs?.length || documents?.length || useCases?.length || faq?.length) ? (
+              <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-16">
+                {specs && specs.length > 0 && (
+                  <section aria-labelledby="specs-heading">
+                    <h2 id="specs-heading" className="font-heading text-xl font-bold text-cream">{t('specsTitle')}</h2>
+                    <table className="mt-4 w-full text-sm">
+                      <tbody className="divide-y divide-white/[0.06]">
+                        {specs.map((row, i) => (
+                          <tr key={i}>
+                            <th scope="row" className="py-2.5 pr-4 text-left font-medium text-silver">{row.label[locale] || row.label.tr}</th>
+                            <td className="py-2.5 text-cream">{row.value[locale] || row.value.tr}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </section>
+                )}
+                {useCases && useCases.length > 0 && (
+                  <section aria-labelledby="usecases-heading">
+                    <h2 id="usecases-heading" className="font-heading text-xl font-bold text-cream">{t('useCasesTitle')}</h2>
+                    <ul className="mt-4 space-y-2.5">
+                      {useCases.map((u, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-cream">
+                          <Check size={16} className="mt-0.5 flex-shrink-0 text-gold" />
+                          {u}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {documents && documents.length > 0 && (
+                  <section aria-labelledby="docs-heading">
+                    <h2 id="docs-heading" className="font-heading text-xl font-bold text-cream">{t('documentsTitle')}</h2>
+                    <ul className="mt-4 space-y-2.5">
+                      {documents.map((d, i) => (
+                        <li key={i}>
+                          <a
+                            href={d.url}
+                            target="_blank"
+                            rel="noopener"
+                            onClick={() => track('download_document', { type: d.type, product: product.slug })}
+                            className="inline-flex items-center gap-2 text-sm text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+                          >
+                            {d.label} <span className="text-silver/60">({d.type}, PDF)</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {faq && faq.length > 0 && (
+                  <section aria-labelledby="faq-heading" className="lg:col-span-2">
+                    <h2 id="faq-heading" className="font-heading text-xl font-bold text-cream">{t('faqTitle')}</h2>
+                    <div className="mt-4 divide-y divide-white/[0.06]">
+                      {faq.map((f, i) => (
+                        <details key={i} className="group py-4">
+                          <summary className="cursor-pointer list-none font-medium text-cream marker:content-none">
+                            {f.q[locale] || f.q.tr}
+                          </summary>
+                          <p className="mt-2 text-sm leading-relaxed text-silver">{f.a[locale] || f.a.tr}</p>
+                        </details>
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </div>
+            ) : null}
           </div>
         </section>
 

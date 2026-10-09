@@ -5,17 +5,15 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   output: 'standalone',
-  env: {
-    SMTP_HOST: process.env.SMTP_HOST,
-    SMTP_PORT: process.env.SMTP_PORT,
-    SMTP_USER: process.env.SMTP_USER,
-    SMTP_PASS: process.env.SMTP_PASS,
-  },
+  // SMTP ayarları yalnızca sunucu tarafında process.env ile okunur (build çıktısına gömülmez).
   compress: true,
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
+    // Düzen en fazla ~1200px içerik + 2x retina; daha büyük varyantlar gereksiz
+    deviceSizes: [640, 828, 1080, 1200, 1920],
+    imageSizes: [64, 96, 128, 256, 384],
   },
   async redirects() {
     return [
@@ -138,6 +136,25 @@ const nextConfig: NextConfig = {
       { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
       { key: 'Permissions-Policy', value: 'geolocation=(), microphone=(), camera=()' },
       { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+      // Statik render nedeniyle nonce kullanılamıyor; inline JSON-LD/GTM için 'unsafe-inline' zorunlu.
+      // İzinli üçüncü taraflar: GTM/GA4, Cloudflare Turnstile, Google Maps embed.
+      {
+        key: 'Content-Security-Policy',
+        value: [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com https://challenges.cloudflare.com https://www.google.com https://www.gstatic.com",
+          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+          "img-src 'self' data: blob: https:",
+          "font-src 'self' data: https://fonts.gstatic.com",
+          "connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.google.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://challenges.cloudflare.com",
+          "frame-src https://www.google.com https://maps.google.com https://challenges.cloudflare.com https://www.googletagmanager.com",
+          "frame-ancestors 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+          "object-src 'none'",
+          'upgrade-insecure-requests',
+        ].join('; '),
+      },
     ];
 
     return [

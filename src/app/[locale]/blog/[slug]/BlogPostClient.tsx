@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import type { BlogPost, ContentBlock } from '@/data/blog';
 import { getBlogSlug, type BlogPostSummary } from '@/lib/blog-utils';
 import { parseInlineLinks } from '@/lib/inline-links';
+import NextLink from 'next/link';
 import { type Product, getProductSlug } from '@/data/products';
 import {
   ChevronLeft,
@@ -179,14 +180,14 @@ function InlineText({ text }: { text?: string }) {
       {parts.map((part, i) =>
         part.href ? (
           part.href.startsWith('/') ? (
-            <Link
+            // Sunucuda yerelleştirilmiş (önek + dil slug'ı) yol → düz next/link, ek önek yok
+            <NextLink
               key={i}
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              href={part.href as any}
+              href={part.href}
               className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
             >
               {part.text}
-            </Link>
+            </NextLink>
           ) : (
             <a
               key={i}
