@@ -72,7 +72,7 @@ B=$(curl -sS -A "$UA" "$BASE/en/unknown-page-xyz"); check "EN 404 is localized" 
 
 # blog: typo slug redirect, newest-first ordering on home, single brand in list title
 H=$(hdr /blog/flekso-baski-murakkepleri-rehberi); check "typo blog slug → 308" $([ "$(status "$H")" = "308" ] && echo "$H" | grep -qi 'murekkepleri-rehberi'; echo $?)
-B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (chemicals guide)" $(echo "$B" | grep -q 'href="/blog/baski-kimyasallari-rehberi"'; echo $?)
+B=$(curl -sS -A "$UA" "$BASE/"); check "home shows newest post first (ink prices 2026)" $(echo "$B" | grep -q 'href="/blog/ofset-murekkep-fiyatlari-2026"'; echo $?)
 B=$(curl -sS -A "$UA" "$BASE/blog"); check "blog list title has the brand once" $([ "$(echo "$B" | grep -oE '<title>[^<]*' | grep -o 'SIM Baskı Malzemeleri' | wc -l | tr -d ' ')" = "1" ]; echo $?)
 
 # pillar /matbaa-malzemeleri (brief A): depth, schema, EN export page, blog guide block
@@ -126,10 +126,10 @@ check "EN offset ink supplier page H1 (Turkey)"         $(echo "$EI" | grep -oE 
 check "TR export page exists (/ihracat)"                $([ "$(hdr /ihracat | head -1 | grep -oE '[0-9]{3}')" = "200" ]; echo $?)
 
 # generated llms.txt + sitemap hygiene + IndexNow key file
-L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'baski-kimyasallari-rehberi' && echo "$L" | grep -q '1983'; echo $?)
+L=$(curl -sS -A "$UA" "$BASE/llms.txt"); check "llms.txt is served and lists the newest post" $(echo "$L" | grep -q 'ofset-murekkep-fiyatlari-2026' && echo "$L" | grep -q '1983'; echo $?)
 check "llms.txt has no stale postal code"           $([ "$(echo "$L" | grep -c '34000')" -eq 0 ]; echo $?)
 S=$(curl -sS -A "$UA" "$BASE/sitemap.xml"); check "sitemap excludes noindex pages" $([ "$(echo "$S" | grep -c 'gizlilik-politikasi\|privacy-policy')" -eq 0 ]; echo $?)
-check "sitemap has 150 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 150 ]; echo $?)
+check "sitemap has 162 URLs (no ru/ar blog summaries)" $([ "$(echo "$S" | grep -c '<loc>')" -eq 162 ]; echo $?)
 check "sitemap has no ru/ar blog URLs"                $(! echo "$S" | grep -qE '/(ru|ar)/blog/'; echo $?)
 H=$(hdr /978eda0da5050651d3ec438c9854edea.txt); check "IndexNow key file served" $([ "$(status "$H")" = "200" ]; echo $?)
 

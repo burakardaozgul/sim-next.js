@@ -34,7 +34,7 @@ describe('RU/AR blog summaries are support-language pages (08 §2): noindex, no 
     const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
     expect(locs.filter((u) => /\/(ru|ar)\/blog\//.test(u))).toHaveLength(0);
     expect(locs.filter((u) => /\/en\/blog\//.test(u)).length).toBe(blogPosts.length);
-    expect(locs).toHaveLength(200 - 2 * blogPosts.length);
+    expect(locs).toHaveLength(100 + 2 * blogPosts.length);
   });
   it('llms.txt / llms-full.txt do not advertise RU/AR blog URLs', () => {
     for (const txt of [buildLlmsTxt(), buildLlmsFullTxt()]) expect(txt).not.toMatch(/\/(ru|ar)\/blog\//);
