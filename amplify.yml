@@ -8,6 +8,9 @@ frontend:
         - npm ci
     build:
       commands:
+        # Amplify konsol env değişkenleri yalnızca build'de görünür; SSR çalışma zamanının (iletişim formu: SMTP + Turnstile)
+        # okuyabilmesi için .env.production'a yazılır. Değerlerde tek tırnak (') kullanılmamalıdır.
+        - for v in SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS TURNSTILE_SECRET_KEY; do if [ -n "${!v}" ]; then printf "%s='%s'\n" "$v" "${!v}" >> .env.production; fi; done; true
         - npm run build
     postBuild:
       commands:
